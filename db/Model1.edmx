@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LeanMaintModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Anagrafico Impianti">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="DT_Install_Plant" />
+          </Key>
+          <Property Name="ID_PLant" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Desc_Plant" Type="varchar" MaxLength="200" />
+          <Property Name="DT_Install_Plant" Type="datetime" Nullable="false" />
+          <Property Name="Costo_Plant" Type="int" />
+          <Property Name="Azienda" Type="varchar" MaxLength="100" />
+          <Property Name="Divisione" Type="varchar" MaxLength="100" />
+          <Property Name="CDC_Plant" Type="varchar" MaxLength="20" />
+          <Property Name="Tipo_Plant" Type="varchar" MaxLength="20" />
+          <Property Name="DT_Lastmaint" Type="int" />
+          <Property Name="DT_Nextmaint" Type="int" />
+          <Property Name="Esito_maint" Type="varchar" MaxLength="10" />
+          <Property Name="Grado_risk_plant" Type="int" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Anagrafico Interventi">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Inter" />
+          </Key>
+          <Property Name="ID_PLant" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Desc_Inter" Type="varchar" MaxLength="200" />
+          <Property Name="DT_Chiamata" Type="datetime" />
+          <Property Name="Tarif_Inter" Type="int" />
+          <Property Name="Tipo_Risorsa" Type="varchar" MaxLength="100" />
+          <Property Name="Desc_Risorsa" Type="varchar" MaxLength="100" />
+          <Property Name="CDC_Risorsa" Type="varchar" MaxLength="20" />
+          <Property Name="Tipo_Plant" Type="varchar" MaxLength="20" />
+          <Property Name="DT_Conf_Int" Type="int" />
+          <Property Name="DT_Eff_Int" Type="int" />
+          <Property Name="DT_Ultimo_Guasto" Type="int" />
+          <Property Name="DT_Ultima_Riparazione" Type="int" />
+          <Property Name="Esito_maint" Type="varchar" MaxLength="10" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+          <Property Name="ID_Inter" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Persona" Type="varchar" MaxLength="100" />
+          <Property Name="ORE_Inter" Type="int" />
+          <Property Name="Costo_Inter" Type="int" />
+          <Property Name="Probabil" Type="int" />
+          <Property Name="Gravity" Type="int" />
+          <Property Name="Rilevabil" Type="int" />
+        </EntityType>
+        <EntityType Name="Anagrafico_Fornitori">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Fornitore" />
+          </Key>
+          <Property Name="ID_PLant" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID_Fornitore" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Desc_Fornitore" Type="varchar" MaxLength="300" />
+          <Property Name="Indirizzo1" Type="varchar" MaxLength="200" />
+          <Property Name="Indirizzo2" Type="varchar" MaxLength="200" />
+          <Property Name="CDC_Riferimento" Type="varchar" MaxLength="20" />
+          <Property Name="Costo_Orario" Type="int" />
+          <Property Name="CityFrazione" Type="varchar" MaxLength="200" />
+          <Property Name="Nazione" Type="varchar" MaxLength="100" />
+          <Property Name="CAP_Forn" Type="varchar" MaxLength="7" />
+          <Property Name="DT_Valid_Forn" Type="datetime" />
+          <Property Name="DT_Last_Inter" Type="datetime" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="ATTIVITA">
+          <Key>
+            <PropertyRef Name="ID_Attivit" />
+          </Key>
+          <Property Name="ID_Attivit" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Desc_Attivit" Type="varchar" MaxLength="300" />
+          <Property Name="DT_Inizio_ATT" Type="datetime" />
+          <Property Name="DT_Fine_ATT" Type="datetime" />
+          <Property Name="Valore1_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore2_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore3_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore4_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore5_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore6_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore7_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore8_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore9_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore10_ATT" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="ID_Persona" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Commessa" Type="varchar" MaxLength="50" />
+          <Property Name="ID_ORDPROD" Type="varchar" MaxLength="50" />
+          <Property Name="ID_CDC" Type="varchar" MaxLength="50" />
+          <Property Name="NOTE" Type="varchar" MaxLength="500" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Autorizzazioni">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_Ins_User" Type="datetime" />
+          <Property Name="LVL_User" Type="int" />
+          <Property Name="Auth_Code" Type="varchar" MaxLength="15" />
+          <Property Name="DT_End_Auth" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BILLING">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+            <PropertyRef Name="DT_ATTIVAZIONE" />
+          </Key>
+          <Property Name="ID_USER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESC_USER" Type="varchar" MaxLength="300" />
+          <Property Name="DT_ATTIVAZIONE" Type="datetime" Nullable="false" />
+          <Property Name="DT_TERMINE" Type="datetime" />
+          <Property Name="TARIFFA" Type="numeric" Precision="21" Scale="0" />
+          <Property Name="ANNO" Type="varchar" MaxLength="4" />
+          <Property Name="MESE" Type="varchar" MaxLength="20" />
+          <Property Name="GIORNO_INIZIO" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="GIORNO_FINE" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="VALORE" Type="numeric" Precision="21" Scale="0" />
+        </EntityType>
+        <EntityType Name="CONTROLLI">
+          <Key>
+            <PropertyRef Name="ID_Controllo" />
+          </Key>
+          <Property Name="ID_Controllo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Desc_Controllo" Type="varchar" MaxLength="300" />
+          <Property Name="DT_Inizio_Controllo" Type="datetime" />
+          <Property Name="DT_Fine_Controllo" Type="datetime" />
+          <Property Name="Valore1_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore2_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore3_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore4_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore5_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore6_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore7_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore8_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore9_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="Valore10_CTRL" Type="numeric" Precision="30" Scale="0" />
+          <Property Name="ID_Persona" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Commessa" Type="varchar" MaxLength="50" />
+          <Property Name="ID_ORDPROD" Type="varchar" MaxLength="50" />
+          <Property Name="ID_CDC" Type="varchar" MaxLength="50" />
+          <Property Name="NOTE" Type="varchar" MaxLength="500" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="GUASTI">
+          <Key>
+            <PropertyRef Name="ID_Guasto" />
+          </Key>
+          <Property Name="ID_Guasto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Desc_Guasto" Type="varchar" MaxLength="300" />
+          <Property Name="Classe_Guasto" Type="varchar" MaxLength="1" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="HR_Manut">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Persona" />
+          </Key>
+          <Property Name="ID_PLant" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID_Persona" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Desc_Persona" Type="varchar" MaxLength="300" />
+          <Property Name="Codificato" Type="int" />
+          <Property Name="ID_Fornitore" Type="varchar" MaxLength="100" />
+          <Property Name="DT_Ultima_Att" Type="datetime" />
+          <Property Name="CDC_Riferimento" Type="varchar" MaxLength="20" />
+          <Property Name="Costo_Orario" Type="int" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Interfaccie">
+          <Key>
+            <PropertyRef Name="SISTEMA" />
+            <PropertyRef Name="Auth_Code" />
+          </Key>
+          <Property Name="SISTEMA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_Attivazione" Type="datetime" />
+          <Property Name="Dt_disattivazione" Type="datetime" />
+          <Property Name="Auth_Code" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Parametri1" Type="varchar" MaxLength="100" />
+          <Property Name="Parametri2" Type="varchar" MaxLength="100" />
+          <Property Name="Parametri3" Type="varchar" MaxLength="100" />
+          <Property Name="Host_abilitato" Type="varchar" MaxLength="400" />
+          <Property Name="IP_Host_Abilitato" Type="varchar" MaxLength="50" />
+          <Property Name="IPV4_IPV6" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Materiali_Manut">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Mater" />
+          </Key>
+          <Property Name="ID_PLant" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID_Mater" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Desc_Mater" Type="varchar" MaxLength="300" />
+          <Property Name="Codificato" Type="int" />
+          <Property Name="ID_Fornitore" Type="varchar" MaxLength="100" />
+          <Property Name="DT_Uso _Mater" Type="datetime" />
+          <Property Name="CDC_Riferimento" Type="varchar" MaxLength="20" />
+          <Property Name="Costo_Mater" Type="int" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="RIPARAZIONI">
+          <Key>
+            <PropertyRef Name="ID_Ripar" />
+          </Key>
+          <Property Name="ID_Ripar" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Desc_Ripar" Type="varchar" MaxLength="300" />
+          <Property Name="Classe_Ripar" Type="varchar" MaxLength="1" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="STATI">
+          <Key>
+            <PropertyRef Name="ID_STATO" />
+          </Key>
+          <Property Name="ID_STATO" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Desc_Guasto" Type="varchar" MaxLength="300" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="TIPO_CONTROLLI">
+          <Key>
+            <PropertyRef Name="ID_Controllo" />
+          </Key>
+          <Property Name="ID_Controllo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Desc_Controllo" Type="varchar" MaxLength="300" />
+          <Property Name="Soglia_Sup" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="Soglia_Inf" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="Scala_Assoluta" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="Stato" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityContainer Name="LeanMaintModelStoreContainer">
+          <EntitySet Name="Anagrafico Impianti" EntityType="Self.Anagrafico Impianti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Anagrafico Interventi" EntityType="Self.Anagrafico Interventi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Anagrafico_Fornitori" EntityType="Self.Anagrafico_Fornitori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATTIVITA" EntityType="Self.ATTIVITA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Autorizzazioni" EntityType="Self.Autorizzazioni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BILLING" EntityType="Self.BILLING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTROLLI" EntityType="Self.CONTROLLI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GUASTI" EntityType="Self.GUASTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HR_Manut" EntityType="Self.HR_Manut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interfaccie" EntityType="Self.Interfaccie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materiali_Manut" EntityType="Self.Materiali_Manut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RIPARAZIONI" EntityType="Self.RIPARAZIONI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATI" EntityType="Self.STATI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_CONTROLLI" EntityType="Self.TIPO_CONTROLLI" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LeanMaintModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Anagrafico_Impianti">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="DT_Install_Plant" />
+          </Key>
+          <Property Name="ID_PLant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Install_Plant" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Costo_Plant" Type="Int32" />
+          <Property Name="Azienda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Divisione" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CDC_Plant" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Plant" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Lastmaint" Type="Int32" />
+          <Property Name="DT_Nextmaint" Type="Int32" />
+          <Property Name="Esito_maint" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Grado_risk_plant" Type="Int32" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Anagrafico_Interventi">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Inter" />
+          </Key>
+          <Property Name="ID_PLant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Inter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Chiamata" Type="DateTime" Precision="3" />
+          <Property Name="Tarif_Inter" Type="Int32" />
+          <Property Name="Tipo_Risorsa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Desc_Risorsa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CDC_Risorsa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Plant" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Conf_Int" Type="Int32" />
+          <Property Name="DT_Eff_Int" Type="Int32" />
+          <Property Name="DT_Ultimo_Guasto" Type="Int32" />
+          <Property Name="DT_Ultima_Riparazione" Type="Int32" />
+          <Property Name="Esito_maint" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Inter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Persona" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ORE_Inter" Type="Int32" />
+          <Property Name="Costo_Inter" Type="Int32" />
+          <Property Name="Probabil" Type="Int32" />
+          <Property Name="Gravity" Type="Int32" />
+          <Property Name="Rilevabil" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Anagrafico_Fornitori">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Fornitore" />
+          </Key>
+          <Property Name="ID_PLant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Fornitore" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Fornitore" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Indirizzo1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Indirizzo2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CDC_Riferimento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Costo_Orario" Type="Int32" />
+          <Property Name="CityFrazione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nazione" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CAP_Forn" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Valid_Forn" Type="DateTime" Precision="3" />
+          <Property Name="DT_Last_Inter" Type="DateTime" Precision="3" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ATTIVITA">
+          <Key>
+            <PropertyRef Name="ID_Attivit" />
+          </Key>
+          <Property Name="ID_Attivit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Attivit" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Inizio_ATT" Type="DateTime" Precision="3" />
+          <Property Name="DT_Fine_ATT" Type="DateTime" Precision="3" />
+          <Property Name="Valore1_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore2_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore3_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore4_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore5_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore6_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore7_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore8_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore9_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore10_ATT" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="ID_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Commessa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_ORDPROD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CDC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOTE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Autorizzazioni">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DT_Ins_User" Type="DateTime" Precision="3" />
+          <Property Name="LVL_User" Type="Int32" />
+          <Property Name="Auth_Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DT_End_Auth" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BILLING">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+            <PropertyRef Name="DT_ATTIVAZIONE" />
+          </Key>
+          <Property Name="ID_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESC_USER" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DT_ATTIVAZIONE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DT_TERMINE" Type="DateTime" Precision="3" />
+          <Property Name="TARIFFA" Type="Decimal" Precision="21" Scale="0" />
+          <Property Name="ANNO" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="MESE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GIORNO_INIZIO" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="GIORNO_FINE" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="VALORE" Type="Decimal" Precision="21" Scale="0" />
+        </EntityType>
+        <EntityType Name="CONTROLLI">
+          <Key>
+            <PropertyRef Name="ID_Controllo" />
+          </Key>
+          <Property Name="ID_Controllo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Controllo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Inizio_Controllo" Type="DateTime" Precision="3" />
+          <Property Name="DT_Fine_Controllo" Type="DateTime" Precision="3" />
+          <Property Name="Valore1_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore2_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore3_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore4_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore5_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore6_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore7_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore8_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore9_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="Valore10_CTRL" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="ID_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Commessa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_ORDPROD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CDC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOTE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GUASTI">
+          <Key>
+            <PropertyRef Name="ID_Guasto" />
+          </Key>
+          <Property Name="ID_Guasto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Guasto" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Classe_Guasto" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HR_Manut">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Persona" />
+          </Key>
+          <Property Name="ID_PLant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Persona" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Persona" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Codificato" Type="Int32" />
+          <Property Name="ID_Fornitore" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Ultima_Att" Type="DateTime" Precision="3" />
+          <Property Name="CDC_Riferimento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Costo_Orario" Type="Int32" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Interfaccie">
+          <Key>
+            <PropertyRef Name="SISTEMA" />
+            <PropertyRef Name="Auth_Code" />
+          </Key>
+          <Property Name="SISTEMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DT_Attivazione" Type="DateTime" Precision="3" />
+          <Property Name="Dt_disattivazione" Type="DateTime" Precision="3" />
+          <Property Name="Auth_Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parametri1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Parametri2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Parametri3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Host_abilitato" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="IP_Host_Abilitato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPV4_IPV6" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Materiali_Manut">
+          <Key>
+            <PropertyRef Name="ID_PLant" />
+            <PropertyRef Name="ID_Mater" />
+          </Key>
+          <Property Name="ID_PLant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Mater" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Mater" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Codificato" Type="Int32" />
+          <Property Name="ID_Fornitore" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DT_Uso__Mater" Type="DateTime" Precision="3" />
+          <Property Name="CDC_Riferimento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Costo_Mater" Type="Int32" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RIPARAZIONI">
+          <Key>
+            <PropertyRef Name="ID_Ripar" />
+          </Key>
+          <Property Name="ID_Ripar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Ripar" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Classe_Ripar" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STATI">
+          <Key>
+            <PropertyRef Name="ID_STATO" />
+          </Key>
+          <Property Name="ID_STATO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Guasto" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TIPO_CONTROLLI">
+          <Key>
+            <PropertyRef Name="ID_Controllo" />
+          </Key>
+          <Property Name="ID_Controllo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desc_Controllo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Soglia_Sup" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Soglia_Inf" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Scala_Assoluta" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="Stato" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="LeanMaintEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Anagrafico_Impianti" EntityType="Self.Anagrafico_Impianti" />
+          <EntitySet Name="Anagrafico_Interventi" EntityType="Self.Anagrafico_Interventi" />
+          <EntitySet Name="Anagrafico_Fornitori" EntityType="Self.Anagrafico_Fornitori" />
+          <EntitySet Name="ATTIVITA" EntityType="Self.ATTIVITA" />
+          <EntitySet Name="Autorizzazioni" EntityType="Self.Autorizzazioni" />
+          <EntitySet Name="BILLING" EntityType="Self.BILLING" />
+          <EntitySet Name="CONTROLLI" EntityType="Self.CONTROLLI" />
+          <EntitySet Name="GUASTI" EntityType="Self.GUASTI" />
+          <EntitySet Name="HR_Manut" EntityType="Self.HR_Manut" />
+          <EntitySet Name="Interfaccie" EntityType="Self.Interfaccie" />
+          <EntitySet Name="Materiali_Manut" EntityType="Self.Materiali_Manut" />
+          <EntitySet Name="RIPARAZIONI" EntityType="Self.RIPARAZIONI" />
+          <EntitySet Name="STATI" EntityType="Self.STATI" />
+          <EntitySet Name="TIPO_CONTROLLI" EntityType="Self.TIPO_CONTROLLI" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LeanMaintModelStoreContainer" CdmEntityContainer="LeanMaintEntities">
+          <EntitySetMapping Name="Anagrafico_Impianti">
+            <EntityTypeMapping TypeName="LeanMaintModel.Anagrafico_Impianti">
+              <MappingFragment StoreEntitySet="Anagrafico Impianti">
+                <ScalarProperty Name="ID_PLant" ColumnName="ID_PLant" />
+                <ScalarProperty Name="Desc_Plant" ColumnName="Desc_Plant" />
+                <ScalarProperty Name="DT_Install_Plant" ColumnName="DT_Install_Plant" />
+                <ScalarProperty Name="Costo_Plant" ColumnName="Costo_Plant" />
+                <ScalarProperty Name="Azienda" ColumnName="Azienda" />
+                <ScalarProperty Name="Divisione" ColumnName="Divisione" />
+                <ScalarProperty Name="CDC_Plant" ColumnName="CDC_Plant" />
+                <ScalarProperty Name="Tipo_Plant" ColumnName="Tipo_Plant" />
+                <ScalarProperty Name="DT_Lastmaint" ColumnName="DT_Lastmaint" />
+                <ScalarProperty Name="DT_Nextmaint" ColumnName="DT_Nextmaint" />
+                <ScalarProperty Name="Esito_maint" ColumnName="Esito_maint" />
+                <ScalarProperty Name="Grado_risk_plant" ColumnName="Grado_risk_plant" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Anagrafico_Interventi">
+            <EntityTypeMapping TypeName="LeanMaintModel.Anagrafico_Interventi">
+              <MappingFragment StoreEntitySet="Anagrafico Interventi">
+                <ScalarProperty Name="ID_PLant" ColumnName="ID_PLant" />
+                <ScalarProperty Name="Desc_Inter" ColumnName="Desc_Inter" />
+                <ScalarProperty Name="DT_Chiamata" ColumnName="DT_Chiamata" />
+                <ScalarProperty Name="Tarif_Inter" ColumnName="Tarif_Inter" />
+                <ScalarProperty Name="Tipo_Risorsa" ColumnName="Tipo_Risorsa" />
+                <ScalarProperty Name="Desc_Risorsa" ColumnName="Desc_Risorsa" />
+                <ScalarProperty Name="CDC_Risorsa" ColumnName="CDC_Risorsa" />
+                <ScalarProperty Name="Tipo_Plant" ColumnName="Tipo_Plant" />
+                <ScalarProperty Name="DT_Conf_Int" ColumnName="DT_Conf_Int" />
+                <ScalarProperty Name="DT_Eff_Int" ColumnName="DT_Eff_Int" />
+                <ScalarProperty Name="DT_Ultimo_Guasto" ColumnName="DT_Ultimo_Guasto" />
+                <ScalarProperty Name="DT_Ultima_Riparazione" ColumnName="DT_Ultima_Riparazione" />
+                <ScalarProperty Name="Esito_maint" ColumnName="Esito_maint" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+                <ScalarProperty Name="ID_Inter" ColumnName="ID_Inter" />
+                <ScalarProperty Name="ID_Persona" ColumnName="ID_Persona" />
+                <ScalarProperty Name="ORE_Inter" ColumnName="ORE_Inter" />
+                <ScalarProperty Name="Costo_Inter" ColumnName="Costo_Inter" />
+                <ScalarProperty Name="Probabil" ColumnName="Probabil" />
+                <ScalarProperty Name="Gravity" ColumnName="Gravity" />
+                <ScalarProperty Name="Rilevabil" ColumnName="Rilevabil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Anagrafico_Fornitori">
+            <EntityTypeMapping TypeName="LeanMaintModel.Anagrafico_Fornitori">
+              <MappingFragment StoreEntitySet="Anagrafico_Fornitori">
+                <ScalarProperty Name="ID_PLant" ColumnName="ID_PLant" />
+                <ScalarProperty Name="ID_Fornitore" ColumnName="ID_Fornitore" />
+                <ScalarProperty Name="Desc_Fornitore" ColumnName="Desc_Fornitore" />
+                <ScalarProperty Name="Indirizzo1" ColumnName="Indirizzo1" />
+                <ScalarProperty Name="Indirizzo2" ColumnName="Indirizzo2" />
+                <ScalarProperty Name="CDC_Riferimento" ColumnName="CDC_Riferimento" />
+                <ScalarProperty Name="Costo_Orario" ColumnName="Costo_Orario" />
+                <ScalarProperty Name="CityFrazione" ColumnName="CityFrazione" />
+                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+                <ScalarProperty Name="CAP_Forn" ColumnName="CAP_Forn" />
+                <ScalarProperty Name="DT_Valid_Forn" ColumnName="DT_Valid_Forn" />
+                <ScalarProperty Name="DT_Last_Inter" ColumnName="DT_Last_Inter" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATTIVITA">
+            <EntityTypeMapping TypeName="LeanMaintModel.ATTIVITA">
+              <MappingFragment StoreEntitySet="ATTIVITA">
+                <ScalarProperty Name="ID_Attivit" ColumnName="ID_Attivit" />
+                <ScalarProperty Name="Desc_Attivit" ColumnName="Desc_Attivit" />
+                <ScalarProperty Name="DT_Inizio_ATT" ColumnName="DT_Inizio_ATT" />
+                <ScalarProperty Name="DT_Fine_ATT" ColumnName="DT_Fine_ATT" />
+                <ScalarProperty Name="Valore1_ATT" ColumnName="Valore1_ATT" />
+                <ScalarProperty Name="Valore2_ATT" ColumnName="Valore2_ATT" />
+                <ScalarProperty Name="Valore3_ATT" ColumnName="Valore3_ATT" />
+                <ScalarProperty Name="Valore4_ATT" ColumnName="Valore4_ATT" />
+                <ScalarProperty Name="Valore5_ATT" ColumnName="Valore5_ATT" />
+                <ScalarProperty Name="Valore6_ATT" ColumnName="Valore6_ATT" />
+                <ScalarProperty Name="Valore7_ATT" ColumnName="Valore7_ATT" />
+                <ScalarProperty Name="Valore8_ATT" ColumnName="Valore8_ATT" />
+                <ScalarProperty Name="Valore9_ATT" ColumnName="Valore9_ATT" />
+                <ScalarProperty Name="Valore10_ATT" ColumnName="Valore10_ATT" />
+                <ScalarProperty Name="ID_Persona" ColumnName="ID_Persona" />
+                <ScalarProperty Name="ID_Commessa" ColumnName="ID_Commessa" />
+                <ScalarProperty Name="ID_ORDPROD" ColumnName="ID_ORDPROD" />
+                <ScalarProperty Name="ID_CDC" ColumnName="ID_CDC" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Autorizzazioni">
+            <EntityTypeMapping TypeName="LeanMaintModel.Autorizzazioni">
+              <MappingFragment StoreEntitySet="Autorizzazioni">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="DT_Ins_User" ColumnName="DT_Ins_User" />
+                <ScalarProperty Name="LVL_User" ColumnName="LVL_User" />
+                <ScalarProperty Name="Auth_Code" ColumnName="Auth_Code" />
+                <ScalarProperty Name="DT_End_Auth" ColumnName="DT_End_Auth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BILLING">
+            <EntityTypeMapping TypeName="LeanMaintModel.BILLING">
+              <MappingFragment StoreEntitySet="BILLING">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="DESC_USER" ColumnName="DESC_USER" />
+                <ScalarProperty Name="DT_ATTIVAZIONE" ColumnName="DT_ATTIVAZIONE" />
+                <ScalarProperty Name="DT_TERMINE" ColumnName="DT_TERMINE" />
+                <ScalarProperty Name="TARIFFA" ColumnName="TARIFFA" />
+                <ScalarProperty Name="ANNO" ColumnName="ANNO" />
+                <ScalarProperty Name="MESE" ColumnName="MESE" />
+                <ScalarProperty Name="GIORNO_INIZIO" ColumnName="GIORNO_INIZIO" />
+                <ScalarProperty Name="GIORNO_FINE" ColumnName="GIORNO_FINE" />
+                <ScalarProperty Name="VALORE" ColumnName="VALORE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTROLLI">
+            <EntityTypeMapping TypeName="LeanMaintModel.CONTROLLI">
+              <MappingFragment StoreEntitySet="CONTROLLI">
+                <ScalarProperty Name="ID_Controllo" ColumnName="ID_Controllo" />
+                <ScalarProperty Name="Desc_Controllo" ColumnName="Desc_Controllo" />
+                <ScalarProperty Name="DT_Inizio_Controllo" ColumnName="DT_Inizio_Controllo" />
+                <ScalarProperty Name="DT_Fine_Controllo" ColumnName="DT_Fine_Controllo" />
+                <ScalarProperty Name="Valore1_CTRL" ColumnName="Valore1_CTRL" />
+                <ScalarProperty Name="Valore2_CTRL" ColumnName="Valore2_CTRL" />
+                <ScalarProperty Name="Valore3_CTRL" ColumnName="Valore3_CTRL" />
+                <ScalarProperty Name="Valore4_CTRL" ColumnName="Valore4_CTRL" />
+                <ScalarProperty Name="Valore5_CTRL" ColumnName="Valore5_CTRL" />
+                <ScalarProperty Name="Valore6_CTRL" ColumnName="Valore6_CTRL" />
+                <ScalarProperty Name="Valore7_CTRL" ColumnName="Valore7_CTRL" />
+                <ScalarProperty Name="Valore8_CTRL" ColumnName="Valore8_CTRL" />
+                <ScalarProperty Name="Valore9_CTRL" ColumnName="Valore9_CTRL" />
+                <ScalarProperty Name="Valore10_CTRL" ColumnName="Valore10_CTRL" />
+                <ScalarProperty Name="ID_Persona" ColumnName="ID_Persona" />
+                <ScalarProperty Name="ID_Commessa" ColumnName="ID_Commessa" />
+                <ScalarProperty Name="ID_ORDPROD" ColumnName="ID_ORDPROD" />
+                <ScalarProperty Name="ID_CDC" ColumnName="ID_CDC" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GUASTI">
+            <EntityTypeMapping TypeName="LeanMaintModel.GUASTI">
+              <MappingFragment StoreEntitySet="GUASTI">
+                <ScalarProperty Name="ID_Guasto" ColumnName="ID_Guasto" />
+                <ScalarProperty Name="Desc_Guasto" ColumnName="Desc_Guasto" />
+                <ScalarProperty Name="Classe_Guasto" ColumnName="Classe_Guasto" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HR_Manut">
+            <EntityTypeMapping TypeName="LeanMaintModel.HR_Manut">
+              <MappingFragment StoreEntitySet="HR_Manut">
+                <ScalarProperty Name="ID_PLant" ColumnName="ID_PLant" />
+                <ScalarProperty Name="ID_Persona" ColumnName="ID_Persona" />
+                <ScalarProperty Name="Desc_Persona" ColumnName="Desc_Persona" />
+                <ScalarProperty Name="Codificato" ColumnName="Codificato" />
+                <ScalarProperty Name="ID_Fornitore" ColumnName="ID_Fornitore" />
+                <ScalarProperty Name="DT_Ultima_Att" ColumnName="DT_Ultima_Att" />
+                <ScalarProperty Name="CDC_Riferimento" ColumnName="CDC_Riferimento" />
+                <ScalarProperty Name="Costo_Orario" ColumnName="Costo_Orario" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interfaccie">
+            <EntityTypeMapping TypeName="LeanMaintModel.Interfaccie">
+              <MappingFragment StoreEntitySet="Interfaccie">
+                <ScalarProperty Name="SISTEMA" ColumnName="SISTEMA" />
+                <ScalarProperty Name="DT_Attivazione" ColumnName="DT_Attivazione" />
+                <ScalarProperty Name="Dt_disattivazione" ColumnName="Dt_disattivazione" />
+                <ScalarProperty Name="Auth_Code" ColumnName="Auth_Code" />
+                <ScalarProperty Name="Parametri1" ColumnName="Parametri1" />
+                <ScalarProperty Name="Parametri2" ColumnName="Parametri2" />
+                <ScalarProperty Name="Parametri3" ColumnName="Parametri3" />
+                <ScalarProperty Name="Host_abilitato" ColumnName="Host_abilitato" />
+                <ScalarProperty Name="IP_Host_Abilitato" ColumnName="IP_Host_Abilitato" />
+                <ScalarProperty Name="IPV4_IPV6" ColumnName="IPV4_IPV6" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materiali_Manut">
+            <EntityTypeMapping TypeName="LeanMaintModel.Materiali_Manut">
+              <MappingFragment StoreEntitySet="Materiali_Manut">
+                <ScalarProperty Name="ID_PLant" ColumnName="ID_PLant" />
+                <ScalarProperty Name="ID_Mater" ColumnName="ID_Mater" />
+                <ScalarProperty Name="Desc_Mater" ColumnName="Desc_Mater" />
+                <ScalarProperty Name="Codificato" ColumnName="Codificato" />
+                <ScalarProperty Name="ID_Fornitore" ColumnName="ID_Fornitore" />
+                <ScalarProperty Name="DT_Uso__Mater" ColumnName="DT_Uso _Mater" />
+                <ScalarProperty Name="CDC_Riferimento" ColumnName="CDC_Riferimento" />
+                <ScalarProperty Name="Costo_Mater" ColumnName="Costo_Mater" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RIPARAZIONI">
+            <EntityTypeMapping TypeName="LeanMaintModel.RIPARAZIONI">
+              <MappingFragment StoreEntitySet="RIPARAZIONI">
+                <ScalarProperty Name="ID_Ripar" ColumnName="ID_Ripar" />
+                <ScalarProperty Name="Desc_Ripar" ColumnName="Desc_Ripar" />
+                <ScalarProperty Name="Classe_Ripar" ColumnName="Classe_Ripar" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATI">
+            <EntityTypeMapping TypeName="LeanMaintModel.STATI">
+              <MappingFragment StoreEntitySet="STATI">
+                <ScalarProperty Name="ID_STATO" ColumnName="ID_STATO" />
+                <ScalarProperty Name="Desc_Guasto" ColumnName="Desc_Guasto" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_CONTROLLI">
+            <EntityTypeMapping TypeName="LeanMaintModel.TIPO_CONTROLLI">
+              <MappingFragment StoreEntitySet="TIPO_CONTROLLI">
+                <ScalarProperty Name="ID_Controllo" ColumnName="ID_Controllo" />
+                <ScalarProperty Name="Desc_Controllo" ColumnName="Desc_Controllo" />
+                <ScalarProperty Name="Soglia_Sup" ColumnName="Soglia_Sup" />
+                <ScalarProperty Name="Soglia_Inf" ColumnName="Soglia_Inf" />
+                <ScalarProperty Name="Scala_Assoluta" ColumnName="Scala_Assoluta" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
