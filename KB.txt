@@ -44,4 +44,20 @@
 - asset management -> insieme delle attività di coordinamento di un'organizzazione per realizzare valore mediante la gestione degli asset
 - strategic asset management plan (SAMP) -> comporta l'istituzione di linee guida capaci di controllare tutte le fasi del ciclo di vita di un asset 
                                             (acquisizione, vita utile, dismissione)
-- 
+
+- Contesto dell'organizzazione -> strategic asset management plan
+- Lista assets compresi nell'Asset Management System
+- I leader dell'AMS devono poter fissare gli obiettivi con le priorità
+- monitoring, measuring, analisys, evaluation
+- internal audit
+- management review
+- improvement
+- non conformità e azioni correttive
+- azioni preventive
+- miglioramento continuo (continual improvement)
+- conclusioni:
+  - framework di riferimento per la gestione degli asset
+  - definizione di un ambiente di enterprise asset management
+  - valutazione del valore di un assett o di un sistema di asset basato sul rischio
+  - guida per sistema di misurazione di KPI per valutare le performance in relazione agli obiettivi aziendali
+ 
