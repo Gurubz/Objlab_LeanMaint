@@ -1,3 +1,5 @@
+** CAPITOLO 1 **
+
 * Maintenance Information System:
 - CMMS (Computerized Maintenance Management System):
   - programmazione
@@ -26,3 +28,20 @@
   - Total Productive Maintenance (TPM)
   - Total Quality Management (TQM)
   
+* Simulation in Maintenance
+- prestazione R&M sono misurate in termini di affidabilità (R), disponibilità (A) e manutenibilità (MTTR)
+
+** CAPITOLO 2 **
+
+* ISO 5500x
+- normativa orientata alla gestione di qualunque tipo di asset
+- tre norme internazionali ISO 55000, 55001, 55002
+  - ISO 55000 fornisce una panoramica generale sulla gestione degli assets e stabilisce principi e termini
+  - ISO 55001 definisce i requisiti necessari per realizzare un corretto sistema di gestione degli asset
+  - ISO 5002 fornisce una guida all'applicazione della 55001
+- asset -> qualunque oggetto che ha un valore potenziale o reale per un'organizzazione (es. rotaia o reputazione)
+- asset sono vari ma i principi di gestione sono gli stessi
+- asset management -> insieme delle attività di coordinamento di un'organizzazione per realizzare valore mediante la gestione degli asset
+- strategic asset management plan (SAMP) -> comporta l'istituzione di linee guida capaci di controllare tutte le fasi del ciclo di vita di un asset 
+                                            (acquisizione, vita utile, dismissione)
+- 
