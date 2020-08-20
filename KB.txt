@@ -1,0 +1,28 @@
+* Maintenance Information System:
+- CMMS (Computerized Maintenance Management System):
+  - programmazione
+  - coordinamento
+  - registrazione
+  - consuntivazione
+  - miglioramento
+  - controllo risorse utilizzate
+  - tracciare e registrare gli interventi di manutenzione effettuati sugli assets
+  - integrazione con MES (manufacturing execution system), SCADA
+- Modello di manutenzione integrato ERP (enterprise resource planning)
+- Software As A Service (SaaS)
+
+* Integrated Work Systems (IWS)
+- database
+  - accessori
+  - parti
+  - piani di manutenzione
+  - dati relativi alle squadre incaricate dello svolgimento delle operazioni di manutenzione
+  - stato delle apparecchiature
+  - stato parametri tecnologici apparecchiature
+
+* Maintenance Integration
+- Integrazione delle metodologie di manutenzione:
+  - Reliability Centered Maintenance (RCM)
+  - Total Productive Maintenance (TPM)
+  - Total Quality Management (TQM)
+  
