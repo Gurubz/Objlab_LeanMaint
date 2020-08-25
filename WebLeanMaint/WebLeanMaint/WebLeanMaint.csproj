@@ -181,6 +181,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Compile Include="Core\Planning.cs" />
     <Compile Include="Data\Accountancy.Billing.cs" />
     <Compile Include="Data\Accountancy.Billings.cs" />
     <Compile Include="Data\Accountancy.CostCenter.cs" />
@@ -205,6 +206,8 @@
     <Compile Include="Data\Config.Region.cs" />
     <Compile Include="Data\Config.Regions.cs" />
     <Compile Include="Data\EntitiesManagerBase.cs" />
+    <Compile Include="Data\Hierarchy.Asset.cs" />
+    <Compile Include="Data\Hierarchy.Assets.cs" />
     <Compile Include="Data\Hierarchy.CostCenter.cs" />
     <Compile Include="Data\Hierarchy.CostCenters.cs" />
     <Compile Include="Data\Hierarchy.GeographicCenter.cs" />
@@ -228,6 +231,8 @@
     <Compile Include="Data\Maintenance.ExecutionType.cs" />
     <Compile Include="Data\Maintenance.ExecutionTypes.cs" />
     <Compile Include="Data\Maintenance.Material.cs" />
+    <Compile Include="Data\Maintenance.MaterialAsset.cs" />
+    <Compile Include="Data\Maintenance.MaterialAssets.cs" />
     <Compile Include="Data\Maintenance.Materials.cs" />
     <Compile Include="Data\Maintenance.OperatorsPermission.cs" />
     <Compile Include="Data\Maintenance.OperatorsPermissions.cs" />
@@ -432,7 +437,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

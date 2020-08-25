@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Planning
 			}
 
 			return (null);
+		}
+
+		public OrderType[] ToArray()
+		{
+			List<OrderType> aRet = new List<OrderType>();
+			foreach (OrderType oOrderType in this.m_aItems)
+			{
+				aRet.Add(oOrderType);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

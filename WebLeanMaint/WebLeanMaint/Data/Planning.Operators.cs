@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Planning
 			}
 
 			return (null);
+		}
+
+		public Operator[] ToArray()
+		{
+			List<Operator> aRet = new List<Operator>();
+			foreach (Operator oOperator in this.m_aItems)
+			{
+				aRet.Add(oOperator);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Maintenance
 			}
 
 			return (null);
+		}
+
+		public OperatorsPermission[] ToArray()
+		{
+			List<OperatorsPermission> aRet = new List<OperatorsPermission>();
+			foreach (OperatorsPermission oOperatorsPermission in this.m_aItems)
+			{
+				aRet.Add(oOperatorsPermission);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

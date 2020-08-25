@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -131,6 +132,13 @@ namespace WebLeanMaint.WS
 		}
 
 		[WebMethod]
+		[Description("Planning: Get assets available for order")]
+		public Data.Maintenance.Asset[] GetAssetsForOrder(int ID_Order)
+		{
+			return (Core.Planning.GetAssetsForOrder(ID_Order));
+		}
+
+		[WebMethod]
 		[Description("Planning: Add asset to order")]
 		public void AddAssetToOrder(int ID_Order, int ID_Asset)
 		{
@@ -138,6 +146,13 @@ namespace WebLeanMaint.WS
 			oAsset.ID_Order = ID_Order;
 			oAsset.ID_Asset = ID_Asset;
 			Data.Planning.OrderAssets.InsertOne(oAsset);
+		}
+
+		[WebMethod]
+		[Description("Planning: Get material available for order")]
+		public Data.Maintenance.Material[] GetMaterialsForOrder(int ID_Order)
+		{
+			return (Core.Planning.GetMaterialsForOrder(ID_Order));
 		}
 
 		[WebMethod]

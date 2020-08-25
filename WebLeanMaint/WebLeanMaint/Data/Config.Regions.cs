@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Config
 			}
 
 			return (null);
+		}
+
+		public Region[] ToArray()
+		{
+			List<Region> aRet = new List<Region>();
+			foreach (Region oRegion in this.m_aItems)
+			{
+				aRet.Add(oRegion);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

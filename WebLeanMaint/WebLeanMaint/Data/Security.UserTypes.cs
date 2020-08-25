@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Security
 			}
 
 			return (null);
+		}
+
+		public UserType[] ToArray()
+		{
+			List<UserType> aRet = new List<UserType>();
+			foreach (UserType oUserType in this.m_aItems)
+			{
+				aRet.Add(oUserType);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

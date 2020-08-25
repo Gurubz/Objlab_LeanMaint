@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Maintenance
 			}
 
 			return (null);
+		}
+
+		public Supplier[] ToArray()
+		{
+			List<Supplier> aRet = new List<Supplier>();
+			foreach (Supplier oSupplier in this.m_aItems)
+			{
+				aRet.Add(oSupplier);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

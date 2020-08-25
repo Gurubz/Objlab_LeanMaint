@@ -9,24 +9,24 @@ namespace Data.Maintenance
 	/// <remarks>
 	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
-	[DebuggerDisplay("ID = {ID}")]
+	[DebuggerDisplay("ID_Material = {ID_Material}")]
 	public class Material
 	{
 		public Material()
 		{
 		}
 
-		public Material(Int32 nID)
+		public Material(Int32 nID_Material)
 		{
-			m_nID = nID;
+			m_nID_Material = nID_Material;
 		}
 
 		#region Public Properties
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 ID
+		public Int32 ID_Material
 		{
-		  get { return (m_nID); }
-		  set { m_nID = value; }
+		  get { return (m_nID_Material); }
+		  set { m_nID_Material = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public String Name
@@ -41,10 +41,10 @@ namespace Data.Maintenance
 		  set { m_sDescription = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 ID_Plant
+		public Int32 ID_ObjStatus
 		{
-		  get { return (m_nID_Plant); }
-		  set { m_nID_Plant = value; }
+		  get { return (m_nID_ObjStatus); }
+		  set { m_nID_ObjStatus = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 Coded
@@ -76,31 +76,24 @@ namespace Data.Maintenance
 		  get { return (m_nCost); }
 		  set { m_nCost = value; }
 		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 ID_ObjStatus
-		{
-		  get { return (m_nID_ObjStatus); }
-		  set { m_nID_ObjStatus = value; }
-		}
 		#endregion
 
 		#region Protected Properties
-		protected Int32 m_nID;
+		protected Int32 m_nID_Material;
 		protected String m_sName = String.Empty;
 		protected String m_sDescription = String.Empty;
-		protected Int32 m_nID_Plant;
+		protected Int32 m_nID_ObjStatus;
 		protected Int32 m_nCoded;
 		protected Int32 m_nID_Supplier;
 		protected DateTime m_oUsedFrom = DateTime.MinValue;
 		protected Int32 m_nID_CostCenter;
 		protected Decimal m_nCost;
-		protected Int32 m_nID_ObjStatus;
 		#endregion
 
 		#region Friends Methods
-		internal void SetKeys(Int32 nID)
+		internal void SetKeys(Int32 nID_Material)
 		{
-			m_nID = nID;
+			m_nID_Material = nID_Material;
 		}
 		#endregion
 	}

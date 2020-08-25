@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -26,17 +27,27 @@ namespace Data.Maintenance
 		#region Public Methods
 		#region Collection
 
-		public Material GetByKeys(Int32 nID)
+		public Material GetByKeys(Int32 nID_Material)
 		{
 			foreach (Material oMaterial in this.m_aItems)
 			{
-				if (oMaterial.ID == nID)
+				if (oMaterial.ID_Material == nID_Material)
 				{
 					return (oMaterial);
 				}
 			}
 
 			return (null);
+		}
+
+		public Material[] ToArray()
+		{
+			List<Material> aRet = new List<Material>();
+			foreach (Material oMaterial in this.m_aItems)
+			{
+				aRet.Add(oMaterial);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 
@@ -147,12 +158,12 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static Material LoadOne(Int32 nID)
+		public static Material LoadOne(Int32 nID_Material)
 		{
-			return(LoadOne(nID, null));
+			return(LoadOne(nID_Material, null));
 		}
 
-		public static Material LoadOne(Int32 nID, SqlConnection oPrivateConnection)
+		public static Material LoadOne(Int32 nID_Material, SqlConnection oPrivateConnection)
 		{
 			Material oMaterial = null;
 			DataSet oDs = null;
@@ -162,8 +173,8 @@ namespace Data.Maintenance
 			oSelect = new StringBuilder("SELECT * FROM [Materials]");
 
 			oSelect.Append(" WHERE ");
-			oSelect.Append("[ID]=");
-			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID));
+			oSelect.Append("[ID_Material]=");
+			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Material));
 
 			oDs = EntitiesManagerBase.DAT_ExecuteDataSet(oSelect.ToString(), oPrivateConnection);
 
@@ -180,16 +191,16 @@ namespace Data.Maintenance
 			return (oMaterial);
 		}
 
-		public static Material TryLoadOne(Int32 nID)
+		public static Material TryLoadOne(Int32 nID_Material)
 		{
-			return(TryLoadOne(nID, null));
+			return(TryLoadOne(nID_Material, null));
 		}
 
-		public static Material TryLoadOne(Int32 nID, SqlConnection oPrivateConnection)
+		public static Material TryLoadOne(Int32 nID_Material, SqlConnection oPrivateConnection)
 		{
 			Material oMaterial = null;
 
-			oMaterial = LoadOne(nID, null);
+			oMaterial = LoadOne(nID_Material, null);
 
 			if (oMaterial == null)
 			{
@@ -211,14 +222,14 @@ namespace Data.Maintenance
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Materials] ");
-			oInsert.Append("([Name], [Description], [ID_Plant], [Coded], [ID_Supplier], [UsedFrom], [ID_CostCenter], [Cost], [ID_ObjStatus])");
+			oInsert.Append("([Name], [Description], [ID_ObjStatus], [Coded], [ID_Supplier], [UsedFrom], [ID_CostCenter], [Cost])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Name));
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Description));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_Plant));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_ObjStatus));
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Coded));
 			oInsert.Append(", ");
@@ -229,13 +240,11 @@ namespace Data.Maintenance
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_CostCenter));
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Cost));
-			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_ObjStatus));
 			oInsert.Append(")");
 
 			Object oRet;
 			oRet = EntitiesManagerBase.DAT_ExecuteScalar(oInsert.ToString(), "\nSELECT @@IDENTITY AS ID", oPrivateConnection);
-			oMaterial.ID = Convert.ToInt32(oRet);
+			oMaterial.ID_Material = Convert.ToInt32(oRet);
 		}
 
 		public static void UpdateOne(Material oMaterial)
@@ -255,8 +264,8 @@ namespace Data.Maintenance
 			oUpdate.Append("[Description]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Description));
 			oUpdate.Append(", ");
-			oUpdate.Append("[ID_Plant]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_Plant));
+			oUpdate.Append("[ID_ObjStatus]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_ObjStatus));
 			oUpdate.Append(", ");
 			oUpdate.Append("[Coded]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Coded));
@@ -272,9 +281,6 @@ namespace Data.Maintenance
 			oUpdate.Append(", ");
 			oUpdate.Append("[Cost]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Cost));
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_ObjStatus]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_ObjStatus));
 
 			oUpdate.Append(UTI_Where4One(oMaterial));
 
@@ -304,19 +310,19 @@ namespace Data.Maintenance
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID));
+			oWhere.Append("[ID_Material]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_Material));
 
 			return (oWhere.ToString());
 		}
 
-		public static string UTI_Where4One(Int32 nID)
+		public static string UTI_Where4One(Int32 nID_Material)
 		{
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID));
+			oWhere.Append("[ID_Material]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Material));
 
 			return (oWhere.ToString());
 		}
@@ -325,16 +331,15 @@ namespace Data.Maintenance
 		{
 			Material oMaterial = new Material();
 
-			oMaterial.ID = ((Int32)(oRow["ID"]));
+			oMaterial.ID_Material = ((Int32)(oRow["ID_Material"]));
 			oMaterial.Name = ((String)(oRow["Name"])).Trim();
 			oMaterial.Description = ((String)(oRow["Description"])).Trim();
-			oMaterial.ID_Plant = ((Int32)(oRow["ID_Plant"]));
+			oMaterial.ID_ObjStatus = ((Int32)(oRow["ID_ObjStatus"]));
 			oMaterial.Coded = ((Int32)(oRow["Coded"]));
 			oMaterial.ID_Supplier = ((Int32)(oRow["ID_Supplier"]));
 			oMaterial.UsedFrom = ((DateTime)(oRow["UsedFrom"]));
 			oMaterial.ID_CostCenter = ((Int32)(oRow["ID_CostCenter"]));
 			oMaterial.Cost = ((Decimal)(oRow["Cost"]));
-			oMaterial.ID_ObjStatus = ((Int32)(oRow["ID_ObjStatus"]));
 
 			return (oMaterial);
 		}

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Accountancy
 			}
 
 			return (null);
+		}
+
+		public CostCenterType[] ToArray()
+		{
+			List<CostCenterType> aRet = new List<CostCenterType>();
+			foreach (CostCenterType oCostCenterType in this.m_aItems)
+			{
+				aRet.Add(oCostCenterType);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

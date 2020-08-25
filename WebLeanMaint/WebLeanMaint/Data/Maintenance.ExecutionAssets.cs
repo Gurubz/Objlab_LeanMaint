@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Maintenance
 			}
 
 			return (null);
+		}
+
+		public ExecutionAsset[] ToArray()
+		{
+			List<ExecutionAsset> aRet = new List<ExecutionAsset>();
+			foreach (ExecutionAsset oExecutionAsset in this.m_aItems)
+			{
+				aRet.Add(oExecutionAsset);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

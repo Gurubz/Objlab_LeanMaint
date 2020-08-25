@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Accountancy
 			}
 
 			return (null);
+		}
+
+		public Billing[] ToArray()
+		{
+			List<Billing> aRet = new List<Billing>();
+			foreach (Billing oBilling in this.m_aItems)
+			{
+				aRet.Add(oBilling);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
 
-namespace Data.Maintenance
+namespace Data.Hierarchy
 {
 	/// <summary>
 	/// Public Asset Class
@@ -27,11 +27,11 @@ namespace Data.Maintenance
 		#region Public Methods
 		#region Collection
 
-		public Asset GetByKeys(Int32 nID_Asset)
+		public Asset GetByKeys(Int32 nID_Asset, Int32 nLevel, Int32 nID_AssetChild)
 		{
 			foreach (Asset oAsset in this.m_aItems)
 			{
-				if (oAsset.ID_Asset == nID_Asset)
+				if (oAsset.ID_Asset == nID_Asset && oAsset.Level == nLevel && oAsset.ID_AssetChild == nID_AssetChild)
 				{
 					return (oAsset);
 				}
@@ -158,12 +158,12 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static Asset LoadOne(Int32 nID_Asset)
+		public static Asset LoadOne(Int32 nID_Asset, Int32 nLevel, Int32 nID_AssetChild)
 		{
-			return(LoadOne(nID_Asset, null));
+			return(LoadOne(nID_Asset, nLevel, nID_AssetChild, null));
 		}
 
-		public static Asset LoadOne(Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static Asset LoadOne(Int32 nID_Asset, Int32 nLevel, Int32 nID_AssetChild, SqlConnection oPrivateConnection)
 		{
 			Asset oAsset = null;
 			DataSet oDs = null;
@@ -175,6 +175,12 @@ namespace Data.Maintenance
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Asset]=");
 			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oSelect.Append(" AND ");
+			oSelect.Append("[Level]=");
+			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nLevel));
+			oSelect.Append(" AND ");
+			oSelect.Append("[ID_AssetChild]=");
+			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_AssetChild));
 
 			oDs = EntitiesManagerBase.DAT_ExecuteDataSet(oSelect.ToString(), oPrivateConnection);
 
@@ -191,16 +197,16 @@ namespace Data.Maintenance
 			return (oAsset);
 		}
 
-		public static Asset TryLoadOne(Int32 nID_Asset)
+		public static Asset TryLoadOne(Int32 nID_Asset, Int32 nLevel, Int32 nID_AssetChild)
 		{
-			return(TryLoadOne(nID_Asset, null));
+			return(TryLoadOne(nID_Asset, nLevel, nID_AssetChild, null));
 		}
 
-		public static Asset TryLoadOne(Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static Asset TryLoadOne(Int32 nID_Asset, Int32 nLevel, Int32 nID_AssetChild, SqlConnection oPrivateConnection)
 		{
 			Asset oAsset = null;
 
-			oAsset = LoadOne(nID_Asset, null);
+			oAsset = LoadOne(nID_Asset, nLevel, nID_AssetChild, null);
 
 			if (oAsset == null)
 			{
@@ -222,37 +228,17 @@ namespace Data.Maintenance
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Assets] ");
-			oInsert.Append("([Name], [Description], [ID_AssetType], [ID_OrganizationCenter], [ID_CostCenter], [ID_GeographicCenter], [ID_ObjStatus], [ID_Parent])");
+			oInsert.Append("([ID_Asset], [Level], [ID_AssetChild])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Name));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Description));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Level));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetType));
-			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_OrganizationCenter));
-			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_CostCenter));
-			oInsert.Append(", ");
-			if (oAsset.ID_GeographicCenter_HasValue == true) {
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_GeographicCenter));
-			} else {;
-			oInsert.Append("NULL");
-			}
-			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_ObjStatus));
-			oInsert.Append(", ");
-			if (oAsset.ID_Parent_HasValue == true) {
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Parent));
-			} else {;
-			oInsert.Append("NULL");
-			}
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetChild));
 			oInsert.Append(")");
 
-			Object oRet;
-			oRet = EntitiesManagerBase.DAT_ExecuteScalar(oInsert.ToString(), "\nSELECT @@IDENTITY AS ID", oPrivateConnection);
-			oAsset.ID_Asset = Convert.ToInt32(oRet);
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
 		public static void UpdateOne(Asset oAsset)
@@ -266,37 +252,14 @@ namespace Data.Maintenance
 
 			oUpdate = new StringBuilder("UPDATE [Assets] SET ");
 
-			oUpdate.Append("[Name]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Name));
+			oUpdate.Append("[ID_Asset]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
 			oUpdate.Append(", ");
-			oUpdate.Append("[Description]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Description));
+			oUpdate.Append("[Level]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Level));
 			oUpdate.Append(", ");
-			oUpdate.Append("[ID_AssetType]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetType));
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_OrganizationCenter]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_OrganizationCenter));
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_CostCenter]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_CostCenter));
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_GeographicCenter]=");
-			if (oAsset.ID_GeographicCenter_HasValue == true) {
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_GeographicCenter));
-			} else {
-			oUpdate.Append("NULL");
-			}
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_ObjStatus]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_ObjStatus));
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_Parent]=");
-			if (oAsset.ID_Parent_HasValue == true) {
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Parent));
-			} else {
-			oUpdate.Append("NULL");
-			}
+			oUpdate.Append("[ID_AssetChild]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetChild));
 
 			oUpdate.Append(UTI_Where4One(oAsset));
 
@@ -328,17 +291,29 @@ namespace Data.Maintenance
 			oWhere.Append(" WHERE ");
 			oWhere.Append("[ID_Asset]=");
 			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
+			oWhere.Append(" AND ");
+			oWhere.Append("[Level]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Level));
+			oWhere.Append(" AND ");
+			oWhere.Append("[ID_AssetChild]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetChild));
 
 			return (oWhere.ToString());
 		}
 
-		public static string UTI_Where4One(Int32 nID_Asset)
+		public static string UTI_Where4One(Int32 nID_Asset, Int32 nLevel, Int32 nID_AssetChild)
 		{
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
 			oWhere.Append("[ID_Asset]=");
 			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oWhere.Append(" AND ");
+			oWhere.Append("[Level]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nLevel));
+			oWhere.Append(" AND ");
+			oWhere.Append("[ID_AssetChild]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_AssetChild));
 
 			return (oWhere.ToString());
 		}
@@ -348,24 +323,8 @@ namespace Data.Maintenance
 			Asset oAsset = new Asset();
 
 			oAsset.ID_Asset = ((Int32)(oRow["ID_Asset"]));
-			oAsset.Name = ((String)(oRow["Name"])).Trim();
-			oAsset.Description = ((String)(oRow["Description"])).Trim();
-			oAsset.ID_AssetType = ((Int32)(oRow["ID_AssetType"]));
-			oAsset.ID_OrganizationCenter = ((Int32)(oRow["ID_OrganizationCenter"]));
-			oAsset.ID_CostCenter = ((Int32)(oRow["ID_CostCenter"]));
-			if (!(oRow["ID_GeographicCenter"] is DBNull)) {
-			  oAsset.ID_GeographicCenter = ((Int32)(oRow["ID_GeographicCenter"]));
-			  oAsset.ID_GeographicCenter_HasValue = true;
-			} else {
-			  oAsset.ID_GeographicCenter_HasValue = false;
-			}
-			oAsset.ID_ObjStatus = ((Int32)(oRow["ID_ObjStatus"]));
-			if (!(oRow["ID_Parent"] is DBNull)) {
-			  oAsset.ID_Parent = ((Int32)(oRow["ID_Parent"]));
-			  oAsset.ID_Parent_HasValue = true;
-			} else {
-			  oAsset.ID_Parent_HasValue = false;
-			}
+			oAsset.Level = ((Int32)(oRow["Level"]));
+			oAsset.ID_AssetChild = ((Int32)(oRow["ID_AssetChild"]));
 
 			return (oAsset);
 		}

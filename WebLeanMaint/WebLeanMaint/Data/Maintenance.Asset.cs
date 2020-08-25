@@ -70,6 +70,24 @@ namespace Data.Maintenance
 		  get { return (m_bID_GeographicCenter_HasValue); }
 		  set { m_bID_GeographicCenter_HasValue = value; }
 		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_ObjStatus
+		{
+		  get { return (m_nID_ObjStatus); }
+		  set { m_nID_ObjStatus = value; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_Parent
+		{
+		  get { return (m_nID_Parent); }
+		  set { m_nID_Parent = value; m_bID_Parent_HasValue = true; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public bool ID_Parent_HasValue
+		{
+		  get { return (m_bID_Parent_HasValue); }
+		  set { m_bID_Parent_HasValue = value; }
+		}
 		#endregion
 
 		#region Protected Properties
@@ -81,6 +99,9 @@ namespace Data.Maintenance
 		protected Int32 m_nID_CostCenter;
 		protected Int32 m_nID_GeographicCenter;
 		protected bool m_bID_GeographicCenter_HasValue;
+		protected Int32 m_nID_ObjStatus;
+		protected Int32 m_nID_Parent;
+		protected bool m_bID_Parent_HasValue;
 		#endregion
 
 		#region Friends Methods

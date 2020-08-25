@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Hierarchy
 			}
 
 			return (null);
+		}
+
+		public CostCenter[] ToArray()
+		{
+			List<CostCenter> aRet = new List<CostCenter>();
+			foreach (CostCenter oCostCenter in this.m_aItems)
+			{
+				aRet.Add(oCostCenter);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 

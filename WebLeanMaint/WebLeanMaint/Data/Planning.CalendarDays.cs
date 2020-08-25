@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -37,6 +38,16 @@ namespace Data.Planning
 			}
 
 			return (null);
+		}
+
+		public CalendarDay[] ToArray()
+		{
+			List<CalendarDay> aRet = new List<CalendarDay>();
+			foreach (CalendarDay oCalendarDay in this.m_aItems)
+			{
+				aRet.Add(oCalendarDay);
+			}
+			return (aRet.ToArray());
 		}
 		#endregion
 
