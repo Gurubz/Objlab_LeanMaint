@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public FailureStatuse Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_FailureStatus = {ID_FailureStatus}")]
 	public class FailureStatuse

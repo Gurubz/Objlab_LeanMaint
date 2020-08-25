@@ -11,7 +11,7 @@ namespace Data.Maintenance
 	/// Public OperatorType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	public class OperatorTypes : EntitiesManagerBase
 	{

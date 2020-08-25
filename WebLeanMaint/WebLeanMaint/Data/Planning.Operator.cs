@@ -1,13 +1,13 @@
 using System;
 using System.Diagnostics;
 
-namespace Data.Maintenance
+namespace Data.Planning
 {
 	/// <summary>
 	/// Public Operator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Operator = {ID_Operator}")]
 	public class Operator
@@ -71,6 +71,12 @@ namespace Data.Maintenance
 		  set { m_nID_OperatorType = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_Calendar
+		{
+		  get { return (m_nID_Calendar); }
+		  set { m_nID_Calendar = value; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_Supplier
 		{
 		  get { return (m_nID_Supplier); }
@@ -129,6 +135,7 @@ namespace Data.Maintenance
 		protected String m_sDescription = String.Empty;
 		protected bool m_bDescription_HasValue;
 		protected Int32 m_nID_OperatorType;
+		protected Int32 m_nID_Calendar;
 		protected Int32 m_nID_Supplier;
 		protected bool m_bID_Supplier_HasValue;
 		protected Int32 m_nID_CostCenter;

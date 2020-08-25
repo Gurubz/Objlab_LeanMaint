@@ -5,13 +5,13 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
 
-namespace Data.Maintenance
+namespace Data.Planning
 {
 	/// <summary>
 	/// Public Operator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	public class Operators : EntitiesManagerBase
 	{
@@ -211,7 +211,7 @@ namespace Data.Maintenance
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Operators] ");
-			oInsert.Append("([Name], [MiddleName], [LastName], [Description], [ID_OperatorType], [ID_Supplier], [ID_CostCenter], [HourlyCost], [ID_ObjStatus], [ID_User])");
+			oInsert.Append("([Name], [MiddleName], [LastName], [Description], [ID_OperatorType], [ID_Calendar], [ID_Supplier], [ID_CostCenter], [HourlyCost], [ID_ObjStatus], [ID_User])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.Name));
@@ -231,6 +231,8 @@ namespace Data.Maintenance
 			}
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_OperatorType));
+			oInsert.Append(", ");
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_Calendar));
 			oInsert.Append(", ");
 			if (oOperator.ID_Supplier_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_Supplier));
@@ -293,6 +295,9 @@ namespace Data.Maintenance
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_OperatorType]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_OperatorType));
+			oUpdate.Append(", ");
+			oUpdate.Append("[ID_Calendar]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_Calendar));
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_Supplier]=");
 			if (oOperator.ID_Supplier_HasValue == true) {
@@ -386,6 +391,7 @@ namespace Data.Maintenance
 			  oOperator.Description_HasValue = false;
 			}
 			oOperator.ID_OperatorType = ((Int32)(oRow["ID_OperatorType"]));
+			oOperator.ID_Calendar = ((Int32)(oRow["ID_Calendar"]));
 			if (!(oRow["ID_Supplier"] is DBNull)) {
 			  oOperator.ID_Supplier = ((Int32)(oRow["ID_Supplier"]));
 			  oOperator.ID_Supplier_HasValue = true;

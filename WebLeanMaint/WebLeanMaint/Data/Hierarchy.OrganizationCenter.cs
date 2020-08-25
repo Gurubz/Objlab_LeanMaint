@@ -7,7 +7,7 @@ namespace Data.Hierarchy
 	/// Public OrganizationCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("")]
 	public class OrganizationCenter

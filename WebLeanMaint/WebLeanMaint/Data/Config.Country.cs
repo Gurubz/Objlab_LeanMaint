@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public Country Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Country = {ID_Country}")]
 	public class Country

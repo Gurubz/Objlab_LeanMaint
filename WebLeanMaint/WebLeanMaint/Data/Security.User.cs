@@ -7,7 +7,7 @@ namespace Data.Security
 	/// Public User Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  23/08/2020  Created
+	/// 	[SQLClassGenerator]  25/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_User = {ID_User}")]
 	public class User
