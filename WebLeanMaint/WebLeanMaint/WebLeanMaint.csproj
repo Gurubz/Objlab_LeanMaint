@@ -203,8 +203,16 @@
     <Compile Include="Data\Config.ObjStatuses.cs" />
     <Compile Include="Data\Config.OrganizationCenter.cs" />
     <Compile Include="Data\Config.OrganizationCenters.cs" />
+    <Compile Include="Data\Config.OrganizationCenterTypeEnum.cs" />
+    <Compile Include="Data\Config.OrganizationCenterType.cs" />
+    <Compile Include="Data\Config.OrganizationCenterTypes.cs" />
     <Compile Include="Data\Config.Region.cs" />
     <Compile Include="Data\Config.Regions.cs" />
+    <Compile Include="Data\Config.StoreCenter.cs" />
+    <Compile Include="Data\Config.StoreCenters.cs" />
+    <Compile Include="Data\Config.StoreCenterTypeEnum.cs" />
+    <Compile Include="Data\Config.StoreCenterType.cs" />
+    <Compile Include="Data\Config.StoreCenterTypes.cs" />
     <Compile Include="Data\EntitiesManagerBase.cs" />
     <Compile Include="Data\Hierarchy.Asset.cs" />
     <Compile Include="Data\Hierarchy.Assets.cs" />
@@ -214,6 +222,8 @@
     <Compile Include="Data\Hierarchy.GeographicCenters.cs" />
     <Compile Include="Data\Hierarchy.OrganizationCenter.cs" />
     <Compile Include="Data\Hierarchy.OrganizationCenters.cs" />
+    <Compile Include="Data\Hierarchy.StoreCenter.cs" />
+    <Compile Include="Data\Hierarchy.StoreCenters.cs" />
     <Compile Include="Data\Maintenance.Asset.cs" />
     <Compile Include="Data\Maintenance.Assets.cs" />
     <Compile Include="Data\Maintenance.AssetTypeEnum.cs" />
@@ -226,6 +236,9 @@
     <Compile Include="Data\Maintenance.ExecutionMaterials.cs" />
     <Compile Include="Data\Maintenance.ExecutionOperator.cs" />
     <Compile Include="Data\Maintenance.ExecutionOperators.cs" />
+    <Compile Include="Data\Maintenance.ExecutionPriorityEnum.cs" />
+    <Compile Include="Data\Maintenance.ExecutionPriority.cs" />
+    <Compile Include="Data\Maintenance.ExecutionPrioritys.cs" />
     <Compile Include="Data\Maintenance.Executions.cs" />
     <Compile Include="Data\Maintenance.ExecutionTypeEnum.cs" />
     <Compile Include="Data\Maintenance.ExecutionType.cs" />
@@ -234,6 +247,8 @@
     <Compile Include="Data\Maintenance.MaterialAsset.cs" />
     <Compile Include="Data\Maintenance.MaterialAssets.cs" />
     <Compile Include="Data\Maintenance.Materials.cs" />
+    <Compile Include="Data\Maintenance.MaterialUM.cs" />
+    <Compile Include="Data\Maintenance.MaterialUMs.cs" />
     <Compile Include="Data\Maintenance.OperatorsPermission.cs" />
     <Compile Include="Data\Maintenance.OperatorsPermissions.cs" />
     <Compile Include="Data\Maintenance.OperatorType.cs" />

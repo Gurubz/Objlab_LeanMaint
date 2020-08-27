@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public Execution Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Execution = {ID_Execution}")]
 	public class Execution
@@ -70,6 +70,12 @@ namespace Data.Maintenance
 		  get { return (m_bCompleted); }
 		  set { m_bCompleted = value; }
 		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_Priority
+		{
+		  get { return (m_nID_Priority); }
+		  set { m_nID_Priority = value; }
+		}
 		#endregion
 
 		#region Protected Properties
@@ -81,6 +87,7 @@ namespace Data.Maintenance
 		protected DateTime m_oEndedAt = DateTime.MinValue;
 		protected bool m_bEndedAt_HasValue;
 		protected Boolean m_bCompleted;
+		protected Int32 m_nID_Priority;
 		#endregion
 
 		#region Friends Methods

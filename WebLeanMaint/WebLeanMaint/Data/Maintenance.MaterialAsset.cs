@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public MaterialAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Material = {ID_Material}, ID_Asset = {ID_Asset}")]
 	public class MaterialAsset

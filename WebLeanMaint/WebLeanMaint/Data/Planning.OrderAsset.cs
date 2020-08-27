@@ -7,7 +7,7 @@ namespace Data.Planning
 	/// Public OrderAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Order = {ID_Order}, ID_Asset = {ID_Asset}")]
 	public class OrderAsset

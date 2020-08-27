@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Material Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	public class Materials : EntitiesManagerBase
 	{
@@ -222,7 +222,7 @@ namespace Data.Maintenance
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Materials] ");
-			oInsert.Append("([Name], [Description], [ID_ObjStatus], [Coded], [ID_Supplier], [UsedFrom], [ID_CostCenter], [Cost])");
+			oInsert.Append("([Name], [Description], [ID_ObjStatus], [ReferenceCode], [ID_Supplier], [CostPerUM], [ID_MaterialUM], [Brand], [Type], [Barcode], [ID_StoreCenter])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Name));
@@ -231,15 +231,21 @@ namespace Data.Maintenance
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_ObjStatus));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Coded));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ReferenceCode));
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_Supplier));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.UsedFrom));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.CostPerUM));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_CostCenter));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_MaterialUM));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Cost));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Brand));
+			oInsert.Append(", ");
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Type));
+			oInsert.Append(", ");
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Barcode));
+			oInsert.Append(", ");
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_StoreCenter));
 			oInsert.Append(")");
 
 			Object oRet;
@@ -267,20 +273,29 @@ namespace Data.Maintenance
 			oUpdate.Append("[ID_ObjStatus]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_ObjStatus));
 			oUpdate.Append(", ");
-			oUpdate.Append("[Coded]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Coded));
+			oUpdate.Append("[ReferenceCode]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ReferenceCode));
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_Supplier]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_Supplier));
 			oUpdate.Append(", ");
-			oUpdate.Append("[UsedFrom]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.UsedFrom));
+			oUpdate.Append("[CostPerUM]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.CostPerUM));
 			oUpdate.Append(", ");
-			oUpdate.Append("[ID_CostCenter]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_CostCenter));
+			oUpdate.Append("[ID_MaterialUM]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_MaterialUM));
 			oUpdate.Append(", ");
-			oUpdate.Append("[Cost]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Cost));
+			oUpdate.Append("[Brand]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Brand));
+			oUpdate.Append(", ");
+			oUpdate.Append("[Type]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Type));
+			oUpdate.Append(", ");
+			oUpdate.Append("[Barcode]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Barcode));
+			oUpdate.Append(", ");
+			oUpdate.Append("[ID_StoreCenter]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.ID_StoreCenter));
 
 			oUpdate.Append(UTI_Where4One(oMaterial));
 
@@ -335,11 +350,14 @@ namespace Data.Maintenance
 			oMaterial.Name = ((String)(oRow["Name"])).Trim();
 			oMaterial.Description = ((String)(oRow["Description"])).Trim();
 			oMaterial.ID_ObjStatus = ((Int32)(oRow["ID_ObjStatus"]));
-			oMaterial.Coded = ((Int32)(oRow["Coded"]));
+			oMaterial.ReferenceCode = ((String)(oRow["ReferenceCode"])).Trim();
 			oMaterial.ID_Supplier = ((Int32)(oRow["ID_Supplier"]));
-			oMaterial.UsedFrom = ((DateTime)(oRow["UsedFrom"]));
-			oMaterial.ID_CostCenter = ((Int32)(oRow["ID_CostCenter"]));
-			oMaterial.Cost = ((Decimal)(oRow["Cost"]));
+			oMaterial.CostPerUM = ((Decimal)(oRow["CostPerUM"]));
+			oMaterial.ID_MaterialUM = ((Int32)(oRow["ID_MaterialUM"]));
+			oMaterial.Brand = ((String)(oRow["Brand"])).Trim();
+			oMaterial.Type = ((String)(oRow["Type"])).Trim();
+			oMaterial.Barcode = ((String)(oRow["Barcode"])).Trim();
+			oMaterial.ID_StoreCenter = ((Int32)(oRow["ID_StoreCenter"]));
 
 			return (oMaterial);
 		}

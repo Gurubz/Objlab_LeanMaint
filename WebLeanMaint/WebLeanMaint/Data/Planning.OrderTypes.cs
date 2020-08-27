@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	public class OrderTypes : EntitiesManagerBase
 	{

@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public Material Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Material = {ID_Material}")]
 	public class Material
@@ -47,10 +47,10 @@ namespace Data.Maintenance
 		  set { m_nID_ObjStatus = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 Coded
+		public String ReferenceCode
 		{
-		  get { return (m_nCoded); }
-		  set { m_nCoded = value; }
+		  get { return (m_sReferenceCode); }
+		  set { m_sReferenceCode = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_Supplier
@@ -59,22 +59,40 @@ namespace Data.Maintenance
 		  set { m_nID_Supplier = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public DateTime UsedFrom
+		public Decimal CostPerUM
 		{
-		  get { return (m_oUsedFrom); }
-		  set { m_oUsedFrom = value; }
+		  get { return (m_nCostPerUM); }
+		  set { m_nCostPerUM = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 ID_CostCenter
+		public Int32 ID_MaterialUM
 		{
-		  get { return (m_nID_CostCenter); }
-		  set { m_nID_CostCenter = value; }
+		  get { return (m_nID_MaterialUM); }
+		  set { m_nID_MaterialUM = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Decimal Cost
+		public String Brand
 		{
-		  get { return (m_nCost); }
-		  set { m_nCost = value; }
+		  get { return (m_sBrand); }
+		  set { m_sBrand = value; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public String Type
+		{
+		  get { return (m_sType); }
+		  set { m_sType = value; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public String Barcode
+		{
+		  get { return (m_sBarcode); }
+		  set { m_sBarcode = value; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_StoreCenter
+		{
+		  get { return (m_nID_StoreCenter); }
+		  set { m_nID_StoreCenter = value; }
 		}
 		#endregion
 
@@ -83,11 +101,14 @@ namespace Data.Maintenance
 		protected String m_sName = String.Empty;
 		protected String m_sDescription = String.Empty;
 		protected Int32 m_nID_ObjStatus;
-		protected Int32 m_nCoded;
+		protected String m_sReferenceCode = String.Empty;
 		protected Int32 m_nID_Supplier;
-		protected DateTime m_oUsedFrom = DateTime.MinValue;
-		protected Int32 m_nID_CostCenter;
-		protected Decimal m_nCost;
+		protected Decimal m_nCostPerUM;
+		protected Int32 m_nID_MaterialUM;
+		protected String m_sBrand = String.Empty;
+		protected String m_sType = String.Empty;
+		protected String m_sBarcode = String.Empty;
+		protected Int32 m_nID_StoreCenter;
 		#endregion
 
 		#region Friends Methods

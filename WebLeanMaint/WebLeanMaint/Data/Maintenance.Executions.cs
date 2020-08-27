@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Execution Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	public class Executions : EntitiesManagerBase
 	{
@@ -222,7 +222,7 @@ namespace Data.Maintenance
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Executions] ");
-			oInsert.Append("([ID_Order], [ID_ExecutionType], [StartedAt], [EndedAt], [Completed])");
+			oInsert.Append("([ID_Order], [ID_ExecutionType], [StartedAt], [EndedAt], [Completed], [ID_Priority])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oExecution.ID_Order));
@@ -242,6 +242,8 @@ namespace Data.Maintenance
 			}
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oExecution.Completed));
+			oInsert.Append(", ");
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oExecution.ID_Priority));
 			oInsert.Append(")");
 
 			Object oRet;
@@ -282,6 +284,9 @@ namespace Data.Maintenance
 			oUpdate.Append(", ");
 			oUpdate.Append("[Completed]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecution.Completed));
+			oUpdate.Append(", ");
+			oUpdate.Append("[ID_Priority]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecution.ID_Priority));
 
 			oUpdate.Append(UTI_Where4One(oExecution));
 
@@ -348,6 +353,7 @@ namespace Data.Maintenance
 			  oExecution.EndedAt_HasValue = false;
 			}
 			oExecution.Completed = ((Boolean)(oRow["Completed"]));
+			oExecution.ID_Priority = ((Int32)(oRow["ID_Priority"]));
 
 			return (oExecution);
 		}

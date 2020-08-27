@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public ExecutionType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/08/2020  Created
+	/// 	[SQLClassGenerator]  27/08/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_ExecutionType = {ID_ExecutionType}")]
 	public class ExecutionType

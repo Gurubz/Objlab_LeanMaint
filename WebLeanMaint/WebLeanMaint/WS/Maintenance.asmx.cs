@@ -25,7 +25,16 @@ namespace WebLeanMaint.WS
 		[Description("Ping the status of the web service")]
 		public string Ping()
 		{
-			return (this.Context.Request.UserHostAddress);
+			StringBuilder oRet = new StringBuilder();
+
+			oRet.AppendLine(this.Context.Request.UserHostAddress);
+			int n = (int)EntitiesManagerBase.DAT_ExecuteScalar("SELECT 1", string.Empty);
+			if (n == 1)
+			{
+				oRet.Append("DB Connected");
+			}
+
+			return (oRet.ToString());
 		}
 
 		[WebMethod]
