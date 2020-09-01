@@ -1,0 +1,29 @@
+<resources>
+	<string name="app_name">LeanMaint</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="action_settings">Impostazioni</string>
+
+	<string name="activity_execution">Intervento</string>
+	<string name="activity_execution_id_plant">ID_Plant</string>
+	<string name="activity_execution_desc_inter">Descrizione</string>
+	<string name="activity_execution_dt_chiamata">Chiamata del</string>
+	<string name="activity_execution_tarif_inter">Tariffa intervento</string>
+	<string name="activity_execution_tipo_risorsa">Tipo risorsa</string>
+	<string name="activity_execution_desc_risorsa">Risorsa</string>
+	<string name="activity_execution_cdc_risorsa">Codice Risorsa</string>
+	<string name="activity_execution_tipo_plant">Tipo impianto</string>
+	<string name="activity_execution_dt_conf_int">Conferma intervento</string>
+	<string name="activity_execution_dt_eff_int">Intervento effettuato il</string>
+	<string name="activity_execution_dt_ultimo_guasto">Ultimo guasto</string>
+	<string name="activity_execution_dt_ultima_riparazione">Ultima riparazione</string>
+	<string name="activity_execution_esito_maint">Esito manutenzione</string>
+	<string name="activity_execution_stato">Stato</string>
+	<string name="activity_execution_id_inter">ID_Inter</string>
+	<string name="activity_execution_id_persona">ID_Persona</string>
+	<string name="activity_execution_ore_inter">Ore impiegate</string>
+	<string name="activity_execution_costo_inter">Costo</string>
+	<string name="activity_execution_probabil">Probabilità</string>
+	<string name="activity_execution_gravity">Gravità</string>
+	<string name="activity_execution_rilevabil">Rilevabilità</string>
+</resources>

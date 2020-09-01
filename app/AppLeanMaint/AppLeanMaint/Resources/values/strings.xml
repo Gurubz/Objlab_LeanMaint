@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">LeanMaint</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+	<string name="activity_execution">Maintenance</string>
+	<string name="activity_execution_id_plant">ID_Plant</string>
+	<string name="activity_execution_desc_inter">Description</string>
+	<string name="activity_execution_dt_chiamata">Called</string>
+	<string name="activity_execution_tarif_inter">Call price</string>
+	<string name="activity_execution_tipo_risorsa">Resource type</string>
+	<string name="activity_execution_desc_risorsa">Resource description</string>
+	<string name="activity_execution_cdc_risorsa">Resource code</string>
+	<string name="activity_execution_tipo_plant">Plant type</string>
+	<string name="activity_execution_dt_conf_int">Call confirmed</string>
+	<string name="activity_execution_dt_eff_int">Call executed</string>
+	<string name="activity_execution_dt_ultimo_guasto">Last failure</string>
+	<string name="activity_execution_dt_ultima_riparazione">Last repair</string>
+	<string name="activity_execution_esito_maint">Maintenance outcome</string>
+	<string name="activity_execution_stato">Status</string>
+	<string name="activity_execution_id_inter">ID_Maintenance</string>
+	<string name="activity_execution_id_persona">ID_Person</string>
+	<string name="activity_execution_ore_inter">Intervention hours</string>
+	<string name="activity_execution_costo_inter">Intervention price</string>
+	<string name="activity_execution_probabil">Probability</string>
+	<string name="activity_execution_gravity">Gravity</string>
+	<string name="activity_execution_rilevabil">Detection</string>
+</resources>
