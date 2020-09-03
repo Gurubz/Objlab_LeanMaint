@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public Operator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Operators : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Operators]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[Operators]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Operators]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[Operators]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Operators]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[Operators]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Operator]=");
@@ -221,7 +221,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Operators] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[Operators] ");
 			oInsert.Append("([Name], [MiddleName], [LastName], [Description], [ID_OperatorType], [ID_Calendar], [ID_Supplier], [ID_CostCenter], [HourlyCost], [ID_ObjStatus], [ID_User])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -282,7 +282,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Operators] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[Operators] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOperator.Name));
@@ -353,7 +353,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Operators]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[Operators]");
 
 			oDelete.Append(UTI_Where4One(oOperator));
 

@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public CalendarDay Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class CalendarDays : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [CalendarDays]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[CalendarDays]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [CalendarDays]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[CalendarDays]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [CalendarDays]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[CalendarDays]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Calendar]=");
@@ -227,7 +227,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [CalendarDays] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[CalendarDays] ");
 			oInsert.Append("([ID_Calendar], [Year], [Day], [DayStart], [DayStartPause], [DayEndPause], [DayEnd])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -258,7 +258,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [CalendarDays] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[CalendarDays] SET ");
 
 			oUpdate.Append("[DayStart]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oCalendarDay.DayStart));
@@ -288,7 +288,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [CalendarDays]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[CalendarDays]");
 
 			oDelete.Append(UTI_Where4One(oCalendarDay));
 

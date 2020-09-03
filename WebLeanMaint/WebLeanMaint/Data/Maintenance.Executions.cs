@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Execution Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Executions : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Executions]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Executions]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Executions]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[Executions]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Executions]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[Executions]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Execution]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Executions] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[Executions] ");
 			oInsert.Append("([ID_Order], [ID_ExecutionType], [StartedAt], [EndedAt], [Completed], [ID_Priority])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -260,7 +260,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Executions] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[Executions] SET ");
 
 			oUpdate.Append("[ID_Order]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecution.ID_Order));
@@ -304,7 +304,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Executions]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Executions]");
 
 			oDelete.Append(UTI_Where4One(oExecution));
 

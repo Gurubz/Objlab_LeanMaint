@@ -7,7 +7,7 @@ namespace Data.Hierarchy
 	/// Public CostCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("")]
 	public class CostCenter

@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public SupplierType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class SupplierTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [SupplierTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[SupplierTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [SupplierTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[SupplierTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [SupplierTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[SupplierTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_SupplierType]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [SupplierTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[SupplierTypes] ");
 			oInsert.Append("([ID_SupplierType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [SupplierTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[SupplierTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplierType.Name));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [SupplierTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[SupplierTypes]");
 
 			oDelete.Append(UTI_Where4One(oSupplierType));
 

@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public MaterialAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class MaterialAssets : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [MaterialAssets]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialAssets]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [MaterialAssets]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[MaterialAssets]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [MaterialAssets]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[MaterialAssets]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Material]=");
@@ -224,7 +224,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [MaterialAssets] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[MaterialAssets] ");
 			oInsert.Append("([ID_Material], [ID_Asset])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -245,7 +245,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [MaterialAssets] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[MaterialAssets] SET ");
 
 
 			oUpdate.Append(UTI_Where4One(oMaterialAsset));
@@ -264,7 +264,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [MaterialAssets]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialAssets]");
 
 			oDelete.Append(UTI_Where4One(oMaterialAsset));
 

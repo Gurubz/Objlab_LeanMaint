@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public ExecutionType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class ExecutionTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ExecutionTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ExecutionTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ExecutionTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_ExecutionType]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [ExecutionTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[ExecutionTypes] ");
 			oInsert.Append("([ID_ExecutionType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [ExecutionTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[ExecutionTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionType.Name));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ExecutionTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionTypes]");
 
 			oDelete.Append(UTI_Where4One(oExecutionType));
 

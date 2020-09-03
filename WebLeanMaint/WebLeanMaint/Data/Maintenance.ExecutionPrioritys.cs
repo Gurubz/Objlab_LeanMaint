@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public ExecutionPriority Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class ExecutionPrioritys : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ExecutionPriorities]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionPriorities]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ExecutionPriorities]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionPriorities]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ExecutionPriorities]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionPriorities]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Priority]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [ExecutionPriorities] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[ExecutionPriorities] ");
 			oInsert.Append("([ID_Priority], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [ExecutionPriorities] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[ExecutionPriorities] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionPriority.Name));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ExecutionPriorities]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionPriorities]");
 
 			oDelete.Append(UTI_Where4One(oExecutionPriority));
 

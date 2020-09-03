@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public City Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Citys : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Cities]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[Cities]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Config
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Cities]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[Cities]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Config
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Cities]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[Cities]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_City]=");
@@ -221,7 +221,7 @@ namespace Data.Config
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Cities] ");
+			oInsert = new StringBuilder("INSERT INTO [Config].[Cities] ");
 			oInsert.Append("([ID_City], [ID_Region], [Name])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Config
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Cities] SET ");
+			oUpdate = new StringBuilder("UPDATE [Config].[Cities] SET ");
 
 			oUpdate.Append("[ID_Region]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oCity.ID_Region));
@@ -268,7 +268,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Cities]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[Cities]");
 
 			oDelete.Append(UTI_Where4One(oCity));
 

@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public OrganizationCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OrganizationCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrganizationCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[OrganizationCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Config
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrganizationCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[OrganizationCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Config
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrganizationCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[OrganizationCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_OrganizationCenter]=");
@@ -221,7 +221,7 @@ namespace Data.Config
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OrganizationCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Config].[OrganizationCenters] ");
 			oInsert.Append("([Name], [Description], [ID_OrganizationCenterType], [ID_ObjStatus], [ID_Parent])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -254,7 +254,7 @@ namespace Data.Config
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OrganizationCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Config].[OrganizationCenters] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrganizationCenter.Name));
@@ -291,7 +291,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrganizationCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[OrganizationCenters]");
 
 			oDelete.Append(UTI_Where4One(oOrganizationCenter));
 

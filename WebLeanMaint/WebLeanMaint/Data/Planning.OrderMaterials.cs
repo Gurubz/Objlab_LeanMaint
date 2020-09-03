@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OrderMaterials : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderMaterials]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderMaterials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderMaterials]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderMaterials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderMaterials]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderMaterials]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Order]=");
@@ -224,7 +224,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OrderMaterials] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[OrderMaterials] ");
 			oInsert.Append("([ID_Order], [ID_Material], [Quantity])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -247,7 +247,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OrderMaterials] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[OrderMaterials] SET ");
 
 			oUpdate.Append("[Quantity]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderMaterial.Quantity));
@@ -268,7 +268,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderMaterials]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderMaterials]");
 
 			oDelete.Append(UTI_Where4One(oOrderMaterial));
 

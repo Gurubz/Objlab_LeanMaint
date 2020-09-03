@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public CostCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class CostCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [CostCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[CostCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Hierarchy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [CostCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[CostCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Hierarchy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [CostCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[CostCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_CostCenter]=");
@@ -227,7 +227,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [CostCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Hierarchy].[CostCenters] ");
 			oInsert.Append("([ID_CostCenter], [Level], [ID_CostCenterChild])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -250,7 +250,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [CostCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Hierarchy].[CostCenters] SET ");
 
 			oUpdate.Append("[ID_CostCenter]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oCostCenter.ID_CostCenter));
@@ -277,7 +277,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [CostCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[CostCenters]");
 
 			oDelete.Append(UTI_Where4One(oCostCenter));
 

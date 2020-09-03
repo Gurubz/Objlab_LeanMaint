@@ -12,7 +12,7 @@ namespace Data.Security
 	/// Public User Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Users : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Security
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Users]");
+			oDelete = new StringBuilder("DELETE FROM [Security].[Users]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Security
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Users]");
+			oSelect = new StringBuilder("SELECT * FROM [Security].[Users]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Security
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Users]");
+			oSelect = new StringBuilder("SELECT * FROM [Security].[Users]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_User]=");
@@ -221,7 +221,7 @@ namespace Data.Security
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Users] ");
+			oInsert = new StringBuilder("INSERT INTO [Security].[Users] ");
 			oInsert.Append("([Username], [Password], [Seed], [ID_UserType], [EMail], [Mobile], [ID_ObjStatus])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -262,7 +262,7 @@ namespace Data.Security
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Users] SET ");
+			oUpdate = new StringBuilder("UPDATE [Security].[Users] SET ");
 
 			oUpdate.Append("[Username]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oUser.Username));
@@ -309,7 +309,7 @@ namespace Data.Security
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Users]");
+			oDelete = new StringBuilder("DELETE FROM [Security].[Users]");
 
 			oDelete.Append(UTI_Where4One(oUser));
 

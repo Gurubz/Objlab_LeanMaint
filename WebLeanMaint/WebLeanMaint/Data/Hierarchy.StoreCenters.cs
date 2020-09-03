@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public StoreCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class StoreCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [StoreCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[StoreCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Hierarchy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [StoreCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[StoreCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Hierarchy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [StoreCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[StoreCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_StoreCenter]=");
@@ -227,7 +227,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [StoreCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Hierarchy].[StoreCenters] ");
 			oInsert.Append("([ID_StoreCenter], [Level], [ID_StoreCenterChild])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -250,7 +250,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [StoreCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Hierarchy].[StoreCenters] SET ");
 
 			oUpdate.Append("[ID_StoreCenter]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oStoreCenter.ID_StoreCenter));
@@ -277,7 +277,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [StoreCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[StoreCenters]");
 
 			oDelete.Append(UTI_Where4One(oStoreCenter));
 

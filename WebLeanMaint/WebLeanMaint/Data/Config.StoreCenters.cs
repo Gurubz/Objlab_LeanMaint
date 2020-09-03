@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public StoreCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class StoreCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [StoreCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[StoreCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Config
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [StoreCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[StoreCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Config
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [StoreCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[StoreCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_StoreCenter]=");
@@ -221,7 +221,7 @@ namespace Data.Config
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [StoreCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Config].[StoreCenters] ");
 			oInsert.Append("([Name], [Description], [ID_StoreCenterType], [ID_ObjStatus], [ID_Parent])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -254,7 +254,7 @@ namespace Data.Config
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [StoreCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Config].[StoreCenters] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oStoreCenter.Name));
@@ -291,7 +291,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [StoreCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[StoreCenters]");
 
 			oDelete.Append(UTI_Where4One(oStoreCenter));
 

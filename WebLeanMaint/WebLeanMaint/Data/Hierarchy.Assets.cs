@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public Asset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Assets : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Assets]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[Assets]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Hierarchy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Assets]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[Assets]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Hierarchy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Assets]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[Assets]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Asset]=");
@@ -227,7 +227,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Assets] ");
+			oInsert = new StringBuilder("INSERT INTO [Hierarchy].[Assets] ");
 			oInsert.Append("([ID_Asset], [Level], [ID_AssetChild])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -250,7 +250,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Assets] SET ");
+			oUpdate = new StringBuilder("UPDATE [Hierarchy].[Assets] SET ");
 
 			oUpdate.Append("[ID_Asset]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
@@ -277,7 +277,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Assets]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[Assets]");
 
 			oDelete.Append(UTI_Where4One(oAsset));
 

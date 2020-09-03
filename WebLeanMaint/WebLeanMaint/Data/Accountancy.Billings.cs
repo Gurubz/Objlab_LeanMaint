@@ -12,7 +12,7 @@ namespace Data.Accountancy
 	/// Public Billing Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Billings : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Billings]");
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[Billings]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Accountancy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Billings]");
+			oSelect = new StringBuilder("SELECT * FROM [Accountancy].[Billings]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Accountancy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Billings]");
+			oSelect = new StringBuilder("SELECT * FROM [Accountancy].[Billings]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Billing]=");
@@ -221,7 +221,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Billings] ");
+			oInsert = new StringBuilder("INSERT INTO [Accountancy].[Billings] ");
 			oInsert.Append("([ID_Operator], [Activation], [End], [HourlyCost], [Year], [Month], [StartDay], [EndDay], [Value])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -290,7 +290,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Billings] SET ");
+			oUpdate = new StringBuilder("UPDATE [Accountancy].[Billings] SET ");
 
 			oUpdate.Append("[ID_Operator]=");
 			if (oBilling.ID_Operator_HasValue == true) {
@@ -367,7 +367,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Billings]");
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[Billings]");
 
 			oDelete.Append(UTI_Where4One(oBilling));
 

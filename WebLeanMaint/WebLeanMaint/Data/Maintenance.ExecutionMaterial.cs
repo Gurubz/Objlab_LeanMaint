@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public ExecutionMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Execution = {ID_Execution}, ID_Material = {ID_Material}")]
 	public class ExecutionMaterial

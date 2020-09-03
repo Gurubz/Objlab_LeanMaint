@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class GeographicCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [GeographicCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[GeographicCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Hierarchy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [GeographicCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[GeographicCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Hierarchy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [GeographicCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[GeographicCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_GeographicCenter]=");
@@ -227,7 +227,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [GeographicCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Hierarchy].[GeographicCenters] ");
 			oInsert.Append("([ID_GeographicCenter], [Level], [ID_GeographicCenterChild])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -250,7 +250,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [GeographicCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Hierarchy].[GeographicCenters] SET ");
 
 			oUpdate.Append("[ID_GeographicCenter]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.ID_GeographicCenter));
@@ -277,7 +277,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [GeographicCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[GeographicCenters]");
 
 			oDelete.Append(UTI_Where4One(oGeographicCenter));
 

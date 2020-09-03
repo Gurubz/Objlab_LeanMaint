@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public Calendar Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Calendars : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Calendars]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[Calendars]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Calendars]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[Calendars]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Calendars]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[Calendars]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Calendar]=");
@@ -221,7 +221,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Calendars] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[Calendars] ");
 			oInsert.Append("([Name], [Description], [ID_ObjStatus])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -246,7 +246,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Calendars] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[Calendars] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oCalendar.Name));
@@ -273,7 +273,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Calendars]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[Calendars]");
 
 			oDelete.Append(UTI_Where4One(oCalendar));
 

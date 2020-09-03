@@ -12,7 +12,7 @@ namespace Data.Security
 	/// Public UserType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class UserTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Security
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [UserTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Security].[UserTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Security
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [UserTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Security].[UserTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Security
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [UserTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Security].[UserTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_UserType]=");
@@ -221,7 +221,7 @@ namespace Data.Security
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [UserTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Security].[UserTypes] ");
 			oInsert.Append("([ID_UserType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Security
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [UserTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Security].[UserTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oUserType.Name));
@@ -268,7 +268,7 @@ namespace Data.Security
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [UserTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Security].[UserTypes]");
 
 			oDelete.Append(UTI_Where4One(oUserType));
 

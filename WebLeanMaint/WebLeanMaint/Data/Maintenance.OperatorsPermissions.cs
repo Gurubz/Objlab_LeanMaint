@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public OperatorsPermission Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OperatorsPermissions : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OperatorsPermission]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[OperatorsPermission]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OperatorsPermission]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[OperatorsPermission]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OperatorsPermission]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[OperatorsPermission]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Operator]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OperatorsPermission] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[OperatorsPermission] ");
 			oInsert.Append("([ID_Operator], [LVL_User], [Auth_Code], [Started], [Ended])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -264,7 +264,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OperatorsPermission] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[OperatorsPermission] SET ");
 
 			oUpdate.Append("[LVL_User]=");
 			if (oOperatorsPermission.LVL_User_HasValue == true) {
@@ -310,7 +310,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OperatorsPermission]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[OperatorsPermission]");
 
 			oDelete.Append(UTI_Where4One(oOperatorsPermission));
 

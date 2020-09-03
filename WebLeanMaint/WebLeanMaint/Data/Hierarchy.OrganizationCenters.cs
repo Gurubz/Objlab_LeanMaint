@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public OrganizationCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OrganizationCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrganizationCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[OrganizationCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Hierarchy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrganizationCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[OrganizationCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Hierarchy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrganizationCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Hierarchy].[OrganizationCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_OrganizationCenter]=");
@@ -227,7 +227,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OrganizationCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Hierarchy].[OrganizationCenters] ");
 			oInsert.Append("([ID_OrganizationCenter], [Level], [ID_OrganizationCenterChild])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -250,7 +250,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OrganizationCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Hierarchy].[OrganizationCenters] SET ");
 
 			oUpdate.Append("[ID_OrganizationCenter]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrganizationCenter.ID_OrganizationCenter));
@@ -277,7 +277,7 @@ namespace Data.Hierarchy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrganizationCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[OrganizationCenters]");
 
 			oDelete.Append(UTI_Where4One(oOrganizationCenter));
 

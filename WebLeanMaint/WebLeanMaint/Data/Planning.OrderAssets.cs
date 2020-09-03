@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OrderAssets : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderAssets]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderAssets]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderAssets]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderAssets]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderAssets]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderAssets]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Order]=");
@@ -224,7 +224,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OrderAssets] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[OrderAssets] ");
 			oInsert.Append("([ID_Order], [ID_Asset], [StopRequired], [MinutesRequired], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -251,7 +251,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OrderAssets] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[OrderAssets] SET ");
 
 			oUpdate.Append("[StopRequired]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.StopRequired));
@@ -278,7 +278,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderAssets]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderAssets]");
 
 			oDelete.Append(UTI_Where4One(oOrderAsset));
 

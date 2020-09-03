@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public ObjStatuse Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_ObjStatus = {ID_ObjStatus}")]
 	public class ObjStatuse

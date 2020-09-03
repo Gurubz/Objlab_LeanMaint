@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public MaterialUM Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class MaterialUMs : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [MaterialUMs]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialUMs]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [MaterialUMs]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[MaterialUMs]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [MaterialUMs]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[MaterialUMs]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_MaterialUM]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [MaterialUMs] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[MaterialUMs] ");
 			oInsert.Append("([ID_MaterialUM], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [MaterialUMs] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[MaterialUMs] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterialUM.Name));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [MaterialUMs]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialUMs]");
 
 			oDelete.Append(UTI_Where4One(oMaterialUM));
 

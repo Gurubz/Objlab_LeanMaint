@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Outcome Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Outcomes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Outcomes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Outcomes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Outcomes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[Outcomes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Outcomes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[Outcomes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Outcomes] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[Outcomes] ");
 			oInsert.Append("([Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -252,7 +252,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Outcomes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[Outcomes] SET ");
 
 			oUpdate.Append("[Name]=");
 			if (oOutcome.Name_HasValue == true) {
@@ -284,7 +284,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Outcomes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Outcomes]");
 
 			oDelete.Append(UTI_Where4One(oOutcome));
 

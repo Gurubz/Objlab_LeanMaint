@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public OperatorType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_OperatorType = {ID_OperatorType}")]
 	public class OperatorType

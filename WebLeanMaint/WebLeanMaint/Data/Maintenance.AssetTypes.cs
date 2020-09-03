@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public AssetType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class AssetTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [AssetTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[AssetTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [AssetTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[AssetTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [AssetTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[AssetTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_AssetType]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [AssetTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[AssetTypes] ");
 			oInsert.Append("([ID_AssetType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [AssetTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[AssetTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAssetType.Name));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [AssetTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[AssetTypes]");
 
 			oDelete.Append(UTI_Where4One(oAssetType));
 

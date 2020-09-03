@@ -175,5 +175,23 @@ namespace WebLeanMaint.WS
 			Data.Planning.OrderMaterials.InsertOne(oMaterial);
 		}
 
+		[WebMethod]
+		[Description("Return organization centers tree")]
+		public Models.Root<int, Data.Config.OrganizationCenter> GetOrganizationCentersTree()
+		{
+			Models.Root<int, Data.Config.OrganizationCenter> oRet = new Models.Root<int, Data.Config.OrganizationCenter>();
+
+			Data.Config.OrganizationCenters aCenters = new Data.Config.OrganizationCenters();
+			aCenters.Load(string.Empty);
+			List<Models.Node<int, Data.Config.OrganizationCenter>> a = new List<Models.Node<int, Data.Config.OrganizationCenter>>();
+			foreach (Data.Config.OrganizationCenter oCenter in aCenters)
+			{
+				if (oCenter.ID_Parent_HasValue == false) a.Add(new Models.Node<int, Data.Config.OrganizationCenter>(oCenter.ID_OrganizationCenter, oCenter));
+				else a.Add(new Models.Node<int, Data.Config.OrganizationCenter>(oCenter.ID_OrganizationCenter, oCenter, oCenter.ID_Parent));
+			}
+			oRet.BuildTree(a);
+
+			return (oRet);
+		}
 	}
 }

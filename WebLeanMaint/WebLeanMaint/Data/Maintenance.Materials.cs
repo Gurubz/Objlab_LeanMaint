@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Material Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Materials : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Materials]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Materials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Materials]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[Materials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Materials]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[Materials]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Material]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Materials] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[Materials] ");
 			oInsert.Append("([Name], [Description], [ID_ObjStatus], [ReferenceCode], [ID_Supplier], [CostPerUM], [ID_MaterialUM], [Brand], [Type], [Barcode], [ID_StoreCenter])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -262,7 +262,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Materials] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[Materials] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterial.Name));
@@ -313,7 +313,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Materials]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Materials]");
 
 			oDelete.Append(UTI_Where4One(oMaterial));
 

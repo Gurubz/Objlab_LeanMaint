@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public ExecutionMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class ExecutionMaterials : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ExecutionMaterials]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionMaterials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ExecutionMaterials]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionMaterials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ExecutionMaterials]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionMaterials]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Execution]=");
@@ -224,7 +224,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [ExecutionMaterials] ");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[ExecutionMaterials] ");
 			oInsert.Append("([ID_Execution], [ID_Material], [Quantity])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -247,7 +247,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [ExecutionMaterials] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[ExecutionMaterials] SET ");
 
 			oUpdate.Append("[Quantity]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionMaterial.Quantity));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ExecutionMaterials]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionMaterials]");
 
 			oDelete.Append(UTI_Where4One(oExecutionMaterial));
 

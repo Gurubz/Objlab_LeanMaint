@@ -12,7 +12,7 @@ namespace Data.Accountancy
 	/// Public CostCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class CostCenterTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [CostCenterTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[CostCenterTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Accountancy
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [CostCenterTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Accountancy].[CostCenterTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Accountancy
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [CostCenterTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Accountancy].[CostCenterTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_CostCenterType]=");
@@ -221,7 +221,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [CostCenterTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Accountancy].[CostCenterTypes] ");
 			oInsert.Append("([ID_CostCenterType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [CostCenterTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Accountancy].[CostCenterTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oCostCenterType.Name));
@@ -268,7 +268,7 @@ namespace Data.Accountancy
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [CostCenterTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[CostCenterTypes]");
 
 			oDelete.Append(UTI_Where4One(oCostCenterType));
 

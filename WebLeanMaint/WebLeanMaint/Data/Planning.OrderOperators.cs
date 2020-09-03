@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderOperator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OrderOperators : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderOperators]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderOperators]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderOperators]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderOperators]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderOperators]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderOperators]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Order]=");
@@ -224,7 +224,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OrderOperators] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[OrderOperators] ");
 			oInsert.Append("([ID_Order], [ID_Operator])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -245,7 +245,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OrderOperators] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[OrderOperators] SET ");
 
 
 			oUpdate.Append(UTI_Where4One(oOrderOperator));
@@ -264,7 +264,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderOperators]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderOperators]");
 
 			oDelete.Append(UTI_Where4One(oOrderOperator));
 

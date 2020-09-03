@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class OrderTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [OrderTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_OrderType]=");
@@ -221,7 +221,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [OrderTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[OrderTypes] ");
 			oInsert.Append("([ID_OrderType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [OrderTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[OrderTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderType.Name));
@@ -268,7 +268,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [OrderTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderTypes]");
 
 			oDelete.Append(UTI_Where4One(oOrderType));
 

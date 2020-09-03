@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public ObjStatuse Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class ObjStatuses : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ObjStatuses]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[ObjStatuses]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Config
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ObjStatuses]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[ObjStatuses]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Config
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [ObjStatuses]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[ObjStatuses]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_ObjStatus]=");
@@ -221,7 +221,7 @@ namespace Data.Config
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [ObjStatuses] ");
+			oInsert = new StringBuilder("INSERT INTO [Config].[ObjStatuses] ");
 			oInsert.Append("([ID_ObjStatus], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Config
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [ObjStatuses] SET ");
+			oUpdate = new StringBuilder("UPDATE [Config].[ObjStatuses] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oObjStatuse.Name));
@@ -268,7 +268,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [ObjStatuses]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[ObjStatuses]");
 
 			oDelete.Append(UTI_Where4One(oObjStatuse));
 

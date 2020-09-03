@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public Order Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class Orders : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Orders]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[Orders]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Planning
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Orders]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[Orders]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Planning
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Orders]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[Orders]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_Order]=");
@@ -221,7 +221,7 @@ namespace Data.Planning
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Orders] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[Orders] ");
 			oInsert.Append("([Description], [ID_OrderType], [RequestedAt], [PlannedFor], [ToCompleteBefore], [Completed])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -252,7 +252,7 @@ namespace Data.Planning
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Orders] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[Orders] SET ");
 
 			oUpdate.Append("[Description]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrder.Description));
@@ -288,7 +288,7 @@ namespace Data.Planning
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Orders]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[Orders]");
 
 			oDelete.Append(UTI_Where4One(oOrder));
 

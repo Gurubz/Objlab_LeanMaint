@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  27/08/2020  Created
+	/// 	[SQLClassGenerator]  03/09/2020  Created
 	/// </remarks>
 	public class GeographicCenters : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [GeographicCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[GeographicCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Config
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [GeographicCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[GeographicCenters]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Config
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [GeographicCenters]");
+			oSelect = new StringBuilder("SELECT * FROM [Config].[GeographicCenters]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_GeographicCenter]=");
@@ -221,7 +221,7 @@ namespace Data.Config
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [GeographicCenters] ");
+			oInsert = new StringBuilder("INSERT INTO [Config].[GeographicCenters] ");
 			oInsert.Append("([Name], [Description], [ID_GeographicCenterType], [ID_ObjStatus], [ID_Parent])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -254,7 +254,7 @@ namespace Data.Config
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [GeographicCenters] SET ");
+			oUpdate = new StringBuilder("UPDATE [Config].[GeographicCenters] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Name));
@@ -291,7 +291,7 @@ namespace Data.Config
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [GeographicCenters]");
+			oDelete = new StringBuilder("DELETE FROM [Config].[GeographicCenters]");
 
 			oDelete.Append(UTI_Where4One(oGeographicCenter));
 
