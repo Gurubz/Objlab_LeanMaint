@@ -3,32 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_executions"
-            android:icon="@drawable/baseline_supervisor_account_24"
-            android:title="Esecuzione Ordini d'Intervento" />
-        <item
-            android:id="@+id/nav_plannings"
-            android:icon="@drawable/baseline_alarm_24"
-            android:title="Pianificazione Ordini d'Intervento" />
-        <item
-            android:id="@+id/nav_admin"
-            android:icon="@drawable/baseline_admin_panel_settings_24"
-            android:title="Amministrazione" />
-    </group>
+	<group android:checkableBehavior="single">
 
-    <!--<item android:title="Execution">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>-->
+		<item android:title="@string/nav_title_executions">
+			<menu>
+				<item
+						android:id="@+id/nav_executions_operator"
+						android:icon="@drawable/baseline_supervisor_account_24"
+						android:title="@string/nav_executions_operator" />
+				<item
+						android:id="@+id/nav_executions_position"
+						android:icon="@drawable/baseline_location_on_24"
+						android:title="@string/nav_executions_position" />
+				<item
+						android:id="@+id/nav_executions_map"
+						android:icon="@drawable/baseline_explore_24"
+						android:title="@string/nav_executions_map" />
+				<item
+						android:id="@+id/nav_executions_asset"
+						android:icon="@drawable/baseline_construction_24"
+						android:title="@string/nav_executions_asset" />
+			</menu>
+		</item>
 
+		<item android:title="@string/nav_title_planning">
+			<menu>
+				<item
+						android:id="@+id/nav_plannings_asset"
+						android:icon="@drawable/baseline_construction_24"
+						android:title="@string/nav_plannings_asset" />
+				<item
+						android:id="@+id/nav_plannings_list"
+						android:icon="@drawable/baseline_alarm_24"
+						android:title="@string/nav_plannings_list" />
+				<!--<item
+						android:id="@+id/nav_admin"
+						android:icon="@drawable/baseline_admin_panel_settings_24"
+						android:title="Amministrazione" />-->
+			</menu>
+		</item>
+	</group>
 </menu>

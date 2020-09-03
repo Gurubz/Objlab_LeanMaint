@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/id_object"
+            android:textAlignment="textEnd"
+            android:text="123"
+            android:id="@+id/activity_orders_TextViewID_Order" />
+        <TextView
+            android:text="@string/activity_orders_description"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:id="@+id/activity_orders_EditTextDescription" />
+        <TextView
+            android:text="@string/activity_orders_id_ordertype"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_orders_spinnerID_OrderType" />
+        <TextView
+            android:text="@string/activity_orders_plannedfor"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:inputType="date"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_orders_EditTextDatePlannedFor" />
+            <EditText
+                android:inputType="time"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_orders_EditTextTimePlannedFor" />
+        </LinearLayout>
+        <TextView
+            android:text="@string/activity_orders_tocompletebefore"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:inputType="date"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_orders_EditTextDateToCompleteBefore" />
+            <EditText
+                android:inputType="time"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_orders_EditTextTimeToCompleteBefore" />
+        </LinearLayout>
+        <TextView
+            android:text="@string/activity_orders_completed"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

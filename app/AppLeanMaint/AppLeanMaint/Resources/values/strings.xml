@@ -1,8 +1,28 @@
 <resources>
-    <string name="app_name">LeanMaint</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
+	<string name="app_name">LeanMaint</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="nav_title_executions">Maintenance executions</string>
+	<string name="nav_executions_operator">Orders by operator</string>
+	<string name="nav_executions_position">Orders by position</string>
+	<string name="nav_executions_map">Orders in map</string>
+	<string name="nav_executions_asset">Orders by asset</string>
+	<string name="nav_title_planning">Maintenance planning</string>
+	<string name="nav_plannings_asset">Add per asset</string>
+	<string name="nav_plannings_list">Planned orders</string>
+	<string name="action_settings">Settings</string>
+
+	<string name="activity_orders">Maintenance order</string>
+	<string name="activity_orders_description">Description</string>
+	<string name="activity_orders_id_ordertype">Type</string>
+	<string name="activity_orders_plannedfor">Planned For</string>
+	<string name="activity_orders_tocompletebefore">To Complete Before</string>
+	<string name="activity_orders_completed">Completed</string>
+	<string-array name="activity_orders_ordertypes">
+		<item>Planned</item>
+		<item>For Failure</item>
+		<item>Renovate</item>
+	</string-array>
 
 	<string name="activity_execution">Maintenance</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

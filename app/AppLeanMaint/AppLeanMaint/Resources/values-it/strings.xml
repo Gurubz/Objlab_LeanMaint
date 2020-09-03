@@ -2,7 +2,27 @@
 	<string name="app_name">LeanMaint</string>
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="nav_title_executions">Esecuzione manutenzioni</string>
+	<string name="nav_executions_operator">Ordini per operatore</string>
+	<string name="nav_executions_position">Ordini per posizione</string>
+	<string name="nav_executions_map">Ordini su mappa</string>
+	<string name="nav_executions_asset">Ordini per asset</string>
+	<string name="nav_title_planning">Pianificazione manutenzioni</string>
+	<string name="nav_plannings_asset">Aggiungi per asset</string>
+	<string name="nav_plannings_list">Ordini pianificati</string>
 	<string name="action_settings">Impostazioni</string>
+
+	<string name="activity_orders">Ordine di manutenzione</string>
+	<string name="activity_orders_description">Descrizione</string>
+	<string name="activity_orders_id_ordertype">Tipo</string>
+	<string name="activity_orders_plannedfor">Pianificato per</string>
+	<string name="activity_orders_tocompletebefore">Da completare entro</string>
+	<string name="activity_orders_completed">Completato</string>
+	<string-array name="activity_orders_ordertypes">
+		<item>Pianificato</item>
+		<item>Per guasto</item>
+		<item>Rinnovamento</item>
+	</string-array>
 
 	<string name="activity_execution">Intervento</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

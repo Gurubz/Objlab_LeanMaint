@@ -66,15 +66,27 @@ namespace AppLeanMaint
 		{
 			int id = item.ItemId;
 
-			if (id == Resource.Id.nav_executions)
+			if (id == Resource.Id.nav_executions_operator)
 			{
-				StartActivity(typeof(ActivityExecution));
+				//StartActivity(typeof(ActivityExecution));
 			}
-			else if (id == Resource.Id.nav_plannings)
+			else if (id == Resource.Id.nav_executions_position)
 			{
-				//StartActivity(typeof(ActivityPlanning));
+				//StartActivity(typeof(ActivityExecution));
 			}
-			else if (id == Resource.Id.nav_admin)
+			else if (id == Resource.Id.nav_executions_map)
+			{
+				//StartActivity(typeof(ActivityExecution));
+			}
+			else if (id == Resource.Id.nav_executions_asset)
+			{
+				//StartActivity(typeof(ActivityExecution));
+			}
+			else if (id == Resource.Id.nav_plannings_asset)
+			{
+				StartActivity(typeof(ActivityOrders));
+			}
+			else if (id == Resource.Id.nav_plannings_list)
 			{
 				//StartActivity(typeof(ActivityAdmin));
 			}
