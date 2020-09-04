@@ -38,31 +38,6 @@ namespace WebLeanMaint.WS
 		}
 
 		[WebMethod]
-		[Description("Create Operator")]
-		public int CreateOperator(string sUsername, string sPassword, string sName, string sLastName, string sEmail, string sMobile, Data.Maintenance.OperatorTypeEnum eType)
-		{
-			Data.Security.User oUser = new Data.Security.User();
-			oUser.Username = sUsername;
-			oUser.Password = sPassword;
-			oUser.Seed = 1;
-			oUser.EMail = sEmail;
-			oUser.Mobile = sMobile;
-			oUser.ID_UserType = (int)Data.Security.UserTypeEnum.Operator;
-			oUser.ID_ObjStatus = (int)Data.Config.ObjStatuseEnum.Active;
-			Data.Security.Users.InsertOne(oUser);
-
-			Data.Planning.Operator oOperator = new Data.Planning.Operator();
-			oOperator.Name = sName;
-			oOperator.LastName = sLastName;
-			oOperator.ID_OperatorType = (int)eType;
-			oOperator.ID_ObjStatus = (int)Data.Config.ObjStatuseEnum.Active;
-			oOperator.ID_User = oUser.ID_User;
-			Data.Planning.Operators.InsertOne(oOperator);
-
-			return (oOperator.ID_Operator);
-		}
-
-		[WebMethod]
 		[Description("Create supplier")]
 		public int CreateSupplier(string sUsername, string sPassword, string sName, string sDescription, string sEmail, string sMobile, Data.Maintenance.SupplierTypeEnum eType)
 		{
@@ -85,22 +60,6 @@ namespace WebLeanMaint.WS
 			Data.Maintenance.Suppliers.InsertOne(oSupplier);
 
 			return (oSupplier.ID_Supplier);
-		}
-
-		[WebMethod]
-		[Description("Planning: Create order")]
-		public int CreateOrder(Data.Planning.OrderTypeEnum eType, string sDescription, DateTime oPlannedFor, DateTime oToCompleteBefore)
-		{
-			Data.Planning.Order oOrder = new Data.Planning.Order();
-			oOrder.ID_OrderType = (int)eType;
-			oOrder.Description = sDescription;
-			oOrder.RequestedAt = DateTime.Now;
-			oOrder.PlannedFor = oPlannedFor;
-			oOrder.ToCompleteBefore = oToCompleteBefore;
-			oOrder.Completed = false;
-			Data.Planning.Orders.InsertOne(oOrder);
-
-			return (oOrder.ID_Order);
 		}
 
 		[WebMethod]
@@ -173,25 +132,6 @@ namespace WebLeanMaint.WS
 			oMaterial.ID_Material = ID_Material;
 			oMaterial.Quantity = nQuantity;
 			Data.Planning.OrderMaterials.InsertOne(oMaterial);
-		}
-
-		[WebMethod]
-		[Description("Return organization centers tree")]
-		public Models.Root<int, Data.Config.OrganizationCenter> GetOrganizationCentersTree()
-		{
-			Models.Root<int, Data.Config.OrganizationCenter> oRet = new Models.Root<int, Data.Config.OrganizationCenter>();
-
-			Data.Config.OrganizationCenters aCenters = new Data.Config.OrganizationCenters();
-			aCenters.Load(string.Empty);
-			List<Models.Node<int, Data.Config.OrganizationCenter>> a = new List<Models.Node<int, Data.Config.OrganizationCenter>>();
-			foreach (Data.Config.OrganizationCenter oCenter in aCenters)
-			{
-				if (oCenter.ID_Parent_HasValue == false) a.Add(new Models.Node<int, Data.Config.OrganizationCenter>(oCenter.ID_OrganizationCenter, oCenter));
-				else a.Add(new Models.Node<int, Data.Config.OrganizationCenter>(oCenter.ID_OrganizationCenter, oCenter, oCenter.ID_Parent));
-			}
-			oRet.BuildTree(a);
-
-			return (oRet);
 		}
 	}
 }

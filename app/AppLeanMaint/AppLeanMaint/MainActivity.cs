@@ -15,7 +15,7 @@ namespace AppLeanMaint
 	[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
 	public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
 	{
-		protected override void OnCreate(Bundle savedInstanceState)
+		protected override async void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -30,6 +30,8 @@ namespace AppLeanMaint
 
 			NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 			navigationView.SetNavigationItemSelectedListener(this);
+
+			await Helpers.WS.Instance.UpdateLocalDataAsync();
 		}
 
 		public override void OnBackPressed()

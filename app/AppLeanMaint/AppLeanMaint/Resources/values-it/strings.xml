@@ -1,5 +1,7 @@
 <resources>
 	<string name="app_name">LeanMaint</string>
+	<string name="app_confirm">Conferma</string>
+	<string name="app_onfirm_exit">Sei sicuro di voler uscire dall\'applicazione?</string>
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
 	<string name="nav_title_executions">Esecuzione manutenzioni</string>
