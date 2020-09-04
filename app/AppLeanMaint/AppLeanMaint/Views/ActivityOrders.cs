@@ -97,7 +97,7 @@ namespace AppLeanMaint.Views
 				this.GUI_GuiToBiz();
 
 				//this.m_oViewModel.Save();
-
+				Helpers.WS.Instance.CreateOrder(this.m_oOrder);
 
 				this.Finish();
 			}
@@ -123,77 +123,54 @@ namespace AppLeanMaint.Views
 			m_oactivity_orders_spinnerID_OrderType = FindViewById<Spinner>(Resource.Id.activity_orders_spinnerID_OrderType);
 
 			m_oactivity_orders_EditTextDatePlannedFor = FindViewById<EditText>(Resource.Id.activity_orders_EditTextDatePlannedFor);
-			m_oactivity_orders_EditTextDatePlannedFor.Focusable = false;
-			m_oactivity_orders_EditTextDatePlannedFor.Click += delegate
-			{
-				var dialog = new DatePickerDialog(this, (sender, e) =>
-				{
-					m_oactivity_orders_EditTextDatePlannedFor.Text = e.Date.ToShortDateString();
-					m_oactivity_orders_EditTextDateToCompleteBefore.Text = e.Date.ToShortDateString();
-				}, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-				dialog.Show();
-			};
+			GUI_AddDatePicker(m_oactivity_orders_EditTextDatePlannedFor);
 			m_oactivity_orders_EditTextTimePlannedFor = FindViewById<EditText>(Resource.Id.activity_orders_EditTextTimePlannedFor);
-			m_oactivity_orders_EditTextTimePlannedFor.Focusable = false;
-			m_oactivity_orders_EditTextTimePlannedFor.Click += delegate
-			{
-				var dialog = new TimePickerDialog(this, (sender, e) =>
-				{
-					m_oactivity_orders_EditTextTimePlannedFor.Text = new DateTime(1970,1,1, e.HourOfDay, e.Minute, 0).ToShortTimeString();
-					m_oactivity_orders_EditTextTimeToCompleteBefore.Text = new DateTime(1970, 1, 1, e.HourOfDay, e.Minute, 0).ToShortTimeString();
-				}, DateTime.Now.Hour, DateTime.Now.Minute, true);
-				dialog.Show();
-			};
-
+			GUI_AddTimePicker(m_oactivity_orders_EditTextTimePlannedFor);
 			m_oactivity_orders_EditTextDateToCompleteBefore = FindViewById<EditText>(Resource.Id.activity_orders_EditTextDateToCompleteBefore);
-			m_oactivity_orders_EditTextDateToCompleteBefore.Focusable = false;
-			m_oactivity_orders_EditTextDateToCompleteBefore.Click += delegate
-			{
-				var dialog = new DatePickerDialog(this, (sender, e) =>
-				{
-					m_oactivity_orders_EditTextDateToCompleteBefore.Text = e.Date.ToShortDateString();
-				}, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-				dialog.Show();
-			};
+			GUI_AddDatePicker(m_oactivity_orders_EditTextDateToCompleteBefore);
 			m_oactivity_orders_EditTextTimeToCompleteBefore = FindViewById<EditText>(Resource.Id.activity_orders_EditTextTimeToCompleteBefore);
-			m_oactivity_orders_EditTextTimeToCompleteBefore.Focusable = false;
-			m_oactivity_orders_EditTextTimeToCompleteBefore.Click += delegate
-			{
-				var dialog = new TimePickerDialog(this, (sender, e) =>
-				{
-					m_oactivity_orders_EditTextTimeToCompleteBefore.Text = new DateTime(1970, 1, 1, e.HourOfDay, e.Minute, 0).ToShortTimeString();
-				}, DateTime.Now.Hour, DateTime.Now.Minute, true);
-				dialog.Show();
-			};
-
+			GUI_AddTimePicker(m_oactivity_orders_EditTextTimeToCompleteBefore);
 			m_oactivity_orders_EditTextDescription.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextDatePlannedFor.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextTimePlannedFor.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextDateToCompleteBefore.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextTimeToCompleteBefore.SetSelectAllOnFocus(true);
+
+			
 		}
 
 		public void GUI_BizToGui()
 		{
-
-			// m_oButtonDateReading.Text = m_oViewModel.DateReference.ToString("d");
 			if (this.m_oactivity_orders_spinnerID_OrderType.Adapter == null)
 			{
-				//ArrayAdapter oAdapter = new ArrayAdapter<string>(this, Resource.Layout.spinner_simple_item, Resources.GetStringArray(Resource.Array.activity_orders_ordertypes));
 				ArrayAdapter oAdapter = new ArrayAdapter<string>(this, Resource.Layout.spinner_simple_item, (from o in Helpers.Database.Current.GetOrderTypes() select o.Name).ToArray());
 				this.m_oactivity_orders_spinnerID_OrderType.Adapter = oAdapter;
 			}
-			//m_oactivity_orders_spinnerID_OrderType.Post(delegate
-			//{
-			//	m_oactivity_orders_spinnerID_OrderType.SetSelection(MKA.App.SchedaCarburante.Models.Enums.Current.FuelTypes.IndexOf(m_oViewModel.FuelType));
-			//});
+
+			if (m_oOrder != null)
+			{
+				m_oactivity_orders_TextViewID_Order.Text = m_oOrder.ID_Order.ToString();
+				m_oactivity_orders_EditTextDescription.Text = m_oOrder.Description;
+				m_oactivity_orders_spinnerID_OrderType.Post(delegate
+				{
+					m_oactivity_orders_spinnerID_OrderType.SetSelection(m_oOrder.ID_OrderType - 1);
+				});
+				m_oactivity_orders_EditTextDatePlannedFor.Text = m_oOrder.PlannedFor.ToShortDateString();
+				m_oactivity_orders_EditTextTimePlannedFor.Text = m_oOrder.PlannedFor.ToShortTimeString();
+				m_oactivity_orders_EditTextDateToCompleteBefore.Text = m_oOrder.ToCompleteBefore.ToShortDateString();
+				m_oactivity_orders_EditTextTimeToCompleteBefore.Text = m_oOrder.ToCompleteBefore.ToShortTimeString();
+			}
 		}
 
 		public void GUI_GuiToBiz()
 		{
-			m_oOrder = new PlanningWS.Order();
+			if(m_oOrder==null) m_oOrder = new PlanningWS.Order();
+
+			m_oOrder.ID_Order = int.Parse(m_oactivity_orders_TextViewID_Order.Text);
 			m_oOrder.Description = m_oactivity_orders_EditTextDescription.Text;
 			m_oOrder.ID_OrderType = m_oactivity_orders_spinnerID_OrderType.SelectedItemPosition + 1;
+			m_oOrder.PlannedFor = DateTime.Parse(m_oactivity_orders_EditTextDatePlannedFor.Text + " " + m_oactivity_orders_EditTextTimePlannedFor.Text);
+			m_oOrder.ToCompleteBefore = DateTime.Parse(m_oactivity_orders_EditTextDateToCompleteBefore.Text + " " + m_oactivity_orders_EditTextTimeToCompleteBefore.Text);
 
 			// m_oViewModel.DateReference = DateTime.Parse(m_oButtonDateReading.Text);
 			// m_oViewModel.FuelType = MKA.App.SchedaCarburante.Models.Enums.Current.FuelTypes[m_oSpinnerFuelType.SelectedItemPosition];
@@ -207,6 +184,47 @@ namespace AppLeanMaint.Views
 			sRet = sRet.Replace(".", System.Globalization.CultureInfo.CurrentUICulture.NumberFormat.CurrencyDecimalSeparator);
 
 			return (sRet);
+		}
+
+		protected void GUI_AddDatePicker(EditText oEditText)
+		{
+			oEditText.Focusable = false;
+			oEditText.Click += delegate
+			{
+				DateTime oCurrent = DateTime.Now;
+				if (string.IsNullOrEmpty(oEditText.Text) == false)
+				{
+					DateTime.TryParse(oEditText.Text, out oCurrent);
+				}
+
+				var dialog = new DatePickerDialog(this, (sender, e) =>
+				{
+					oEditText.Text = e.Date.ToShortDateString();
+				}, oCurrent.Year, oCurrent.Month, oCurrent.Day);
+				dialog.Show();
+			};
+		}
+
+		protected void GUI_AddTimePicker(EditText oEditText)
+		{
+			oEditText.Focusable = false;
+			oEditText.Click += delegate
+			{
+				int nHour = DateTime.Now.Hour;
+				int nMin = DateTime.Now.Minute;
+				if (string.IsNullOrEmpty(oEditText.Text) == false)
+				{
+					string[] aHourMin = oEditText.Text.Split(":".ToCharArray());
+					int.TryParse(aHourMin[0], out nHour);
+					int.TryParse(aHourMin[1], out nMin);
+				}
+
+				var dialog = new TimePickerDialog(this, (sender, e) =>
+				{
+					oEditText.Text = new DateTime(1970, 1, 1, e.HourOfDay, e.Minute, 0).ToShortTimeString();
+				}, nHour, nMin, true);
+				dialog.Show();
+			};
 		}
 		#endregion
 	}

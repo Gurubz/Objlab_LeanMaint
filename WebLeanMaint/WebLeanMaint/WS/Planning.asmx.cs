@@ -57,6 +57,8 @@ namespace WebLeanMaint.WS
 		{
 			oOrder.RequestedAt = DateTime.Now;
 			oOrder.Completed = false;
+
+
 			Data.Planning.Orders.InsertOne(oOrder);
 
 			return (oOrder.ID_Order);

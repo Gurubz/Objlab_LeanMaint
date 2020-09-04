@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using AppLeanMaint.PlanningWS;
 using AutoMapper;
 
 namespace AppLeanMaint.Helpers
@@ -49,8 +50,14 @@ namespace AppLeanMaint.Helpers
 
 		public async Task UpdateLocalDataAsync()
 		{
-			var aOrderTypes = await Task.Run(() => m_oPlanningWs.GetOrderTypes());
+			OrderType[] aOrderTypes = await Task.Run(() => m_oPlanningWs.GetOrderTypes());
+
 			Helpers.Database.Current.SaveOrderTypes(aOrderTypes);
+		}
+
+		public int CreateOrder(Order m_oOrder)
+		{
+			return (m_oPlanningWs.CreateOrder(m_oOrder));
 		}
 	}
 }
