@@ -33,7 +33,7 @@
                 Management web site access.
             </p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+                <a class="btn btn-default" href="./Home/Login">Login &raquo;</a>
             </p>
         </div>
     </div>
