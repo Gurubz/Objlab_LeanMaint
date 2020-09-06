@@ -188,6 +188,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\Planning.OperatorType.cs" />
+    <Compile Include="Data\Planning.OperatorTypes.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JoinQuery.cs" />
@@ -305,9 +307,7 @@
     <Compile Include="Data\Maintenance.MaterialUMs.cs" />
     <Compile Include="Data\Maintenance.OperatorsPermission.cs" />
     <Compile Include="Data\Maintenance.OperatorsPermissions.cs" />
-    <Compile Include="Data\Maintenance.OperatorType.cs" />
-    <Compile Include="Data\Maintenance.OperatorTypeEnum.cs" />
-    <Compile Include="Data\Maintenance.OperatorTypes.cs" />
+    <Compile Include="Data\Planning.OperatorTypeEnum.cs" />
     <Compile Include="Data\Maintenance.Outcome.cs" />
     <Compile Include="Data\Maintenance.Outcomes.cs" />
     <Compile Include="Data\Maintenance.Supplier.cs" />

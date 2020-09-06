@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -28,7 +30,7 @@ namespace WebLeanMaint.WS
 
 		[WebMethod]
 		[Description("Create Operator")]
-		public int CreateOperator(string sUsername, string sPassword, string sName, string sLastName, string sEmail, string sMobile, Data.Maintenance.OperatorTypeEnum eType)
+		public int CreateOperator(string sUsername, string sPassword, string sName, string sLastName, string sEmail, string sMobile, Data.Planning.OperatorTypeEnum eType)
 		{
 			Data.Security.User oUser = new Data.Security.User();
 			oUser.Username = sUsername;
@@ -68,7 +70,80 @@ namespace WebLeanMaint.WS
 		[Description("Planning: Get order")]
 		public Data.Planning.Order GetOrder(int nID_Order)
 		{
-			return(Data.Planning.Orders.LoadOne(nID_Order));
+			return (Data.Planning.Orders.LoadOne(nID_Order));
+		}
+
+		[WebMethod]
+		[Description("Planning: Add material to order")]
+		public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity)
+		{
+			Data.Planning.OrderMaterial oMaterial = new Data.Planning.OrderMaterial();
+			oMaterial.ID_Order = ID_Order;
+			oMaterial.ID_Material = ID_Material;
+			oMaterial.Quantity = nQuantity;
+			Data.Planning.OrderMaterials.InsertOne(oMaterial);
+		}
+
+
+		[WebMethod]
+		[Description("Planning: Get operators available for order")]
+		public List<Data.Planning.Operator> GetOperatorsForOrder(int ID_Order)
+		{
+			List<Data.Planning.Operator> aRet = new List<Data.Planning.Operator>();
+
+			Data.Planning.Order oOrder = Data.Planning.Orders.LoadOne(ID_Order);
+			if (oOrder != null)
+			{
+				string sPlannedFor = Data.EntitiesManagerBase.UTI_ValueToSql(oOrder.PlannedFor);
+				string sToCompleteBefore = Data.EntitiesManagerBase.UTI_ValueToSql(oOrder.ToCompleteBefore);
+
+				StringBuilder oSql = new StringBuilder();
+				oSql.AppendLine("SELECT O.* FROM Planning.Operators O");
+				oSql.AppendLine("INNER JOIN Planning.CalendarDays CD ON O.ID_Calendar=CD.ID_Calendar");
+				oSql.AppendFormat($"WHERE (CD.DayStart<={sPlannedFor} AND {sToCompleteBefore}<=CD.DayStartPause) OR (CD.DayEndPause<={sPlannedFor} AND {sToCompleteBefore}<=CD.DayEnd)");
+
+				DataSet oDs = Data.EntitiesManagerBase.DAT_ExecuteDataSet(oSql.ToString());
+				foreach (DataRow oRow in oDs.Tables[0].Rows)
+				{
+					aRet.Add(Data.Planning.Operators.UTI_RowToOperator(oRow));
+				}
+			}
+
+			return (aRet);
+		}
+
+		[WebMethod]
+		[Description("Planning: Add operator to order")]
+		public void AddOperatorToOrder(int ID_Order, int ID_Operator)
+		{
+			Data.Planning.OrderOperator oOperator = new Data.Planning.OrderOperator();
+			oOperator.ID_Order = ID_Order;
+			oOperator.ID_Operator = ID_Operator;
+			Data.Planning.OrderOperators.InsertOne(oOperator);
+		}
+
+		[WebMethod]
+		[Description("Planning: Get assets available for order")]
+		public Data.Maintenance.Asset[] GetAssetsForOrder(int ID_Order)
+		{
+			return (Core.Planning.GetAssetsForOrder(ID_Order));
+		}
+
+		[WebMethod]
+		[Description("Planning: Add asset to order")]
+		public void AddAssetToOrder(int ID_Order, int ID_Asset)
+		{
+			Data.Planning.OrderAsset oAsset = new Data.Planning.OrderAsset();
+			oAsset.ID_Order = ID_Order;
+			oAsset.ID_Asset = ID_Asset;
+			Data.Planning.OrderAssets.InsertOne(oAsset);
+		}
+
+		[WebMethod]
+		[Description("Planning: Get material available for order")]
+		public Data.Maintenance.Material[] GetMaterialsForOrder(int ID_Order)
+		{
+			return (Core.Planning.GetMaterialsForOrder(ID_Order));
 		}
 	}
 }

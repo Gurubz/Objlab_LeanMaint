@@ -7,6 +7,7 @@ using Android.Widget;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using System.Linq;
+using Android.Runtime;
 
 namespace AppLeanMaint.Views
 {
@@ -22,6 +23,7 @@ namespace AppLeanMaint.Views
 		protected EditText m_oactivity_orders_EditTextTimePlannedFor = null;
 		protected EditText m_oactivity_orders_EditTextDateToCompleteBefore = null;
 		protected EditText m_oactivity_orders_EditTextTimeToCompleteBefore = null;
+		protected EditText m_oactivity_orders_EditTextAsset = null;
 		#endregion
 
 		#region Override Methods
@@ -104,6 +106,20 @@ namespace AppLeanMaint.Views
 
 			return base.OnOptionsItemSelected(item);
 		}
+
+		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+
+			if (resultCode == Result.Ok)
+			{
+				if (requestCode == m_oactivity_orders_EditTextAsset.Id)
+				{
+					int nID = (int)data.GetIntExtra("ID", 0);
+					string sName = (string)data.GetStringExtra("Name");
+				}
+			}
+		}
 		#endregion
 
 		#region Protected Event Methods
@@ -130,20 +146,22 @@ namespace AppLeanMaint.Views
 			GUI_AddDatePicker(m_oactivity_orders_EditTextDateToCompleteBefore);
 			m_oactivity_orders_EditTextTimeToCompleteBefore = FindViewById<EditText>(Resource.Id.activity_orders_EditTextTimeToCompleteBefore);
 			GUI_AddTimePicker(m_oactivity_orders_EditTextTimeToCompleteBefore);
+			m_oactivity_orders_EditTextAsset = FindViewById<EditText>(Resource.Id.activity_orders_EditTextAsset);
+			GUI_AddActivityResult<ActivitySelectAsset>(m_oactivity_orders_EditTextAsset);
+
 			m_oactivity_orders_EditTextDescription.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextDatePlannedFor.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextTimePlannedFor.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextDateToCompleteBefore.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextTimeToCompleteBefore.SetSelectAllOnFocus(true);
-
-			
+			m_oactivity_orders_EditTextAsset.SetSelectAllOnFocus(true);
 		}
 
 		public void GUI_BizToGui()
 		{
 			if (this.m_oactivity_orders_spinnerID_OrderType.Adapter == null)
 			{
-				ArrayAdapter oAdapter = new ArrayAdapter<string>(this, Resource.Layout.spinner_simple_item, (from o in Helpers.Database.Current.GetOrderTypes() select o.Name).ToArray());
+				ArrayAdapter oAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, (from o in Helpers.Database.Current.GetOrderTypes() select o.Name).ToArray());
 				this.m_oactivity_orders_spinnerID_OrderType.Adapter = oAdapter;
 			}
 
@@ -164,7 +182,7 @@ namespace AppLeanMaint.Views
 
 		public void GUI_GuiToBiz()
 		{
-			if(m_oOrder==null) m_oOrder = new PlanningWS.Order();
+			if (m_oOrder == null) m_oOrder = new PlanningWS.Order();
 
 			m_oOrder.ID_Order = int.Parse(m_oactivity_orders_TextViewID_Order.Text);
 			m_oOrder.Description = m_oactivity_orders_EditTextDescription.Text;
@@ -224,6 +242,21 @@ namespace AppLeanMaint.Views
 					oEditText.Text = new DateTime(1970, 1, 1, e.HourOfDay, e.Minute, 0).ToShortTimeString();
 				}, nHour, nMin, true);
 				dialog.Show();
+			};
+		}
+
+		protected void GUI_AddActivityResult<T>(EditText oEditText)
+		{
+			oEditText.Focusable = false;
+			oEditText.Click += delegate
+			{
+				int nID = 0;
+				string sName = string.Empty;
+
+				Intent oIntent = new Intent(this, typeof(T));
+				oIntent.PutExtra("ID", nID);
+				oIntent.PutExtra("Name", sName);
+				StartActivityForResult(oIntent, oEditText.Id & 0xFFFF);
 			};
 		}
 		#endregion

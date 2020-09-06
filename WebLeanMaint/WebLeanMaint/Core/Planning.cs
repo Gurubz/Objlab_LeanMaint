@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
+using WebLeanMaint.WS;
 
 namespace WebLeanMaint.Core
 {
@@ -24,7 +25,11 @@ namespace WebLeanMaint.Core
 			Data.Planning.Order oOrder = Data.Planning.Orders.LoadOne(ID_Order);
 			if (oOrder != null)
 			{
-				aAssets.Load("ID_ObjStatus=" + EntitiesManagerBase.UTI_ValueToSql(1), "Name");
+				aAssets.Load("ID_ObjStatus=" + EntitiesManagerBase.UTI_ValueToSql((int)Data.Config.ObjStatuseEnum.Active), "Name");
+			}
+			else
+			{
+				aAssets.Load("ID_ObjStatus=" + EntitiesManagerBase.UTI_ValueToSql((int)Data.Config.ObjStatuseEnum.Active), "Name");
 			}
 
 			return (aAssets.ToArray());

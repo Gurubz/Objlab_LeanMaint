@@ -1,13 +1,13 @@
 using System;
 using System.Diagnostics;
 
-namespace Data.Maintenance
+namespace Data.Planning
 {
 	/// <summary>
 	/// Public OperatorType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_OperatorType = {ID_OperatorType}")]
 	public class OperatorType

@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ActivityExecution.cs" />
     <Compile Include="Views\ActivityOrders.cs" />
+    <Compile Include="Views\ActivitySelectAsset.cs" />
     <Compile Include="Web References\ConfigWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,15 +105,18 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\MaintenanceWS\Maintenance.wsdl" />
-    <None Include="Web References\MaintenanceWS\Material.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\MaintenanceWS\Operator.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
     <None Include="Web References\MaintenanceWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PlanningWS\Asset.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PlanningWS\Material.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PlanningWS\Operator.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\PlanningWS\Order.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -905,9 +909,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\spinner_simple_item.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\menu\confirm.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -1019,6 +1020,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_select_asset.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

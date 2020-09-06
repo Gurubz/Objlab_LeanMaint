@@ -18,6 +18,13 @@
             android:text="123"
             android:id="@+id/activity_orders_TextViewID_Order" />
         <TextView
+            android:text="@string/activity_orders_completed"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textStyle="bold" />
+        <TextView
             android:text="@string/activity_orders_description"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
@@ -88,12 +95,16 @@
                 android:id="@+id/activity_orders_EditTextTimeToCompleteBefore" />
         </LinearLayout>
         <TextView
-            android:text="@string/activity_orders_completed"
+            android:text="@string/activity_orders_asset"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:id="@+id/activity_orders_EditTextAsset" />
 
     </LinearLayout>
 </ScrollView>

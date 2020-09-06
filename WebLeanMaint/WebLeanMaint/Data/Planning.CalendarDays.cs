@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public CalendarDay Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	public class CalendarDays : EntitiesManagerBase
 	{

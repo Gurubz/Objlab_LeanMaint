@@ -1,4 +1,4 @@
-﻿namespace Data.Maintenance
+﻿namespace Data.Planning
 {
 	public enum OperatorTypeEnum
 	{

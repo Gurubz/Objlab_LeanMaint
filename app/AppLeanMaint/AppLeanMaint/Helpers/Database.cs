@@ -2,6 +2,7 @@ using SQLite;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using AppLeanMaint.PlanningWS;
 
 namespace AppLeanMaint.Helpers
 {
@@ -36,6 +37,7 @@ namespace AppLeanMaint.Helpers
 			using (var oConnection = new SQLiteConnection(DB_FILE))
 			{
 				oConnection.CreateTable<PlanningWS.OrderType>();
+				oConnection.CreateTable<PlanningWS.Asset>();
 				bRet = true;
 			}
 
@@ -60,6 +62,29 @@ namespace AppLeanMaint.Helpers
 			{
 				oConnection.DeleteAll<PlanningWS.OrderType>();
 				oConnection.InsertAll(aOrderTypes);
+			}
+		}
+
+		public PlanningWS.Asset[] SearchAssets(string sName)
+		{
+			List<PlanningWS.Asset> aRet = new List<Asset>();
+
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				string sSql = $"SELECT * FROM Asset WHERE Name LIKE '%{sName}%' OR Description LIKE '%{sName}%' ORDER BY Name";
+
+				aRet.AddRange(oConnection.Query<PlanningWS.Asset>(sSql));
+			}
+
+			return (aRet.ToArray());
+		}
+
+		public void SaveAssets(Asset[] aAssets)
+		{
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				oConnection.DeleteAll<PlanningWS.Asset>();
+				oConnection.InsertAll(aAssets);
 			}
 		}
 	}

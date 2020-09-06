@@ -6,13 +6,13 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
 
-namespace Data.Maintenance
+namespace Data.Planning
 {
 	/// <summary>
 	/// Public OperatorType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	public class OperatorTypes : EntitiesManagerBase
 	{
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Maintenance].[OperatorTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OperatorTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[OperatorTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OperatorTypes]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -170,7 +170,7 @@ namespace Data.Maintenance
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[OperatorTypes]");
+			oSelect = new StringBuilder("SELECT * FROM [Planning].[OperatorTypes]");
 
 			oSelect.Append(" WHERE ");
 			oSelect.Append("[ID_OperatorType]=");
@@ -221,7 +221,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Maintenance].[OperatorTypes] ");
+			oInsert = new StringBuilder("INSERT INTO [Planning].[OperatorTypes] ");
 			oInsert.Append("([ID_OperatorType], [Name], [Description])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
@@ -244,7 +244,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Maintenance].[OperatorTypes] SET ");
+			oUpdate = new StringBuilder("UPDATE [Planning].[OperatorTypes] SET ");
 
 			oUpdate.Append("[Name]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOperatorType.Name));
@@ -268,7 +268,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Maintenance].[OperatorTypes]");
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OperatorTypes]");
 
 			oDelete.Append(UTI_Where4One(oOperatorType));
 

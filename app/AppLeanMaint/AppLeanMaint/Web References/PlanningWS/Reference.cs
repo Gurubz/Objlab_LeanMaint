@@ -37,6 +37,18 @@ namespace AppLeanMaint.PlanningWS {
         
         private System.Threading.SendOrPostCallback GetOrderOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddMaterialToOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetOperatorsForOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddOperatorToOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAssetsForOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddAssetToOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMaterialsForOrderOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +98,24 @@ namespace AppLeanMaint.PlanningWS {
         
         /// <remarks/>
         public event GetOrderCompletedEventHandler GetOrderCompleted;
+        
+        /// <remarks/>
+        public event AddMaterialToOrderCompletedEventHandler AddMaterialToOrderCompleted;
+        
+        /// <remarks/>
+        public event GetOperatorsForOrderCompletedEventHandler GetOperatorsForOrderCompleted;
+        
+        /// <remarks/>
+        public event AddOperatorToOrderCompletedEventHandler AddOperatorToOrderCompleted;
+        
+        /// <remarks/>
+        public event GetAssetsForOrderCompletedEventHandler GetAssetsForOrderCompleted;
+        
+        /// <remarks/>
+        public event AddAssetToOrderCompletedEventHandler AddAssetToOrderCompleted;
+        
+        /// <remarks/>
+        public event GetMaterialsForOrderCompletedEventHandler GetMaterialsForOrderCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetOrderTypes", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -214,6 +244,185 @@ namespace AppLeanMaint.PlanningWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddMaterialToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity) {
+            this.Invoke("AddMaterialToOrder", new object[] {
+                        ID_Order,
+                        ID_Material,
+                        nQuantity});
+        }
+        
+        /// <remarks/>
+        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity) {
+            this.AddMaterialToOrderAsync(ID_Order, ID_Material, nQuantity, null);
+        }
+        
+        /// <remarks/>
+        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity, object userState) {
+            if ((this.AddMaterialToOrderOperationCompleted == null)) {
+                this.AddMaterialToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddMaterialToOrderOperationCompleted);
+            }
+            this.InvokeAsync("AddMaterialToOrder", new object[] {
+                        ID_Order,
+                        ID_Material,
+                        nQuantity}, this.AddMaterialToOrderOperationCompleted, userState);
+        }
+        
+        private void OnAddMaterialToOrderOperationCompleted(object arg) {
+            if ((this.AddMaterialToOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddMaterialToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetOperatorsForOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Operator[] GetOperatorsForOrder(int ID_Order) {
+            object[] results = this.Invoke("GetOperatorsForOrder", new object[] {
+                        ID_Order});
+            return ((Operator[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetOperatorsForOrderAsync(int ID_Order) {
+            this.GetOperatorsForOrderAsync(ID_Order, null);
+        }
+        
+        /// <remarks/>
+        public void GetOperatorsForOrderAsync(int ID_Order, object userState) {
+            if ((this.GetOperatorsForOrderOperationCompleted == null)) {
+                this.GetOperatorsForOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOperatorsForOrderOperationCompleted);
+            }
+            this.InvokeAsync("GetOperatorsForOrder", new object[] {
+                        ID_Order}, this.GetOperatorsForOrderOperationCompleted, userState);
+        }
+        
+        private void OnGetOperatorsForOrderOperationCompleted(object arg) {
+            if ((this.GetOperatorsForOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetOperatorsForOrderCompleted(this, new GetOperatorsForOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddOperatorToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddOperatorToOrder(int ID_Order, int ID_Operator) {
+            this.Invoke("AddOperatorToOrder", new object[] {
+                        ID_Order,
+                        ID_Operator});
+        }
+        
+        /// <remarks/>
+        public void AddOperatorToOrderAsync(int ID_Order, int ID_Operator) {
+            this.AddOperatorToOrderAsync(ID_Order, ID_Operator, null);
+        }
+        
+        /// <remarks/>
+        public void AddOperatorToOrderAsync(int ID_Order, int ID_Operator, object userState) {
+            if ((this.AddOperatorToOrderOperationCompleted == null)) {
+                this.AddOperatorToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddOperatorToOrderOperationCompleted);
+            }
+            this.InvokeAsync("AddOperatorToOrder", new object[] {
+                        ID_Order,
+                        ID_Operator}, this.AddOperatorToOrderOperationCompleted, userState);
+        }
+        
+        private void OnAddOperatorToOrderOperationCompleted(object arg) {
+            if ((this.AddOperatorToOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddOperatorToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetAssetsForOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Asset[] GetAssetsForOrder(int ID_Order) {
+            object[] results = this.Invoke("GetAssetsForOrder", new object[] {
+                        ID_Order});
+            return ((Asset[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAssetsForOrderAsync(int ID_Order) {
+            this.GetAssetsForOrderAsync(ID_Order, null);
+        }
+        
+        /// <remarks/>
+        public void GetAssetsForOrderAsync(int ID_Order, object userState) {
+            if ((this.GetAssetsForOrderOperationCompleted == null)) {
+                this.GetAssetsForOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAssetsForOrderOperationCompleted);
+            }
+            this.InvokeAsync("GetAssetsForOrder", new object[] {
+                        ID_Order}, this.GetAssetsForOrderOperationCompleted, userState);
+        }
+        
+        private void OnGetAssetsForOrderOperationCompleted(object arg) {
+            if ((this.GetAssetsForOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAssetsForOrderCompleted(this, new GetAssetsForOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddAssetToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddAssetToOrder(int ID_Order, int ID_Asset) {
+            this.Invoke("AddAssetToOrder", new object[] {
+                        ID_Order,
+                        ID_Asset});
+        }
+        
+        /// <remarks/>
+        public void AddAssetToOrderAsync(int ID_Order, int ID_Asset) {
+            this.AddAssetToOrderAsync(ID_Order, ID_Asset, null);
+        }
+        
+        /// <remarks/>
+        public void AddAssetToOrderAsync(int ID_Order, int ID_Asset, object userState) {
+            if ((this.AddAssetToOrderOperationCompleted == null)) {
+                this.AddAssetToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddAssetToOrderOperationCompleted);
+            }
+            this.InvokeAsync("AddAssetToOrder", new object[] {
+                        ID_Order,
+                        ID_Asset}, this.AddAssetToOrderOperationCompleted, userState);
+        }
+        
+        private void OnAddAssetToOrderOperationCompleted(object arg) {
+            if ((this.AddAssetToOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddAssetToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetMaterialsForOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Material[] GetMaterialsForOrder(int ID_Order) {
+            object[] results = this.Invoke("GetMaterialsForOrder", new object[] {
+                        ID_Order});
+            return ((Material[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMaterialsForOrderAsync(int ID_Order) {
+            this.GetMaterialsForOrderAsync(ID_Order, null);
+        }
+        
+        /// <remarks/>
+        public void GetMaterialsForOrderAsync(int ID_Order, object userState) {
+            if ((this.GetMaterialsForOrderOperationCompleted == null)) {
+                this.GetMaterialsForOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMaterialsForOrderOperationCompleted);
+            }
+            this.InvokeAsync("GetMaterialsForOrder", new object[] {
+                        ID_Order}, this.GetMaterialsForOrderOperationCompleted, userState);
+        }
+        
+        private void OnGetMaterialsForOrderOperationCompleted(object arg) {
+            if ((this.GetMaterialsForOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMaterialsForOrderCompleted(this, new GetMaterialsForOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -273,6 +482,513 @@ namespace AppLeanMaint.PlanningWS {
             }
             set {
                 this.descriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
+    public partial class Material {
+        
+        private int iD_MaterialField;
+        
+        private string nameField;
+        
+        private string descriptionField;
+        
+        private int iD_ObjStatusField;
+        
+        private string referenceCodeField;
+        
+        private int iD_SupplierField;
+        
+        private decimal costPerUMField;
+        
+        private int iD_MaterialUMField;
+        
+        private string brandField;
+        
+        private string typeField;
+        
+        private string barcodeField;
+        
+        private int iD_StoreCenterField;
+        
+        /// <remarks/>
+        public int ID_Material {
+            get {
+                return this.iD_MaterialField;
+            }
+            set {
+                this.iD_MaterialField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_ObjStatus {
+            get {
+                return this.iD_ObjStatusField;
+            }
+            set {
+                this.iD_ObjStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ReferenceCode {
+            get {
+                return this.referenceCodeField;
+            }
+            set {
+                this.referenceCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Supplier {
+            get {
+                return this.iD_SupplierField;
+            }
+            set {
+                this.iD_SupplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal CostPerUM {
+            get {
+                return this.costPerUMField;
+            }
+            set {
+                this.costPerUMField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_MaterialUM {
+            get {
+                return this.iD_MaterialUMField;
+            }
+            set {
+                this.iD_MaterialUMField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Brand {
+            get {
+                return this.brandField;
+            }
+            set {
+                this.brandField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Barcode {
+            get {
+                return this.barcodeField;
+            }
+            set {
+                this.barcodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_StoreCenter {
+            get {
+                return this.iD_StoreCenterField;
+            }
+            set {
+                this.iD_StoreCenterField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
+    public partial class Asset {
+        
+        private int iD_AssetField;
+        
+        private string nameField;
+        
+        private string descriptionField;
+        
+        private int iD_AssetTypeField;
+        
+        private int iD_OrganizationCenterField;
+        
+        private int iD_CostCenterField;
+        
+        private int iD_GeographicCenterField;
+        
+        private bool iD_GeographicCenter_HasValueField;
+        
+        private int iD_ObjStatusField;
+        
+        private int iD_ParentField;
+        
+        private bool iD_Parent_HasValueField;
+        
+        /// <remarks/>
+        public int ID_Asset {
+            get {
+                return this.iD_AssetField;
+            }
+            set {
+                this.iD_AssetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_AssetType {
+            get {
+                return this.iD_AssetTypeField;
+            }
+            set {
+                this.iD_AssetTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_OrganizationCenter {
+            get {
+                return this.iD_OrganizationCenterField;
+            }
+            set {
+                this.iD_OrganizationCenterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_CostCenter {
+            get {
+                return this.iD_CostCenterField;
+            }
+            set {
+                this.iD_CostCenterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_GeographicCenter {
+            get {
+                return this.iD_GeographicCenterField;
+            }
+            set {
+                this.iD_GeographicCenterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ID_GeographicCenter_HasValue {
+            get {
+                return this.iD_GeographicCenter_HasValueField;
+            }
+            set {
+                this.iD_GeographicCenter_HasValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_ObjStatus {
+            get {
+                return this.iD_ObjStatusField;
+            }
+            set {
+                this.iD_ObjStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Parent {
+            get {
+                return this.iD_ParentField;
+            }
+            set {
+                this.iD_ParentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ID_Parent_HasValue {
+            get {
+                return this.iD_Parent_HasValueField;
+            }
+            set {
+                this.iD_Parent_HasValueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
+    public partial class Operator {
+        
+        private int iD_OperatorField;
+        
+        private string nameField;
+        
+        private string middleNameField;
+        
+        private bool middleName_HasValueField;
+        
+        private string lastNameField;
+        
+        private string descriptionField;
+        
+        private bool description_HasValueField;
+        
+        private int iD_OperatorTypeField;
+        
+        private int iD_CalendarField;
+        
+        private int iD_SupplierField;
+        
+        private bool iD_Supplier_HasValueField;
+        
+        private int iD_CostCenterField;
+        
+        private bool iD_CostCenter_HasValueField;
+        
+        private decimal hourlyCostField;
+        
+        private bool hourlyCost_HasValueField;
+        
+        private int iD_ObjStatusField;
+        
+        private int iD_UserField;
+        
+        /// <remarks/>
+        public int ID_Operator {
+            get {
+                return this.iD_OperatorField;
+            }
+            set {
+                this.iD_OperatorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MiddleName {
+            get {
+                return this.middleNameField;
+            }
+            set {
+                this.middleNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MiddleName_HasValue {
+            get {
+                return this.middleName_HasValueField;
+            }
+            set {
+                this.middleName_HasValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LastName {
+            get {
+                return this.lastNameField;
+            }
+            set {
+                this.lastNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Description_HasValue {
+            get {
+                return this.description_HasValueField;
+            }
+            set {
+                this.description_HasValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_OperatorType {
+            get {
+                return this.iD_OperatorTypeField;
+            }
+            set {
+                this.iD_OperatorTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Calendar {
+            get {
+                return this.iD_CalendarField;
+            }
+            set {
+                this.iD_CalendarField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Supplier {
+            get {
+                return this.iD_SupplierField;
+            }
+            set {
+                this.iD_SupplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ID_Supplier_HasValue {
+            get {
+                return this.iD_Supplier_HasValueField;
+            }
+            set {
+                this.iD_Supplier_HasValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_CostCenter {
+            get {
+                return this.iD_CostCenterField;
+            }
+            set {
+                this.iD_CostCenterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ID_CostCenter_HasValue {
+            get {
+                return this.iD_CostCenter_HasValueField;
+            }
+            set {
+                this.iD_CostCenter_HasValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal HourlyCost {
+            get {
+                return this.hourlyCostField;
+            }
+            set {
+                this.hourlyCostField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool HourlyCost_HasValue {
+            get {
+                return this.hourlyCost_HasValueField;
+            }
+            set {
+                this.hourlyCost_HasValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_ObjStatus {
+            get {
+                return this.iD_ObjStatusField;
+            }
+            set {
+                this.iD_ObjStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_User {
+            get {
+                return this.iD_UserField;
+            }
+            set {
+                this.iD_UserField = value;
             }
         }
     }
@@ -486,6 +1202,96 @@ namespace AppLeanMaint.PlanningWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Order)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void AddMaterialToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetOperatorsForOrderCompletedEventHandler(object sender, GetOperatorsForOrderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOperatorsForOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOperatorsForOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Operator[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Operator[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void AddOperatorToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetAssetsForOrderCompletedEventHandler(object sender, GetAssetsForOrderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAssetsForOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAssetsForOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Asset[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Asset[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void AddAssetToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetMaterialsForOrderCompletedEventHandler(object sender, GetMaterialsForOrderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMaterialsForOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMaterialsForOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Material[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Material[])(this.results[0]));
             }
         }
     }

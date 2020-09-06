@@ -7,7 +7,7 @@ namespace Data.Accountancy
 	/// Public CostCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_CostCenter = {ID_CostCenter}")]
 	public class CostCenter

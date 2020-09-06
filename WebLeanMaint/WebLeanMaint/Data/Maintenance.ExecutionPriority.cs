@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public ExecutionPriority Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Priority = {ID_Priority}")]
 	public class ExecutionPriority

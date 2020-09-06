@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public AssetType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_AssetType = {ID_AssetType}")]
 	public class AssetType

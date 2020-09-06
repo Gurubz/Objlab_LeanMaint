@@ -25,6 +25,9 @@
 		<item>For Failure</item>
 		<item>Renovate</item>
 	</string-array>
+	<string name="activity_orders_asset">Asset</string>
+
+	<string name="activity_select_asset">Select asset</string>
 
 	<string name="activity_execution">Maintenance</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

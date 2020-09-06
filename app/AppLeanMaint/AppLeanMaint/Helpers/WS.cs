@@ -52,12 +52,19 @@ namespace AppLeanMaint.Helpers
 		{
 			OrderType[] aOrderTypes = await Task.Run(() => m_oPlanningWs.GetOrderTypes());
 
-			Helpers.Database.Current.SaveOrderTypes(aOrderTypes);
+			await Task.Run(() => Database.Current.SaveOrderTypes(aOrderTypes));
 		}
 
 		public int CreateOrder(Order m_oOrder)
 		{
 			return (m_oPlanningWs.CreateOrder(m_oOrder));
+		}
+
+		public async Task GetAssetsForOrder(int ID_Order = 0)
+		{
+			Asset[] aAssets = await Task.Run(() => m_oPlanningWs.GetAssetsForOrder(ID_Order));
+
+			await Task.Run(() => Database.Current.SaveAssets(aAssets));
 		}
 	}
 }

@@ -40,68 +40,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOperatorsForOrder">
+      <s:element name="SearchAsset">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sName" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOperatorsForOrderResponse">
+      <s:element name="SearchAssetResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetOperatorsForOrderResult" type="tns:ArrayOfOperator" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfOperator">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Operator" nillable="true" type="tns:Operator" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Operator">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID_Operator" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="MiddleName_HasValue" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Description_HasValue" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_OperatorType" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_Calendar" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_Supplier" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_Supplier_HasValue" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_CostCenter" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_CostCenter_HasValue" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="HourlyCost" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="HourlyCost_HasValue" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_ObjStatus" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_User" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="AddOperatorToOrder">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Operator" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddOperatorToOrderResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAssetsForOrder">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetAssetsForOrderResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAssetsForOrderResult" type="tns:ArrayOfAsset" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchAssetResult" type="tns:ArrayOfAsset" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -125,64 +74,6 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID_Parent_HasValue" type="s:boolean" />
         </s:sequence>
       </s:complexType>
-      <s:element name="AddAssetToOrder">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Asset" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddAssetToOrderResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetMaterialsForOrder">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetMaterialsForOrderResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetMaterialsForOrderResult" type="tns:ArrayOfMaterial" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfMaterial">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Material" nillable="true" type="tns:Material" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Material">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID_Material" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_ObjStatus" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ReferenceCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_Supplier" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CostPerUM" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_MaterialUM" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Barcode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID_StoreCenter" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="AddMaterialToOrder">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Material" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="nQuantity" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddMaterialToOrderResponse">
-        <s:complexType />
-      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="PingSoapIn">
@@ -197,41 +88,11 @@
   <wsdl:message name="CreateSupplierSoapOut">
     <wsdl:part name="parameters" element="tns:CreateSupplierResponse" />
   </wsdl:message>
-  <wsdl:message name="GetOperatorsForOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:GetOperatorsForOrder" />
+  <wsdl:message name="SearchAssetSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchAsset" />
   </wsdl:message>
-  <wsdl:message name="GetOperatorsForOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:GetOperatorsForOrderResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddOperatorToOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:AddOperatorToOrder" />
-  </wsdl:message>
-  <wsdl:message name="AddOperatorToOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:AddOperatorToOrderResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAssetsForOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAssetsForOrder" />
-  </wsdl:message>
-  <wsdl:message name="GetAssetsForOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAssetsForOrderResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddAssetToOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:AddAssetToOrder" />
-  </wsdl:message>
-  <wsdl:message name="AddAssetToOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:AddAssetToOrderResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetMaterialsForOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:GetMaterialsForOrder" />
-  </wsdl:message>
-  <wsdl:message name="GetMaterialsForOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:GetMaterialsForOrderResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddMaterialToOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:AddMaterialToOrder" />
-  </wsdl:message>
-  <wsdl:message name="AddMaterialToOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:AddMaterialToOrderResponse" />
+  <wsdl:message name="SearchAssetSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchAssetResponse" />
   </wsdl:message>
   <wsdl:portType name="MaintenanceSoap">
     <wsdl:operation name="Ping">
@@ -242,29 +103,9 @@
       <wsdl:input message="tns:CreateSupplierSoapIn" />
       <wsdl:output message="tns:CreateSupplierSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOperatorsForOrder">
-      <wsdl:input message="tns:GetOperatorsForOrderSoapIn" />
-      <wsdl:output message="tns:GetOperatorsForOrderSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddOperatorToOrder">
-      <wsdl:input message="tns:AddOperatorToOrderSoapIn" />
-      <wsdl:output message="tns:AddOperatorToOrderSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAssetsForOrder">
-      <wsdl:input message="tns:GetAssetsForOrderSoapIn" />
-      <wsdl:output message="tns:GetAssetsForOrderSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddAssetToOrder">
-      <wsdl:input message="tns:AddAssetToOrderSoapIn" />
-      <wsdl:output message="tns:AddAssetToOrderSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetMaterialsForOrder">
-      <wsdl:input message="tns:GetMaterialsForOrderSoapIn" />
-      <wsdl:output message="tns:GetMaterialsForOrderSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddMaterialToOrder">
-      <wsdl:input message="tns:AddMaterialToOrderSoapIn" />
-      <wsdl:output message="tns:AddMaterialToOrderSoapOut" />
+    <wsdl:operation name="SearchAsset">
+      <wsdl:input message="tns:SearchAssetSoapIn" />
+      <wsdl:output message="tns:SearchAssetSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MaintenanceSoap" type="tns:MaintenanceSoap">
@@ -287,53 +128,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOperatorsForOrder">
-      <soap:operation soapAction="http://objlab.it/GetOperatorsForOrder" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddOperatorToOrder">
-      <soap:operation soapAction="http://objlab.it/AddOperatorToOrder" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAssetsForOrder">
-      <soap:operation soapAction="http://objlab.it/GetAssetsForOrder" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddAssetToOrder">
-      <soap:operation soapAction="http://objlab.it/AddAssetToOrder" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMaterialsForOrder">
-      <soap:operation soapAction="http://objlab.it/GetMaterialsForOrder" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddMaterialToOrder">
-      <soap:operation soapAction="http://objlab.it/AddMaterialToOrder" style="document" />
+    <wsdl:operation name="SearchAsset">
+      <soap:operation soapAction="http://objlab.it/SearchAsset" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -362,53 +158,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOperatorsForOrder">
-      <soap12:operation soapAction="http://objlab.it/GetOperatorsForOrder" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddOperatorToOrder">
-      <soap12:operation soapAction="http://objlab.it/AddOperatorToOrder" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAssetsForOrder">
-      <soap12:operation soapAction="http://objlab.it/GetAssetsForOrder" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddAssetToOrder">
-      <soap12:operation soapAction="http://objlab.it/AddAssetToOrder" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMaterialsForOrder">
-      <soap12:operation soapAction="http://objlab.it/GetMaterialsForOrder" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddMaterialToOrder">
-      <soap12:operation soapAction="http://objlab.it/AddMaterialToOrder" style="document" />
+    <wsdl:operation name="SearchAsset">
+      <soap12:operation soapAction="http://objlab.it/SearchAsset" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

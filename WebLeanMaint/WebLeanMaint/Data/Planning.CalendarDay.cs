@@ -7,7 +7,7 @@ namespace Data.Planning
 	/// Public CalendarDay Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  03/09/2020  Created
+	/// 	[SQLClassGenerator]  06/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Calendar = {ID_Calendar}, Year = {Year}, Day = {Day}")]
 	public class CalendarDay

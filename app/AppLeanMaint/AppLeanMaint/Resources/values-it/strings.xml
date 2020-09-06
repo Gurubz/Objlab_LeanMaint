@@ -25,6 +25,9 @@
 		<item>Per guasto</item>
 		<item>Rinnovamento</item>
 	</string-array>
+	<string name="activity_orders_asset">Asset</string>
+
+	<string name="activity_select_asset">Seleziona asset</string>
 
 	<string name="activity_execution">Intervento</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>
