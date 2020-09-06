@@ -26,8 +26,25 @@
 		<item>Rinnovamento</item>
 	</string-array>
 	<string name="activity_orders_asset">Asset</string>
+	<string name="activity_orders_material">Materiale</string>
+	<string name="activity_orders_operator">Operatore</string>
 
 	<string name="activity_select_asset">Seleziona asset</string>
+	<string name="activity_select_asset_name">Nome</string>
+	<string name="activity_select_asset_description">Descrizione</string>
+	<string name="activity_select_asset_id_assettype">Tipo</string>
+	<string name="activity_select_asset_id_organizationcenter">Centro Organizzazione</string>
+	<string name="activity_select_asset_id_costcenter">Centro di Costo</string>
+	<string name="activity_select_asset_id_geographiccenter">Centro Geografico</string>
+	<string name="activity_select_asset_id_parent">Genitore</string>
+
+	<string name="activity_select_material">Seleziona materiale</string>
+	<string name="activity_select_material_name">Nome</string>
+	<string name="activity_select_material_description">Descrizione</string>
+
+	<string name="activity_select_operator">Seleziona operatore</string>
+	<string name="activity_select_operator_name">Nome</string>
+	<string name="activity_select_operator_description">Descrizione</string>
 
 	<string name="activity_execution">Intervento</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

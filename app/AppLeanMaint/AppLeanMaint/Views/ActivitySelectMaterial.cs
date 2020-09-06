@@ -10,22 +10,16 @@ using System.Linq;
 
 namespace AppLeanMaint.Views
 {
-	[Activity(Label = "@string/activity_select_asset", ParentActivity = typeof(ActivityOrders), ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-	public class ActivitySelectAsset : AppCompatActivity
+	[Activity(Label = "@string/activity_select_material", ParentActivity = typeof(ActivityOrders), ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+	public class ActivitySelectMaterial : AppCompatActivity
 	{
 		#region Protected Properties
-		protected AutoCompleteTextView m_oAutoCompleteTextViewAsset = null;
-		protected LinearLayout m_oLinearLayoutAsset = null;
-		protected TextView m_oTextViewID_Asset = null;
-		protected TextView m_oTextViewName = null;
+		protected AutoCompleteTextView m_oAutoCompleteTextViewMaterial = null;
+		protected LinearLayout m_oLinearLayoutMaterial = null;
+		protected TextView m_oTextViewID_Material = null;
 		protected TextView m_oTextViewDescription = null;
-		protected TextView m_oTextViewID_AssetType = null;
-		protected TextView m_oTextViewID_OrganizationCenter = null;
-		protected TextView m_oTextViewID_CostCenter = null;
-		protected TextView m_oTextViewID_GeographicCenter = null;
-		protected TextView m_oTextViewID_Parent = null;
-		protected PlanningWS.Asset[] m_aAssets = null;
-		protected PlanningWS.Asset m_oAsset = null;
+		protected PlanningWS.Material[] m_aMaterials = null;
+		protected PlanningWS.Material m_oMaterial = null;
 		#endregion
 
 		#region Override Methods
@@ -99,13 +93,13 @@ namespace AppLeanMaint.Views
 			if (item.ItemId == Resource.Id.ConfirmMenu_ButtonConfirm)
 			{
 				this.GUI_GuiToBiz();
-				if (this.m_oAsset != null)
+				if (this.m_oMaterial != null)
 				{
 					Intent oIntent = new Intent(this, typeof(ActivityOrders));
-					oIntent.PutExtra("ID", m_oAsset.ID_Asset);
-					oIntent.PutExtra("Name", m_oAsset.Name);
+					oIntent.PutExtra("ID", m_oMaterial.ID_Material);
+					oIntent.PutExtra("Name", m_oMaterial.Name);
 					this.SetResult(Result.Ok, oIntent);
-				}
+				}				
 				this.Finish();
 			}
 
@@ -119,54 +113,42 @@ namespace AppLeanMaint.Views
 		#region Protected GUI Methods
 		protected void GUI_Init()
 		{
-			SetContentView(Resource.Layout.activity_select_asset);
-			SupportActionBar.Title = Resources.GetString(Resource.String.activity_select_asset);
+			SetContentView(Resource.Layout.activity_select_material);
+			SupportActionBar.Title = Resources.GetString(Resource.String.activity_select_material);
 			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-			Helpers.WS.Instance.UpdateLocalAssetsForOrder();
+			Helpers.WS.Instance.UpdateLocalMaterialsForOrder();
 
 			// m_nCarID = Intent.GetIntExtra("nCarID", 0);
 
-			m_oAutoCompleteTextViewAsset = FindViewById<AutoCompleteTextView>(Resource.Id.activity_select_asset_AutoCompleteTextViewAsset);
+			m_oAutoCompleteTextViewMaterial = FindViewById<AutoCompleteTextView>(Resource.Id.activity_select_material_AutoCompleteTextViewMaterial);
 
-			m_aAssets = Helpers.Database.Current.SearchAssets(string.Empty);
-			string[] aAssets = (from o in m_aAssets select $"{o.Name}").ToArray();
-			ArrayAdapter<string> oAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, aAssets);
-			m_oAutoCompleteTextViewAsset.Adapter = oAdapter;
-			m_oAutoCompleteTextViewAsset.TextChanged += (sender, e) =>
+			m_aMaterials = Helpers.Database.Current.SearchMaterials(string.Empty);
+			string[] aMaterials = (from o in m_aMaterials select $"{o.Name}").ToArray();
+			ArrayAdapter<string> oAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, aMaterials);
+			m_oAutoCompleteTextViewMaterial.Adapter = oAdapter;
+			m_oAutoCompleteTextViewMaterial.TextChanged += (sender, e) =>
 			{
-				m_oAsset = (from o in m_aAssets where o.Name == m_oAutoCompleteTextViewAsset.Text select o).SingleOrDefault();
+				m_oMaterial = (from o in m_aMaterials where o.Name == m_oAutoCompleteTextViewMaterial.Text select o).SingleOrDefault();
 				this.GUI_BizToGui();
 			};
 
-			m_oLinearLayoutAsset = FindViewById<LinearLayout>(Resource.Id.activity_select_asset_LinearLayoutAsset);
-			m_oTextViewID_Asset = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewID_Asset);
-			m_oTextViewName = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewName);
-			m_oTextViewDescription = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewDescription);
-			m_oTextViewID_AssetType = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewID_AssetType);
-			m_oTextViewID_OrganizationCenter = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewID_OrganizationCenter);
-			m_oTextViewID_CostCenter = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewID_CostCenter);
-			m_oTextViewID_GeographicCenter = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewID_GeographicCenter);
-			m_oTextViewID_Parent = FindViewById<TextView>(Resource.Id.activity_select_asset_TextViewID_Parent);
+			m_oLinearLayoutMaterial = FindViewById<LinearLayout>(Resource.Id.activity_select_material_LinearLayoutMaterial);
+			m_oTextViewID_Material = FindViewById<TextView>(Resource.Id.activity_select_material_TextViewID_Material);
+			m_oTextViewDescription = FindViewById<TextView>(Resource.Id.activity_select_material_TextViewDescription);
 		}
 
 		public void GUI_BizToGui()
 		{
-			if (m_oAsset != null)
+			if (m_oMaterial != null)
 			{
-				m_oTextViewID_Asset.Text = $"{m_oAsset.ID_Asset}";
-				m_oTextViewName.Text = $"{m_oAsset.Name}";
-				m_oTextViewDescription.Text = $"{m_oAsset.Description}";
-				m_oTextViewID_AssetType.Text = $"{m_oAsset.ID_AssetType}";
-				m_oTextViewID_OrganizationCenter.Text = $"{m_oAsset.ID_OrganizationCenter}";
-				m_oTextViewID_CostCenter.Text = $"{m_oAsset.ID_CostCenter}";
-				m_oTextViewID_GeographicCenter.Text = $"{m_oAsset.ID_GeographicCenter}";
-				m_oTextViewID_Parent.Text = $"{m_oAsset.ID_Parent}";
-				m_oLinearLayoutAsset.Visibility = ViewStates.Visible;
+				m_oTextViewID_Material.Text = $"{m_oMaterial.ID_Material}";
+				m_oTextViewDescription.Text = $"{m_oMaterial.Description}";
+				m_oLinearLayoutMaterial.Visibility = ViewStates.Visible;
 			}
 			else
 			{
-				m_oLinearLayoutAsset.Visibility = ViewStates.Gone;
+				m_oLinearLayoutMaterial.Visibility = ViewStates.Gone;
 			}
 			// m_oButtonDateReading.Text = m_oViewModel.DateReference.ToString("d");
 			// if (m_oSpinnerFuelType.Adapter == null)

@@ -105,6 +105,27 @@
             android:layout_height="wrap_content"
             android:lines="2"
             android:id="@+id/activity_orders_EditTextAsset" />
-
+        <TextView
+            android:text="@string/activity_orders_material"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:id="@+id/activity_orders_EditTextMaterial" />
+        <TextView
+            android:text="@string/activity_orders_operator"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:id="@+id/activity_orders_EditTextOperator" />
     </LinearLayout>
 </ScrollView>

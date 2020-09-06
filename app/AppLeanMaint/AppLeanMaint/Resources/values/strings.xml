@@ -26,8 +26,25 @@
 		<item>Renovate</item>
 	</string-array>
 	<string name="activity_orders_asset">Asset</string>
+	<string name="activity_orders_material">Material</string>
+	<string name="activity_orders_operator">Operator</string>
 
 	<string name="activity_select_asset">Select asset</string>
+	<string name="activity_select_asset_name">Name</string>
+	<string name="activity_select_asset_description">Description</string>
+	<string name="activity_select_asset_id_assettype">Type</string>
+	<string name="activity_select_asset_id_organizationcenter">Organization Center</string>
+	<string name="activity_select_asset_id_costcenter">Cost Center</string>
+	<string name="activity_select_asset_id_geographiccenter">Geographic Center</string>
+	<string name="activity_select_asset_id_parent">Parent</string>
+
+	<string name="activity_select_material">Select material</string>
+	<string name="activity_select_material_name">Name</string>
+	<string name="activity_select_material_description">Description</string>
+
+	<string name="activity_select_operator">Select operator</string>
+	<string name="activity_select_operator_name">Name</string>
+	<string name="activity_select_operator_description">Description</string>
 
 	<string name="activity_execution">Maintenance</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

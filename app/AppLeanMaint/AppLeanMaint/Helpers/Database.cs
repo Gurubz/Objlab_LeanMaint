@@ -2,7 +2,6 @@ using SQLite;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using AppLeanMaint.PlanningWS;
 
 namespace AppLeanMaint.Helpers
 {
@@ -38,6 +37,8 @@ namespace AppLeanMaint.Helpers
 			{
 				oConnection.CreateTable<PlanningWS.OrderType>();
 				oConnection.CreateTable<PlanningWS.Asset>();
+				oConnection.CreateTable<PlanningWS.Material>();
+				oConnection.CreateTable<PlanningWS.Operator>();
 				bRet = true;
 			}
 
@@ -67,7 +68,7 @@ namespace AppLeanMaint.Helpers
 
 		public PlanningWS.Asset[] SearchAssets(string sName)
 		{
-			List<PlanningWS.Asset> aRet = new List<Asset>();
+			List<PlanningWS.Asset> aRet = new List<PlanningWS.Asset>();
 
 			using (var oConnection = new SQLiteConnection(DB_FILE))
 			{
@@ -79,12 +80,58 @@ namespace AppLeanMaint.Helpers
 			return (aRet.ToArray());
 		}
 
-		public void SaveAssets(Asset[] aAssets)
+		public void SaveAssets(PlanningWS.Asset[] aAssets)
 		{
 			using (var oConnection = new SQLiteConnection(DB_FILE))
 			{
 				oConnection.DeleteAll<PlanningWS.Asset>();
 				oConnection.InsertAll(aAssets);
+			}
+		}
+
+		public PlanningWS.Material[] SearchMaterials(string sName)
+		{
+			List<PlanningWS.Material> aRet = new List<PlanningWS.Material>();
+
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				string sSql = $"SELECT * FROM Material WHERE Name LIKE '%{sName}%' OR Description LIKE '%{sName}%' ORDER BY Name";
+
+				aRet.AddRange(oConnection.Query<PlanningWS.Material>(sSql));
+			}
+
+			return (aRet.ToArray());
+		}
+
+		public void SaveMaterials(PlanningWS.Material[] aMaterials)
+		{
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				oConnection.DeleteAll<PlanningWS.Material>();
+				oConnection.InsertAll(aMaterials);
+			}
+		}
+
+		public PlanningWS.Operator[] SearchOperators(string sName)
+		{
+			List<PlanningWS.Operator> aRet = new List<PlanningWS.Operator>();
+
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				string sSql = $"SELECT * FROM Operator WHERE Name LIKE '%{sName}%' OR Description LIKE '%{sName}%' ORDER BY Name";
+
+				aRet.AddRange(oConnection.Query<PlanningWS.Operator>(sSql));
+			}
+
+			return (aRet.ToArray());
+		}
+
+		public void SaveOperators(PlanningWS.Operator[] aOperators)
+		{
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				oConnection.DeleteAll<PlanningWS.Operator>();
+				oConnection.InsertAll(aOperators);
 			}
 		}
 	}

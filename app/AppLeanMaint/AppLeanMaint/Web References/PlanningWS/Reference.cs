@@ -37,7 +37,7 @@ namespace AppLeanMaint.PlanningWS {
         
         private System.Threading.SendOrPostCallback GetOrderOperationCompleted;
         
-        private System.Threading.SendOrPostCallback AddMaterialToOrderOperationCompleted;
+        private System.Threading.SendOrPostCallback GetOrdersOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetOperatorsForOrderOperationCompleted;
         
@@ -48,6 +48,8 @@ namespace AppLeanMaint.PlanningWS {
         private System.Threading.SendOrPostCallback AddAssetToOrderOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMaterialsForOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddMaterialToOrderOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -100,7 +102,7 @@ namespace AppLeanMaint.PlanningWS {
         public event GetOrderCompletedEventHandler GetOrderCompleted;
         
         /// <remarks/>
-        public event AddMaterialToOrderCompletedEventHandler AddMaterialToOrderCompleted;
+        public event GetOrdersCompletedEventHandler GetOrdersCompleted;
         
         /// <remarks/>
         public event GetOperatorsForOrderCompletedEventHandler GetOperatorsForOrderCompleted;
@@ -116,6 +118,9 @@ namespace AppLeanMaint.PlanningWS {
         
         /// <remarks/>
         public event GetMaterialsForOrderCompletedEventHandler GetMaterialsForOrderCompleted;
+        
+        /// <remarks/>
+        public event AddMaterialToOrderCompletedEventHandler AddMaterialToOrderCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetOrderTypes", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -244,34 +249,29 @@ namespace AppLeanMaint.PlanningWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddMaterialToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity) {
-            this.Invoke("AddMaterialToOrder", new object[] {
-                        ID_Order,
-                        ID_Material,
-                        nQuantity});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetOrders", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Order[] GetOrders() {
+            object[] results = this.Invoke("GetOrders", new object[0]);
+            return ((Order[])(results[0]));
         }
         
         /// <remarks/>
-        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity) {
-            this.AddMaterialToOrderAsync(ID_Order, ID_Material, nQuantity, null);
+        public void GetOrdersAsync() {
+            this.GetOrdersAsync(null);
         }
         
         /// <remarks/>
-        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity, object userState) {
-            if ((this.AddMaterialToOrderOperationCompleted == null)) {
-                this.AddMaterialToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddMaterialToOrderOperationCompleted);
+        public void GetOrdersAsync(object userState) {
+            if ((this.GetOrdersOperationCompleted == null)) {
+                this.GetOrdersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOrdersOperationCompleted);
             }
-            this.InvokeAsync("AddMaterialToOrder", new object[] {
-                        ID_Order,
-                        ID_Material,
-                        nQuantity}, this.AddMaterialToOrderOperationCompleted, userState);
+            this.InvokeAsync("GetOrders", new object[0], this.GetOrdersOperationCompleted, userState);
         }
         
-        private void OnAddMaterialToOrderOperationCompleted(object arg) {
-            if ((this.AddMaterialToOrderCompleted != null)) {
+        private void OnGetOrdersOperationCompleted(object arg) {
+            if ((this.GetOrdersCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddMaterialToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetOrdersCompleted(this, new GetOrdersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -419,6 +419,38 @@ namespace AppLeanMaint.PlanningWS {
             if ((this.GetMaterialsForOrderCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMaterialsForOrderCompleted(this, new GetMaterialsForOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddMaterialToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity) {
+            this.Invoke("AddMaterialToOrder", new object[] {
+                        ID_Order,
+                        ID_Material,
+                        nQuantity});
+        }
+        
+        /// <remarks/>
+        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity) {
+            this.AddMaterialToOrderAsync(ID_Order, ID_Material, nQuantity, null);
+        }
+        
+        /// <remarks/>
+        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity, object userState) {
+            if ((this.AddMaterialToOrderOperationCompleted == null)) {
+                this.AddMaterialToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddMaterialToOrderOperationCompleted);
+            }
+            this.InvokeAsync("AddMaterialToOrder", new object[] {
+                        ID_Order,
+                        ID_Material,
+                        nQuantity}, this.AddMaterialToOrderOperationCompleted, userState);
+        }
+        
+        private void OnAddMaterialToOrderOperationCompleted(object arg) {
+            if ((this.AddMaterialToOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddMaterialToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1208,7 +1240,29 @@ namespace AppLeanMaint.PlanningWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void AddMaterialToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void GetOrdersCompletedEventHandler(object sender, GetOrdersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOrdersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOrdersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Order[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Order[])(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
@@ -1295,6 +1349,10 @@ namespace AppLeanMaint.PlanningWS {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void AddMaterialToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

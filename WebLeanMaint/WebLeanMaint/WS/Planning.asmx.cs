@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,16 +75,14 @@ namespace WebLeanMaint.WS
 		}
 
 		[WebMethod]
-		[Description("Planning: Add material to order")]
-		public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity)
+		[Description("Planning: Get orders not completed")]
+		public Data.Planning.Order[] GetOrders()
 		{
-			Data.Planning.OrderMaterial oMaterial = new Data.Planning.OrderMaterial();
-			oMaterial.ID_Order = ID_Order;
-			oMaterial.ID_Material = ID_Material;
-			oMaterial.Quantity = nQuantity;
-			Data.Planning.OrderMaterials.InsertOne(oMaterial);
-		}
+			Data.Planning.Orders aOrders = new Data.Planning.Orders();
+			aOrders.Load("ID_ObjStatus=" + EntitiesManagerBase.UTI_ValueToSql((int)Data.Config.ObjStatuseEnum.Active), "PlannedFor");
 
+			return (aOrders.ToArray());
+		}
 
 		[WebMethod]
 		[Description("Planning: Get operators available for order")]
@@ -141,9 +140,20 @@ namespace WebLeanMaint.WS
 
 		[WebMethod]
 		[Description("Planning: Get material available for order")]
-		public Data.Maintenance.Material[] GetMaterialsForOrder(int ID_Order)
+		public Data.Maintenance.Material[] GetMaterialsForAsset(int ID_Asset)
 		{
-			return (Core.Planning.GetMaterialsForOrder(ID_Order));
+			return (Core.Planning.GetMaterialsForAsset(ID_Asset));
+		}
+
+		[WebMethod]
+		[Description("Planning: Add material to order")]
+		public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity)
+		{
+			Data.Planning.OrderMaterial oMaterial = new Data.Planning.OrderMaterial();
+			oMaterial.ID_Order = ID_Order;
+			oMaterial.ID_Material = ID_Material;
+			oMaterial.Quantity = nQuantity;
+			Data.Planning.OrderMaterials.InsertOne(oMaterial);
 		}
 	}
 }

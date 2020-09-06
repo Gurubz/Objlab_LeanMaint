@@ -24,6 +24,8 @@ namespace AppLeanMaint.Views
 		protected EditText m_oactivity_orders_EditTextDateToCompleteBefore = null;
 		protected EditText m_oactivity_orders_EditTextTimeToCompleteBefore = null;
 		protected EditText m_oactivity_orders_EditTextAsset = null;
+		protected EditText m_oactivity_orders_EditTextMaterial = null;
+		protected EditText m_oactivity_orders_EditTextOperator = null;
 		#endregion
 
 		#region Override Methods
@@ -113,7 +115,17 @@ namespace AppLeanMaint.Views
 
 			if (resultCode == Result.Ok)
 			{
-				if (requestCode == m_oactivity_orders_EditTextAsset.Id)
+				if (requestCode == (m_oactivity_orders_EditTextAsset.Id & 0xFFFF))
+				{
+					int nID = (int)data.GetIntExtra("ID", 0);
+					string sName = (string)data.GetStringExtra("Name");
+				}
+				if (requestCode == (m_oactivity_orders_EditTextMaterial.Id & 0xFFFF))
+				{
+					int nID = (int)data.GetIntExtra("ID", 0);
+					string sName = (string)data.GetStringExtra("Name");
+				}
+				if (requestCode == (m_oactivity_orders_EditTextOperator.Id & 0xFFFF))
 				{
 					int nID = (int)data.GetIntExtra("ID", 0);
 					string sName = (string)data.GetStringExtra("Name");
@@ -148,6 +160,10 @@ namespace AppLeanMaint.Views
 			GUI_AddTimePicker(m_oactivity_orders_EditTextTimeToCompleteBefore);
 			m_oactivity_orders_EditTextAsset = FindViewById<EditText>(Resource.Id.activity_orders_EditTextAsset);
 			GUI_AddActivityResult<ActivitySelectAsset>(m_oactivity_orders_EditTextAsset);
+			m_oactivity_orders_EditTextMaterial = FindViewById<EditText>(Resource.Id.activity_orders_EditTextMaterial);
+			GUI_AddActivityResult<ActivitySelectMaterial>(m_oactivity_orders_EditTextMaterial);
+			m_oactivity_orders_EditTextOperator = FindViewById<EditText>(Resource.Id.activity_orders_EditTextOperator);
+			GUI_AddActivityResult<ActivitySelectOperator>(m_oactivity_orders_EditTextOperator);
 
 			m_oactivity_orders_EditTextDescription.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextDatePlannedFor.SetSelectAllOnFocus(true);
@@ -155,6 +171,8 @@ namespace AppLeanMaint.Views
 			m_oactivity_orders_EditTextDateToCompleteBefore.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextTimeToCompleteBefore.SetSelectAllOnFocus(true);
 			m_oactivity_orders_EditTextAsset.SetSelectAllOnFocus(true);
+			m_oactivity_orders_EditTextMaterial.SetSelectAllOnFocus(true);
+			m_oactivity_orders_EditTextOperator.SetSelectAllOnFocus(true);
 		}
 
 		public void GUI_BizToGui()

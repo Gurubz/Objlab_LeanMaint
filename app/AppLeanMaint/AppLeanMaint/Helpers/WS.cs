@@ -11,7 +11,6 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using AppLeanMaint.PlanningWS;
 using AutoMapper;
 
 namespace AppLeanMaint.Helpers
@@ -20,9 +19,13 @@ namespace AppLeanMaint.Helpers
 	{
 		private WS()
 		{
+			int nTimeout = 2000;
 			m_oConfigWs = new ConfigWS.Config();
+			m_oConfigWs.Timeout = nTimeout;
 			m_oPlanningWs = new PlanningWS.Planning();
+			m_oPlanningWs.Timeout = nTimeout;
 			m_oMaintenanceWs = new MaintenanceWS.Maintenance();
+			m_oMaintenanceWs.Timeout = nTimeout;
 			MapperConfiguration oConfig = new MapperConfiguration(cfg =>
 			{
 				// cfg.CreateMap<CounterInfoResponse, Models.Counter>();
@@ -48,23 +51,37 @@ namespace AppLeanMaint.Helpers
 			}
 		}
 
-		public async Task UpdateLocalDataAsync()
+		public void UpdateLocalDataAsync()
 		{
-			OrderType[] aOrderTypes = await Task.Run(() => m_oPlanningWs.GetOrderTypes());
+			PlanningWS.OrderType[] aOrderTypes = m_oPlanningWs.GetOrderTypes();
 
-			await Task.Run(() => Database.Current.SaveOrderTypes(aOrderTypes));
+			Database.Current.SaveOrderTypes(aOrderTypes);
 		}
 
-		public int CreateOrder(Order m_oOrder)
+		public int CreateOrder(PlanningWS.Order m_oOrder)
 		{
 			return (m_oPlanningWs.CreateOrder(m_oOrder));
 		}
 
-		public async Task GetAssetsForOrder(int ID_Order = 0)
+		public void UpdateLocalAssetsForOrder(int ID_Order = 0)
 		{
-			Asset[] aAssets = await Task.Run(() => m_oPlanningWs.GetAssetsForOrder(ID_Order));
+			PlanningWS.Asset[] aAssets = m_oPlanningWs.GetAssetsForOrder(ID_Order);
 
-			await Task.Run(() => Database.Current.SaveAssets(aAssets));
+			Database.Current.SaveAssets(aAssets);
+		}
+
+		public void UpdateLocalMaterialsForOrder(int ID_Order = 0)
+		{
+			PlanningWS.Material[] aMaterials = m_oPlanningWs.GetMaterialsForOrder(ID_Order);
+
+			Database.Current.SaveMaterials(aMaterials);
+		}
+
+		public void UpdateLocalOperatorsForOrder(int ID_Order = 0)
+		{
+			PlanningWS.Operator[] aOperators = m_oPlanningWs.GetOperatorsForOrder(ID_Order);
+
+			Database.Current.SaveOperators(aOperators);
 		}
 	}
 }

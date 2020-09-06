@@ -90,18 +90,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddMaterialToOrder">
+      <s:element name="GetOrders">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOrdersResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="ID_Material" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="nQuantity" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrdersResult" type="tns:ArrayOfOrder" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddMaterialToOrderResponse">
-        <s:complexType />
-      </s:element>
+      <s:complexType name="ArrayOfOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetOperatorsForOrder">
         <s:complexType>
           <s:sequence>
@@ -233,6 +236,18 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID_StoreCenter" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="AddMaterialToOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ID_Material" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nQuantity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMaterialToOrderResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetOrderTypesSoapIn">
@@ -259,11 +274,11 @@
   <wsdl:message name="GetOrderSoapOut">
     <wsdl:part name="parameters" element="tns:GetOrderResponse" />
   </wsdl:message>
-  <wsdl:message name="AddMaterialToOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:AddMaterialToOrder" />
+  <wsdl:message name="GetOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrders" />
   </wsdl:message>
-  <wsdl:message name="AddMaterialToOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:AddMaterialToOrderResponse" />
+  <wsdl:message name="GetOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="GetOperatorsForOrderSoapIn">
     <wsdl:part name="parameters" element="tns:GetOperatorsForOrder" />
@@ -295,6 +310,12 @@
   <wsdl:message name="GetMaterialsForOrderSoapOut">
     <wsdl:part name="parameters" element="tns:GetMaterialsForOrderResponse" />
   </wsdl:message>
+  <wsdl:message name="AddMaterialToOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMaterialToOrder" />
+  </wsdl:message>
+  <wsdl:message name="AddMaterialToOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMaterialToOrderResponse" />
+  </wsdl:message>
   <wsdl:portType name="PlanningSoap">
     <wsdl:operation name="GetOrderTypes">
       <wsdl:input message="tns:GetOrderTypesSoapIn" />
@@ -312,9 +333,9 @@
       <wsdl:input message="tns:GetOrderSoapIn" />
       <wsdl:output message="tns:GetOrderSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddMaterialToOrder">
-      <wsdl:input message="tns:AddMaterialToOrderSoapIn" />
-      <wsdl:output message="tns:AddMaterialToOrderSoapOut" />
+    <wsdl:operation name="GetOrders">
+      <wsdl:input message="tns:GetOrdersSoapIn" />
+      <wsdl:output message="tns:GetOrdersSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetOperatorsForOrder">
       <wsdl:input message="tns:GetOperatorsForOrderSoapIn" />
@@ -335,6 +356,10 @@
     <wsdl:operation name="GetMaterialsForOrder">
       <wsdl:input message="tns:GetMaterialsForOrderSoapIn" />
       <wsdl:output message="tns:GetMaterialsForOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMaterialToOrder">
+      <wsdl:input message="tns:AddMaterialToOrderSoapIn" />
+      <wsdl:output message="tns:AddMaterialToOrderSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="PlanningSoap" type="tns:PlanningSoap">
@@ -375,8 +400,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddMaterialToOrder">
-      <soap:operation soapAction="http://objlab.it/AddMaterialToOrder" style="document" />
+    <wsdl:operation name="GetOrders">
+      <soap:operation soapAction="http://objlab.it/GetOrders" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -429,6 +454,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddMaterialToOrder">
+      <soap:operation soapAction="http://objlab.it/AddMaterialToOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="PlanningSoap12" type="tns:PlanningSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -468,8 +502,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddMaterialToOrder">
-      <soap12:operation soapAction="http://objlab.it/AddMaterialToOrder" style="document" />
+    <wsdl:operation name="GetOrders">
+      <soap12:operation soapAction="http://objlab.it/GetOrders" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -515,6 +549,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMaterialsForOrder">
       <soap12:operation soapAction="http://objlab.it/GetMaterialsForOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMaterialToOrder">
+      <soap12:operation soapAction="http://objlab.it/AddMaterialToOrder" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
