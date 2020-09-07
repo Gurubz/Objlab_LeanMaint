@@ -19,6 +19,18 @@ namespace AppLeanMaint
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
+
+			AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+			{
+				var newExc = new Exception("CurrentDomainOnUnhandledException", e.ExceptionObject as Exception);
+				Helpers.Exceptions.LogUnhandledException(newExc);
+			};
+			TaskScheduler.UnobservedTaskException += (sender, e) =>
+			{
+				var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", e.Exception as Exception);
+				Helpers.Exceptions.LogUnhandledException(newExc);
+			};
+
 			Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 			SetContentView(Resource.Layout.activity_main);
 			Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
@@ -32,7 +44,10 @@ namespace AppLeanMaint
 			NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 			navigationView.SetNavigationItemSelectedListener(this);
 
-			Helpers.WS.Instance.UpdateLocalDataAsync();
+			if (Helpers.Exceptions.DisplayCrashReport(this) == false)
+			{
+				Helpers.WS.Instance.UpdateLocalDataAsync();
+			}
 		}
 
 		protected override void OnPause()

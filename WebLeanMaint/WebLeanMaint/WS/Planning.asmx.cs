@@ -107,6 +107,14 @@ namespace WebLeanMaint.WS
 					aRet.Add(Data.Planning.Operators.UTI_RowToOperator(oRow));
 				}
 			}
+			else
+			{
+				DataSet oDs = Data.Planning.Operators.LoadFast(string.Empty);
+				foreach (DataRow oRow in oDs.Tables[0].Rows)
+				{
+					aRet.Add(Data.Planning.Operators.UTI_RowToOperator(oRow));
+				}
+			}
 
 			return (aRet);
 		}

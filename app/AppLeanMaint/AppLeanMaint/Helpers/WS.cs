@@ -19,7 +19,7 @@ namespace AppLeanMaint.Helpers
 	{
 		private WS()
 		{
-			int nTimeout = 2000;
+			int nTimeout = 5000;
 			m_oConfigWs = new ConfigWS.Config();
 			m_oConfigWs.Timeout = nTimeout;
 			m_oPlanningWs = new PlanningWS.Planning();
@@ -70,9 +70,9 @@ namespace AppLeanMaint.Helpers
 			Database.Current.SaveAssets(aAssets);
 		}
 
-		public void UpdateLocalMaterialsForOrder(int ID_Order = 0)
+		public void UpdateLocalMaterialsForAsset(int ID_Asset)
 		{
-			PlanningWS.Material[] aMaterials = m_oPlanningWs.GetMaterialsForOrder(ID_Order);
+			PlanningWS.Material[] aMaterials = m_oPlanningWs.GetMaterialsForAsset(ID_Asset);
 
 			Database.Current.SaveMaterials(aMaterials);
 		}

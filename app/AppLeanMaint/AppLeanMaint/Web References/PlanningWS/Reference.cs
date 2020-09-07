@@ -47,7 +47,7 @@ namespace AppLeanMaint.PlanningWS {
         
         private System.Threading.SendOrPostCallback AddAssetToOrderOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetMaterialsForOrderOperationCompleted;
+        private System.Threading.SendOrPostCallback GetMaterialsForAssetOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddMaterialToOrderOperationCompleted;
         
@@ -117,7 +117,7 @@ namespace AppLeanMaint.PlanningWS {
         public event AddAssetToOrderCompletedEventHandler AddAssetToOrderCompleted;
         
         /// <remarks/>
-        public event GetMaterialsForOrderCompletedEventHandler GetMaterialsForOrderCompleted;
+        public event GetMaterialsForAssetCompletedEventHandler GetMaterialsForAssetCompleted;
         
         /// <remarks/>
         public event AddMaterialToOrderCompletedEventHandler AddMaterialToOrderCompleted;
@@ -394,31 +394,31 @@ namespace AppLeanMaint.PlanningWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetMaterialsForOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Material[] GetMaterialsForOrder(int ID_Order) {
-            object[] results = this.Invoke("GetMaterialsForOrder", new object[] {
-                        ID_Order});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetMaterialsForAsset", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Material[] GetMaterialsForAsset(int ID_Asset) {
+            object[] results = this.Invoke("GetMaterialsForAsset", new object[] {
+                        ID_Asset});
             return ((Material[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetMaterialsForOrderAsync(int ID_Order) {
-            this.GetMaterialsForOrderAsync(ID_Order, null);
+        public void GetMaterialsForAssetAsync(int ID_Asset) {
+            this.GetMaterialsForAssetAsync(ID_Asset, null);
         }
         
         /// <remarks/>
-        public void GetMaterialsForOrderAsync(int ID_Order, object userState) {
-            if ((this.GetMaterialsForOrderOperationCompleted == null)) {
-                this.GetMaterialsForOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMaterialsForOrderOperationCompleted);
+        public void GetMaterialsForAssetAsync(int ID_Asset, object userState) {
+            if ((this.GetMaterialsForAssetOperationCompleted == null)) {
+                this.GetMaterialsForAssetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMaterialsForAssetOperationCompleted);
             }
-            this.InvokeAsync("GetMaterialsForOrder", new object[] {
-                        ID_Order}, this.GetMaterialsForOrderOperationCompleted, userState);
+            this.InvokeAsync("GetMaterialsForAsset", new object[] {
+                        ID_Asset}, this.GetMaterialsForAssetOperationCompleted, userState);
         }
         
-        private void OnGetMaterialsForOrderOperationCompleted(object arg) {
-            if ((this.GetMaterialsForOrderCompleted != null)) {
+        private void OnGetMaterialsForAssetOperationCompleted(object arg) {
+            if ((this.GetMaterialsForAssetCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetMaterialsForOrderCompleted(this, new GetMaterialsForOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetMaterialsForAssetCompleted(this, new GetMaterialsForAssetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1326,17 +1326,17 @@ namespace AppLeanMaint.PlanningWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void GetMaterialsForOrderCompletedEventHandler(object sender, GetMaterialsForOrderCompletedEventArgs e);
+    public delegate void GetMaterialsForAssetCompletedEventHandler(object sender, GetMaterialsForAssetCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetMaterialsForOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetMaterialsForAssetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetMaterialsForOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetMaterialsForAssetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

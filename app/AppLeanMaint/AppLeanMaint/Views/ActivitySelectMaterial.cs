@@ -20,6 +20,7 @@ namespace AppLeanMaint.Views
 		protected TextView m_oTextViewDescription = null;
 		protected PlanningWS.Material[] m_aMaterials = null;
 		protected PlanningWS.Material m_oMaterial = null;
+		protected PlanningWS.Asset m_oAsset = null;
 		#endregion
 
 		#region Override Methods
@@ -117,7 +118,10 @@ namespace AppLeanMaint.Views
 			SupportActionBar.Title = Resources.GetString(Resource.String.activity_select_material);
 			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-			Helpers.WS.Instance.UpdateLocalMaterialsForOrder();
+			int nID = Intent.GetIntExtra("ID", 0);
+			string sName = Intent.GetStringExtra("Name");
+			m_oAsset = Helpers.Database.Current.GetAsset(nID);
+			Helpers.WS.Instance.UpdateLocalMaterialsForAsset(m_oAsset.ID_Asset);
 
 			// m_nCarID = Intent.GetIntExtra("nCarID", 0);
 

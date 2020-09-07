@@ -119,16 +119,22 @@ namespace AppLeanMaint.Views
 				{
 					int nID = (int)data.GetIntExtra("ID", 0);
 					string sName = (string)data.GetStringExtra("Name");
+					m_oactivity_orders_EditTextAsset.Tag = nID;
+					m_oactivity_orders_EditTextAsset.Text = sName;
 				}
 				if (requestCode == (m_oactivity_orders_EditTextMaterial.Id & 0xFFFF))
 				{
 					int nID = (int)data.GetIntExtra("ID", 0);
 					string sName = (string)data.GetStringExtra("Name");
+					m_oactivity_orders_EditTextMaterial.Tag = nID;
+					m_oactivity_orders_EditTextMaterial.Text = sName;
 				}
 				if (requestCode == (m_oactivity_orders_EditTextOperator.Id & 0xFFFF))
 				{
 					int nID = (int)data.GetIntExtra("ID", 0);
 					string sName = (string)data.GetStringExtra("Name");
+					m_oactivity_orders_EditTextOperator.Tag = nID;
+					m_oactivity_orders_EditTextOperator.Text = sName;
 				}
 			}
 		}
@@ -161,7 +167,7 @@ namespace AppLeanMaint.Views
 			m_oactivity_orders_EditTextAsset = FindViewById<EditText>(Resource.Id.activity_orders_EditTextAsset);
 			GUI_AddActivityResult<ActivitySelectAsset>(m_oactivity_orders_EditTextAsset);
 			m_oactivity_orders_EditTextMaterial = FindViewById<EditText>(Resource.Id.activity_orders_EditTextMaterial);
-			GUI_AddActivityResult<ActivitySelectMaterial>(m_oactivity_orders_EditTextMaterial);
+			GUI_AddActivityResult<ActivitySelectMaterial>(m_oactivity_orders_EditTextMaterial, m_oactivity_orders_EditTextAsset);
 			m_oactivity_orders_EditTextOperator = FindViewById<EditText>(Resource.Id.activity_orders_EditTextOperator);
 			GUI_AddActivityResult<ActivitySelectOperator>(m_oactivity_orders_EditTextOperator);
 
@@ -205,8 +211,8 @@ namespace AppLeanMaint.Views
 			m_oOrder.ID_Order = int.Parse(m_oactivity_orders_TextViewID_Order.Text);
 			m_oOrder.Description = m_oactivity_orders_EditTextDescription.Text;
 			m_oOrder.ID_OrderType = m_oactivity_orders_spinnerID_OrderType.SelectedItemPosition + 1;
-			m_oOrder.PlannedFor = DateTime.Parse(m_oactivity_orders_EditTextDatePlannedFor.Text + " " + m_oactivity_orders_EditTextTimePlannedFor.Text);
-			m_oOrder.ToCompleteBefore = DateTime.Parse(m_oactivity_orders_EditTextDateToCompleteBefore.Text + " " + m_oactivity_orders_EditTextTimeToCompleteBefore.Text);
+			m_oOrder.PlannedFor = GUI_EditTextToDateTime(m_oactivity_orders_EditTextDatePlannedFor, m_oactivity_orders_EditTextTimePlannedFor);
+			m_oOrder.ToCompleteBefore = GUI_EditTextToDateTime(m_oactivity_orders_EditTextDateToCompleteBefore, m_oactivity_orders_EditTextTimeToCompleteBefore);
 
 			// m_oViewModel.DateReference = DateTime.Parse(m_oButtonDateReading.Text);
 			// m_oViewModel.FuelType = MKA.App.SchedaCarburante.Models.Enums.Current.FuelTypes[m_oSpinnerFuelType.SelectedItemPosition];
@@ -220,6 +226,11 @@ namespace AppLeanMaint.Views
 			sRet = sRet.Replace(".", System.Globalization.CultureInfo.CurrentUICulture.NumberFormat.CurrencyDecimalSeparator);
 
 			return (sRet);
+		}
+
+		protected DateTime GUI_EditTextToDateTime(EditText oEditTextDate, EditText oEditTextTime)
+		{
+			return (DateTime.Parse(oEditTextDate.Text + " " + oEditTextTime.Text));
 		}
 
 		protected void GUI_AddDatePicker(EditText oEditText)
@@ -263,7 +274,7 @@ namespace AppLeanMaint.Views
 			};
 		}
 
-		protected void GUI_AddActivityResult<T>(EditText oEditText)
+		protected void GUI_AddActivityResult<T>(EditText oEditText, EditText oEditTextParent1 = null)
 		{
 			oEditText.Focusable = false;
 			oEditText.Click += delegate
@@ -271,6 +282,11 @@ namespace AppLeanMaint.Views
 				int nID = 0;
 				string sName = string.Empty;
 
+				if (oEditTextParent1 != null)
+				{
+					nID = (int)oEditTextParent1.Tag;
+					sName = oEditTextParent1.Text;
+				}
 				Intent oIntent = new Intent(this, typeof(T));
 				oIntent.PutExtra("ID", nID);
 				oIntent.PutExtra("Name", sName);

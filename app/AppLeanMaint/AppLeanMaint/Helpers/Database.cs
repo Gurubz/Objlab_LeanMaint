@@ -2,6 +2,7 @@ using SQLite;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using AppLeanMaint.PlanningWS;
 
 namespace AppLeanMaint.Helpers
 {
@@ -133,6 +134,16 @@ namespace AppLeanMaint.Helpers
 				oConnection.DeleteAll<PlanningWS.Operator>();
 				oConnection.InsertAll(aOperators);
 			}
+		}
+
+		public Asset GetAsset(int nID_Asset)
+		{
+			Asset oRet = null;
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				oRet = oConnection.Table<PlanningWS.Asset>().Where((x) => x.ID_Asset == nID_Asset).SingleOrDefault();
+			}
+			return (oRet);
 		}
 	}
 }
