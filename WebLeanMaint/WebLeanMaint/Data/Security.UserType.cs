@@ -7,10 +7,10 @@ namespace Data.Security
 	/// Public UserType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_UserType = {ID_UserType}")]
-	public class UserType
+	public partial class UserType
 	{
 		public UserType()
 		{

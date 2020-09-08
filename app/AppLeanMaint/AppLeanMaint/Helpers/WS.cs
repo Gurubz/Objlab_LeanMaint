@@ -83,5 +83,12 @@ namespace AppLeanMaint.Helpers
 
 			Database.Current.SaveOperators(aOperators);
 		}
+
+		public PlanningWS.Order[] GetOrders()
+		{
+			PlanningWS.Order[] aRet = m_oPlanningWs.GetOrders();
+
+			return (aRet);
+		}
 	}
 }

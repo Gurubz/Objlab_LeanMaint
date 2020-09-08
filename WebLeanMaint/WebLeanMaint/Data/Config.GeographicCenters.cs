@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	public class GeographicCenters : EntitiesManagerBase
 	{

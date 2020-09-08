@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using AppLeanMaint.PlanningWS;
+using Android.Widget;
 
 namespace AppLeanMaint.Helpers
 {
@@ -142,6 +143,16 @@ namespace AppLeanMaint.Helpers
 			using (var oConnection = new SQLiteConnection(DB_FILE))
 			{
 				oRet = oConnection.Table<PlanningWS.Asset>().Where((x) => x.ID_Asset == nID_Asset).SingleOrDefault();
+			}
+			return (oRet);
+		}
+
+		public Operator GetOperator(int nID_Operator)
+		{
+			Operator oRet = null;
+			using (var oConnection = new SQLiteConnection(DB_FILE))
+			{
+				oRet = oConnection.Table<PlanningWS.Operator>().Where((x) => x.ID_Operator == nID_Operator).SingleOrDefault();
 			}
 			return (oRet);
 		}

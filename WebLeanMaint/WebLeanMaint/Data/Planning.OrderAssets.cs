@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	public class OrderAssets : EntitiesManagerBase
 	{
@@ -27,11 +27,11 @@ namespace Data.Planning
 		#region Public Methods
 		#region Collection
 
-		public OrderAsset GetByKeys(Int32 nID_Order, Int32 nID_Asset)
+		public OrderAsset GetByKeys(Int32 nID_OrderAsset)
 		{
 			foreach (OrderAsset oOrderAsset in this.m_aItems)
 			{
-				if (oOrderAsset.ID_Order == nID_Order && oOrderAsset.ID_Asset == nID_Asset)
+				if (oOrderAsset.ID_OrderAsset == nID_OrderAsset)
 				{
 					return (oOrderAsset);
 				}
@@ -158,12 +158,12 @@ namespace Data.Planning
 			return (oRet);
 		}
 
-		public static OrderAsset LoadOne(Int32 nID_Order, Int32 nID_Asset)
+		public static OrderAsset LoadOne(Int32 nID_OrderAsset)
 		{
-			return(LoadOne(nID_Order, nID_Asset, null));
+			return(LoadOne(nID_OrderAsset, null));
 		}
 
-		public static OrderAsset LoadOne(Int32 nID_Order, Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static OrderAsset LoadOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection)
 		{
 			OrderAsset oOrderAsset = null;
 			DataSet oDs = null;
@@ -173,11 +173,8 @@ namespace Data.Planning
 			oSelect = new StringBuilder("SELECT * FROM [Planning].[OrderAssets]");
 
 			oSelect.Append(" WHERE ");
-			oSelect.Append("[ID_Order]=");
-			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Order));
-			oSelect.Append(" AND ");
-			oSelect.Append("[ID_Asset]=");
-			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oSelect.Append("[ID_OrderAsset]=");
+			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_OrderAsset));
 
 			oDs = EntitiesManagerBase.DAT_ExecuteDataSet(oSelect.ToString(), oPrivateConnection);
 
@@ -194,16 +191,16 @@ namespace Data.Planning
 			return (oOrderAsset);
 		}
 
-		public static OrderAsset TryLoadOne(Int32 nID_Order, Int32 nID_Asset)
+		public static OrderAsset TryLoadOne(Int32 nID_OrderAsset)
 		{
-			return(TryLoadOne(nID_Order, nID_Asset, null));
+			return(TryLoadOne(nID_OrderAsset, null));
 		}
 
-		public static OrderAsset TryLoadOne(Int32 nID_Order, Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static OrderAsset TryLoadOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection)
 		{
 			OrderAsset oOrderAsset = null;
 
-			oOrderAsset = LoadOne(nID_Order, nID_Asset, null);
+			oOrderAsset = LoadOne(nID_OrderAsset, null);
 
 			if (oOrderAsset == null)
 			{
@@ -239,7 +236,9 @@ namespace Data.Planning
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.Description));
 			oInsert.Append(")");
 
-			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
+			Object oRet;
+			oRet = EntitiesManagerBase.DAT_ExecuteScalar(oInsert.ToString(), "\nSELECT @@IDENTITY AS ID", oPrivateConnection);
+			oOrderAsset.ID_OrderAsset = Convert.ToInt32(oRet);
 		}
 
 		public static void UpdateOne(OrderAsset oOrderAsset)
@@ -253,6 +252,12 @@ namespace Data.Planning
 
 			oUpdate = new StringBuilder("UPDATE [Planning].[OrderAssets] SET ");
 
+			oUpdate.Append("[ID_Order]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_Order));
+			oUpdate.Append(", ");
+			oUpdate.Append("[ID_Asset]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_Asset));
+			oUpdate.Append(", ");
 			oUpdate.Append("[StopRequired]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.StopRequired));
 			oUpdate.Append(", ");
@@ -290,25 +295,19 @@ namespace Data.Planning
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID_Order]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_Order));
-			oWhere.Append(" AND ");
-			oWhere.Append("[ID_Asset]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_Asset));
+			oWhere.Append("[ID_OrderAsset]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_OrderAsset));
 
 			return (oWhere.ToString());
 		}
 
-		public static string UTI_Where4One(Int32 nID_Order, Int32 nID_Asset)
+		public static string UTI_Where4One(Int32 nID_OrderAsset)
 		{
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID_Order]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Order));
-			oWhere.Append(" AND ");
-			oWhere.Append("[ID_Asset]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oWhere.Append("[ID_OrderAsset]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_OrderAsset));
 
 			return (oWhere.ToString());
 		}
@@ -317,6 +316,7 @@ namespace Data.Planning
 		{
 			OrderAsset oOrderAsset = new OrderAsset();
 
+			oOrderAsset.ID_OrderAsset = ((Int32)(oRow["ID_OrderAsset"]));
 			oOrderAsset.ID_Order = ((Int32)(oRow["ID_Order"]));
 			oOrderAsset.ID_Asset = ((Int32)(oRow["ID_Asset"]));
 			oOrderAsset.StopRequired = ((Boolean)(oRow["StopRequired"]));

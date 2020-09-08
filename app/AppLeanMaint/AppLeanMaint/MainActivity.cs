@@ -116,7 +116,7 @@ namespace AppLeanMaint
 			}
 			else if (id == Resource.Id.nav_plannings_list)
 			{
-				//StartActivity(typeof(ActivityAdmin));
+				StartActivity(typeof(ActivityOrdersList));
 			}
 
 			DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

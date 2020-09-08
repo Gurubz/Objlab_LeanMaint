@@ -57,9 +57,9 @@ namespace WebLeanMaint.Core
 		{
 			SortedList<int, Data.Maintenance.Material> aRet = new SortedList<int, Data.Maintenance.Material>();
 
-			Data.Maintenance.MaterialAssets aMaterialAssets = new Data.Maintenance.MaterialAssets();
+			Data.Maintenance.AssetMaterials aMaterialAssets = new Data.Maintenance.AssetMaterials();
 			aMaterialAssets.Load("ID_Asset=" + EntitiesManagerBase.UTI_ValueToSql(ID_Asset));
-			foreach (Data.Maintenance.MaterialAsset oMaterialAsset in aMaterialAssets)
+			foreach (Data.Maintenance.AssetMaterial oMaterialAsset in aMaterialAssets)
 			{
 				if (aRet.ContainsKey(oMaterialAsset.ID_Material) == false)
 				{

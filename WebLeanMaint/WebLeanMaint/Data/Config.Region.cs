@@ -7,10 +7,10 @@ namespace Data.Config
 	/// Public Region Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Region = {ID_Region}")]
-	public class Region
+	public partial class Region
 	{
 		public Region()
 		{

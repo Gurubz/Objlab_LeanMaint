@@ -9,17 +9,17 @@ using System.Text;
 namespace Data.Maintenance
 {
 	/// <summary>
-	/// Public MaterialAsset Class
+	/// Public AssetMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
-	public class MaterialAssets : EntitiesManagerBase
+	public class AssetMaterials : EntitiesManagerBase
 	{
 		#region Public Properties
-		public MaterialAsset this[int nIndex]
+		public AssetMaterial this[int nIndex]
 		{
-			get { return ((MaterialAsset)this.m_aItems[nIndex]); }
+			get { return ((AssetMaterial)this.m_aItems[nIndex]); }
 			set { this.m_aItems[nIndex] = value; }
 		}
 		#endregion
@@ -27,25 +27,25 @@ namespace Data.Maintenance
 		#region Public Methods
 		#region Collection
 
-		public MaterialAsset GetByKeys(Int32 nID_Material, Int32 nID_Asset)
+		public AssetMaterial GetByKeys(Int32 nID_Asset, Int32 nID_Material)
 		{
-			foreach (MaterialAsset oMaterialAsset in this.m_aItems)
+			foreach (AssetMaterial oAssetMaterial in this.m_aItems)
 			{
-				if (oMaterialAsset.ID_Material == nID_Material && oMaterialAsset.ID_Asset == nID_Asset)
+				if (oAssetMaterial.ID_Asset == nID_Asset && oAssetMaterial.ID_Material == nID_Material)
 				{
-					return (oMaterialAsset);
+					return (oAssetMaterial);
 				}
 			}
 
 			return (null);
 		}
 
-		public MaterialAsset[] ToArray()
+		public AssetMaterial[] ToArray()
 		{
-			List<MaterialAsset> aRet = new List<MaterialAsset>();
-			foreach (MaterialAsset oMaterialAsset in this.m_aItems)
+			List<AssetMaterial> aRet = new List<AssetMaterial>();
+			foreach (AssetMaterial oAssetMaterial in this.m_aItems)
 			{
-				aRet.Add(oMaterialAsset);
+				aRet.Add(oAssetMaterial);
 			}
 			return (aRet.ToArray());
 		}
@@ -69,7 +69,7 @@ namespace Data.Maintenance
 
 		public virtual DataSet Load(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
 		{
-			MaterialAsset oMaterialAsset = null;
+			AssetMaterial oAssetMaterial = null;
 			DataSet oRet = null;
 
 			// Clear internal item array
@@ -81,10 +81,10 @@ namespace Data.Maintenance
 			// Scan rows to create entity
 			foreach (DataRow oRow in oRet.Tables[0].Rows)
 			{
-				oMaterialAsset = UTI_RowToMaterialAsset(oRow);
+				oAssetMaterial = UTI_RowToAssetMaterial(oRow);
 
 				// Add entity to internal array
-				this.m_aItems.Add(oMaterialAsset);
+				this.m_aItems.Add(oAssetMaterial);
 
 			}
 
@@ -100,7 +100,7 @@ namespace Data.Maintenance
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialAssets]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[AssetMaterials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -136,7 +136,7 @@ namespace Data.Maintenance
 			DataSet oRet = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[MaterialAssets]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[AssetMaterials]");
 
 			// If where provided
 			if (sWhere.Length > 0)
@@ -158,26 +158,26 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static MaterialAsset LoadOne(Int32 nID_Material, Int32 nID_Asset)
+		public static AssetMaterial LoadOne(Int32 nID_Asset, Int32 nID_Material)
 		{
-			return(LoadOne(nID_Material, nID_Asset, null));
+			return(LoadOne(nID_Asset, nID_Material, null));
 		}
 
-		public static MaterialAsset LoadOne(Int32 nID_Material, Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static AssetMaterial LoadOne(Int32 nID_Asset, Int32 nID_Material, SqlConnection oPrivateConnection)
 		{
-			MaterialAsset oMaterialAsset = null;
+			AssetMaterial oAssetMaterial = null;
 			DataSet oDs = null;
 			StringBuilder oSelect = null;
 
 			// Prepare the Sql Statement
-			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[MaterialAssets]");
+			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[AssetMaterials]");
 
 			oSelect.Append(" WHERE ");
-			oSelect.Append("[ID_Material]=");
-			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Material));
-			oSelect.Append(" AND ");
 			oSelect.Append("[ID_Asset]=");
 			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oSelect.Append(" AND ");
+			oSelect.Append("[ID_Material]=");
+			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Material));
 
 			oDs = EntitiesManagerBase.DAT_ExecuteDataSet(oSelect.ToString(), oPrivateConnection);
 
@@ -188,125 +188,125 @@ namespace Data.Maintenance
 				// Take the row
 				oRow = oDs.Tables[0].Rows[0];
 
-				oMaterialAsset = UTI_RowToMaterialAsset(oRow);
+				oAssetMaterial = UTI_RowToAssetMaterial(oRow);
 			}
 
-			return (oMaterialAsset);
+			return (oAssetMaterial);
 		}
 
-		public static MaterialAsset TryLoadOne(Int32 nID_Material, Int32 nID_Asset)
+		public static AssetMaterial TryLoadOne(Int32 nID_Asset, Int32 nID_Material)
 		{
-			return(TryLoadOne(nID_Material, nID_Asset, null));
+			return(TryLoadOne(nID_Asset, nID_Material, null));
 		}
 
-		public static MaterialAsset TryLoadOne(Int32 nID_Material, Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static AssetMaterial TryLoadOne(Int32 nID_Asset, Int32 nID_Material, SqlConnection oPrivateConnection)
 		{
-			MaterialAsset oMaterialAsset = null;
+			AssetMaterial oAssetMaterial = null;
 
-			oMaterialAsset = LoadOne(nID_Material, nID_Asset, null);
+			oAssetMaterial = LoadOne(nID_Asset, nID_Material, null);
 
-			if (oMaterialAsset == null)
+			if (oAssetMaterial == null)
 			{
-				return (new MaterialAsset());
+				return (new AssetMaterial());
 			}
 			else
 			{
-				return (oMaterialAsset);
+				return (oAssetMaterial);
 			}
 		}
 
-		public static void InsertOne(MaterialAsset oMaterialAsset)
+		public static void InsertOne(AssetMaterial oAssetMaterial)
 		{
-			InsertOne(oMaterialAsset, null);
+			InsertOne(oAssetMaterial, null);
 		}
 
-		public static void InsertOne(MaterialAsset oMaterialAsset, SqlConnection oPrivateConnection)
+		public static void InsertOne(AssetMaterial oAssetMaterial, SqlConnection oPrivateConnection)
 		{
 			StringBuilder oInsert = null;
 
-			oInsert = new StringBuilder("INSERT INTO [Maintenance].[MaterialAssets] ");
-			oInsert.Append("([ID_Material], [ID_Asset])");
+			oInsert = new StringBuilder("INSERT INTO [Maintenance].[AssetMaterials] ");
+			oInsert.Append("([ID_Asset], [ID_Material])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterialAsset.ID_Material));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAssetMaterial.ID_Asset));
 			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterialAsset.ID_Asset));
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAssetMaterial.ID_Material));
 			oInsert.Append(")");
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(MaterialAsset oMaterialAsset)
+		public static void UpdateOne(AssetMaterial oAssetMaterial)
 		{
-			UpdateOne(oMaterialAsset, null);
+			UpdateOne(oAssetMaterial, null);
 		}
 
-		public static void UpdateOne(MaterialAsset oMaterialAsset, SqlConnection oPrivateConnection)
+		public static void UpdateOne(AssetMaterial oAssetMaterial, SqlConnection oPrivateConnection)
 		{
 			StringBuilder oUpdate = null;
 
-			oUpdate = new StringBuilder("UPDATE [Maintenance].[MaterialAssets] SET ");
+			oUpdate = new StringBuilder("UPDATE [Maintenance].[AssetMaterials] SET ");
 
 
-			oUpdate.Append(UTI_Where4One(oMaterialAsset));
+			oUpdate.Append(UTI_Where4One(oAssetMaterial));
 
 			// Execute the update
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oUpdate.ToString(), oPrivateConnection);
 
 		}
 
-		public static void DeleteOne(MaterialAsset oMaterialAsset)
+		public static void DeleteOne(AssetMaterial oAssetMaterial)
 		{
-			DeleteOne(oMaterialAsset, null);
+			DeleteOne(oAssetMaterial, null);
 		}
 
-		public static void DeleteOne(MaterialAsset oMaterialAsset, SqlConnection oPrivateConnection)
+		public static void DeleteOne(AssetMaterial oAssetMaterial, SqlConnection oPrivateConnection)
 		{
 			StringBuilder oDelete = null;
 
-			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialAssets]");
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[AssetMaterials]");
 
-			oDelete.Append(UTI_Where4One(oMaterialAsset));
+			oDelete.Append(UTI_Where4One(oAssetMaterial));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}
 
-		public static string UTI_Where4One(MaterialAsset oMaterialAsset)
+		public static string UTI_Where4One(AssetMaterial oAssetMaterial)
 		{
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID_Material]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterialAsset.ID_Material));
-			oWhere.Append(" AND ");
 			oWhere.Append("[ID_Asset]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oMaterialAsset.ID_Asset));
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oAssetMaterial.ID_Asset));
+			oWhere.Append(" AND ");
+			oWhere.Append("[ID_Material]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oAssetMaterial.ID_Material));
 
 			return (oWhere.ToString());
 		}
 
-		public static string UTI_Where4One(Int32 nID_Material, Int32 nID_Asset)
+		public static string UTI_Where4One(Int32 nID_Asset, Int32 nID_Material)
 		{
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID_Material]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Material));
-			oWhere.Append(" AND ");
 			oWhere.Append("[ID_Asset]=");
 			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oWhere.Append(" AND ");
+			oWhere.Append("[ID_Material]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Material));
 
 			return (oWhere.ToString());
 		}
 
-		public static MaterialAsset UTI_RowToMaterialAsset(DataRow oRow)
+		public static AssetMaterial UTI_RowToAssetMaterial(DataRow oRow)
 		{
-			MaterialAsset oMaterialAsset = new MaterialAsset();
+			AssetMaterial oAssetMaterial = new AssetMaterial();
 
-			oMaterialAsset.ID_Material = ((Int32)(oRow["ID_Material"]));
-			oMaterialAsset.ID_Asset = ((Int32)(oRow["ID_Asset"]));
+			oAssetMaterial.ID_Asset = ((Int32)(oRow["ID_Asset"]));
+			oAssetMaterial.ID_Material = ((Int32)(oRow["ID_Material"]));
 
-			return (oMaterialAsset);
+			return (oAssetMaterial);
 		}
 		#endregion
 	}

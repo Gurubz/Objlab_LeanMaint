@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public MaterialUM Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	public class MaterialUMs : EntitiesManagerBase
 	{

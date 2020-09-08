@@ -7,10 +7,10 @@ namespace Data.Maintenance
 	/// Public Supplier Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Supplier = {ID_Supplier}")]
-	public class Supplier
+	public partial class Supplier
 	{
 		public Supplier()
 		{

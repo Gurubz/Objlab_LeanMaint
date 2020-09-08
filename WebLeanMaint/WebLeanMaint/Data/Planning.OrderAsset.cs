@@ -7,22 +7,27 @@ namespace Data.Planning
 	/// Public OrderAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
-	[DebuggerDisplay("ID_Order = {ID_Order}, ID_Asset = {ID_Asset}")]
-	public class OrderAsset
+	[DebuggerDisplay("ID_OrderAsset = {ID_OrderAsset}")]
+	public partial class OrderAsset
 	{
 		public OrderAsset()
 		{
 		}
 
-		public OrderAsset(Int32 nID_Order, Int32 nID_Asset)
+		public OrderAsset(Int32 nID_OrderAsset)
 		{
-			m_nID_Order = nID_Order;
-			m_nID_Asset = nID_Asset;
+			m_nID_OrderAsset = nID_OrderAsset;
 		}
 
 		#region Public Properties
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_OrderAsset
+		{
+		  get { return (m_nID_OrderAsset); }
+		  set { m_nID_OrderAsset = value; }
+		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_Order
 		{
@@ -56,6 +61,7 @@ namespace Data.Planning
 		#endregion
 
 		#region Protected Properties
+		protected Int32 m_nID_OrderAsset;
 		protected Int32 m_nID_Order;
 		protected Int32 m_nID_Asset;
 		protected Boolean m_bStopRequired;
@@ -64,10 +70,9 @@ namespace Data.Planning
 		#endregion
 
 		#region Friends Methods
-		internal void SetKeys(Int32 nID_Order, Int32 nID_Asset)
+		internal void SetKeys(Int32 nID_OrderAsset)
 		{
-			m_nID_Order = nID_Order;
-			m_nID_Asset = nID_Asset;
+			m_nID_OrderAsset = nID_OrderAsset;
 		}
 		#endregion
 	}

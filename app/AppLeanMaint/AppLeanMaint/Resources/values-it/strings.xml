@@ -46,6 +46,8 @@
 	<string name="activity_select_operator_name">Nome</string>
 	<string name="activity_select_operator_description">Descrizione</string>
 
+	<string name="activity_orders_list">Lista ordini attivi</string>
+
 	<string name="activity_execution">Intervento</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>
 	<string name="activity_execution_desc_inter">Descrizione</string>

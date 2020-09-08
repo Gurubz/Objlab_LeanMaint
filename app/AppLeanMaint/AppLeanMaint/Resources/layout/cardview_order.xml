@@ -1,0 +1,53 @@
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_margin="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/cardview_order_id_order"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:textAlignment="textEnd"
+            android:textSize="10dp"
+            tools:text="12"/>
+        <TextView
+            android:id="@+id/cardview_order_asset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            tools:text="Panaut automatico"
+            android:textColor="#222"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/cardview_order_operator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            tools:text="Pippo"
+            android:textColor="#222"
+            android:textStyle="bold"
+            android:textSize="14dp" />
+        <TextView
+            android:id="@+id/cardview_order_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fermentum iaculis eu non diam phasellus vestibulum lorem sed. Tortor dignissim convallis aenean et tortor. Neque gravida in fermentum et sollicitudin. At lectus urna duis convallis convallis. Adipiscing elit ut aliquam purus sit amet. Eget nulla facilisi etiam dignissim diam quis enim. Tincidunt eget nullam non nisi est sit amet facilisis. Ligula ullamcorper malesuada proin libero nunc consequat. Felis eget velit aliquet sagittis id consectetur purus. Viverra aliquet eget sit amet tellus cras. Suscipit tellus mauris a diam maecenas. Varius quam quisque id diam vel quam. Fermentum posuere urna nec tincidunt praesent semper feugiat. Dolor sit amet consectetur adipiscing elit. Risus ultricies tristique nulla aliquet enim tortor at auctor."
+            android:textSize="12dp" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

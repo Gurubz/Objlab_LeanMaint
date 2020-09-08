@@ -213,6 +213,12 @@ namespace AppLeanMaint.Views
 			m_oOrder.ID_OrderType = m_oactivity_orders_spinnerID_OrderType.SelectedItemPosition + 1;
 			m_oOrder.PlannedFor = GUI_EditTextToDateTime(m_oactivity_orders_EditTextDatePlannedFor, m_oactivity_orders_EditTextTimePlannedFor);
 			m_oOrder.ToCompleteBefore = GUI_EditTextToDateTime(m_oactivity_orders_EditTextDateToCompleteBefore, m_oactivity_orders_EditTextTimeToCompleteBefore);
+			PlanningWS.OrderAsset oAsset = new PlanningWS.OrderAsset() { ID_Asset = (int)m_oactivity_orders_EditTextAsset.Tag, MinutesRequired = 1, StopRequired = false };
+			PlanningWS.OrderAssetMaterial oAssetMaterial = new PlanningWS.OrderAssetMaterial() { ID_Material = (int)m_oactivity_orders_EditTextMaterial.Tag, Quantity = 1 };
+			oAsset.OrderAssetMaterials = new PlanningWS.OrderAssetMaterial[] { oAssetMaterial };
+			m_oOrder.Assets = new PlanningWS.OrderAsset[] { oAsset };
+			PlanningWS.OrderOperator oOperator = new PlanningWS.OrderOperator() { ID_Operator = (int)m_oactivity_orders_EditTextOperator.Tag };
+			m_oOrder.Operators = new PlanningWS.OrderOperator[] { oOperator };
 
 			// m_oViewModel.DateReference = DateTime.Parse(m_oButtonDateReading.Text);
 			// m_oViewModel.FuelType = MKA.App.SchedaCarburante.Models.Enums.Current.FuelTypes[m_oSpinnerFuelType.SelectedItemPosition];

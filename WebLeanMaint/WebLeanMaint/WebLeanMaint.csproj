@@ -188,8 +188,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\Maintenance.AssetMaterial.cs" />
+    <Compile Include="Data\Maintenance.AssetMaterials.cs" />
     <Compile Include="Data\Planning.OperatorType.cs" />
     <Compile Include="Data\Planning.OperatorTypes.cs" />
+    <Compile Include="Data\Planning.Order.ex.cs" />
+    <Compile Include="Data\Planning.OrderAsset.ex.cs" />
+    <Compile Include="Data\Planning.OrderAssetMaterial.cs" />
+    <Compile Include="Data\Planning.OrderAssetMaterials.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JoinQuery.cs" />
@@ -300,8 +306,6 @@
     <Compile Include="Data\Maintenance.ExecutionType.cs" />
     <Compile Include="Data\Maintenance.ExecutionTypes.cs" />
     <Compile Include="Data\Maintenance.Material.cs" />
-    <Compile Include="Data\Maintenance.MaterialAsset.cs" />
-    <Compile Include="Data\Maintenance.MaterialAssets.cs" />
     <Compile Include="Data\Maintenance.Materials.cs" />
     <Compile Include="Data\Maintenance.MaterialUM.cs" />
     <Compile Include="Data\Maintenance.MaterialUMs.cs" />
@@ -324,8 +328,6 @@
     <Compile Include="Data\Planning.Order.cs" />
     <Compile Include="Data\Planning.OrderAsset.cs" />
     <Compile Include="Data\Planning.OrderAssets.cs" />
-    <Compile Include="Data\Planning.OrderMaterial.cs" />
-    <Compile Include="Data\Planning.OrderMaterials.cs" />
     <Compile Include="Data\Planning.OrderOperator.cs" />
     <Compile Include="Data\Planning.OrderOperators.cs" />
     <Compile Include="Data\Planning.Orders.cs" />

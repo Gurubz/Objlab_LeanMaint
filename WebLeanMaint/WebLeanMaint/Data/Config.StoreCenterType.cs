@@ -7,10 +7,10 @@ namespace Data.Config
 	/// Public StoreCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_StoreCenterType = {ID_StoreCenterType}")]
-	public class StoreCenterType
+	public partial class StoreCenterType
 	{
 		public StoreCenterType()
 		{

@@ -4,30 +4,30 @@ using System.Diagnostics;
 namespace Data.Planning
 {
 	/// <summary>
-	/// Public OrderMaterial Class
+	/// Public OrderAssetMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
-	[DebuggerDisplay("ID_Order = {ID_Order}, ID_Material = {ID_Material}")]
-	public class OrderMaterial
+	[DebuggerDisplay("ID_OrderAsset = {ID_OrderAsset}, ID_Material = {ID_Material}")]
+	public partial class OrderAssetMaterial
 	{
-		public OrderMaterial()
+		public OrderAssetMaterial()
 		{
 		}
 
-		public OrderMaterial(Int32 nID_Order, Int32 nID_Material)
+		public OrderAssetMaterial(Int32 nID_OrderAsset, Int32 nID_Material)
 		{
-			m_nID_Order = nID_Order;
+			m_nID_OrderAsset = nID_OrderAsset;
 			m_nID_Material = nID_Material;
 		}
 
 		#region Public Properties
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 ID_Order
+		public Int32 ID_OrderAsset
 		{
-		  get { return (m_nID_Order); }
-		  set { m_nID_Order = value; }
+		  get { return (m_nID_OrderAsset); }
+		  set { m_nID_OrderAsset = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_Material
@@ -36,7 +36,7 @@ namespace Data.Planning
 		  set { m_nID_Material = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Int32 Quantity
+		public Decimal Quantity
 		{
 		  get { return (m_nQuantity); }
 		  set { m_nQuantity = value; }
@@ -44,15 +44,15 @@ namespace Data.Planning
 		#endregion
 
 		#region Protected Properties
-		protected Int32 m_nID_Order;
+		protected Int32 m_nID_OrderAsset;
 		protected Int32 m_nID_Material;
-		protected Int32 m_nQuantity;
+		protected Decimal m_nQuantity;
 		#endregion
 
 		#region Friends Methods
-		internal void SetKeys(Int32 nID_Order, Int32 nID_Material)
+		internal void SetKeys(Int32 nID_OrderAsset, Int32 nID_Material)
 		{
-			m_nID_Order = nID_Order;
+			m_nID_OrderAsset = nID_OrderAsset;
 			m_nID_Material = nID_Material;
 		}
 		#endregion

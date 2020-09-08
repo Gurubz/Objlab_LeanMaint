@@ -7,10 +7,10 @@ namespace Data.Maintenance
 	/// Public ExecutionOperator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Execution = {ID_Execution}, ID_Operator = {ID_Operator}")]
-	public class ExecutionOperator
+	public partial class ExecutionOperator
 	{
 		public ExecutionOperator()
 		{

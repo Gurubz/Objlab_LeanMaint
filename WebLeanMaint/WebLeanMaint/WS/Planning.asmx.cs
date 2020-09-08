@@ -61,8 +61,33 @@ namespace WebLeanMaint.WS
 			oOrder.RequestedAt = DateTime.Now;
 			oOrder.Completed = false;
 
-
 			Data.Planning.Orders.InsertOne(oOrder);
+			if (oOrder.Assets != null)
+			{
+				foreach (Data.Planning.OrderAsset oOrderAsset in oOrder.Assets)
+				{
+					oOrderAsset.ID_Order = oOrder.ID_Order;
+					Data.Planning.OrderAssets.InsertOne(oOrderAsset);
+					int ID_OrderAsset = oOrderAsset.ID_OrderAsset;
+
+					if (oOrderAsset.OrderAssetMaterials != null)
+					{
+						foreach (Data.Planning.OrderAssetMaterial oOrderAssetMaterial in oOrderAsset.OrderAssetMaterials)
+						{
+							oOrderAssetMaterial.ID_OrderAsset = ID_OrderAsset;
+							Data.Planning.OrderAssetMaterials.InsertOne(oOrderAssetMaterial);
+						}
+					}
+				}
+			}
+			if (oOrder.Operators != null)
+			{
+				foreach(Data.Planning.OrderOperator oOrderOperator in oOrder.Operators)
+				{
+					oOrderOperator.ID_Order = oOrder.ID_Order;
+					Data.Planning.OrderOperators.InsertOne(oOrderOperator);
+				}
+			}
 
 			return (oOrder.ID_Order);
 		}
@@ -79,7 +104,23 @@ namespace WebLeanMaint.WS
 		public Data.Planning.Order[] GetOrders()
 		{
 			Data.Planning.Orders aOrders = new Data.Planning.Orders();
-			aOrders.Load("ID_ObjStatus=" + EntitiesManagerBase.UTI_ValueToSql((int)Data.Config.ObjStatuseEnum.Active), "PlannedFor");
+			aOrders.Load("Completed=" + EntitiesManagerBase.UTI_ValueToSql(false), "PlannedFor");
+			foreach(Data.Planning.Order oOrder in aOrders)
+			{
+				Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
+				aOrderAssets.Load("ID_Order=" + EntitiesManagerBase.UTI_ValueToSql(oOrder.ID_Order), string.Empty);
+				oOrder.Assets = aOrderAssets.ToArray();
+				foreach(Data.Planning.OrderAsset oOrderAsset in aOrderAssets)
+				{
+					Data.Planning.OrderAssetMaterials aMaterials = new Data.Planning.OrderAssetMaterials();
+					aMaterials.Load("ID_OrderAsset=" + EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_OrderAsset), string.Empty);
+					oOrderAsset.OrderAssetMaterials = aMaterials.ToArray();
+				}
+				Data.Planning.OrderOperators aOrderOperators = new Data.Planning.OrderOperators();
+				aOrderOperators.Load("ID_Order=" + EntitiesManagerBase.UTI_ValueToSql(oOrder.ID_Order), string.Empty);
+				oOrder.Operators = aOrderOperators.ToArray();
+			}
+			
 
 			return (aOrders.ToArray());
 		}
@@ -120,16 +161,6 @@ namespace WebLeanMaint.WS
 		}
 
 		[WebMethod]
-		[Description("Planning: Add operator to order")]
-		public void AddOperatorToOrder(int ID_Order, int ID_Operator)
-		{
-			Data.Planning.OrderOperator oOperator = new Data.Planning.OrderOperator();
-			oOperator.ID_Order = ID_Order;
-			oOperator.ID_Operator = ID_Operator;
-			Data.Planning.OrderOperators.InsertOne(oOperator);
-		}
-
-		[WebMethod]
 		[Description("Planning: Get assets available for order")]
 		public Data.Maintenance.Asset[] GetAssetsForOrder(int ID_Order)
 		{
@@ -137,31 +168,10 @@ namespace WebLeanMaint.WS
 		}
 
 		[WebMethod]
-		[Description("Planning: Add asset to order")]
-		public void AddAssetToOrder(int ID_Order, int ID_Asset)
-		{
-			Data.Planning.OrderAsset oAsset = new Data.Planning.OrderAsset();
-			oAsset.ID_Order = ID_Order;
-			oAsset.ID_Asset = ID_Asset;
-			Data.Planning.OrderAssets.InsertOne(oAsset);
-		}
-
-		[WebMethod]
 		[Description("Planning: Get material available for order")]
 		public Data.Maintenance.Material[] GetMaterialsForAsset(int ID_Asset)
 		{
 			return (Core.Planning.GetMaterialsForAsset(ID_Asset));
-		}
-
-		[WebMethod]
-		[Description("Planning: Add material to order")]
-		public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity)
-		{
-			Data.Planning.OrderMaterial oMaterial = new Data.Planning.OrderMaterial();
-			oMaterial.ID_Order = ID_Order;
-			oMaterial.ID_Material = ID_Material;
-			oMaterial.Quantity = nQuantity;
-			Data.Planning.OrderMaterials.InsertOne(oMaterial);
 		}
 	}
 }

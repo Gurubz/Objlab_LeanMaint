@@ -7,10 +7,10 @@ namespace Data.Accountancy
 	/// Public Billing Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Billing = {ID_Billing}")]
-	public class Billing
+	public partial class Billing
 	{
 		public Billing()
 		{

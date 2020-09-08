@@ -7,10 +7,10 @@ namespace Data.Maintenance
 	/// Public Material Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Material = {ID_Material}")]
-	public class Material
+	public partial class Material
 	{
 		public Material()
 		{

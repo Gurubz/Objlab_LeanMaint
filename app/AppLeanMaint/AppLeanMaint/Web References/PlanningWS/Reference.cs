@@ -41,15 +41,9 @@ namespace AppLeanMaint.PlanningWS {
         
         private System.Threading.SendOrPostCallback GetOperatorsForOrderOperationCompleted;
         
-        private System.Threading.SendOrPostCallback AddOperatorToOrderOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetAssetsForOrderOperationCompleted;
         
-        private System.Threading.SendOrPostCallback AddAssetToOrderOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetMaterialsForAssetOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback AddMaterialToOrderOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -108,19 +102,10 @@ namespace AppLeanMaint.PlanningWS {
         public event GetOperatorsForOrderCompletedEventHandler GetOperatorsForOrderCompleted;
         
         /// <remarks/>
-        public event AddOperatorToOrderCompletedEventHandler AddOperatorToOrderCompleted;
-        
-        /// <remarks/>
         public event GetAssetsForOrderCompletedEventHandler GetAssetsForOrderCompleted;
         
         /// <remarks/>
-        public event AddAssetToOrderCompletedEventHandler AddAssetToOrderCompleted;
-        
-        /// <remarks/>
         public event GetMaterialsForAssetCompletedEventHandler GetMaterialsForAssetCompleted;
-        
-        /// <remarks/>
-        public event AddMaterialToOrderCompletedEventHandler AddMaterialToOrderCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetOrderTypes", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -305,36 +290,6 @@ namespace AppLeanMaint.PlanningWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddOperatorToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddOperatorToOrder(int ID_Order, int ID_Operator) {
-            this.Invoke("AddOperatorToOrder", new object[] {
-                        ID_Order,
-                        ID_Operator});
-        }
-        
-        /// <remarks/>
-        public void AddOperatorToOrderAsync(int ID_Order, int ID_Operator) {
-            this.AddOperatorToOrderAsync(ID_Order, ID_Operator, null);
-        }
-        
-        /// <remarks/>
-        public void AddOperatorToOrderAsync(int ID_Order, int ID_Operator, object userState) {
-            if ((this.AddOperatorToOrderOperationCompleted == null)) {
-                this.AddOperatorToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddOperatorToOrderOperationCompleted);
-            }
-            this.InvokeAsync("AddOperatorToOrder", new object[] {
-                        ID_Order,
-                        ID_Operator}, this.AddOperatorToOrderOperationCompleted, userState);
-        }
-        
-        private void OnAddOperatorToOrderOperationCompleted(object arg) {
-            if ((this.AddOperatorToOrderCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddOperatorToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetAssetsForOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Asset[] GetAssetsForOrder(int ID_Order) {
             object[] results = this.Invoke("GetAssetsForOrder", new object[] {
@@ -364,36 +319,6 @@ namespace AppLeanMaint.PlanningWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddAssetToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddAssetToOrder(int ID_Order, int ID_Asset) {
-            this.Invoke("AddAssetToOrder", new object[] {
-                        ID_Order,
-                        ID_Asset});
-        }
-        
-        /// <remarks/>
-        public void AddAssetToOrderAsync(int ID_Order, int ID_Asset) {
-            this.AddAssetToOrderAsync(ID_Order, ID_Asset, null);
-        }
-        
-        /// <remarks/>
-        public void AddAssetToOrderAsync(int ID_Order, int ID_Asset, object userState) {
-            if ((this.AddAssetToOrderOperationCompleted == null)) {
-                this.AddAssetToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddAssetToOrderOperationCompleted);
-            }
-            this.InvokeAsync("AddAssetToOrder", new object[] {
-                        ID_Order,
-                        ID_Asset}, this.AddAssetToOrderOperationCompleted, userState);
-        }
-        
-        private void OnAddAssetToOrderOperationCompleted(object arg) {
-            if ((this.AddAssetToOrderCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddAssetToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetMaterialsForAsset", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Material[] GetMaterialsForAsset(int ID_Asset) {
             object[] results = this.Invoke("GetMaterialsForAsset", new object[] {
@@ -419,38 +344,6 @@ namespace AppLeanMaint.PlanningWS {
             if ((this.GetMaterialsForAssetCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMaterialsForAssetCompleted(this, new GetMaterialsForAssetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/AddMaterialToOrder", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddMaterialToOrder(int ID_Order, int ID_Material, int nQuantity) {
-            this.Invoke("AddMaterialToOrder", new object[] {
-                        ID_Order,
-                        ID_Material,
-                        nQuantity});
-        }
-        
-        /// <remarks/>
-        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity) {
-            this.AddMaterialToOrderAsync(ID_Order, ID_Material, nQuantity, null);
-        }
-        
-        /// <remarks/>
-        public void AddMaterialToOrderAsync(int ID_Order, int ID_Material, int nQuantity, object userState) {
-            if ((this.AddMaterialToOrderOperationCompleted == null)) {
-                this.AddMaterialToOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddMaterialToOrderOperationCompleted);
-            }
-            this.InvokeAsync("AddMaterialToOrder", new object[] {
-                        ID_Order,
-                        ID_Material,
-                        nQuantity}, this.AddMaterialToOrderOperationCompleted, userState);
-        }
-        
-        private void OnAddMaterialToOrderOperationCompleted(object arg) {
-            if ((this.AddMaterialToOrderCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddMaterialToOrderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1031,7 +924,182 @@ namespace AppLeanMaint.PlanningWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
+    public partial class OrderOperator {
+        
+        private int iD_OrderField;
+        
+        private int iD_OperatorField;
+        
+        /// <remarks/>
+        public int ID_Order {
+            get {
+                return this.iD_OrderField;
+            }
+            set {
+                this.iD_OrderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Operator {
+            get {
+                return this.iD_OperatorField;
+            }
+            set {
+                this.iD_OperatorField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
+    public partial class OrderAssetMaterial {
+        
+        private int iD_OrderAssetField;
+        
+        private int iD_MaterialField;
+        
+        private decimal quantityField;
+        
+        /// <remarks/>
+        public int ID_OrderAsset {
+            get {
+                return this.iD_OrderAssetField;
+            }
+            set {
+                this.iD_OrderAssetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Material {
+            get {
+                return this.iD_MaterialField;
+            }
+            set {
+                this.iD_MaterialField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal Quantity {
+            get {
+                return this.quantityField;
+            }
+            set {
+                this.quantityField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
+    public partial class OrderAsset {
+        
+        private OrderAssetMaterial[] orderAssetMaterialsField;
+        
+        private int iD_OrderAssetField;
+        
+        private int iD_OrderField;
+        
+        private int iD_AssetField;
+        
+        private bool stopRequiredField;
+        
+        private int minutesRequiredField;
+        
+        private string descriptionField;
+        
+        /// <remarks/>
+        public OrderAssetMaterial[] OrderAssetMaterials {
+            get {
+                return this.orderAssetMaterialsField;
+            }
+            set {
+                this.orderAssetMaterialsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_OrderAsset {
+            get {
+                return this.iD_OrderAssetField;
+            }
+            set {
+                this.iD_OrderAssetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Order {
+            get {
+                return this.iD_OrderField;
+            }
+            set {
+                this.iD_OrderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Asset {
+            get {
+                return this.iD_AssetField;
+            }
+            set {
+                this.iD_AssetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool StopRequired {
+            get {
+                return this.stopRequiredField;
+            }
+            set {
+                this.stopRequiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MinutesRequired {
+            get {
+                return this.minutesRequiredField;
+            }
+            set {
+                this.minutesRequiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
     public partial class Order {
+        
+        private OrderAsset[] assetsField;
+        
+        private OrderOperator[] operatorsField;
         
         private int iD_OrderField;
         
@@ -1046,6 +1114,26 @@ namespace AppLeanMaint.PlanningWS {
         private System.DateTime toCompleteBeforeField;
         
         private bool completedField;
+        
+        /// <remarks/>
+        public OrderAsset[] Assets {
+            get {
+                return this.assetsField;
+            }
+            set {
+                this.assetsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public OrderOperator[] Operators {
+            get {
+                return this.operatorsField;
+            }
+            set {
+                this.operatorsField = value;
+            }
+        }
         
         /// <remarks/>
         public int ID_Order {
@@ -1292,10 +1380,6 @@ namespace AppLeanMaint.PlanningWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void AddOperatorToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void GetAssetsForOrderCompletedEventHandler(object sender, GetAssetsForOrderCompletedEventArgs e);
     
     /// <remarks/>
@@ -1322,10 +1406,6 @@ namespace AppLeanMaint.PlanningWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void AddAssetToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void GetMaterialsForAssetCompletedEventHandler(object sender, GetMaterialsForAssetCompletedEventArgs e);
     
     /// <remarks/>
@@ -1349,10 +1429,6 @@ namespace AppLeanMaint.PlanningWS {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void AddMaterialToOrderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

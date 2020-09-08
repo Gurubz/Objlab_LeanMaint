@@ -7,10 +7,10 @@ namespace Data.Maintenance
 	/// Public ExecutionAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  06/09/2020  Created
+	/// 	[SQLClassGenerator]  08/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Execution = {ID_Execution}, ID_Asset = {ID_Asset}")]
-	public class ExecutionAsset
+	public partial class ExecutionAsset
 	{
 		public ExecutionAsset()
 		{
