@@ -188,6 +188,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\Maintenance.cs" />
     <Compile Include="Data\Maintenance.AssetMaterial.cs" />
     <Compile Include="Data\Maintenance.AssetMaterials.cs" />
     <Compile Include="Data\Planning.OperatorType.cs" />

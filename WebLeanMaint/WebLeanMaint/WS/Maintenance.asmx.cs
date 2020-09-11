@@ -70,5 +70,34 @@ namespace WebLeanMaint.WS
 			aAssets.Load($"Name LIKE {EntitiesManagerBase.UTI_ValueToSql("%" + sName + "%")} OR Description LIKE {EntitiesManagerBase.UTI_ValueToSql("%" + sName + "%")}", "Name");
 			return (aAssets.ToArray());
 		}
+
+		[WebMethod]
+		[Description("Maintenance: Get open orders based on conditions passed")]
+		public Data.Planning.Order[] GetExecutableOrders(Data.Planning.Operator oOperator, Data.Maintenance.Asset oAsset, Double nLatitude, Double nLongitude)
+		{
+			Data.Planning.Orders aOrders = new Data.Planning.Orders();
+			if (oOperator != null)
+			{
+				aOrders.Load("ID_Operator=" + EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_Operator));
+			}
+			if (oAsset != null)
+			{
+				Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
+				aOrderAssets.Load("ID_Asset=" + EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
+				foreach (Data.Planning.OrderAsset oOrderAsset in aOrderAssets)
+				{
+					aOrders.Load("ID_Order=" + EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_Order));
+				}
+			}
+
+			return (aOrders.ToArray());
+		}
+
+		[WebMethod]
+		[Description("Maintenance: Start order execution")]
+		public Data.Maintenance.Execution StartOrderExecution(Data.Planning.Order oOrder)
+		{
+			return (Core.Maintenance.CreateExecutionFromOrder(oOrder));
+		}
 	}
 }

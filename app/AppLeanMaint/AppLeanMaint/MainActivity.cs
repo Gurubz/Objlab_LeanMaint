@@ -108,7 +108,7 @@ namespace AppLeanMaint
 			}
 			else if (id == Resource.Id.nav_executions_asset)
 			{
-				//StartActivity(typeof(ActivityExecution));
+				StartActivity(typeof(ActivitySelectAssetEx));
 			}
 			else if (id == Resource.Id.nav_plannings_asset)
 			{

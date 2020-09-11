@@ -74,6 +74,7 @@
     <Compile Include="Views\ActivityExecution.cs" />
     <Compile Include="Views\ActivityOrders.cs" />
     <Compile Include="Views\ActivityOrdersList.cs" />
+    <Compile Include="Views\ActivitySelectAssetEx.cs" />
     <Compile Include="Views\ActivitySelectOperator.cs" />
     <Compile Include="Views\ActivitySelectMaterial.cs" />
     <Compile Include="Views\ActivitySelectAsset.cs" />
@@ -1049,6 +1050,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\cardview_order.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_select_asset_ex.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

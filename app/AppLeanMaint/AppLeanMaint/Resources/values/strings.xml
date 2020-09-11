@@ -48,6 +48,13 @@
 
 	<string name="activity_orders_list">Active orders list</string>
 
+	<string name="activity_select_asset_ex">Select asset</string>
+	<string name="activity_select_asset_ex_instructionQr">Move camera to center qr code</string>
+	<string name="activity_select_asset_ex_instructionText">Move camera to center text</string>
+	<string name="activity_select_asset_ex_ButtonQr">Qr Code</string>
+	<string name="activity_select_asset_ex_ButtonText">Text</string>
+	<string name="activity_select_asset_ex_ButtonVoice">Voice</string>
+
 	<string name="activity_execution">Maintenance</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>
 	<string name="activity_execution_desc_inter">Description</string>
