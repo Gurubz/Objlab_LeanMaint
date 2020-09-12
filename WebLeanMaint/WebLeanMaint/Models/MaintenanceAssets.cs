@@ -19,7 +19,7 @@ namespace WebLeanMaint.Models
         public int ID_OrganizationCenter { get; set; }
         public int? ID_Parent { get; set; }
         public int ID_CostCenter { get; set; }
-        public int ID_GeographicCenter { get; set; }
+        public int? ID_GeographicCenter { get; set; }
         public int ID_ObjStatus { get; set; }
         }
 }

@@ -19,8 +19,8 @@ namespace WebLeanMaint.Models
         public string Description { get; set; }
         public int ID_OperatorType { get; set; }
         public int ID_Calendar { get; set; }
-        public int ID_Supplier { get; set; }
-        public int ID_CostCenter { get; set; }
+        public int? ID_Supplier { get; set; }
+        public int? ID_CostCenter { get; set; }
         public decimal HourlyCost { get; set; }
         public int ID_ObjStatus { get; set; }
         public int ID_User { get; set; }
