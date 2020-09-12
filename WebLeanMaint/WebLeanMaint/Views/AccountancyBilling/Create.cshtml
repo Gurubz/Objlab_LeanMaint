@@ -1,0 +1,76 @@
+﻿@model Fiver_Crud.Models.AccountancyBilling
+@{
+    ViewBag.Title = "Creat";
+}
+
+<div class="content">
+    <div class="content-header">
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><a><i class="fa fa-cubes" aria-hidden="true"></i> Accountancy Billing</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-12 col-md-12">
+            <h4 class="section-subtitle"><b>Register Accountancy Billing</b></h4>
+            <a href="@Url.Action("Index","AccountancyBilling")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("Save", "AccountancyBilling", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.HiddenFor(m => m.ID_Billing)
+                                     <div class="row">
+                                        <div class="form-group col-sm-3">
+                                            <label>ID Operator</label>
+                                            @Html.TextBoxFor(m => m.ID_Operator, new { @class = "form-control input-xs", @required = "required", @type = "number" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>Activation</label>
+                                            @Html.TextBoxFor(m => m.Activation, "{0:yyyy-MM-dd}", new { @class = "form-control input-xs", @type = "date" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>[End]</label>
+                                            @Html.TextBoxFor(m => m.End, "{0:yyyy-MM-dd}", new { @class = "form-control input-xs", @type = "date" })
+                                        </div>
+
+                                        <div class="form-group col-sm-3">
+                                            <label>HourlyCost</label>
+                                            @Html.TextBoxFor(m => m.HourlyCost, new { @class = "form-control input-xs" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>Year</label>
+                                            @Html.TextBoxFor(m => m.Year, new { @class = "form-control input-xs",@type="number" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>Month</label>
+                                            @Html.TextBoxFor(m => m.Month, new { @class = "form-control input-xs", @type = "number" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>StartDay</label>
+                                            @Html.TextBoxFor(m => m.StartDay, "{0:yyyy-MM-dd}", new { @class = "form-control input-xs", @type = "date" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>EndDay</label>
+                                            @Html.TextBoxFor(m => m.EndDay, "{0:yyyy-MM-dd}", new { @class = "form-control input-xs", @type = "date" })
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label>Value</label>
+                                            @Html.TextBoxFor(m => m.Value, new { @class = "form-control input-xs", @type = "number" })
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+                                        </div>
+                                    </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

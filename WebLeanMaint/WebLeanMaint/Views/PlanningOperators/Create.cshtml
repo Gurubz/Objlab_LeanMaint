@@ -1,0 +1,86 @@
+﻿@model WebLeanMaint.ViewModel.GeneralVM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content">
+    <div class="content-header">
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><a><i class="fa fa-cubes" aria-hidden="true"></i>  Planning Operators</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-12 col-md-12">
+            <h4 class="section-subtitle"><b>Register Planning Operators</b></h4>
+            <a href="@Url.Action("Index","PlanningOperators")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("Save", "PlanningOperators", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.HiddenFor(m => m.planningOperators.ID_Operator)
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        <label>Name</label>
+                                        @Html.TextBoxFor(m => m.planningOperators.Name, new { @class = "form-control input-xs" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Middle Name</label>
+                                        @Html.TextBoxFor(m => m.planningOperators.MiddleName, new { @class = "form-control input-xs" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Last Name</label>
+                                        @Html.TextBoxFor(m => m.planningOperators.LastName, new { @class = "form-control input-xs" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Description</label>
+                                        @Html.TextBoxFor(m => m.planningOperators.Description, new { @class = "form-control input-xs" })
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        <label>Select OperatorType</label>
+                                        @Html.DropDownListFor(m => m.planningOperators.ID_OperatorType, new SelectList(Model.opp_types, "ID_OperatorType", "Name"), "Select OperatorType", htmlAttributes: new { @class = "chosen-select form-control" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Select Calendar</label>
+                                        @Html.DropDownListFor(m => m.planningOperators.ID_Calendar, new SelectList(Model.cal, "ID_Calendar", "Name"), "Select OperatorType", htmlAttributes: new { @class = "chosen-select form-control" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Select Supplier</label>
+                                        @Html.DropDownListFor(m => m.planningOperators.ID_Supplier, new SelectList(Model.main_supp, "ID_Supplier", "Name"), "Select OperatorType", htmlAttributes: new { @class = "chosen-select form-control" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Select CostCenter</label>
+                                        @Html.DropDownListFor(m => m.planningOperators.ID_CostCenter, new SelectList(Model.main_cost, "ID_CostCenter", "Name"), "Select CostCenter", htmlAttributes: new { @class = "chosen-select form-control" })
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        <label>Hourly Cost</label>
+                                        @Html.TextBoxFor(m => m.planningOperators.HourlyCost, new { @class = "form-control input-xs" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Select ObjStatus</label>
+                                        @Html.DropDownListFor(m => m.planningOperators.ID_ObjStatus, new SelectList(Model.main_subj, "ID_ObjStatus", "Name"), "Select CostCenter", htmlAttributes: new { @class = "chosen-select form-control" })
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Select User</label>
+                                        @Html.DropDownListFor(m => m.planningOperators.ID_User, new SelectList(Model.user, "ID_User", "Username"), "Select User", htmlAttributes: new { @class = "chosen-select form-control" })
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>

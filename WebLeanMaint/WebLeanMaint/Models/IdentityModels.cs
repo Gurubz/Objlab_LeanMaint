@@ -20,11 +20,21 @@ namespace WebLeanMaint.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<AccountancyBilling> tbl_AccountancyBilling { get; set; }
+        public DbSet<MaintenanceAssets> tbl_MaintenanceAssets { get; set; }
+        public DbSet<MaintenanceAssetTypes> tbl_MaintenanceAssetTypes { get; set; }
+        public DbSet<MaintenanceMaterials> tbl_MaintenanceMaterials { get; set; }
+        public DbSet<MaintenanceMaterialUMs> tbl_MaintenanceMaterialUMs { get; set; }
+        public DbSet<MaintenanceSuppliers> tbl_MaintenanceSuppliers { get; set; }
+        public DbSet<MaintenanceSupplierTypes> tbl_MaintenanceSupplierTypes { get; set; }
+        public DbSet<PlanningOperators> tbl_PlanningOperators { get; set; }
+        public DbSet<PlanningOperatorTypes> tbl_PlanningOperatorTypes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
+     
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

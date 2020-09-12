@@ -1,0 +1,109 @@
+﻿@model IEnumerable<WebLeanMaint.QueryModel.MaintenanceAssetsQuery>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="content-header">
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><a><i class="fa fa-cubes" aria-hidden="true"></i> Maintenance Assets</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="section-subtitle"><b>Maintenance Assets List</b></h4>
+            <a href="@Url.Action("Create", "MaintenanceAssets")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-plus"></i>  Creat New</a>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped table-success" id="searchable">
+                            <thead class="bordered-darkorange">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID_AssetType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID_OrganizationCenter)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ID_Parent)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID_CostCenter)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID_GeographicCenter)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID_ObjStatus)
+                                    </th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="abc">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AssetType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OrgName)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ID_Parent)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.costname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.geoname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.subname)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", new { ID= item.ID_Asset } )" class="btn btn-warning shiny input-xs"><i class="fa fa-pencil"></i></a>
+                                            <a href="@Url.Action("Delete", new { ID= item.ID_Asset } )" new { onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger shiny input-xs"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th><input type="text" style="width: 70px" placeholder="Search Here" name="search_browser" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:120px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:120px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+                                      <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

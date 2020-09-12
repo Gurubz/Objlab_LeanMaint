@@ -12,6 +12,7 @@ using WebLeanMaint.Models;
 
 namespace WebLeanMaint.Controllers
 {
+    [SessionTimeout]
     [Authorize]
     public class AccountController : Controller
     {

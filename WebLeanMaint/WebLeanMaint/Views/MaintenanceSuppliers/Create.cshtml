@@ -1,0 +1,90 @@
+﻿@model WebLeanMaint.ViewModel.GeneralVM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content">
+    <div class="content-header">
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><a><i class="fa fa-cubes" aria-hidden="true"></i>  Maintenance Suppliers</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-12 col-md-12">
+            <h4 class="section-subtitle"><b>Register Maintenance Suppliers</b></h4>
+            <a href="@Url.Action("Index","MaintenanceSuppliers")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("Save", "MaintenanceSuppliers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.HiddenFor(m => m.maintenanceSuppliers.ID_Supplier)
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label>Name</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.Name, new { @class = "form-control input-xs" })
+                                </div>
+
+                                <div class="form-group col-sm-3">
+                                    <label>Description</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.Description, new { @class = "form-control input-xs" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Select Supplier Type</label>
+                                    @Html.DropDownListFor(m => m.maintenanceSuppliers.ID_SupplierType, new SelectList(Model.supp_type, "ID_SupplierType", "Name"), "Select Option", htmlAttributes: new { @class = "chosen-select form-control" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Address 1</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.Address1, new { @class = "form-control input-xs" })
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-sm-3">
+                                    <label>Select CostCenter </label>
+                                    @Html.DropDownListFor(m => m.maintenanceSuppliers.ID_CostCenter, new SelectList(Model.main_cost, "ID_CostCenter", "Name"), "Select Option", htmlAttributes: new { @class = "chosen-select form-control" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Address 2</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.Address2, new { @class = "form-control input-xs" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Hourly Cost</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.HourlyCost, new { @class = "form-control input-xs" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Select City </label>
+                                    @Html.DropDownListFor(m => m.maintenanceSuppliers.ID_City, new SelectList(Model.city, "ID_City", "Name"), "Select Option", htmlAttributes: new { @class = "chosen-select form-control" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label>Zip Code</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.Zip, new { @class = "form-control input-xs" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Select Country </label>
+                                    @Html.DropDownListFor(m => m.maintenanceSuppliers.ID_Country, new SelectList(Model.country, "ID_Country", "Name"), "Select Option", htmlAttributes: new { @class = "chosen-select form-control" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>ValidFrom</label>
+                                    @Html.TextBoxFor(m => m.maintenanceSuppliers.ValidFrom, "{0:yyyy-MM-dd}", new { @class = "form-control input-xs", @type = "date" })
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Select User</label>
+                                    @Html.DropDownListFor(m => m.planningOperators.ID_User, new SelectList(Model.user, "ID_User", "Username"), "Select User", htmlAttributes: new { @class = "chosen-select form-control" })
+                                </div>
+                            </div>
+                              
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+                                    </div>
+                                    }
+                                </div>
+
+                            </div>
+                </div>
+            </div>

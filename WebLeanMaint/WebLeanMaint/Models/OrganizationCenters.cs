@@ -14,15 +14,4 @@ namespace WebLeanMaint.Models
         public int ID_ObjStatus { get; set; }
         public int? ID_Parent { get; set; }
     }
-    public class Users
-    {
-        public int ID_User { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string EMail { get; set; }
-        public string Mobile { get; set; }
-        public int Seed { get; set; }
-        public int ID_UserType { get; set; }
-        public int ID_ObjStatus { get; set; }
-    }
 }
