@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebLeanMaint.ViewQueryModel
 {
-	public class JoinQuery
+	public class OrganizationCenterJoinQuery
 	{
 		public int ID_OrganizationCenter { get; set; }
 		public string Name { get; set; }
@@ -14,6 +14,4 @@ namespace WebLeanMaint.ViewQueryModel
 		public string ID_ObjStatus { get; set; }
 		public int? ID_Parent { get; set; }
 	}
-
-
 }

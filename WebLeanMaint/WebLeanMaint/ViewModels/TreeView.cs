@@ -6,7 +6,7 @@ using WebLeanMaint.Models;
 
 namespace WebLeanMaint.ViewModels
 {
-	public class Treeviewmodel
+	public class TreeView
 	{
 		public IEnumerable<OrganizationCenterTypes> types_list { get; set; }
 		public IEnumerable<OrganizationCenters> complete { get; set; }

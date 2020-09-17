@@ -1,0 +1,272 @@
+﻿@model WebLeanMaint.ViewModels.CostCentersTree
+@{
+	ViewBag.Title = "Cost Centers Tree";
+	Layout = "~/Views/Shared/for_tree.cshtml";
+}
+<script>
+
+	function myFunction(value) {
+		// alert("adasd");
+		//  alert(value);
+		// $("#" + value).attr("style", "background:red !important");
+		//  $("#" + value).attr("style", "background:red !important");
+		for (var i = 1; i <= 15000; i++) {
+			//  alert(i);
+			if (parseInt(i) === parseInt(value)) {
+				$("#" + i).attr("style", "background:#44C8CF !important");
+			} else {
+				$("#" + i).attr("style", "background:linear-gradient(top, #fafafa 0%, #eee 100%)");
+			}
+		}
+		$.ajax({
+			type: "GET",
+			url: "/Home/GetCostCenterData?nID=" + value,
+			data: "{}",
+			success: function (data) {
+				$("#id").val(data[0].ID_CostCenter);
+				$("#name").val(data[0].Name);
+				$("#des").val(data[0].Description);
+
+				$("#type option[value='" + data[0].ID_CostCenterType + "']").remove();
+				$('#type').append('<option value="' + data[0].ID_CostCenterType + '" selected="selected">' + data[0].ID_ObjStatus + '</option>');
+
+				var option = data[0].ID_Parent
+
+				if (option == 0) {
+					$("#parent").prop("checked", true);
+					$("#child").prop("checked", false);
+				} else {
+					$("#child").prop("checked", true);
+					$("#parent").prop("checked", flase);
+				}
+				//alert(data.value2);
+			}
+		});
+	}
+	function check_value() {
+		var child = document.querySelector('input[name="option"]:checked').value;
+
+		// alert("adad");
+		// alert(child);
+		var id = $("#id").val().length;
+		//alert(id);
+		if (id == "0" && child == 2) {
+			alert("Please Select any Parent Node to add New Child node");
+			event.preventDefault();
+			location.reload();
+			//return false;
+		}
+		else {
+			return true;
+		}
+		//alert(id);
+
+		//confirm('Are you sure you want to Add ?');
+	}
+
+</script>
+<style>
+	.back:focus {
+		background: green !important;
+	}
+</style>
+<div class="content">
+	<div class="content-header">
+		<div class="leftside-content-header">
+			<ul class="breadcrumbs">
+				<li><a><i class="fa fa-cubes" aria-hidden="true"></i>@ViewBag.Title</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel">
+				<div class="panel-content" style="height:500px;margin-top:-20px">
+					<div class="col-md-12">
+
+						<div class="col-md-6">
+							<div class="cf nestable-lists" style="border:0px solid black;margin-top:-20px;margin-left:-30px">
+								<div class="dd" id="nestable">
+									<ol class="dd-list">
+										@foreach (var item0 in Model.parent_list)
+										{
+											<li class="dd-item" data-id="1">
+												<div class="back" id="@item0.ID_CostCenter" onclick="myFunction(@item0.ID_CostCenter)"> @item0.Name</div>
+												<ol class="dd-list">
+													@foreach (var item1 in Model.child_list.Where(z => z.ID_Parent == item0.ID_CostCenter))
+													{
+														<li class="dd-item" data-id="2">
+															<div class="back" id="@item1.ID_CostCenter" onclick="myFunction(@item1.ID_CostCenter)">  @item1.Name</div>
+															<ol class="dd-list">
+																@foreach (var item2 in Model.child_list.Where(z => z.ID_Parent == item1.ID_CostCenter))
+																{
+																	<li class="dd-item" data-id="3">
+																		<div class="back" id="@item2.ID_CostCenter" onclick="myFunction(@item2.ID_CostCenter)">@item2.Name</div>
+																		<ol class="dd-list">
+																			@foreach (var item3 in Model.child_list.Where(z => z.ID_Parent == item2.ID_CostCenter))
+																			{
+																				<li class="dd-item" data-id="4">
+																					<div class="back" id="@item3.ID_CostCenter" onclick="myFunction(@item3.ID_CostCenter)">@item3.Name</div>
+																					<ol class="dd-list">
+																						@foreach (var item4 in Model.child_list.Where(z => z.ID_Parent == item3.ID_CostCenter))
+																						{
+																							<li class="dd-item" data-id="4">
+																								<div class="back" id="@item4.ID_CostCenter" onclick="myFunction(@item4.ID_CostCenter)">@item4.Name</div>
+																								<ol class="dd-list">
+																									@foreach (var item5 in Model.child_list.Where(z => z.ID_Parent == item4.ID_CostCenter))
+																									{
+																										<li class="dd-item" data-id="4">
+																											<div class="back" id="@item5.ID_CostCenter" onclick="myFunction(@item5.ID_CostCenter)">@item5.Name</div>
+																											<ol class="dd-list">
+																												@foreach (var item6 in Model.child_list.Where(z => z.ID_Parent == item5.ID_CostCenter))
+																												{
+																													<li class="dd-item" data-id="4">
+																														<div class="back" id="@item6.ID_CostCenter" onclick="myFunction(@item6.ID_CostCenter)">@item6.Name</div>
+																														<ol class="dd-list">
+																															@foreach (var item7 in Model.child_list.Where(z => z.ID_Parent == item6.ID_CostCenter))
+																															{
+																																<li class="dd-item" data-id="4">
+																																	<div class="back" id="@item7.ID_CostCenter" onclick="myFunction(@item7.ID_CostCenter)">@item7.Name</div>
+																																	<ol class="dd-list">
+																																		@foreach (var item8 in Model.child_list.Where(z => z.ID_Parent == item7.ID_CostCenter))
+																																		{
+																																			<li class="dd-item" data-id="4">
+																																				<div class="back" id="@item8.ID_CostCenter" onclick="myFunction(@item8.ID_CostCenter)">@item8.Name</div>
+																																				<ol class="dd-list">
+																																					@foreach (var item9 in Model.child_list.Where(z => z.ID_Parent == item8.ID_CostCenter))
+																																					{
+																																						<li class="dd-item" data-id="4">
+																																							<div class="back" id="@item9.ID_CostCenter" onclick="myFunction(@item9.ID_CostCenter)">@item9.Name</div>
+																																							<ol class="dd-list">
+																																								@foreach (var item10 in Model.child_list.Where(z => z.ID_Parent == item9.ID_CostCenter))
+																																								{
+																																									<li class="dd-item" data-id="4">
+																																										<div class="back" id="@item10.ID_CostCenter" onclick="myFunction(@item10.ID_CostCenter)">@item10.Name</div>
+																																										<ol class="dd-list">
+																																											@foreach (var item11 in Model.child_list.Where(z => z.ID_Parent == item10.ID_CostCenter))
+																																											{
+																																												<li class="dd-item" data-id="4">
+																																													<div class="back" id="@item11.ID_CostCenter" onclick="myFunction(@item11.ID_CostCenter)">@item11.Name</div>
+
+																																													<ol class="dd-list">
+																																														@foreach (var item12 in Model.child_list.Where(z => z.ID_Parent == item11.ID_CostCenter))
+																																														{
+																																															<li class="dd-item" data-id="4">
+																																																<div class="back" id="@item12.ID_CostCenter" onclick="myFunction(@item12.ID_CostCenter)">@item12.Name</div>
+
+																																																<ol class="dd-list">
+																																																	@foreach (var item13 in Model.child_list.Where(z => z.ID_Parent == item12.ID_CostCenter))
+																																																	{
+																																																		<li class="dd-item" data-id="4">
+																																																			<div class="back" id="@item13.ID_CostCenter" onclick="myFunction(@item13.ID_CostCenter)">@item13.Name</div>
+
+																																																			<ol class="dd-list">
+																																																				@foreach (var item14 in Model.child_list.Where(z => z.ID_Parent == item13.ID_CostCenter))
+																																																				{
+																																																					<li class="dd-item" data-id="4">
+																																																						<div class="back" id="@item14.ID_CostCenter" onclick="myFunction(@item14.ID_CostCenter)">@item14.Name</div>
+																																																						<ol class="dd-list">
+																																																							@foreach (var item15 in Model.child_list.Where(z => z.ID_Parent == item14.ID_CostCenter))
+																																																							{
+																																																								<li class="dd-item" data-id="4">
+																																																									<div class="back" id="@item15.ID_CostCenter" onclick="myFunction(@item15.ID_CostCenter)">@item15.Name</div>
+																																																								</li>
+																																																							}
+																																																						</ol>
+																																																					</li>
+																																																				}
+																																																			</ol>
+																																																		</li>
+																																																	}
+																																																</ol>
+																																															</li>
+																																														}
+																																													</ol>
+																																												</li>
+																																											}
+																																										</ol>
+																																									</li>
+																																								}
+																																							</ol>
+																																						</li>
+																																					}
+																																				</ol>
+																																			</li>
+																																		}
+																																	</ol>
+																																</li>
+																															}
+																														</ol>
+																													</li>
+																												}
+																											</ol>
+																										</li>
+																									}
+																								</ol>
+																							</li>
+																						}
+																					</ol>
+																				</li>
+																			}
+																		</ol>
+																	</li>
+																}
+															</ol>
+														</li>
+													}
+												</ol>
+											</li>
+										}
+									</ol>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<br />
+							@using (Html.BeginForm("AddCostCenterData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+							{
+								<div class="form-group col-md-6">
+									<label>Select Option</label><br />
+									<input type="radio" id="parent" name="option" checked value="1" required /> Parent
+									<input type="radio" id="child" name="option" value="2" required /> Chlid
+								</div>
+								<div class="form-group col-md-6">
+									<label>Select Type</label><br />
+									<select name="types" id="type" class="form-control" required>
+										<option value="" selected disabled>Select Type</option>
+										@foreach (var item0 in Model.types_list)
+										{
+											<option value="@item0.ID_CostCenterType">@item0.Name</option>
+										}
+									</select>
+								</div>
+								<div class="form-group col-md-6">
+									<label>Enter Name</label><br />
+									<input type="text" id="name" name="name" class="form-control" autocomplete="off" required />
+									<input type="hidden" id="id" name="id" />
+								</div>
+								<div class="form-group col-md-6">
+									<label>Enter Description</label><br />
+									<input type="text" id="des" name="des" class="form-control col-md-5" autocomplete="off" />
+								</div>
+								<div class="form-group col-md-1">
+									<input type="submit" name="submit" class="btn btn-success" value="Add" onclick="check_value();" />
+								</div>
+								<div class="form-group col-md-1" style="margin-left:15px">
+									<input type="submit" name="submit" class="btn btn-warning" value="Edit" onclick="return confirm('Are you sure you want to Edit ?');" />
+								</div>
+								<div class="form-group col-md-1" style="margin-left:15px">
+									<input type="submit" name="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure you want to Delete ?');" />
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

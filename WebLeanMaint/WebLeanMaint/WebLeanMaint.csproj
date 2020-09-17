@@ -221,10 +221,15 @@
     <Compile Include="Models\PlanningOperatorTypes.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="QueryModel\General_query.cs" />
-    <Compile Include="QueryModel\JoinQuery.cs" />
+    <Compile Include="QueryModel\CostCenterJoinQuery.cs" />
+    <Compile Include="QueryModel\GeographicCenterJoinQuery.cs" />
+    <Compile Include="QueryModel\OrganizationCenterJoinQuery.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Treeviewmodel.cs" />
+    <Compile Include="ViewModels\CostCentersTree.cs" />
+    <Compile Include="ViewModels\GeographicCentersTree.cs" />
+    <Compile Include="ViewModels\OrganizationCentersTree.cs" />
     <Compile Include="ViewModels\GeneralVM.cs" />
+    <Compile Include="ViewModels\TreeView.cs" />
     <Compile Include="WS\Planning.asmx.cs">
       <DependentUpon>Planning.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -2886,6 +2891,9 @@
     <Content Include="Views\PlanningOperators\Index.cshtml" />
     <Content Include="Views\Shared\for_tree.cshtml" />
     <Content Include="Views\Shared\_for_login.cshtml" />
+    <Content Include="Views\Home\CostCentersTree.cshtml" />
+    <Content Include="Views\Home\OrganizationCentersTree.cshtml" />
+    <Content Include="Views\Home\GeographicCentersTree.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
