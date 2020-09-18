@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public Asset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  08/09/2020  Created
+	/// 	[SQLClassGenerator]  18/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Asset = {ID_Asset}")]
 	public partial class Asset
@@ -45,6 +45,18 @@ namespace Data.Maintenance
 		{
 		  get { return (m_nID_AssetType); }
 		  set { m_nID_AssetType = value; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public String Barcode
+		{
+		  get { return (m_sBarcode); }
+		  set { m_sBarcode = value; m_bBarcode_HasValue = true; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public bool Barcode_HasValue
+		{
+		  get { return (m_bBarcode_HasValue); }
+		  set { m_bBarcode_HasValue = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_OrganizationCenter
@@ -95,6 +107,8 @@ namespace Data.Maintenance
 		protected String m_sName = String.Empty;
 		protected String m_sDescription = String.Empty;
 		protected Int32 m_nID_AssetType;
+		protected String m_sBarcode = String.Empty;
+		protected bool m_bBarcode_HasValue;
 		protected Int32 m_nID_OrganizationCenter;
 		protected Int32 m_nID_CostCenter;
 		protected Int32 m_nID_GeographicCenter;

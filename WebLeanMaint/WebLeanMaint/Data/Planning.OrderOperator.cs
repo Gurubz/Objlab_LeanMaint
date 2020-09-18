@@ -7,7 +7,7 @@ namespace Data.Planning
 	/// Public OrderOperator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  08/09/2020  Created
+	/// 	[SQLClassGenerator]  18/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Order = {ID_Order}, ID_Operator = {ID_Operator}")]
 	public partial class OrderOperator

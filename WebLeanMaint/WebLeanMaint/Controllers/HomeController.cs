@@ -307,7 +307,7 @@ namespace WebLeanMaint.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AddGeographicCenterData(string name, string des, int option, string submit, int types)
+		public ActionResult AddGeographicCenterData(int option, string name, string des, string lat, string lon, string submit, int types)
 		{
 			if (Session["UserID"] == null)
 			{
@@ -319,6 +319,11 @@ namespace WebLeanMaint.Controllers
 				Data.Config.GeographicCenter oCenter = new Data.Config.GeographicCenter();
 				oCenter.Name = name;
 				oCenter.Description = des;
+				if (string.IsNullOrEmpty(lat) == false && string.IsNullOrEmpty(lon) == false)
+				{
+					oCenter.Latitude = double.Parse(lat);
+					oCenter.Longitude = double.Parse(lon);
+				}
 				oCenter.ID_ObjStatus = (int)Data.Config.ObjStatuseEnum.Active;
 				oCenter.ID_GeographicCenterType = types;
 				if (option == 2)
@@ -339,6 +344,11 @@ namespace WebLeanMaint.Controllers
 				Data.Config.GeographicCenter oCenter = Data.Config.GeographicCenters.LoadOne(nID);
 				oCenter.Name = name;
 				oCenter.Description = des;
+				if (string.IsNullOrEmpty(lat) == false && string.IsNullOrEmpty(lon) == false)
+				{
+					oCenter.Latitude = double.Parse(lat);
+					oCenter.Longitude = double.Parse(lon);
+				}
 				oCenter.ID_GeographicCenterType = types;
 				Data.Config.GeographicCenters.UpdateOne(oCenter);
 				//_context.Database.ExecuteSqlCommand("UPDATE  Config.GeographicCenters set Name='" + name + "', Description = '" + des + "' where ID_GeographicCenter =" + id + "");
@@ -355,7 +365,12 @@ namespace WebLeanMaint.Controllers
 		[HttpGet]
 		public ActionResult GetGeographicCenterData(int nID)
 		{
-			var lst = _context.Database.SqlQuery<GeographicCenterJoinQuery>("SELECT Config.GeographicCenters.ID_GeographicCenter, Config.GeographicCenters.Name, Config.GeographicCenters.Description, Config.GeographicCenters.ID_Parent, Config.GeographicCenterTypes.Name AS ID_ObjStatus, Config.GeographicCenters.ID_GeographicCenterType FROM Config.GeographicCenters INNER JOIN Config.GeographicCenterTypes ON Config.GeographicCenters.ID_GeographicCenterType = Config.GeographicCenterTypes.ID_GeographicCenterType where Config.GeographicCenters.ID_GeographicCenter=" + nID + " ").ToList();
+			// var lst = _context.Database.SqlQuery<GeographicCenterJoinQuery>("SELECT Config.GeographicCenters.ID_GeographicCenter, Config.GeographicCenters.Name, Config.GeographicCenters.Description, Config.GeographicCenters.ID_Parent, Config.GeographicCenterTypes.Name AS ID_ObjStatus, Config.GeographicCenters.ID_GeographicCenterType FROM Config.GeographicCenters INNER JOIN Config.GeographicCenterTypes ON Config.GeographicCenters.ID_GeographicCenterType = Config.GeographicCenterTypes.ID_GeographicCenterType where Config.GeographicCenters.ID_GeographicCenter=" + nID + " ").ToList();
+			var lst = _context.Database.SqlQuery<GeographicCenterJoinQuery>(
+				"SELECT GC.*, GCT.Name AS TypeName " +
+				"FROM Config.GeographicCenters GC " +
+				"INNER JOIN Config.GeographicCenterTypes GCT ON GC.ID_GeographicCenterType = GCT.ID_GeographicCenterType " +
+				"WHERE GC.ID_GeographicCenter = " + EntitiesManagerBase.UTI_ValueToSql(nID)).ToList();
 			return Json(lst, JsonRequestBehavior.AllowGet);
 		}
 

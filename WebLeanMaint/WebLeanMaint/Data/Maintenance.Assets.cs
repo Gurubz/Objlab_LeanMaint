@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Asset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  08/09/2020  Created
+	/// 	[SQLClassGenerator]  18/09/2020  Created
 	/// </remarks>
 	public class Assets : EntitiesManagerBase
 	{
@@ -222,7 +222,7 @@ namespace Data.Maintenance
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Maintenance].[Assets] ");
-			oInsert.Append("([Name], [Description], [ID_AssetType], [ID_OrganizationCenter], [ID_CostCenter], [ID_GeographicCenter], [ID_ObjStatus], [ID_Parent])");
+			oInsert.Append("([Name], [Description], [ID_AssetType], [Barcode], [ID_OrganizationCenter], [ID_CostCenter], [ID_GeographicCenter], [ID_ObjStatus], [ID_Parent])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Name));
@@ -230,6 +230,12 @@ namespace Data.Maintenance
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Description));
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetType));
+			oInsert.Append(", ");
+			if (oAsset.Barcode_HasValue == true) {
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Barcode));
+			} else {;
+			oInsert.Append("NULL");
+			}
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_OrganizationCenter));
 			oInsert.Append(", ");
@@ -274,6 +280,13 @@ namespace Data.Maintenance
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_AssetType]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_AssetType));
+			oUpdate.Append(", ");
+			oUpdate.Append("[Barcode]=");
+			if (oAsset.Barcode_HasValue == true) {
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.Barcode));
+			} else {
+			oUpdate.Append("NULL");
+			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_OrganizationCenter]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_OrganizationCenter));
@@ -351,6 +364,12 @@ namespace Data.Maintenance
 			oAsset.Name = ((String)(oRow["Name"])).Trim();
 			oAsset.Description = ((String)(oRow["Description"])).Trim();
 			oAsset.ID_AssetType = ((Int32)(oRow["ID_AssetType"]));
+			if (!(oRow["Barcode"] is DBNull)) {
+			  oAsset.Barcode = ((String)(oRow["Barcode"])).Trim();
+			  oAsset.Barcode_HasValue = true;
+			} else {
+			  oAsset.Barcode_HasValue = false;
+			}
 			oAsset.ID_OrganizationCenter = ((Int32)(oRow["ID_OrganizationCenter"]));
 			oAsset.ID_CostCenter = ((Int32)(oRow["ID_CostCenter"]));
 			if (!(oRow["ID_GeographicCenter"] is DBNull)) {

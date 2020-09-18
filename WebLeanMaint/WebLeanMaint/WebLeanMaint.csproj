@@ -105,6 +105,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web.Extensions" />
@@ -196,6 +197,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlanningOperatorsController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Core\CoordinateBoundaries.cs" />
     <Compile Include="Core\Maintenance.cs" />
     <Compile Include="Data\Maintenance.AssetMaterial.cs" />
     <Compile Include="Data\Maintenance.AssetMaterials.cs" />

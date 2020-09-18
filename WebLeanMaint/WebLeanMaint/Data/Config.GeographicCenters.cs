@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  08/09/2020  Created
+	/// 	[SQLClassGenerator]  18/09/2020  Created
 	/// </remarks>
 	public class GeographicCenters : EntitiesManagerBase
 	{
@@ -222,7 +222,7 @@ namespace Data.Config
 			StringBuilder oInsert = null;
 
 			oInsert = new StringBuilder("INSERT INTO [Config].[GeographicCenters] ");
-			oInsert.Append("([Name], [Description], [ID_GeographicCenterType], [ID_ObjStatus], [ID_Parent])");
+			oInsert.Append("([Name], [Description], [ID_GeographicCenterType], [Latitude], [Longitude], [ID_ObjStatus], [ID_Parent])");
 			oInsert.Append(" VALUES ");
 			oInsert.Append("(");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Name));
@@ -230,6 +230,18 @@ namespace Data.Config
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Description));
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.ID_GeographicCenterType));
+			oInsert.Append(", ");
+			if (oGeographicCenter.Latitude_HasValue == true) {
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Latitude));
+			} else {;
+			oInsert.Append("NULL");
+			}
+			oInsert.Append(", ");
+			if (oGeographicCenter.Longitude_HasValue == true) {
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Longitude));
+			} else {;
+			oInsert.Append("NULL");
+			}
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.ID_ObjStatus));
 			oInsert.Append(", ");
@@ -264,6 +276,20 @@ namespace Data.Config
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_GeographicCenterType]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.ID_GeographicCenterType));
+			oUpdate.Append(", ");
+			oUpdate.Append("[Latitude]=");
+			if (oGeographicCenter.Latitude_HasValue == true) {
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Latitude));
+			} else {
+			oUpdate.Append("NULL");
+			}
+			oUpdate.Append(", ");
+			oUpdate.Append("[Longitude]=");
+			if (oGeographicCenter.Longitude_HasValue == true) {
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.Longitude));
+			} else {
+			oUpdate.Append("NULL");
+			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_ObjStatus]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oGeographicCenter.ID_ObjStatus));
@@ -328,6 +354,18 @@ namespace Data.Config
 			oGeographicCenter.Name = ((String)(oRow["Name"])).Trim();
 			oGeographicCenter.Description = ((String)(oRow["Description"])).Trim();
 			oGeographicCenter.ID_GeographicCenterType = ((Int32)(oRow["ID_GeographicCenterType"]));
+			if (!(oRow["Latitude"] is DBNull)) {
+			  oGeographicCenter.Latitude = ((Double)(oRow["Latitude"]));
+			  oGeographicCenter.Latitude_HasValue = true;
+			} else {
+			  oGeographicCenter.Latitude_HasValue = false;
+			}
+			if (!(oRow["Longitude"] is DBNull)) {
+			  oGeographicCenter.Longitude = ((Double)(oRow["Longitude"]));
+			  oGeographicCenter.Longitude_HasValue = true;
+			} else {
+			  oGeographicCenter.Longitude_HasValue = false;
+			}
 			oGeographicCenter.ID_ObjStatus = ((Int32)(oRow["ID_ObjStatus"]));
 			if (!(oRow["ID_Parent"] is DBNull)) {
 			  oGeographicCenter.ID_Parent = ((Int32)(oRow["ID_Parent"]));

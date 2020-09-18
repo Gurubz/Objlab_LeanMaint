@@ -7,7 +7,7 @@ namespace Data.Planning
 	/// Public OperatorType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  08/09/2020  Created
+	/// 	[SQLClassGenerator]  18/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_OperatorType = {ID_OperatorType}")]
 	public partial class OperatorType

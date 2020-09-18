@@ -26,9 +26,11 @@
 				$("#id").val(data[0].ID_GeographicCenter);
 				$("#name").val(data[0].Name);
 				$("#des").val(data[0].Description);
+				$("#lat").val(data[0].Latitude);
+				$("#lon").val(data[0].Longitude);
 
 				$("#type option[value='" + data[0].ID_GeographicCenterType + "']").remove();
-				$('#type').append('<option value="' + data[0].ID_GeographicCenterType + '" selected="selected">' + data[0].ID_ObjStatus + '</option>');
+				$('#type').append('<option value="' + data[0].ID_GeographicCenterType + '" selected="selected">' + data[0].TypeName + '</option>');
 
 				var option = data[0].ID_Parent
 
@@ -227,10 +229,15 @@
 							<br />
 							@using (Html.BeginForm("AddGeographicCenterData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 							{
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>Select Option</label><br />
 									<input type="radio" id="parent" name="option" checked value="1" required /> Parent
 									<input type="radio" id="child" name="option" value="2" required /> Chlid
+								</div>
+								<div class="form-group col-md-6">
+									<label>Enter Name</label><br />
+									<input type="text" id="name" name="name" class="form-control" autocomplete="off" required />
+									<input type="hidden" id="id" name="id" />
 								</div>
 								<div class="form-group col-md-6">
 									<label>Select Type</label><br />
@@ -242,22 +249,24 @@
 										}
 									</select>
 								</div>
-								<div class="form-group col-md-6">
-									<label>Enter Name</label><br />
-									<input type="text" id="name" name="name" class="form-control" autocomplete="off" required />
-									<input type="hidden" id="id" name="id" />
-								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>Enter Description</label><br />
-									<input type="text" id="des" name="des" class="form-control col-md-5" autocomplete="off" />
+									<input type="text" id="des" name="des" class="form-control col-md-5" autocomplete="off" required />
 								</div>
-								<div class="form-group col-md-1">
+								<div class="form-group col-md-6">
+									<label>Enter Latitude</label><br />
+									<input type="text" id="lat" name="lat" class="form-control col-md-5" autocomplete="off" />
+								</div>
+								<div class="form-group col-md-6">
+									<label>Enter Longitude</label><br />
+									<input type="text" id="lon" name="lon" class="form-control col-md-5" autocomplete="off" />
+								</div>
+								<div class="form-group col-md-6">
+									<!-- EMPTY -->
+								</div>
+								<div class="form-group col-md-12">
 									<input type="submit" name="submit" class="btn btn-success" value="Add" onclick="check_value();" />
-								</div>
-								<div class="form-group col-md-1" style="margin-left:15px">
 									<input type="submit" name="submit" class="btn btn-warning" value="Edit" onclick="return confirm('Are you sure you want to Edit ?');" />
-								</div>
-								<div class="form-group col-md-1" style="margin-left:15px">
 									<input type="submit" name="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure you want to Delete ?');" />
 								</div>
 							}
