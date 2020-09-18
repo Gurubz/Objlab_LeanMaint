@@ -2,6 +2,7 @@
 	<string name="app_name">LeanMaint</string>
 	<string name="app_confirm">Confirm</string>
 	<string name="app_onfirm_exit">Are you sure you want to exit the application?</string>
+	<string name="app_please_wait">Please wait ...</string>
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
 	<string name="nav_title_executions">Maintenance executions</string>
@@ -54,6 +55,8 @@
 	<string name="activity_select_asset_ex_ButtonQr">Qr Code</string>
 	<string name="activity_select_asset_ex_ButtonText">Text</string>
 	<string name="activity_select_asset_ex_ButtonVoice">Voice</string>
+	<string name="activity_select_asset_ex_serialnovalid">Serial not valid! Retry</string>
+	<string name="activity_select_asset_ex_speak">Speak now ...</string>
 
 	<string name="activity_execution">Maintenance</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

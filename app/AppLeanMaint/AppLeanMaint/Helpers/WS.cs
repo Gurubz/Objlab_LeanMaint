@@ -90,5 +90,14 @@ namespace AppLeanMaint.Helpers
 
 			return (aRet);
 		}
+
+		public bool IsSerialValid(string sSerial)
+		{
+			bool bRet = false;
+
+			if (string.IsNullOrEmpty(sSerial) == false && sSerial.Length > 4) bRet = true;
+
+			return (bRet);
+		}
 	}
 }
