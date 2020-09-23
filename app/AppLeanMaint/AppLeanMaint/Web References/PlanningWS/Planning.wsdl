@@ -211,6 +211,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_AssetType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Barcode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Barcode_HasValue" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_OrganizationCenter" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_CostCenter" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_GeographicCenter" type="s:int" />

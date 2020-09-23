@@ -65,6 +65,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_AssetType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Barcode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Barcode_HasValue" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_OrganizationCenter" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_CostCenter" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_GeographicCenter" type="s:int" />
@@ -72,6 +74,195 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID_ObjStatus" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_Parent" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ID_Parent_HasValue" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExecutableOrdersByOperator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oOperator" type="tns:Operator" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Operator">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Operator" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MiddleName_HasValue" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description_HasValue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_OperatorType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Calendar" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Supplier" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Supplier_HasValue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_CostCenter" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_CostCenter_HasValue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HourlyCost" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="HourlyCost_HasValue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_ObjStatus" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_User" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExecutableOrdersByOperatorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersByOperatorResult" type="tns:ArrayOfOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Order">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Assets" type="tns:ArrayOfOrderAsset" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operators" type="tns:ArrayOfOrderOperator" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_OrderType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedAt" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlannedFor" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToCompleteBefore" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Completed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrderAsset">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderAsset" nillable="true" type="tns:OrderAsset" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderAsset">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderAssetMaterials" type="tns:ArrayOfOrderAssetMaterial" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_OrderAsset" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Asset" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopRequired" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinutesRequired" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrderAssetMaterial">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderAssetMaterial" nillable="true" type="tns:OrderAssetMaterial" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderAssetMaterial">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_OrderAsset" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Material" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrderOperator">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderOperator" nillable="true" type="tns:OrderOperator" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderOperator">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Operator" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExecutableOrdersByAsset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oAsset" type="tns:Asset" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExecutableOrdersByAssetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersByAssetResult" type="tns:ArrayOfOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExecutableOrdersByAssetBarcode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sBarcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExecutableOrdersByAssetBarcodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersByAssetBarcodeResult" type="tns:ArrayOfOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExecutableOrdersByPosition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oPosition" type="tns:GeoCoordinate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GeoCoordinate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="HorizontalAccuracy" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="VerticalAccuracy" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Course" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExecutableOrdersByPositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersByPositionResult" type="tns:ArrayOfOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExecutableOrders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oOperator" type="tns:Operator" />
+            <s:element minOccurs="0" maxOccurs="1" name="oAsset" type="tns:Asset" />
+            <s:element minOccurs="0" maxOccurs="1" name="oPosition" type="tns:GeoCoordinate" />
+            <s:element minOccurs="0" maxOccurs="1" name="oPosition1" type="tns:GeoCoordinate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExecutableOrdersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersResult" type="tns:ArrayOfOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartOrderExecution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oOrder" type="tns:Order" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartOrderExecutionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartOrderExecutionResult" type="tns:Execution" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Execution">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Execution" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Order" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_ExecutionType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartedAt" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartedAt_HasValue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndedAt" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndedAt_HasValue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Completed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Priority" type="s:int" />
         </s:sequence>
       </s:complexType>
     </s:schema>
@@ -94,6 +285,42 @@
   <wsdl:message name="SearchAssetSoapOut">
     <wsdl:part name="parameters" element="tns:SearchAssetResponse" />
   </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByOperatorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByOperator" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByOperatorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByOperatorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByAssetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAsset" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByAssetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByAssetBarcodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetBarcode" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByAssetBarcodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetBarcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByPositionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByPosition" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersByPositionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByPositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrders" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutableOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartOrderExecutionSoapIn">
+    <wsdl:part name="parameters" element="tns:StartOrderExecution" />
+  </wsdl:message>
+  <wsdl:message name="StartOrderExecutionSoapOut">
+    <wsdl:part name="parameters" element="tns:StartOrderExecutionResponse" />
+  </wsdl:message>
   <wsdl:portType name="MaintenanceSoap">
     <wsdl:operation name="Ping">
       <wsdl:input message="tns:PingSoapIn" />
@@ -106,6 +333,30 @@
     <wsdl:operation name="SearchAsset">
       <wsdl:input message="tns:SearchAssetSoapIn" />
       <wsdl:output message="tns:SearchAssetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByOperator">
+      <wsdl:input message="tns:GetExecutableOrdersByOperatorSoapIn" />
+      <wsdl:output message="tns:GetExecutableOrdersByOperatorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByAsset">
+      <wsdl:input message="tns:GetExecutableOrdersByAssetSoapIn" />
+      <wsdl:output message="tns:GetExecutableOrdersByAssetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByAssetBarcode">
+      <wsdl:input message="tns:GetExecutableOrdersByAssetBarcodeSoapIn" />
+      <wsdl:output message="tns:GetExecutableOrdersByAssetBarcodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByPosition">
+      <wsdl:input message="tns:GetExecutableOrdersByPositionSoapIn" />
+      <wsdl:output message="tns:GetExecutableOrdersByPositionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrders">
+      <wsdl:input message="tns:GetExecutableOrdersSoapIn" />
+      <wsdl:output message="tns:GetExecutableOrdersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartOrderExecution">
+      <wsdl:input message="tns:StartOrderExecutionSoapIn" />
+      <wsdl:output message="tns:StartOrderExecutionSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MaintenanceSoap" type="tns:MaintenanceSoap">
@@ -137,6 +388,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByOperator">
+      <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByOperator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByAsset">
+      <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByAssetBarcode">
+      <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByAssetBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByPosition">
+      <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByPosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrders">
+      <soap:operation soapAction="http://objlab.it/GetExecutableOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartOrderExecution">
+      <soap:operation soapAction="http://objlab.it/StartOrderExecution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MaintenanceSoap12" type="tns:MaintenanceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -160,6 +465,60 @@
     </wsdl:operation>
     <wsdl:operation name="SearchAsset">
       <soap12:operation soapAction="http://objlab.it/SearchAsset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByOperator">
+      <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByOperator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByAsset">
+      <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByAsset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByAssetBarcode">
+      <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByAssetBarcode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrdersByPosition">
+      <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByPosition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutableOrders">
+      <soap12:operation soapAction="http://objlab.it/GetExecutableOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartOrderExecution">
+      <soap12:operation soapAction="http://objlab.it/StartOrderExecution" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

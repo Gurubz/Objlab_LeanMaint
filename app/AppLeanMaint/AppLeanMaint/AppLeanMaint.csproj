@@ -111,7 +111,13 @@
     <None Include="Web References\MaintenanceWS\Asset.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\MaintenanceWS\Execution.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\MaintenanceWS\Maintenance.wsdl" />
+    <None Include="Web References\MaintenanceWS\Order.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\MaintenanceWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

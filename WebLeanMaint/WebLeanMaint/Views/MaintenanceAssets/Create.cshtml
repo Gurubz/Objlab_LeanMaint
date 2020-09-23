@@ -1,65 +1,75 @@
 ﻿@model WebLeanMaint.ViewModel.GeneralVM
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="content">
-    <div class="content-header">
-        <div class="leftside-content-header">
-            <ul class="breadcrumbs">
-                <li><a><i class="fa fa-cubes" aria-hidden="true"></i>  Maintenance Assets</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-sm-12 col-md-12">
-            <h4 class="section-subtitle"><b>Register Maintenance Assets</b></h4>
-            <a href="@Url.Action("Index","MaintenanceAssets")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
-            <div class="panel">
-                <div class="panel-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @using (Html.BeginForm("Save", "MaintenanceAssets", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                            {
-                                @Html.HiddenFor(m => m.maintenance.ID_Asset)
-                                <div class="row">
-                                    <div class="form-group col-sm-3">
-                                        <label>Name</label>
-                                        @Html.TextBoxFor(m => m.maintenance.Name, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Description</label>
-                                        @Html.TextBoxFor(m => m.maintenance.Description, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Select AssetType</label>
-                                        @Html.DropDownListFor(m => m.maintenance.ID_AssetType, new SelectList(Model.main_types, "ID_AssetType", "Name"), "Select AssetType", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Select OrganizationCenter</label>
-                                        @Html.DropDownListFor(m => m.maintenance.ID_OrganizationCenter, new SelectList(Model.main_orga, "ID_OrganizationCenter", "Name"), "Select OrganizationCenter", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-sm-3">
-                                        <label>Select CostCenter</label>
-                                        @Html.DropDownListFor(m => m.maintenance.ID_CostCenter, new SelectList(Model.main_cost, "ID_CostCenter", "Name"), "Select CostCenter", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Select GeographicCenter</label>
-                                        @Html.DropDownListFor(m => m.maintenance.ID_GeographicCenter, new SelectList(Model.main_geo, "ID_GeographicCenter", "Name"), "Select GeographicCenter", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Select ObjStatus</label>
-                                        @Html.DropDownListFor(m => m.maintenance.ID_ObjStatus, new SelectList(Model.main_subj, "ID_ObjStatus", "Name"), "Select ObjStatus", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
-                                </div>
-                            }
-                        </div>
+	<div class="content-header">
+		<div class="leftside-content-header">
+			<ul class="breadcrumbs">
+				<li><a><i class="fa fa-cubes" aria-hidden="true"></i>  Maintenance Assets</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col-sm-12 col-md-12">
+			<h4 class="section-subtitle"><b>Register Maintenance Assets</b></h4>
+			<a href="@Url.Action("Index","MaintenanceAssets")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
+			<div class="panel">
+				<div class="panel-content">
+					<div class="row">
+						<div class="col-md-12">
+							@using (Html.BeginForm("Save", "MaintenanceAssets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+							{
+								@Html.HiddenFor(m => m.Asset.ID_Asset)
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Name</label>
+										@Html.TextBoxFor(m => m.Asset.Name, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Description</label>
+										@Html.TextBoxFor(m => m.Asset.Description, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Select AssetType</label>
+										@Html.DropDownListFor(m => m.Asset.ID_AssetType, new SelectList(Model.AssetTypes, "ID_AssetType", "Name"), "Select AssetType", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Barcode</label>
+										@Html.TextBoxFor(m => m.Asset.Barcode, new { @class = "form-control input-xs" })
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Select OrganizationCenter</label>
+										@Html.DropDownListFor(m => m.Asset.ID_OrganizationCenter, new SelectList(Model.OrganizationCenters, "ID_OrganizationCenter", "Name"), "Select OrganizationCenter", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Select CostCenter</label>
+										@Html.DropDownListFor(m => m.Asset.ID_CostCenter, new SelectList(Model.CostCenters, "ID_CostCenter", "Name"), "Select CostCenter", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Select GeographicCenter</label>
+										@Html.DropDownListFor(m => m.Asset.ID_GeographicCenter, new SelectList(Model.GeographicCenters, "ID_GeographicCenter", "Name"), "Select GeographicCenter", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Select Parent</label>
+										@Html.DropDownListFor(m => m.Asset.ID_Parent, new SelectList(Model.Assets, "ID_Asset", "Name"), "Select Parent", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Select ObjStatus</label>
+										@Html.DropDownListFor(m => m.Asset.ID_ObjStatus, new SelectList(Model.ObjStatuses, "ID_ObjStatus", "Name"), "Select ObjStatus", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+								</div>
+							}
+						</div>
 
-                    </div>
-                </div>
-            </div>
+					</div>
+				</div>
+			</div>

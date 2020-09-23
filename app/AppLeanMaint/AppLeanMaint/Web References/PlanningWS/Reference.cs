@@ -580,6 +580,10 @@ namespace AppLeanMaint.PlanningWS {
         
         private int iD_AssetTypeField;
         
+        private string barcodeField;
+        
+        private bool barcode_HasValueField;
+        
         private int iD_OrganizationCenterField;
         
         private int iD_CostCenterField;
@@ -631,6 +635,26 @@ namespace AppLeanMaint.PlanningWS {
             }
             set {
                 this.iD_AssetTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Barcode {
+            get {
+                return this.barcodeField;
+            }
+            set {
+                this.barcodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Barcode_HasValue {
+            get {
+                return this.barcode_HasValueField;
+            }
+            set {
+                this.barcode_HasValueField = value;
             }
         }
         

@@ -38,16 +38,14 @@ namespace WebLeanMaint.Controllers
             var supp_type = _context.tbl_MaintenanceSupplierTypes.ToList();
             var city = _context.Database.SqlQuery<General_query>("SELECT T.* FROM Config.Countries C INNER JOIN Config.Regions R ON C.ID_Country = R.ID_Country INNER JOIN Config.Cities T ON R.ID_Region = T.ID_Region WHERE C.ID_Country = 100").ToList();
             var country = _context.Database.SqlQuery<General_query>("Select * from [Config].[Countries]").ToList();
-            var main_cost = _context.Database.SqlQuery<General_query>("Select * from [Accountancy].[CostCenters]").ToList();
             var user = _context.Database.SqlQuery<General_query>("Select * from [Security].[Users]").ToList();
-            var main_subj = _context.Database.SqlQuery<General_query>("Select * from [Config].[ObjStatuses]").ToList();
             var GenVm = new GeneralVM
             {
-                main_cost = main_cost,
+                CostCenters= _context.CostCenters.ToList(),
                 supp_type = supp_type,
                 city = city,
                 country = country,
-                main_subj = main_subj,
+                ObjStatuses= _context.ObjStatuses.ToList(),
                 user = user,
                 maintenanceSuppliers = maintenanceSuppliers,
 
@@ -89,16 +87,14 @@ namespace WebLeanMaint.Controllers
             var supp_type = _context.tbl_MaintenanceSupplierTypes.ToList();
             var city = _context.Database.SqlQuery<General_query>("Select * from [Config].[Cities]").ToList();
             var country = _context.Database.SqlQuery<General_query>("Select * from [Config].[Countries]").ToList();
-            var main_cost = _context.Database.SqlQuery<General_query>("Select * from [Accountancy].[CostCenters]").ToList();
             var user = _context.Database.SqlQuery<General_query>("Select * from [Security].[Users]").ToList();
-            var main_subj = _context.Database.SqlQuery<General_query>("Select * from [Config].[ObjStatuses]").ToList();
             var GenVm = new GeneralVM
             {
-                main_cost = main_cost,
+                CostCenters= _context.CostCenters.ToList(),
                 supp_type = supp_type,
                 city = city,
                 country = country,
-                main_subj = main_subj,
+                ObjStatuses= _context.ObjStatuses.ToList(),
                 user = user,
                 maintenanceSuppliers = maintenanceSuppliers,
 

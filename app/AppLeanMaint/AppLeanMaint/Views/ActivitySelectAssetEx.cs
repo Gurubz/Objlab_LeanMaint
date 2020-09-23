@@ -409,6 +409,7 @@ namespace AppLeanMaint.Views
 				Helpers.UI.ShowProgressMessage(this, Resource.String.app_please_wait);
 
 				// Process the serial
+				var aOrders = Helpers.WS.Instance.GetExecutableOrdersByAssetBarcode(sSerial);
 			}
 		}
 		#endregion

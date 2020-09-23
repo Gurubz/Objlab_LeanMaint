@@ -91,6 +91,13 @@ namespace AppLeanMaint.Helpers
 			return (aRet);
 		}
 
+		public MaintenanceWS.Order[] GetExecutableOrdersByAssetBarcode(string sBarcode)
+		{
+			MaintenanceWS.Order[] aRet = m_oMaintenanceWs.GetExecutableOrdersByAssetBarcode(sBarcode);
+
+			return (aRet);
+		}
+
 		public bool IsSerialValid(string sSerial)
 		{
 			bool bRet = false;
