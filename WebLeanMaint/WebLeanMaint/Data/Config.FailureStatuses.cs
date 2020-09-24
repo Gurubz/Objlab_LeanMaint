@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public FailureStatuse Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class FailureStatuses : EntitiesManagerBase
+	public partial class FailureStatuses : EntitiesManagerBase
 	{
 		#region Public Properties
 		public FailureStatuse this[int nIndex]

@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public GeographicCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_GeographicCenterType = {ID_GeographicCenterType}")]
 	public partial class GeographicCenterType

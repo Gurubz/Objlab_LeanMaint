@@ -110,11 +110,15 @@ namespace WebLeanMaint.WS
 			Data.Planning.Orders aOrders = new Data.Planning.Orders();
 			if (string.IsNullOrEmpty(sBarcode) == false)
 			{
-				Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
-				aOrderAssets.Load("Barcode=" + EntitiesManagerBase.UTI_ValueToSql(sBarcode));
-				string[] aID_Orders = (from o in aOrderAssets.ToArray() select EntitiesManagerBase.UTI_ValueToSql(o.ID_Order)).Distinct().ToArray();
-
-				aOrders.Load("ID_Order IN " + string.Join(",", aID_Orders));
+				Data.Maintenance.Assets aAssets = new Data.Maintenance.Assets();
+				aAssets.Load("Barcode=" + EntitiesManagerBase.UTI_ValueToSql(sBarcode));
+				if (aAssets.Count == 1)
+				{
+					Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
+					aOrderAssets.Load($"ID_Asset={EntitiesManagerBase.UTI_ValueToSql(aAssets[0].ID_Asset)}");
+					string[] aID_Orders = (from o in aOrderAssets.ToArray() select EntitiesManagerBase.UTI_ValueToSql(o.ID_Order)).Distinct().ToArray();
+					if (aID_Orders.Length > 0) aOrders.Load("ID_Order IN " + string.Join(",", aID_Orders));
+				}
 			}
 
 			return (aOrders.ToArray());

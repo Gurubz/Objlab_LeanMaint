@@ -12,9 +12,9 @@ namespace Data.Planning
 	/// Public Operator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Operators : EntitiesManagerBase
+	public partial class Operators : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Operator this[int nIndex]

@@ -12,9 +12,9 @@ namespace Data.Hierarchy
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class GeographicCenters : EntitiesManagerBase
+	public partial class GeographicCenters : EntitiesManagerBase
 	{
 		#region Public Properties
 		public GeographicCenter this[int nIndex]

@@ -12,9 +12,9 @@ namespace Data.Planning
 	/// Public OrderType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class OrderTypes : EntitiesManagerBase
+	public partial class OrderTypes : EntitiesManagerBase
 	{
 		#region Public Properties
 		public OrderType this[int nIndex]

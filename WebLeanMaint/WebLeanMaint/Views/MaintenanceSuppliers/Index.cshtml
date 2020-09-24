@@ -1,5 +1,4 @@
-﻿@model IEnumerable<WebLeanMaint.QueryModel.MaintenanceSuppliersquery>
-
+﻿@model IEnumerable<Data.Maintenance.Supplier>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,16 +28,16 @@
                                         @Html.DisplayNameFor(model => model.Description)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ID_SupplierType)
+                                        @Html.DisplayNameFor(model => model.SupplierTypeName)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ID_ObjStatus)
+                                        @Html.DisplayNameFor(model => model.ObjStatusName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Address1)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ID_CostCenter)
+                                        @Html.DisplayNameFor(model => model.CostCenterName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Address2)
@@ -47,19 +46,19 @@
                                         @Html.DisplayNameFor(model => model.HourlyCost)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ID_City)
+                                        @Html.DisplayNameFor(model => model.CityName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Zip)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ID_Country)
+                                        @Html.DisplayNameFor(model => model.CountryName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.ValidFrom)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ID_User)
+                                        @Html.DisplayNameFor(model => model.UserName)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -76,16 +75,16 @@
                                             @Html.DisplayFor(modelItem => item.Description)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.suptype)
+                                            @Html.DisplayFor(modelItem => item.SupplierTypeName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.subname)
+                                            @Html.DisplayFor(modelItem => item.ObjStatusName)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Address1)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.costname)
+                                            @Html.DisplayFor(modelItem => item.CostCenterName)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Address2)
@@ -94,19 +93,19 @@
                                             @Html.DisplayFor(modelItem => item.HourlyCost)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.city)
+                                            @Html.DisplayFor(modelItem => item.CityName)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Zip)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.country)
+                                            @Html.DisplayFor(modelItem => item.CountryName)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.ValidFrom)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.username)
+                                            @Html.DisplayFor(modelItem => item.UserName)
                                         </td>
                                         <td>
                                             <a href="@Url.Action("Edit", new { ID= item.ID_Supplier } )" class="btn btn-warning shiny input-xs"><i class="fa fa-pencil"></i></a>

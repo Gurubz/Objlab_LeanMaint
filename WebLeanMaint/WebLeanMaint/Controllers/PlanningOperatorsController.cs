@@ -33,21 +33,16 @@ namespace WebLeanMaint.Controllers
 			var list = _context.Database.SqlQuery<PlanningOperatorsquery>("SELECT *,(Select name From [Config].[ObjStatuses] where ID_ObjStatus=Planning.Operators.ID_ObjStatus) as subname,(Select name From Maintenance.Suppliers where ID_Supplier=Planning.Operators.ID_Supplier) as supp,(Select name From [Accountancy].[CostCenters] where ID_CostCenter=Planning.Operators.ID_CostCenter) as costname,(Select name From Planning.OperatorTypes where ID_OperatorType=Planning.Operators.ID_OperatorType) as ptype,(Select name From [Planning].[Calendars] where ID_Calendar=Planning.Operators.ID_Calendar) as cal,(Select name From [Security].[Users] where ID_User=Planning.Operators.ID_User) as username   FROM Planning.Operators").ToList();
 			return View(list);
 		}
-		public ActionResult Create(PlanningOperators planningOperators)
+		public ActionResult Create(PlanningOperators oOperator)
 		{
-			var main_supp = _context.tbl_MaintenanceSuppliers.ToList();
-			var opp_types = _context.tbl_PlanningOperatorTypes.ToList();
-			var cal = _context.Database.SqlQuery<General_query>("Select * from [Planning].[Calendars]").ToList();
-			var user = _context.Database.SqlQuery<General_query>("Select * from [Security].[Users]").ToList();
 			var GenVm = new GeneralVM
 			{
-				cal = cal,
-				main_supp = main_supp,
-				opp_types = opp_types,
+				Calendars = _context.Calendars.ToList(),
+				opp_types = _context.tbl_PlanningOperatorTypes.ToList(),
 				CostCenters = _context.CostCenters.ToList(),
-				user = user,
+				Users = _context.Users.ToList(),
 				ObjStatuses = _context.ObjStatuses.ToList(),
-				planningOperators = planningOperators,
+				planningOperators = oOperator,
 
 			};
 			return View(GenVm);
@@ -79,22 +74,17 @@ namespace WebLeanMaint.Controllers
 		}
 		public ActionResult Edit(int Id)
 		{
-			var planningOperators = _context.tbl_PlanningOperators.SingleOrDefault(c => c.ID_Operator == Id);
-			if (planningOperators == null)
+			var oOperator = _context.tbl_PlanningOperators.SingleOrDefault(c => c.ID_Operator == Id);
+			if (oOperator == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			var main_supp = _context.tbl_MaintenanceSuppliers.ToList();
-			var opp_types = _context.tbl_PlanningOperatorTypes.ToList();
-			var cal = _context.Database.SqlQuery<General_query>("Select * from [Planning].[Calendars]").ToList();
-			var user = _context.Database.SqlQuery<General_query>("Select * from [Security].[Users]").ToList();
 			var GenVm = new GeneralVM
 			{
-				cal = cal,
-				main_supp = main_supp,
-				opp_types = opp_types,
+				Calendars = _context.Calendars.ToList(),
+				opp_types = _context.tbl_PlanningOperatorTypes.ToList(),
 				CostCenters = _context.CostCenters.ToList(),
-				user = user,
+				Users = _context.Users.ToList(),
 				ObjStatuses = _context.ObjStatuses.ToList(),
-				planningOperators = planningOperators,
+				planningOperators = oOperator,
 
 			};
 			return View("Create", GenVm);

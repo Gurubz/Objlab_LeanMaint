@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public Asset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Assets : EntitiesManagerBase
+	public partial class Assets : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Asset this[int nIndex]

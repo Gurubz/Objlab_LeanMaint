@@ -12,9 +12,9 @@ namespace Data.Planning
 	/// Public OrderAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class OrderAssets : EntitiesManagerBase
+	public partial class OrderAssets : EntitiesManagerBase
 	{
 		#region Public Properties
 		public OrderAsset this[int nIndex]

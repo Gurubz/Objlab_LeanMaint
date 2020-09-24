@@ -12,9 +12,9 @@ namespace Data.Accountancy
 	/// Public CostCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class CostCenterTypes : EntitiesManagerBase
+	public partial class CostCenterTypes : EntitiesManagerBase
 	{
 		#region Public Properties
 		public CostCenterType this[int nIndex]

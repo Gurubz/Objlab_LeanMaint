@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public MaterialUM Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class MaterialUMs : EntitiesManagerBase
+	public partial class MaterialUMs : EntitiesManagerBase
 	{
 		#region Public Properties
 		public MaterialUM this[int nIndex]

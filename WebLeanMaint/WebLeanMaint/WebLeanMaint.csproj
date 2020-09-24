@@ -199,9 +199,12 @@
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Core\CoordinateBoundaries.cs" />
     <Compile Include="Core\Maintenance.cs" />
+    <Compile Include="Data\Config.Citys.ex.cs" />
     <Compile Include="Data\Maintenance.Asset.ex.cs" />
     <Compile Include="Data\Maintenance.AssetMaterial.cs" />
     <Compile Include="Data\Maintenance.AssetMaterials.cs" />
+    <Compile Include="Data\Maintenance.Material.ex.cs" />
+    <Compile Include="Data\Maintenance.Supplier.ex.cs" />
     <Compile Include="Data\Planning.OperatorType.cs" />
     <Compile Include="Data\Planning.OperatorTypes.cs" />
     <Compile Include="Data\Planning.Order.ex.cs" />
@@ -211,8 +214,6 @@
     <Compile Include="Models\AccountancyBilling.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MaintenanceAssetTypes.cs" />
-    <Compile Include="Models\MaintenanceMaterials.cs" />
     <Compile Include="Models\MaintenanceMaterialUMs.cs" />
     <Compile Include="Models\MaintenanceSuppliers.cs" />
     <Compile Include="Models\MaintenanceSupplierTypes.cs" />

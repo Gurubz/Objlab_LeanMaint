@@ -8,6 +8,8 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using System.Linq;
 using Android.Runtime;
+using Android.Gms.Common.Util;
+using Newtonsoft.Json;
 
 namespace AppLeanMaint.Views
 {
@@ -52,6 +54,16 @@ namespace AppLeanMaint.Views
 			this.GUI_Init();
 		}
 
+		protected override void OnStart()
+		{
+			base.OnStart();
+		}
+
+		protected override void OnRestart()
+		{
+			base.OnRestart();
+		}
+
 		protected override void OnResume()
 		{
 			GUI_BizToGui();
@@ -59,14 +71,41 @@ namespace AppLeanMaint.Views
 			base.OnResume();
 		}
 
-		protected override void OnStart()
+		protected override void OnPause()
 		{
-			base.OnStart();
+			base.OnPause();
 		}
 
 		protected override void OnStop()
 		{
 			base.OnStop();
+		}
+
+		protected override void OnDestroy()
+		{
+			base.OnDestroy();
+		}
+
+		protected override void OnSaveInstanceState(Bundle outState)
+		{
+			this.GUI_GuiToBiz();
+
+			// https://medium.com/android-core/how-to-persist-data-when-activity-is-re-created-in-android-studio-be4aa6a95f95
+			outState.PutString(Resource.Layout.activity_orders.ToString(), JsonConvert.SerializeObject(m_oOrder));
+
+			base.OnSaveInstanceState(outState);
+		}
+
+		protected override void OnRestoreInstanceState(Bundle savedInstanceState)
+		{
+			base.OnRestoreInstanceState(savedInstanceState);
+
+			// https://medium.com/android-core/how-to-persist-data-when-activity-is-re-created-in-android-studio-be4aa6a95f95
+			string sObject = savedInstanceState?.GetString(Resource.Layout.activity_orders.ToString());
+			if (string.IsNullOrEmpty(sObject) == false)
+			{
+				m_oOrder = JsonConvert.DeserializeObject<PlanningWS.Order>(sObject);
+			}
 		}
 
 		[Obsolete("deprecated")]

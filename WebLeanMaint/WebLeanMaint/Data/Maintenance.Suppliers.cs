@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public Supplier Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Suppliers : EntitiesManagerBase
+	public partial class Suppliers : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Supplier this[int nIndex]

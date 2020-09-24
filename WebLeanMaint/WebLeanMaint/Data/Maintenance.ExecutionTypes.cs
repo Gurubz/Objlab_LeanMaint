@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public ExecutionType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class ExecutionTypes : EntitiesManagerBase
+	public partial class ExecutionTypes : EntitiesManagerBase
 	{
 		#region Public Properties
 		public ExecutionType this[int nIndex]

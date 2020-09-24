@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public ExecutionOperator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class ExecutionOperators : EntitiesManagerBase
+	public partial class ExecutionOperators : EntitiesManagerBase
 	{
 		#region Public Properties
 		public ExecutionOperator this[int nIndex]

@@ -12,9 +12,9 @@ namespace Data.Hierarchy
 	/// Public CostCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class CostCenters : EntitiesManagerBase
+	public partial class CostCenters : EntitiesManagerBase
 	{
 		#region Public Properties
 		public CostCenter this[int nIndex]

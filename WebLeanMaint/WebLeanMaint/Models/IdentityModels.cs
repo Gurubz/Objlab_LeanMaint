@@ -70,11 +70,25 @@ namespace WebLeanMaint.Models
 				return (EntitiesManagerBase.SharedConnection.Query<Data.Accountancy.CostCenter>("SELECT * FROM [Accountancy].[CostCenters]"));
 			}
 		}
+		public IEnumerable<Data.Planning.Calendar> Calendars
+		{
+			get
+			{
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Planning.Calendar>("SELECT * FROM [Planning].[Calendars]"));
+			}
+		}
 		public IEnumerable<Data.Config.GeographicCenter> GeographicCenters
 		{
 			get
 			{
 				return (EntitiesManagerBase.SharedConnection.Query<Data.Config.GeographicCenter>("SELECT * FROM [Config].[GeographicCenters]"));
+			}
+		}
+		public IEnumerable<Data.Config.StoreCenter> StoreCenters
+		{
+			get
+			{
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Config.StoreCenter>("SELECT * FROM [Config].[StoreCenters]"));
 			}
 		}
 		public IEnumerable<Data.Config.ObjStatuse> ObjStatuses
@@ -84,10 +98,64 @@ namespace WebLeanMaint.Models
 				return (EntitiesManagerBase.SharedConnection.Query<Data.Config.ObjStatuse>("SELECT * FROM [Config].[ObjStatuses]"));
 			}
 		}
-		public DbSet<MaintenanceMaterials> tbl_MaintenanceMaterials { get; set; }
-		public DbSet<MaintenanceMaterialUMs> tbl_MaintenanceMaterialUMs { get; set; }
-		public DbSet<MaintenanceSuppliers> tbl_MaintenanceSuppliers { get; set; }
-		public DbSet<MaintenanceSupplierTypes> tbl_MaintenanceSupplierTypes { get; set; }
+		public IEnumerable<Data.Config.City> Cities { get { return (Data.Config.Citys.GetItalianCitiesForDropDownList()); } }
+		public IEnumerable<Data.Config.Country> Countries
+		{
+			get
+			{
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Config.Country>("SELECT * FROM [Config].[Countries]"));
+			}
+		}
+		public IEnumerable<Data.Security.User> Users
+		{
+			get
+			{
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Security.User>("SELECT * FROM [Security].[Users]"));
+			}
+		}
+		public IEnumerable<Data.Maintenance.Material> Materials
+		{
+			get
+			{
+				StringBuilder oSql = new StringBuilder();
+				oSql.AppendLine("SELECT M.*, S.Name as SupplierName, MUM.Name as MaterialUMName, SC.Name as StoreCenterName, OS.Name as ObjStatusName FROM Maintenance.Materials M");
+				oSql.AppendLine("INNER JOIN Config.ObjStatuses OS ON M.ID_ObjStatus=OS.ID_ObjStatus");
+				oSql.AppendLine("INNER JOIN Maintenance.Suppliers S ON M.ID_Supplier=S.ID_Supplier");
+				oSql.AppendLine("INNER JOIN Maintenance.MaterialUMs MUM ON M.ID_MaterialUM=MUM.ID_MaterialUM");
+				oSql.AppendLine("INNER JOIN Config.StoreCenters SC ON M.ID_StoreCenter=SC.ID_StoreCenter");
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Maintenance.Material>(oSql.ToString()));
+			}
+		}
+		public IEnumerable<Data.Maintenance.MaterialUM> MaterialUMs
+		{
+			get
+			{
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Maintenance.MaterialUM>("SELECT * FROM [Maintenance].[MaterialUMs]"));
+			}
+		}
+		public IEnumerable<Data.Maintenance.Supplier> Suppliers
+		{
+			get
+			{
+				StringBuilder oSql = new StringBuilder();
+				oSql.AppendLine("SELECT S.*, ST.Name as SupplierTypeName, OS.Name as ObjStatusName, CC.Name as CostCenterName, C.Name as CityName, CO.Name as CountryName, U.Username as UserName");
+				oSql.AppendLine("FROM Maintenance.Suppliers S");
+				oSql.AppendLine("INNER JOIN Maintenance.SupplierTypes ST ON S.ID_SupplierType=ST.ID_SupplierType");
+				oSql.AppendLine("INNER JOIN Config.ObjStatuses OS ON S.ID_ObjStatus=OS.ID_ObjStatus");
+				oSql.AppendLine("INNER JOIN Accountancy.CostCenters CC ON S.ID_CostCenter=CC.ID_CostCenter");
+				oSql.AppendLine("INNER JOIN Config.Cities C ON S.ID_City=C.ID_City");
+				oSql.AppendLine("INNER JOIN Config.Countries CO ON S.ID_Country=CO.ID_Country");
+				oSql.AppendLine("LEFT OUTER JOIN Security.Users U ON S.ID_User=U.ID_User");
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Maintenance.Supplier>(oSql.ToString()));
+			}
+		}
+		public IEnumerable<Data.Maintenance.SupplierType> SupplierTypes
+		{
+			get
+			{
+				return (EntitiesManagerBase.SharedConnection.Query<Data.Maintenance.SupplierType>("SELECT * FROM Maintenance.SupplierTypes"));
+			}
+		}
 		public DbSet<PlanningOperators> tbl_PlanningOperators { get; set; }
 		public DbSet<PlanningOperatorTypes> tbl_PlanningOperatorTypes { get; set; }
 		public ApplicationDbContext()

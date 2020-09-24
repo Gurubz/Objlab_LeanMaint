@@ -12,9 +12,9 @@ namespace Data.Planning
 	/// Public CalendarDay Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class CalendarDays : EntitiesManagerBase
+	public partial class CalendarDays : EntitiesManagerBase
 	{
 		#region Public Properties
 		public CalendarDay this[int nIndex]

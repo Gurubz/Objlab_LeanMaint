@@ -12,9 +12,9 @@ namespace Data.Accountancy
 	/// Public Billing Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Billings : EntitiesManagerBase
+	public partial class Billings : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Billing this[int nIndex]

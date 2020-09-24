@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public GeographicCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class GeographicCenterTypes : EntitiesManagerBase
+	public partial class GeographicCenterTypes : EntitiesManagerBase
 	{
 		#region Public Properties
 		public GeographicCenterType this[int nIndex]

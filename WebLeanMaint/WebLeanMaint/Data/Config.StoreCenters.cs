@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public StoreCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class StoreCenters : EntitiesManagerBase
+	public partial class StoreCenters : EntitiesManagerBase
 	{
 		#region Public Properties
 		public StoreCenter this[int nIndex]

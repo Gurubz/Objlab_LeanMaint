@@ -1,84 +1,84 @@
 ﻿@model WebLeanMaint.ViewModel.GeneralVM
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="content">
-    <div class="content-header">
-        <div class="leftside-content-header">
-            <ul class="breadcrumbs">
-                <li><a><i class="fa fa-cubes" aria-hidden="true"></i>  Maintenance Materials</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-sm-12 col-md-12">
-            <h4 class="section-subtitle"><b>Register Maintenance Materials</b></h4>
-            <a href="@Url.Action("Index","MaintenanceMaterials")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
-            <div class="panel">
-                <div class="panel-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @using (Html.BeginForm("Save", "MaintenanceMaterials", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                            {
-                                @Html.HiddenFor(m => m.maintenanceMaterials.ID_Material)
-                                <div class="row">
-                                    <div class="form-group col-sm-3">
-                                        <label>Name</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.Name, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Description</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.Description, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Select ObjStatus</label>
-                                        @Html.DropDownListFor(m => m.maintenanceMaterials.ID_ObjStatus, new SelectList(Model.main_subj, "ID_ObjStatus", "Name"), "Select AssetType", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Reference Code</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.ReferenceCode, new { @class = "form-control input-xs" })
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-sm-3">
-                                        <label>Select Supplier</label>
-                                        @Html.DropDownListFor(m => m.maintenanceMaterials.ID_Supplier, new SelectList(Model.main_supp, "ID_Supplier", "Name"), "Select Supplier", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Cost Per UM</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.CostPerUM, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Brand</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.Brand, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Select Material UM</label>
-                                        @Html.DropDownListFor(m => m.maintenanceMaterials.ID_MaterialUM, new SelectList(Model.main_suppum, "ID_MaterialUM", "Name"), "Select Material UM", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-sm-3">
-                                        <label>Select Store Center</label>
-                                        @Html.DropDownListFor(m => m.maintenanceMaterials.ID_StoreCenter, new SelectList(Model.main_stores, "ID_StoreCenter", "Name"), "Select Store Center", htmlAttributes: new { @class = "chosen-select form-control" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Type</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.Type, new { @class = "form-control input-xs" })
-                                    </div>
-                                    <div class="form-group col-sm-3">
-                                        <label>Barcode</label>
-                                        @Html.TextBoxFor(m => m.maintenanceMaterials.Barcode, new { @class = "form-control input-xs" })
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
-                                </div>
-                            }
-                        </div>
+	<div class="content-header">
+		<div class="leftside-content-header">
+			<ul class="breadcrumbs">
+				<li><a><i class="fa fa-cubes" aria-hidden="true"></i>  Maintenance Materials</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col-sm-12 col-md-12">
+			<h4 class="section-subtitle"><b>Register Maintenance Materials</b></h4>
+			<a href="@Url.Action("Index","MaintenanceMaterials")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-list"></i> Go to List</a>
+			<div class="panel">
+				<div class="panel-content">
+					<div class="row">
+						<div class="col-md-12">
+							@using (Html.BeginForm("Save", "MaintenanceMaterials", FormMethod.Post, new { enctype = "multipart/form-data" }))
+							{
+								@Html.HiddenFor(m => m.Material.ID_Material)
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Name</label>
+										@Html.TextBoxFor(m => m.Material.Name, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Description</label>
+										@Html.TextBoxFor(m => m.Material.Description, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Select ObjStatus</label>
+										@Html.DropDownListFor(m => m.Material.ID_ObjStatus, new SelectList(Model.ObjStatuses, "ID_ObjStatus", "Name"), "Select AssetType", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Reference Code</label>
+										@Html.TextBoxFor(m => m.Material.ReferenceCode, new { @class = "form-control input-xs" })
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Select Supplier</label>
+										@Html.DropDownListFor(m => m.Material.ID_Supplier, new SelectList(Model.Suppliers, "ID_Supplier", "Name"), "Select Supplier", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Cost Per UM</label>
+										@Html.TextBoxFor(m => m.Material.CostPerUM, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Brand</label>
+										@Html.TextBoxFor(m => m.Material.Brand, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Select Material UM</label>
+										@Html.DropDownListFor(m => m.Material.ID_MaterialUM, new SelectList(Model.MaterialUMs, "ID_MaterialUM", "Name"), "Select Material UM", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Select Store Center</label>
+										@Html.DropDownListFor(m => m.Material.ID_StoreCenter, new SelectList(Model.StoreCenters, "ID_StoreCenter", "Name"), "Select Store Center", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Type</label>
+										@Html.TextBoxFor(m => m.Material.Type, new { @class = "form-control input-xs" })
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Barcode</label>
+										@Html.TextBoxFor(m => m.Material.Name, new { @class = "form-control input-xs" })
+									</div>
 
-                    </div>
-                </div>
-            </div>
+								</div>
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+								</div>
+							}
+						</div>
+
+					</div>
+				</div>
+			</div>

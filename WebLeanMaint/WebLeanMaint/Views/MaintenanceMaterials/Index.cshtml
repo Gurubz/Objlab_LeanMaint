@@ -1,127 +1,126 @@
-﻿@model IEnumerable<WebLeanMaint.QueryModel.MaintenanceMaterialsquery>
-
+﻿@model IEnumerable<Data.Maintenance.Material>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="content">
-    <div class="content-header">
-        <div class="leftside-content-header">
-            <ul class="breadcrumbs">
-                <li><a><i class="fa fa-cubes" aria-hidden="true"></i> Maintenance Materials</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h4 class="section-subtitle"><b>Maintenance Materials List</b></h4>
-            <a href="@Url.Action("Create", "MaintenanceMaterials")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-plus"></i>  Creat New</a>
-            <div class="panel">
-                <div class="panel-content">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped table-success" id="searchable">
-                            <thead class="bordered-darkorange">
-                                <tr>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Name)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Description)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ID_ObjStatus)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ReferenceCode)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ID_Supplier)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.CostPerUM)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Brand)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.unitname)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.storename)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Type)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Barcode)
-                                    </th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="abc">
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Name)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Description)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.subname)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ReferenceCode)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.supname)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.CostPerUM)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Brand)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ID_MaterialUM)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ID_StoreCenter)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Type)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Barcode)
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action("Edit", new { ID= item.ID_Material } )" class="btn btn-warning shiny input-xs"><i class="fa fa-pencil"></i></a>
-                                            <a href="@Url.Action("Delete", new { ID= item.ID_Material } )" new { onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger shiny input-xs"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th><input type="text" style="width: 70px" placeholder="Search Here" name="search_browser" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:120px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:120px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="content-header">
+		<div class="leftside-content-header">
+			<ul class="breadcrumbs">
+				<li><a><i class="fa fa-cubes" aria-hidden="true"></i> Maintenance Materials</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<h4 class="section-subtitle"><b>Maintenance Materials List</b></h4>
+			<a href="@Url.Action("Create", "MaintenanceMaterials")" class="btn btn-wide btn-success pull-right" style="margin-top:-40px"><i class="fa fa-plus"></i>  Creat New</a>
+			<div class="panel">
+				<div class="panel-content">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover table-striped table-success" id="searchable">
+							<thead class="bordered-darkorange">
+								<tr>
+									<th>
+										@Html.DisplayNameFor(model => model.Name)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.Description)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.ID_ObjStatus)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.ReferenceCode)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.SupplierName)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.CostPerUM)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.Brand)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.MaterialUMName)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.StoreCenterName)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.Type)
+									</th>
+									<th>
+										@Html.DisplayNameFor(model => model.Barcode)
+									</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody class="abc">
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>
+											@Html.DisplayFor(modelItem => item.Name)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.Description)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.ObjStatusName)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.ReferenceCode)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.SupplierName)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.CostPerUM)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.Brand)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.MaterialUMName)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.StoreCenterName)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.Type)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.Barcode)
+										</td>
+										<td>
+											<a href="@Url.Action("Edit", new { ID= item.ID_Material } )" class="btn btn-warning shiny input-xs"><i class="fa fa-pencil"></i></a>
+											<a href="@Url.Action("Delete", new { ID= item.ID_Material } )" new { onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger shiny input-xs"><i class="fa fa-trash-o"></i></a>
+										</td>
+									</tr>
+								}
+							</tbody>
+							<tfoot>
+								<tr>
+									<th><input type="text" style="width: 70px" placeholder="Search Here" name="search_browser" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:120px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:120px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+									<th></th>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

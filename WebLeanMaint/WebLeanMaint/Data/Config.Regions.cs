@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public Region Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Regions : EntitiesManagerBase
+	public partial class Regions : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Region this[int nIndex]

@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public Outcome Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Outcomes : EntitiesManagerBase
+	public partial class Outcomes : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Outcome this[int nIndex]

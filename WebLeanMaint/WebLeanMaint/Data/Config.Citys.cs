@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public City Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Citys : EntitiesManagerBase
+	public partial class Citys : EntitiesManagerBase
 	{
 		#region Public Properties
 		public City this[int nIndex]

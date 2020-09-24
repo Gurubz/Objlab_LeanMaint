@@ -12,9 +12,9 @@ namespace Data.Security
 	/// Public UserType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class UserTypes : EntitiesManagerBase
+	public partial class UserTypes : EntitiesManagerBase
 	{
 		#region Public Properties
 		public UserType this[int nIndex]

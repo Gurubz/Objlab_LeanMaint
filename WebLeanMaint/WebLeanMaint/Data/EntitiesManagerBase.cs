@@ -255,6 +255,10 @@ namespace Data
 			{
 				oRet.Append("NULL");
 			}
+			else if (oValue == null)
+			{
+				oRet.Append("NULL");
+			}
 			else if (oValue is string || oValue is char)
 			{
 				oRet.Append("'");

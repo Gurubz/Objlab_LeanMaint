@@ -435,6 +435,18 @@ namespace AppLeanMaint.MaintenanceWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
     public partial class Asset {
         
+        private string assetTypeNameField;
+        
+        private string organizationCenterNameField;
+        
+        private string costCenterNameField;
+        
+        private string geographicCenterNameField;
+        
+        private string objStatusNameField;
+        
+        private string parentNameField;
+        
         private int iD_AssetField;
         
         private string nameField;
@@ -460,6 +472,66 @@ namespace AppLeanMaint.MaintenanceWS {
         private int iD_ParentField;
         
         private bool iD_Parent_HasValueField;
+        
+        /// <remarks/>
+        public string AssetTypeName {
+            get {
+                return this.assetTypeNameField;
+            }
+            set {
+                this.assetTypeNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string OrganizationCenterName {
+            get {
+                return this.organizationCenterNameField;
+            }
+            set {
+                this.organizationCenterNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CostCenterName {
+            get {
+                return this.costCenterNameField;
+            }
+            set {
+                this.costCenterNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string GeographicCenterName {
+            get {
+                return this.geographicCenterNameField;
+            }
+            set {
+                this.geographicCenterNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ObjStatusName {
+            get {
+                return this.objStatusNameField;
+            }
+            set {
+                this.objStatusNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ParentName {
+            get {
+                return this.parentNameField;
+            }
+            set {
+                this.parentNameField = value;
+            }
+        }
         
         /// <remarks/>
         public int ID_Asset {

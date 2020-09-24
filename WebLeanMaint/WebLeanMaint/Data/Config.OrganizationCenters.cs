@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public OrganizationCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class OrganizationCenters : EntitiesManagerBase
+	public partial class OrganizationCenters : EntitiesManagerBase
 	{
 		#region Public Properties
 		public OrganizationCenter this[int nIndex]

@@ -38,9 +38,8 @@ namespace WebLeanMaint.Controllers
 			var list = _context.Assets.ToList();
 			return View(list);
 		}
-		public ActionResult Create(Data.Maintenance.Asset maintenance)
+		public ActionResult Create(Data.Maintenance.Asset oAsset)
 		{
-			var list = _context.Assets.ToList();
 			var GenVm = new GeneralVM
 			{
 				OrganizationCenters = _context.OrganizationCenters.ToList(),
@@ -49,7 +48,7 @@ namespace WebLeanMaint.Controllers
 				ObjStatuses = _context.ObjStatuses.ToList(),
 				AssetTypes = _context.AssetTypes.ToList(),
 				Assets = _context.Assets.ToList(),
-				Asset = maintenance,
+				Asset = oAsset,
 			};
 			return View(GenVm);
 		}
@@ -81,8 +80,8 @@ namespace WebLeanMaint.Controllers
 		public ActionResult Edit(int Id)
 		{
 			var list = _context.Assets.ToList();
-			var maintenance = list.SingleOrDefault(c => c.ID_Asset == Id);
-			if (maintenance == null)
+			var oAsset = list.SingleOrDefault(c => c.ID_Asset == Id);
+			if (oAsset == null)
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			var GenVm = new GeneralVM
 			{
@@ -92,7 +91,7 @@ namespace WebLeanMaint.Controllers
 				ObjStatuses = _context.ObjStatuses.ToList(),
 				AssetTypes = _context.AssetTypes.ToList(),
 				Assets = _context.Assets.ToList(),
-				Asset = maintenance,
+				Asset = oAsset,
 			};
 			return View("Create", GenVm);
 		}

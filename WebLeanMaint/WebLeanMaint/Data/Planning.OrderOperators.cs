@@ -12,9 +12,9 @@ namespace Data.Planning
 	/// Public OrderOperator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class OrderOperators : EntitiesManagerBase
+	public partial class OrderOperators : EntitiesManagerBase
 	{
 		#region Public Properties
 		public OrderOperator this[int nIndex]

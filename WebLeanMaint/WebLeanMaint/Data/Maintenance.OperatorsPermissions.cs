@@ -12,9 +12,9 @@ namespace Data.Maintenance
 	/// Public OperatorsPermission Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class OperatorsPermissions : EntitiesManagerBase
+	public partial class OperatorsPermissions : EntitiesManagerBase
 	{
 		#region Public Properties
 		public OperatorsPermission this[int nIndex]

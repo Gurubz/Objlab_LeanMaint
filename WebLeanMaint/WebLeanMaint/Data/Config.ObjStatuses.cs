@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public ObjStatuse Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class ObjStatuses : EntitiesManagerBase
+	public partial class ObjStatuses : EntitiesManagerBase
 	{
 		#region Public Properties
 		public ObjStatuse this[int nIndex]

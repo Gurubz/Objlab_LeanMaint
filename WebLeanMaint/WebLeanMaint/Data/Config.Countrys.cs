@@ -12,9 +12,9 @@ namespace Data.Config
 	/// Public Country Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  18/09/2020  Created
+	/// 	[SQLClassGenerator]  24/09/2020  Created
 	/// </remarks>
-	public class Countrys : EntitiesManagerBase
+	public partial class Countrys : EntitiesManagerBase
 	{
 		#region Public Properties
 		public Country this[int nIndex]
