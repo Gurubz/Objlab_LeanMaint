@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public StoreCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class StoreCenters : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Hierarchy
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Hierarchy
 			return (oRet);
 		}
 
-		public static StoreCenter LoadOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild)
-		{
-			return(LoadOne(nID_StoreCenter, nLevel, nID_StoreCenterChild, null));
-		}
-
-		public static StoreCenter LoadOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild, SqlConnection oPrivateConnection)
+		public static StoreCenter LoadOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild, SqlConnection oPrivateConnection = null)
 		{
 			StoreCenter oStoreCenter = null;
 			DataSet oDs = null;
@@ -197,12 +177,7 @@ namespace Data.Hierarchy
 			return (oStoreCenter);
 		}
 
-		public static StoreCenter TryLoadOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild)
-		{
-			return(TryLoadOne(nID_StoreCenter, nLevel, nID_StoreCenterChild, null));
-		}
-
-		public static StoreCenter TryLoadOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild, SqlConnection oPrivateConnection)
+		public static StoreCenter TryLoadOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild, SqlConnection oPrivateConnection = null)
 		{
 			StoreCenter oStoreCenter = null;
 
@@ -218,12 +193,7 @@ namespace Data.Hierarchy
 			}
 		}
 
-		public static void InsertOne(StoreCenter oStoreCenter)
-		{
-			InsertOne(oStoreCenter, null);
-		}
-
-		public static void InsertOne(StoreCenter oStoreCenter, SqlConnection oPrivateConnection)
+		public static void InsertOne(StoreCenter oStoreCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -241,12 +211,7 @@ namespace Data.Hierarchy
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(StoreCenter oStoreCenter)
-		{
-			UpdateOne(oStoreCenter, null);
-		}
-
-		public static void UpdateOne(StoreCenter oStoreCenter, SqlConnection oPrivateConnection)
+		public static void UpdateOne(StoreCenter oStoreCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -268,18 +233,24 @@ namespace Data.Hierarchy
 
 		}
 
-		public static void DeleteOne(StoreCenter oStoreCenter)
-		{
-			DeleteOne(oStoreCenter, null);
-		}
-
-		public static void DeleteOne(StoreCenter oStoreCenter, SqlConnection oPrivateConnection)
+		public static void DeleteOne(StoreCenter oStoreCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[StoreCenters]");
 
 			oDelete.Append(UTI_Where4One(oStoreCenter));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_StoreCenter, Int32 nLevel, Int32 nID_StoreCenterChild, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[StoreCenters]");
+
+			oDelete.Append(UTI_Where4One(nID_StoreCenter, nLevel, nID_StoreCenterChild));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

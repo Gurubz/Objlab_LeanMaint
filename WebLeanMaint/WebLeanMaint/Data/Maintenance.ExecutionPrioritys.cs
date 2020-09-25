@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public ExecutionPriority Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class ExecutionPrioritys : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static ExecutionPriority LoadOne(Int32 nID_Priority)
-		{
-			return(LoadOne(nID_Priority, null));
-		}
-
-		public static ExecutionPriority LoadOne(Int32 nID_Priority, SqlConnection oPrivateConnection)
+		public static ExecutionPriority LoadOne(Int32 nID_Priority, SqlConnection oPrivateConnection = null)
 		{
 			ExecutionPriority oExecutionPriority = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Maintenance
 			return (oExecutionPriority);
 		}
 
-		public static ExecutionPriority TryLoadOne(Int32 nID_Priority)
-		{
-			return(TryLoadOne(nID_Priority, null));
-		}
-
-		public static ExecutionPriority TryLoadOne(Int32 nID_Priority, SqlConnection oPrivateConnection)
+		public static ExecutionPriority TryLoadOne(Int32 nID_Priority, SqlConnection oPrivateConnection = null)
 		{
 			ExecutionPriority oExecutionPriority = null;
 
@@ -212,12 +187,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(ExecutionPriority oExecutionPriority)
-		{
-			InsertOne(oExecutionPriority, null);
-		}
-
-		public static void InsertOne(ExecutionPriority oExecutionPriority, SqlConnection oPrivateConnection)
+		public static void InsertOne(ExecutionPriority oExecutionPriority, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Maintenance
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(ExecutionPriority oExecutionPriority)
-		{
-			UpdateOne(oExecutionPriority, null);
-		}
-
-		public static void UpdateOne(ExecutionPriority oExecutionPriority, SqlConnection oPrivateConnection)
+		public static void UpdateOne(ExecutionPriority oExecutionPriority, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(ExecutionPriority oExecutionPriority)
-		{
-			DeleteOne(oExecutionPriority, null);
-		}
-
-		public static void DeleteOne(ExecutionPriority oExecutionPriority, SqlConnection oPrivateConnection)
+		public static void DeleteOne(ExecutionPriority oExecutionPriority, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionPriorities]");
 
 			oDelete.Append(UTI_Where4One(oExecutionPriority));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Priority, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionPriorities]");
+
+			oDelete.Append(UTI_Where4One(nID_Priority));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

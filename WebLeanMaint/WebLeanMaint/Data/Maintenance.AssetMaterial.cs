@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public AssetMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Asset = {ID_Asset}, ID_Material = {ID_Material}")]
 	public partial class AssetMaterial

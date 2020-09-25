@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class GeographicCenters : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static GeographicCenter LoadOne(Int32 nID_GeographicCenter)
-		{
-			return(LoadOne(nID_GeographicCenter, null));
-		}
-
-		public static GeographicCenter LoadOne(Int32 nID_GeographicCenter, SqlConnection oPrivateConnection)
+		public static GeographicCenter LoadOne(Int32 nID_GeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			GeographicCenter oGeographicCenter = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oGeographicCenter);
 		}
 
-		public static GeographicCenter TryLoadOne(Int32 nID_GeographicCenter)
-		{
-			return(TryLoadOne(nID_GeographicCenter, null));
-		}
-
-		public static GeographicCenter TryLoadOne(Int32 nID_GeographicCenter, SqlConnection oPrivateConnection)
+		public static GeographicCenter TryLoadOne(Int32 nID_GeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			GeographicCenter oGeographicCenter = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(GeographicCenter oGeographicCenter)
-		{
-			InsertOne(oGeographicCenter, null);
-		}
-
-		public static void InsertOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection)
+		public static void InsertOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -257,12 +227,7 @@ namespace Data.Config
 			oGeographicCenter.ID_GeographicCenter = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(GeographicCenter oGeographicCenter)
-		{
-			UpdateOne(oGeographicCenter, null);
-		}
-
-		public static void UpdateOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection)
+		public static void UpdateOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -308,18 +273,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(GeographicCenter oGeographicCenter)
-		{
-			DeleteOne(oGeographicCenter, null);
-		}
-
-		public static void DeleteOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection)
+		public static void DeleteOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[GeographicCenters]");
 
 			oDelete.Append(UTI_Where4One(oGeographicCenter));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_GeographicCenter, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[GeographicCenters]");
+
+			oDelete.Append(UTI_Where4One(nID_GeographicCenter));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

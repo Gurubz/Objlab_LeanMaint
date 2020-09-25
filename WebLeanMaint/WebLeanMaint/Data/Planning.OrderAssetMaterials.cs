@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderAssetMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class OrderAssetMaterials : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Planning
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Planning
 			return (oRet);
 		}
 
-		public static OrderAssetMaterial LoadOne(Int32 nID_OrderAsset, Int32 nID_Material)
-		{
-			return(LoadOne(nID_OrderAsset, nID_Material, null));
-		}
-
-		public static OrderAssetMaterial LoadOne(Int32 nID_OrderAsset, Int32 nID_Material, SqlConnection oPrivateConnection)
+		public static OrderAssetMaterial LoadOne(Int32 nID_OrderAsset, Int32 nID_Material, SqlConnection oPrivateConnection = null)
 		{
 			OrderAssetMaterial oOrderAssetMaterial = null;
 			DataSet oDs = null;
@@ -194,12 +174,7 @@ namespace Data.Planning
 			return (oOrderAssetMaterial);
 		}
 
-		public static OrderAssetMaterial TryLoadOne(Int32 nID_OrderAsset, Int32 nID_Material)
-		{
-			return(TryLoadOne(nID_OrderAsset, nID_Material, null));
-		}
-
-		public static OrderAssetMaterial TryLoadOne(Int32 nID_OrderAsset, Int32 nID_Material, SqlConnection oPrivateConnection)
+		public static OrderAssetMaterial TryLoadOne(Int32 nID_OrderAsset, Int32 nID_Material, SqlConnection oPrivateConnection = null)
 		{
 			OrderAssetMaterial oOrderAssetMaterial = null;
 
@@ -215,12 +190,7 @@ namespace Data.Planning
 			}
 		}
 
-		public static void InsertOne(OrderAssetMaterial oOrderAssetMaterial)
-		{
-			InsertOne(oOrderAssetMaterial, null);
-		}
-
-		public static void InsertOne(OrderAssetMaterial oOrderAssetMaterial, SqlConnection oPrivateConnection)
+		public static void InsertOne(OrderAssetMaterial oOrderAssetMaterial, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -238,12 +208,7 @@ namespace Data.Planning
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(OrderAssetMaterial oOrderAssetMaterial)
-		{
-			UpdateOne(oOrderAssetMaterial, null);
-		}
-
-		public static void UpdateOne(OrderAssetMaterial oOrderAssetMaterial, SqlConnection oPrivateConnection)
+		public static void UpdateOne(OrderAssetMaterial oOrderAssetMaterial, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Planning
 
 		}
 
-		public static void DeleteOne(OrderAssetMaterial oOrderAssetMaterial)
-		{
-			DeleteOne(oOrderAssetMaterial, null);
-		}
-
-		public static void DeleteOne(OrderAssetMaterial oOrderAssetMaterial, SqlConnection oPrivateConnection)
+		public static void DeleteOne(OrderAssetMaterial oOrderAssetMaterial, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderAssetMaterials]");
 
 			oDelete.Append(UTI_Where4One(oOrderAssetMaterial));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_OrderAsset, Int32 nID_Material, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderAssetMaterials]");
+
+			oDelete.Append(UTI_Where4One(nID_OrderAsset, nID_Material));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

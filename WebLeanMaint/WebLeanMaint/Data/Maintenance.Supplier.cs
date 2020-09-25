@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public Supplier Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Supplier = {ID_Supplier}")]
 	public partial class Supplier
@@ -56,13 +56,7 @@ namespace Data.Maintenance
 		public String Address1
 		{
 		  get { return (m_sAddress1); }
-		  set { m_sAddress1 = value; m_bAddress1_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool Address1_HasValue
-		{
-		  get { return (m_bAddress1_HasValue); }
-		  set { m_bAddress1_HasValue = value; }
+		  set { m_sAddress1 = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public String Address2
@@ -80,79 +74,49 @@ namespace Data.Maintenance
 		public Int32 ID_CostCenter
 		{
 		  get { return (m_nID_CostCenter); }
-		  set { m_nID_CostCenter = value; m_bID_CostCenter_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool ID_CostCenter_HasValue
-		{
-		  get { return (m_bID_CostCenter_HasValue); }
-		  set { m_bID_CostCenter_HasValue = value; }
+		  set { m_nID_CostCenter = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Decimal HourlyCost
 		{
 		  get { return (m_nHourlyCost); }
-		  set { m_nHourlyCost = value; m_bHourlyCost_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool HourlyCost_HasValue
-		{
-		  get { return (m_bHourlyCost_HasValue); }
-		  set { m_bHourlyCost_HasValue = value; }
+		  set { m_nHourlyCost = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_City
 		{
 		  get { return (m_nID_City); }
-		  set { m_nID_City = value; m_bID_City_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool ID_City_HasValue
-		{
-		  get { return (m_bID_City_HasValue); }
-		  set { m_bID_City_HasValue = value; }
+		  set { m_nID_City = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public String Zip
 		{
 		  get { return (m_sZip); }
-		  set { m_sZip = value; m_bZip_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool Zip_HasValue
-		{
-		  get { return (m_bZip_HasValue); }
-		  set { m_bZip_HasValue = value; }
+		  set { m_sZip = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_Country
 		{
 		  get { return (m_nID_Country); }
-		  set { m_nID_Country = value; m_bID_Country_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool ID_Country_HasValue
-		{
-		  get { return (m_bID_Country_HasValue); }
-		  set { m_bID_Country_HasValue = value; }
+		  set { m_nID_Country = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public DateTime ValidFrom
 		{
 		  get { return (m_oValidFrom); }
-		  set { m_oValidFrom = value; m_bValidFrom_HasValue = true; }
-		}
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public bool ValidFrom_HasValue
-		{
-		  get { return (m_bValidFrom_HasValue); }
-		  set { m_bValidFrom_HasValue = value; }
+		  set { m_oValidFrom = value; }
 		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_User
 		{
 		  get { return (m_nID_User); }
-		  set { m_nID_User = value; }
+		  set { m_nID_User = value; m_bID_User_HasValue = true; }
+		}
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public bool ID_User_HasValue
+		{
+		  get { return (m_bID_User_HasValue); }
+		  set { m_bID_User_HasValue = value; }
 		}
 		#endregion
 
@@ -163,22 +127,16 @@ namespace Data.Maintenance
 		protected Int32 m_nID_SupplierType;
 		protected Int32 m_nID_ObjStatus;
 		protected String m_sAddress1 = String.Empty;
-		protected bool m_bAddress1_HasValue;
 		protected String m_sAddress2 = String.Empty;
 		protected bool m_bAddress2_HasValue;
 		protected Int32 m_nID_CostCenter;
-		protected bool m_bID_CostCenter_HasValue;
 		protected Decimal m_nHourlyCost;
-		protected bool m_bHourlyCost_HasValue;
 		protected Int32 m_nID_City;
-		protected bool m_bID_City_HasValue;
 		protected String m_sZip = String.Empty;
-		protected bool m_bZip_HasValue;
 		protected Int32 m_nID_Country;
-		protected bool m_bID_Country_HasValue;
 		protected DateTime m_oValidFrom = DateTime.MinValue;
-		protected bool m_bValidFrom_HasValue;
 		protected Int32 m_nID_User;
+		protected bool m_bID_User_HasValue;
 		#endregion
 
 		#region Friends Methods

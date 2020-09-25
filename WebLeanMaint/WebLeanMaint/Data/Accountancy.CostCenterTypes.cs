@@ -12,7 +12,7 @@ namespace Data.Accountancy
 	/// Public CostCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class CostCenterTypes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Accountancy
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Accountancy
 			return (oRet);
 		}
 
-		public static CostCenterType LoadOne(Int32 nID_CostCenterType)
-		{
-			return(LoadOne(nID_CostCenterType, null));
-		}
-
-		public static CostCenterType LoadOne(Int32 nID_CostCenterType, SqlConnection oPrivateConnection)
+		public static CostCenterType LoadOne(Int32 nID_CostCenterType, SqlConnection oPrivateConnection = null)
 		{
 			CostCenterType oCostCenterType = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Accountancy
 			return (oCostCenterType);
 		}
 
-		public static CostCenterType TryLoadOne(Int32 nID_CostCenterType)
-		{
-			return(TryLoadOne(nID_CostCenterType, null));
-		}
-
-		public static CostCenterType TryLoadOne(Int32 nID_CostCenterType, SqlConnection oPrivateConnection)
+		public static CostCenterType TryLoadOne(Int32 nID_CostCenterType, SqlConnection oPrivateConnection = null)
 		{
 			CostCenterType oCostCenterType = null;
 
@@ -212,12 +187,7 @@ namespace Data.Accountancy
 			}
 		}
 
-		public static void InsertOne(CostCenterType oCostCenterType)
-		{
-			InsertOne(oCostCenterType, null);
-		}
-
-		public static void InsertOne(CostCenterType oCostCenterType, SqlConnection oPrivateConnection)
+		public static void InsertOne(CostCenterType oCostCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Accountancy
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(CostCenterType oCostCenterType)
-		{
-			UpdateOne(oCostCenterType, null);
-		}
-
-		public static void UpdateOne(CostCenterType oCostCenterType, SqlConnection oPrivateConnection)
+		public static void UpdateOne(CostCenterType oCostCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Accountancy
 
 		}
 
-		public static void DeleteOne(CostCenterType oCostCenterType)
-		{
-			DeleteOne(oCostCenterType, null);
-		}
-
-		public static void DeleteOne(CostCenterType oCostCenterType, SqlConnection oPrivateConnection)
+		public static void DeleteOne(CostCenterType oCostCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Accountancy].[CostCenterTypes]");
 
 			oDelete.Append(UTI_Where4One(oCostCenterType));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_CostCenterType, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[CostCenterTypes]");
+
+			oDelete.Append(UTI_Where4One(nID_CostCenterType));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

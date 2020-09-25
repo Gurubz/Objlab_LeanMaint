@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public OrganizationCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class OrganizationCenters : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static OrganizationCenter LoadOne(Int32 nID_OrganizationCenter)
-		{
-			return(LoadOne(nID_OrganizationCenter, null));
-		}
-
-		public static OrganizationCenter LoadOne(Int32 nID_OrganizationCenter, SqlConnection oPrivateConnection)
+		public static OrganizationCenter LoadOne(Int32 nID_OrganizationCenter, SqlConnection oPrivateConnection = null)
 		{
 			OrganizationCenter oOrganizationCenter = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oOrganizationCenter);
 		}
 
-		public static OrganizationCenter TryLoadOne(Int32 nID_OrganizationCenter)
-		{
-			return(TryLoadOne(nID_OrganizationCenter, null));
-		}
-
-		public static OrganizationCenter TryLoadOne(Int32 nID_OrganizationCenter, SqlConnection oPrivateConnection)
+		public static OrganizationCenter TryLoadOne(Int32 nID_OrganizationCenter, SqlConnection oPrivateConnection = null)
 		{
 			OrganizationCenter oOrganizationCenter = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(OrganizationCenter oOrganizationCenter)
-		{
-			InsertOne(oOrganizationCenter, null);
-		}
-
-		public static void InsertOne(OrganizationCenter oOrganizationCenter, SqlConnection oPrivateConnection)
+		public static void InsertOne(OrganizationCenter oOrganizationCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -245,12 +215,7 @@ namespace Data.Config
 			oOrganizationCenter.ID_OrganizationCenter = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(OrganizationCenter oOrganizationCenter)
-		{
-			UpdateOne(oOrganizationCenter, null);
-		}
-
-		public static void UpdateOne(OrganizationCenter oOrganizationCenter, SqlConnection oPrivateConnection)
+		public static void UpdateOne(OrganizationCenter oOrganizationCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -282,18 +247,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(OrganizationCenter oOrganizationCenter)
-		{
-			DeleteOne(oOrganizationCenter, null);
-		}
-
-		public static void DeleteOne(OrganizationCenter oOrganizationCenter, SqlConnection oPrivateConnection)
+		public static void DeleteOne(OrganizationCenter oOrganizationCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[OrganizationCenters]");
 
 			oDelete.Append(UTI_Where4One(oOrganizationCenter));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_OrganizationCenter, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[OrganizationCenters]");
+
+			oDelete.Append(UTI_Where4One(nID_OrganizationCenter));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

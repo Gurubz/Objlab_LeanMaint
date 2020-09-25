@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public GeographicCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class GeographicCenterTypes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static GeographicCenterType LoadOne(Int32 nID_GeographicCenterType)
-		{
-			return(LoadOne(nID_GeographicCenterType, null));
-		}
-
-		public static GeographicCenterType LoadOne(Int32 nID_GeographicCenterType, SqlConnection oPrivateConnection)
+		public static GeographicCenterType LoadOne(Int32 nID_GeographicCenterType, SqlConnection oPrivateConnection = null)
 		{
 			GeographicCenterType oGeographicCenterType = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oGeographicCenterType);
 		}
 
-		public static GeographicCenterType TryLoadOne(Int32 nID_GeographicCenterType)
-		{
-			return(TryLoadOne(nID_GeographicCenterType, null));
-		}
-
-		public static GeographicCenterType TryLoadOne(Int32 nID_GeographicCenterType, SqlConnection oPrivateConnection)
+		public static GeographicCenterType TryLoadOne(Int32 nID_GeographicCenterType, SqlConnection oPrivateConnection = null)
 		{
 			GeographicCenterType oGeographicCenterType = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(GeographicCenterType oGeographicCenterType)
-		{
-			InsertOne(oGeographicCenterType, null);
-		}
-
-		public static void InsertOne(GeographicCenterType oGeographicCenterType, SqlConnection oPrivateConnection)
+		public static void InsertOne(GeographicCenterType oGeographicCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Config
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(GeographicCenterType oGeographicCenterType)
-		{
-			UpdateOne(oGeographicCenterType, null);
-		}
-
-		public static void UpdateOne(GeographicCenterType oGeographicCenterType, SqlConnection oPrivateConnection)
+		public static void UpdateOne(GeographicCenterType oGeographicCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(GeographicCenterType oGeographicCenterType)
-		{
-			DeleteOne(oGeographicCenterType, null);
-		}
-
-		public static void DeleteOne(GeographicCenterType oGeographicCenterType, SqlConnection oPrivateConnection)
+		public static void DeleteOne(GeographicCenterType oGeographicCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[GeographicCenterTypes]");
 
 			oDelete.Append(UTI_Where4One(oGeographicCenterType));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_GeographicCenterType, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[GeographicCenterTypes]");
+
+			oDelete.Append(UTI_Where4One(nID_GeographicCenterType));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

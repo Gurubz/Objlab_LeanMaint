@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Supplier Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Suppliers : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static Supplier LoadOne(Int32 nID_Supplier)
-		{
-			return(LoadOne(nID_Supplier, null));
-		}
-
-		public static Supplier LoadOne(Int32 nID_Supplier, SqlConnection oPrivateConnection)
+		public static Supplier LoadOne(Int32 nID_Supplier, SqlConnection oPrivateConnection = null)
 		{
 			Supplier oSupplier = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Maintenance
 			return (oSupplier);
 		}
 
-		public static Supplier TryLoadOne(Int32 nID_Supplier)
-		{
-			return(TryLoadOne(nID_Supplier, null));
-		}
-
-		public static Supplier TryLoadOne(Int32 nID_Supplier, SqlConnection oPrivateConnection)
+		public static Supplier TryLoadOne(Int32 nID_Supplier, SqlConnection oPrivateConnection = null)
 		{
 			Supplier oSupplier = null;
 
@@ -212,12 +187,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(Supplier oSupplier)
-		{
-			InsertOne(oSupplier, null);
-		}
-
-		public static void InsertOne(Supplier oSupplier, SqlConnection oPrivateConnection)
+		public static void InsertOne(Supplier oSupplier, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -233,11 +203,7 @@ namespace Data.Maintenance
 			oInsert.Append(", ");
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_ObjStatus));
 			oInsert.Append(", ");
-			if (oSupplier.Address1_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.Address1));
-			} else {;
-			oInsert.Append("NULL");
-			}
 			oInsert.Append(", ");
 			if (oSupplier.Address2_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.Address2));
@@ -245,43 +211,23 @@ namespace Data.Maintenance
 			oInsert.Append("NULL");
 			}
 			oInsert.Append(", ");
-			if (oSupplier.ID_CostCenter_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_CostCenter));
-			} else {;
-			oInsert.Append("NULL");
-			}
 			oInsert.Append(", ");
-			if (oSupplier.HourlyCost_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.HourlyCost));
-			} else {;
-			oInsert.Append("NULL");
-			}
 			oInsert.Append(", ");
-			if (oSupplier.ID_City_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_City));
-			} else {;
-			oInsert.Append("NULL");
-			}
 			oInsert.Append(", ");
-			if (oSupplier.Zip_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.Zip));
-			} else {;
-			oInsert.Append("NULL");
-			}
 			oInsert.Append(", ");
-			if (oSupplier.ID_Country_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_Country));
-			} else {;
-			oInsert.Append("NULL");
-			}
 			oInsert.Append(", ");
-			if (oSupplier.ValidFrom_HasValue == true) {
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ValidFrom));
+			oInsert.Append(", ");
+			if (oSupplier.ID_User_HasValue == true) {
+			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_User));
 			} else {;
 			oInsert.Append("NULL");
 			}
-			oInsert.Append(", ");
-			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_User));
 			oInsert.Append(")");
 
 			Object oRet;
@@ -289,12 +235,7 @@ namespace Data.Maintenance
 			oSupplier.ID_Supplier = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(Supplier oSupplier)
-		{
-			UpdateOne(oSupplier, null);
-		}
-
-		public static void UpdateOne(Supplier oSupplier, SqlConnection oPrivateConnection)
+		public static void UpdateOne(Supplier oSupplier, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -313,11 +254,7 @@ namespace Data.Maintenance
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_ObjStatus));
 			oUpdate.Append(", ");
 			oUpdate.Append("[Address1]=");
-			if (oSupplier.Address1_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.Address1));
-			} else {
-			oUpdate.Append("NULL");
-			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[Address2]=");
 			if (oSupplier.Address2_HasValue == true) {
@@ -327,49 +264,29 @@ namespace Data.Maintenance
 			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_CostCenter]=");
-			if (oSupplier.ID_CostCenter_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_CostCenter));
-			} else {
-			oUpdate.Append("NULL");
-			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[HourlyCost]=");
-			if (oSupplier.HourlyCost_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.HourlyCost));
-			} else {
-			oUpdate.Append("NULL");
-			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_City]=");
-			if (oSupplier.ID_City_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_City));
-			} else {
-			oUpdate.Append("NULL");
-			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[Zip]=");
-			if (oSupplier.Zip_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.Zip));
-			} else {
-			oUpdate.Append("NULL");
-			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[ID_Country]=");
-			if (oSupplier.ID_Country_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_Country));
-			} else {
-			oUpdate.Append("NULL");
-			}
 			oUpdate.Append(", ");
 			oUpdate.Append("[ValidFrom]=");
-			if (oSupplier.ValidFrom_HasValue == true) {
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ValidFrom));
+			oUpdate.Append(", ");
+			oUpdate.Append("[ID_User]=");
+			if (oSupplier.ID_User_HasValue == true) {
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_User));
 			} else {
 			oUpdate.Append("NULL");
 			}
-			oUpdate.Append(", ");
-			oUpdate.Append("[ID_User]=");
-			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oSupplier.ID_User));
 
 			oUpdate.Append(UTI_Where4One(oSupplier));
 
@@ -378,18 +295,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(Supplier oSupplier)
-		{
-			DeleteOne(oSupplier, null);
-		}
-
-		public static void DeleteOne(Supplier oSupplier, SqlConnection oPrivateConnection)
+		public static void DeleteOne(Supplier oSupplier, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Suppliers]");
 
 			oDelete.Append(UTI_Where4One(oSupplier));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Supplier, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Suppliers]");
+
+			oDelete.Append(UTI_Where4One(nID_Supplier));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}
@@ -425,55 +348,25 @@ namespace Data.Maintenance
 			oSupplier.Description = ((String)(oRow["Description"])).Trim();
 			oSupplier.ID_SupplierType = ((Int32)(oRow["ID_SupplierType"]));
 			oSupplier.ID_ObjStatus = ((Int32)(oRow["ID_ObjStatus"]));
-			if (!(oRow["Address1"] is DBNull)) {
-			  oSupplier.Address1 = ((String)(oRow["Address1"])).Trim();
-			  oSupplier.Address1_HasValue = true;
-			} else {
-			  oSupplier.Address1_HasValue = false;
-			}
+			oSupplier.Address1 = ((String)(oRow["Address1"])).Trim();
 			if (!(oRow["Address2"] is DBNull)) {
 			  oSupplier.Address2 = ((String)(oRow["Address2"])).Trim();
 			  oSupplier.Address2_HasValue = true;
 			} else {
 			  oSupplier.Address2_HasValue = false;
 			}
-			if (!(oRow["ID_CostCenter"] is DBNull)) {
-			  oSupplier.ID_CostCenter = ((Int32)(oRow["ID_CostCenter"]));
-			  oSupplier.ID_CostCenter_HasValue = true;
+			oSupplier.ID_CostCenter = ((Int32)(oRow["ID_CostCenter"]));
+			oSupplier.HourlyCost = ((Decimal)(oRow["HourlyCost"]));
+			oSupplier.ID_City = ((Int32)(oRow["ID_City"]));
+			oSupplier.Zip = ((String)(oRow["Zip"])).Trim();
+			oSupplier.ID_Country = ((Int32)(oRow["ID_Country"]));
+			oSupplier.ValidFrom = ((DateTime)(oRow["ValidFrom"]));
+			if (!(oRow["ID_User"] is DBNull)) {
+			  oSupplier.ID_User = ((Int32)(oRow["ID_User"]));
+			  oSupplier.ID_User_HasValue = true;
 			} else {
-			  oSupplier.ID_CostCenter_HasValue = false;
+			  oSupplier.ID_User_HasValue = false;
 			}
-			if (!(oRow["HourlyCost"] is DBNull)) {
-			  oSupplier.HourlyCost = ((Decimal)(oRow["HourlyCost"]));
-			  oSupplier.HourlyCost_HasValue = true;
-			} else {
-			  oSupplier.HourlyCost_HasValue = false;
-			}
-			if (!(oRow["ID_City"] is DBNull)) {
-			  oSupplier.ID_City = ((Int32)(oRow["ID_City"]));
-			  oSupplier.ID_City_HasValue = true;
-			} else {
-			  oSupplier.ID_City_HasValue = false;
-			}
-			if (!(oRow["Zip"] is DBNull)) {
-			  oSupplier.Zip = ((String)(oRow["Zip"])).Trim();
-			  oSupplier.Zip_HasValue = true;
-			} else {
-			  oSupplier.Zip_HasValue = false;
-			}
-			if (!(oRow["ID_Country"] is DBNull)) {
-			  oSupplier.ID_Country = ((Int32)(oRow["ID_Country"]));
-			  oSupplier.ID_Country_HasValue = true;
-			} else {
-			  oSupplier.ID_Country_HasValue = false;
-			}
-			if (!(oRow["ValidFrom"] is DBNull)) {
-			  oSupplier.ValidFrom = ((DateTime)(oRow["ValidFrom"]));
-			  oSupplier.ValidFrom_HasValue = true;
-			} else {
-			  oSupplier.ValidFrom_HasValue = false;
-			}
-			oSupplier.ID_User = ((Int32)(oRow["ID_User"]));
 
 			return (oSupplier);
 		}

@@ -214,15 +214,11 @@
     <Compile Include="Models\AccountancyBilling.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MaintenanceMaterialUMs.cs" />
-    <Compile Include="Models\MaintenanceSuppliers.cs" />
-    <Compile Include="Models\MaintenanceSupplierTypes.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrganizationCenters.cs" />
     <Compile Include="Models\OrganizationCenterTypes.cs" />
     <Compile Include="Models\PlanningOperators.cs" />
     <Compile Include="Models\PlanningOperatorTypes.cs" />
-    <Compile Include="Models\Users.cs" />
     <Compile Include="QueryModel\General_query.cs" />
     <Compile Include="QueryModel\CostCenterJoinQuery.cs" />
     <Compile Include="QueryModel\GeographicCenterJoinQuery.cs" />
@@ -232,7 +228,6 @@
     <Compile Include="ViewModels\GeographicCentersTree.cs" />
     <Compile Include="ViewModels\OrganizationCentersTree.cs" />
     <Compile Include="ViewModels\GeneralVM.cs" />
-    <Compile Include="ViewModels\TreeView.cs" />
     <Compile Include="WS\Planning.asmx.cs">
       <DependentUpon>Planning.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -2869,7 +2864,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\TreeView.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />

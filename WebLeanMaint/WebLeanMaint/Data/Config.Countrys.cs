@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public Country Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Countrys : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static Country LoadOne(Int32 nID_Country)
-		{
-			return(LoadOne(nID_Country, null));
-		}
-
-		public static Country LoadOne(Int32 nID_Country, SqlConnection oPrivateConnection)
+		public static Country LoadOne(Int32 nID_Country, SqlConnection oPrivateConnection = null)
 		{
 			Country oCountry = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oCountry);
 		}
 
-		public static Country TryLoadOne(Int32 nID_Country)
-		{
-			return(TryLoadOne(nID_Country, null));
-		}
-
-		public static Country TryLoadOne(Int32 nID_Country, SqlConnection oPrivateConnection)
+		public static Country TryLoadOne(Int32 nID_Country, SqlConnection oPrivateConnection = null)
 		{
 			Country oCountry = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(Country oCountry)
-		{
-			InsertOne(oCountry, null);
-		}
-
-		public static void InsertOne(Country oCountry, SqlConnection oPrivateConnection)
+		public static void InsertOne(Country oCountry, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -237,12 +207,7 @@ namespace Data.Config
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(Country oCountry)
-		{
-			UpdateOne(oCountry, null);
-		}
-
-		public static void UpdateOne(Country oCountry, SqlConnection oPrivateConnection)
+		public static void UpdateOne(Country oCountry, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -264,18 +229,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(Country oCountry)
-		{
-			DeleteOne(oCountry, null);
-		}
-
-		public static void DeleteOne(Country oCountry, SqlConnection oPrivateConnection)
+		public static void DeleteOne(Country oCountry, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[Countries]");
 
 			oDelete.Append(UTI_Where4One(oCountry));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Country, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[Countries]");
+
+			oDelete.Append(UTI_Where4One(nID_Country));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

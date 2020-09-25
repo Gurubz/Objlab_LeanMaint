@@ -12,7 +12,7 @@ namespace Data.Accountancy
 	/// Public Billing Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Billings : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Accountancy
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Accountancy
 			return (oRet);
 		}
 
-		public static Billing LoadOne(Int32 nID_Billing)
-		{
-			return(LoadOne(nID_Billing, null));
-		}
-
-		public static Billing LoadOne(Int32 nID_Billing, SqlConnection oPrivateConnection)
+		public static Billing LoadOne(Int32 nID_Billing, SqlConnection oPrivateConnection = null)
 		{
 			Billing oBilling = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Accountancy
 			return (oBilling);
 		}
 
-		public static Billing TryLoadOne(Int32 nID_Billing)
-		{
-			return(TryLoadOne(nID_Billing, null));
-		}
-
-		public static Billing TryLoadOne(Int32 nID_Billing, SqlConnection oPrivateConnection)
+		public static Billing TryLoadOne(Int32 nID_Billing, SqlConnection oPrivateConnection = null)
 		{
 			Billing oBilling = null;
 
@@ -212,12 +187,7 @@ namespace Data.Accountancy
 			}
 		}
 
-		public static void InsertOne(Billing oBilling)
-		{
-			InsertOne(oBilling, null);
-		}
-
-		public static void InsertOne(Billing oBilling, SqlConnection oPrivateConnection)
+		public static void InsertOne(Billing oBilling, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -281,12 +251,7 @@ namespace Data.Accountancy
 			oBilling.ID_Billing = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(Billing oBilling)
-		{
-			UpdateOne(oBilling, null);
-		}
-
-		public static void UpdateOne(Billing oBilling, SqlConnection oPrivateConnection)
+		public static void UpdateOne(Billing oBilling, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -358,18 +323,24 @@ namespace Data.Accountancy
 
 		}
 
-		public static void DeleteOne(Billing oBilling)
-		{
-			DeleteOne(oBilling, null);
-		}
-
-		public static void DeleteOne(Billing oBilling, SqlConnection oPrivateConnection)
+		public static void DeleteOne(Billing oBilling, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Accountancy].[Billings]");
 
 			oDelete.Append(UTI_Where4One(oBilling));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Billing, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[Billings]");
+
+			oDelete.Append(UTI_Where4One(nID_Billing));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

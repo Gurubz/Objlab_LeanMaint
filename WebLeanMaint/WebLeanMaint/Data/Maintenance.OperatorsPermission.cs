@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public OperatorsPermission Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Operator = {ID_Operator}")]
 	public partial class OperatorsPermission

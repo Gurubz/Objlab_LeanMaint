@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public SupplierType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_SupplierType = {ID_SupplierType}")]
 	public partial class SupplierType

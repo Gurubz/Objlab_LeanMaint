@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public StoreCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_StoreCenter = {ID_StoreCenter}")]
 	public partial class StoreCenter

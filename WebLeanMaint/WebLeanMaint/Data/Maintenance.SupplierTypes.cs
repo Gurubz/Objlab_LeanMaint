@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public SupplierType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class SupplierTypes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static SupplierType LoadOne(Int32 nID_SupplierType)
-		{
-			return(LoadOne(nID_SupplierType, null));
-		}
-
-		public static SupplierType LoadOne(Int32 nID_SupplierType, SqlConnection oPrivateConnection)
+		public static SupplierType LoadOne(Int32 nID_SupplierType, SqlConnection oPrivateConnection = null)
 		{
 			SupplierType oSupplierType = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Maintenance
 			return (oSupplierType);
 		}
 
-		public static SupplierType TryLoadOne(Int32 nID_SupplierType)
-		{
-			return(TryLoadOne(nID_SupplierType, null));
-		}
-
-		public static SupplierType TryLoadOne(Int32 nID_SupplierType, SqlConnection oPrivateConnection)
+		public static SupplierType TryLoadOne(Int32 nID_SupplierType, SqlConnection oPrivateConnection = null)
 		{
 			SupplierType oSupplierType = null;
 
@@ -212,12 +187,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(SupplierType oSupplierType)
-		{
-			InsertOne(oSupplierType, null);
-		}
-
-		public static void InsertOne(SupplierType oSupplierType, SqlConnection oPrivateConnection)
+		public static void InsertOne(SupplierType oSupplierType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Maintenance
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(SupplierType oSupplierType)
-		{
-			UpdateOne(oSupplierType, null);
-		}
-
-		public static void UpdateOne(SupplierType oSupplierType, SqlConnection oPrivateConnection)
+		public static void UpdateOne(SupplierType oSupplierType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(SupplierType oSupplierType)
-		{
-			DeleteOne(oSupplierType, null);
-		}
-
-		public static void DeleteOne(SupplierType oSupplierType, SqlConnection oPrivateConnection)
+		public static void DeleteOne(SupplierType oSupplierType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[SupplierTypes]");
 
 			oDelete.Append(UTI_Where4One(oSupplierType));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_SupplierType, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[SupplierTypes]");
+
+			oDelete.Append(UTI_Where4One(nID_SupplierType));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public ExecutionMaterial Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class ExecutionMaterials : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static ExecutionMaterial LoadOne(Int32 nID_Execution, Int32 nID_Material)
-		{
-			return(LoadOne(nID_Execution, nID_Material, null));
-		}
-
-		public static ExecutionMaterial LoadOne(Int32 nID_Execution, Int32 nID_Material, SqlConnection oPrivateConnection)
+		public static ExecutionMaterial LoadOne(Int32 nID_Execution, Int32 nID_Material, SqlConnection oPrivateConnection = null)
 		{
 			ExecutionMaterial oExecutionMaterial = null;
 			DataSet oDs = null;
@@ -194,12 +174,7 @@ namespace Data.Maintenance
 			return (oExecutionMaterial);
 		}
 
-		public static ExecutionMaterial TryLoadOne(Int32 nID_Execution, Int32 nID_Material)
-		{
-			return(TryLoadOne(nID_Execution, nID_Material, null));
-		}
-
-		public static ExecutionMaterial TryLoadOne(Int32 nID_Execution, Int32 nID_Material, SqlConnection oPrivateConnection)
+		public static ExecutionMaterial TryLoadOne(Int32 nID_Execution, Int32 nID_Material, SqlConnection oPrivateConnection = null)
 		{
 			ExecutionMaterial oExecutionMaterial = null;
 
@@ -215,12 +190,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(ExecutionMaterial oExecutionMaterial)
-		{
-			InsertOne(oExecutionMaterial, null);
-		}
-
-		public static void InsertOne(ExecutionMaterial oExecutionMaterial, SqlConnection oPrivateConnection)
+		public static void InsertOne(ExecutionMaterial oExecutionMaterial, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -238,12 +208,7 @@ namespace Data.Maintenance
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(ExecutionMaterial oExecutionMaterial)
-		{
-			UpdateOne(oExecutionMaterial, null);
-		}
-
-		public static void UpdateOne(ExecutionMaterial oExecutionMaterial, SqlConnection oPrivateConnection)
+		public static void UpdateOne(ExecutionMaterial oExecutionMaterial, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(ExecutionMaterial oExecutionMaterial)
-		{
-			DeleteOne(oExecutionMaterial, null);
-		}
-
-		public static void DeleteOne(ExecutionMaterial oExecutionMaterial, SqlConnection oPrivateConnection)
+		public static void DeleteOne(ExecutionMaterial oExecutionMaterial, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionMaterials]");
 
 			oDelete.Append(UTI_Where4One(oExecutionMaterial));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Execution, Int32 nID_Material, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionMaterials]");
+
+			oDelete.Append(UTI_Where4One(nID_Execution, nID_Material));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public CostCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class CostCenters : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Hierarchy
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Hierarchy
 			return (oRet);
 		}
 
-		public static CostCenter LoadOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild)
-		{
-			return(LoadOne(nID_CostCenter, nLevel, nID_CostCenterChild, null));
-		}
-
-		public static CostCenter LoadOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild, SqlConnection oPrivateConnection)
+		public static CostCenter LoadOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild, SqlConnection oPrivateConnection = null)
 		{
 			CostCenter oCostCenter = null;
 			DataSet oDs = null;
@@ -197,12 +177,7 @@ namespace Data.Hierarchy
 			return (oCostCenter);
 		}
 
-		public static CostCenter TryLoadOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild)
-		{
-			return(TryLoadOne(nID_CostCenter, nLevel, nID_CostCenterChild, null));
-		}
-
-		public static CostCenter TryLoadOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild, SqlConnection oPrivateConnection)
+		public static CostCenter TryLoadOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild, SqlConnection oPrivateConnection = null)
 		{
 			CostCenter oCostCenter = null;
 
@@ -218,12 +193,7 @@ namespace Data.Hierarchy
 			}
 		}
 
-		public static void InsertOne(CostCenter oCostCenter)
-		{
-			InsertOne(oCostCenter, null);
-		}
-
-		public static void InsertOne(CostCenter oCostCenter, SqlConnection oPrivateConnection)
+		public static void InsertOne(CostCenter oCostCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -241,12 +211,7 @@ namespace Data.Hierarchy
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(CostCenter oCostCenter)
-		{
-			UpdateOne(oCostCenter, null);
-		}
-
-		public static void UpdateOne(CostCenter oCostCenter, SqlConnection oPrivateConnection)
+		public static void UpdateOne(CostCenter oCostCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -268,18 +233,24 @@ namespace Data.Hierarchy
 
 		}
 
-		public static void DeleteOne(CostCenter oCostCenter)
-		{
-			DeleteOne(oCostCenter, null);
-		}
-
-		public static void DeleteOne(CostCenter oCostCenter, SqlConnection oPrivateConnection)
+		public static void DeleteOne(CostCenter oCostCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[CostCenters]");
 
 			oDelete.Append(UTI_Where4One(oCostCenter));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_CostCenter, Int32 nLevel, Int32 nID_CostCenterChild, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[CostCenters]");
+
+			oDelete.Append(UTI_Where4One(nID_CostCenter, nLevel, nID_CostCenterChild));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

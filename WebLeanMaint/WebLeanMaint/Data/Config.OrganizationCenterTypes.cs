@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public OrganizationCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class OrganizationCenterTypes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static OrganizationCenterType LoadOne(Int32 nID_OrganizationCenterType)
-		{
-			return(LoadOne(nID_OrganizationCenterType, null));
-		}
-
-		public static OrganizationCenterType LoadOne(Int32 nID_OrganizationCenterType, SqlConnection oPrivateConnection)
+		public static OrganizationCenterType LoadOne(Int32 nID_OrganizationCenterType, SqlConnection oPrivateConnection = null)
 		{
 			OrganizationCenterType oOrganizationCenterType = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oOrganizationCenterType);
 		}
 
-		public static OrganizationCenterType TryLoadOne(Int32 nID_OrganizationCenterType)
-		{
-			return(TryLoadOne(nID_OrganizationCenterType, null));
-		}
-
-		public static OrganizationCenterType TryLoadOne(Int32 nID_OrganizationCenterType, SqlConnection oPrivateConnection)
+		public static OrganizationCenterType TryLoadOne(Int32 nID_OrganizationCenterType, SqlConnection oPrivateConnection = null)
 		{
 			OrganizationCenterType oOrganizationCenterType = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(OrganizationCenterType oOrganizationCenterType)
-		{
-			InsertOne(oOrganizationCenterType, null);
-		}
-
-		public static void InsertOne(OrganizationCenterType oOrganizationCenterType, SqlConnection oPrivateConnection)
+		public static void InsertOne(OrganizationCenterType oOrganizationCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Config
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(OrganizationCenterType oOrganizationCenterType)
-		{
-			UpdateOne(oOrganizationCenterType, null);
-		}
-
-		public static void UpdateOne(OrganizationCenterType oOrganizationCenterType, SqlConnection oPrivateConnection)
+		public static void UpdateOne(OrganizationCenterType oOrganizationCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(OrganizationCenterType oOrganizationCenterType)
-		{
-			DeleteOne(oOrganizationCenterType, null);
-		}
-
-		public static void DeleteOne(OrganizationCenterType oOrganizationCenterType, SqlConnection oPrivateConnection)
+		public static void DeleteOne(OrganizationCenterType oOrganizationCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[OrganizationCenterTypes]");
 
 			oDelete.Append(UTI_Where4One(oOrganizationCenterType));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_OrganizationCenterType, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[OrganizationCenterTypes]");
+
+			oDelete.Append(UTI_Where4One(nID_OrganizationCenterType));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

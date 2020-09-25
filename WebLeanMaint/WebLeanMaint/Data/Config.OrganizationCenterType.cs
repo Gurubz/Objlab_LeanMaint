@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public OrganizationCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_OrganizationCenterType = {ID_OrganizationCenterType}")]
 	public partial class OrganizationCenterType

@@ -12,7 +12,7 @@ namespace Data.Security
 	/// Public User Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Users : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Security
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Security
 			return (oRet);
 		}
 
-		public static User LoadOne(Int32 nID_User)
-		{
-			return(LoadOne(nID_User, null));
-		}
-
-		public static User LoadOne(Int32 nID_User, SqlConnection oPrivateConnection)
+		public static User LoadOne(Int32 nID_User, SqlConnection oPrivateConnection = null)
 		{
 			User oUser = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Security
 			return (oUser);
 		}
 
-		public static User TryLoadOne(Int32 nID_User)
-		{
-			return(TryLoadOne(nID_User, null));
-		}
-
-		public static User TryLoadOne(Int32 nID_User, SqlConnection oPrivateConnection)
+		public static User TryLoadOne(Int32 nID_User, SqlConnection oPrivateConnection = null)
 		{
 			User oUser = null;
 
@@ -212,12 +187,7 @@ namespace Data.Security
 			}
 		}
 
-		public static void InsertOne(User oUser)
-		{
-			InsertOne(oUser, null);
-		}
-
-		public static void InsertOne(User oUser, SqlConnection oPrivateConnection)
+		public static void InsertOne(User oUser, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -253,12 +223,7 @@ namespace Data.Security
 			oUser.ID_User = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(User oUser)
-		{
-			UpdateOne(oUser, null);
-		}
-
-		public static void UpdateOne(User oUser, SqlConnection oPrivateConnection)
+		public static void UpdateOne(User oUser, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -300,18 +265,24 @@ namespace Data.Security
 
 		}
 
-		public static void DeleteOne(User oUser)
-		{
-			DeleteOne(oUser, null);
-		}
-
-		public static void DeleteOne(User oUser, SqlConnection oPrivateConnection)
+		public static void DeleteOne(User oUser, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Security].[Users]");
 
 			oDelete.Append(UTI_Where4One(oUser));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_User, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Security].[Users]");
+
+			oDelete.Append(UTI_Where4One(nID_User));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

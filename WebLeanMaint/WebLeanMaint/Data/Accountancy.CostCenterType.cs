@@ -7,7 +7,7 @@ namespace Data.Accountancy
 	/// Public CostCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_CostCenterType = {ID_CostCenterType}")]
 	public partial class CostCenterType

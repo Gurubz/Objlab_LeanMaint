@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public StoreCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class StoreCenterTypes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static StoreCenterType LoadOne(Int32 nID_StoreCenterType)
-		{
-			return(LoadOne(nID_StoreCenterType, null));
-		}
-
-		public static StoreCenterType LoadOne(Int32 nID_StoreCenterType, SqlConnection oPrivateConnection)
+		public static StoreCenterType LoadOne(Int32 nID_StoreCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StoreCenterType oStoreCenterType = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oStoreCenterType);
 		}
 
-		public static StoreCenterType TryLoadOne(Int32 nID_StoreCenterType)
-		{
-			return(TryLoadOne(nID_StoreCenterType, null));
-		}
-
-		public static StoreCenterType TryLoadOne(Int32 nID_StoreCenterType, SqlConnection oPrivateConnection)
+		public static StoreCenterType TryLoadOne(Int32 nID_StoreCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StoreCenterType oStoreCenterType = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(StoreCenterType oStoreCenterType)
-		{
-			InsertOne(oStoreCenterType, null);
-		}
-
-		public static void InsertOne(StoreCenterType oStoreCenterType, SqlConnection oPrivateConnection)
+		public static void InsertOne(StoreCenterType oStoreCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Config
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(StoreCenterType oStoreCenterType)
-		{
-			UpdateOne(oStoreCenterType, null);
-		}
-
-		public static void UpdateOne(StoreCenterType oStoreCenterType, SqlConnection oPrivateConnection)
+		public static void UpdateOne(StoreCenterType oStoreCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(StoreCenterType oStoreCenterType)
-		{
-			DeleteOne(oStoreCenterType, null);
-		}
-
-		public static void DeleteOne(StoreCenterType oStoreCenterType, SqlConnection oPrivateConnection)
+		public static void DeleteOne(StoreCenterType oStoreCenterType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[StoreCenterTypes]");
 
 			oDelete.Append(UTI_Where4One(oStoreCenterType));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_StoreCenterType, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[StoreCenterTypes]");
+
+			oDelete.Append(UTI_Where4One(nID_StoreCenterType));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

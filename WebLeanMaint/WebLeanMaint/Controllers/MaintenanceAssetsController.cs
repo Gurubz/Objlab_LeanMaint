@@ -50,30 +50,25 @@ namespace WebLeanMaint.Controllers
 				Assets = _context.Assets.ToList(),
 				Asset = oAsset,
 			};
+			// Defaults
+			GenVm.Asset.ID_ObjStatus = (int)Data.Config.ObjStatuseEnum.Active;
 			return View(GenVm);
 		}
 
 		[HttpPost]
 		public ActionResult Save(GeneralVM vm)
 		{
+			// Null management
+			vm.Asset.ID_GeographicCenter_HasValue = (vm.Asset.ID_GeographicCenter != 0);
+			vm.Asset.ID_Parent_HasValue = (vm.Asset.ID_Parent != 0);
+
 			if (vm.Asset.ID_Asset == 0)
 			{
 				Data.Maintenance.Assets.InsertOne(vm.Asset);
 			}
 			else
 			{
-				var oAsset = _context.Assets.Single(c => c.ID_Asset == vm.Asset.ID_Asset);
-				oAsset.Name = vm.Asset.Name;
-				oAsset.Description = vm.Asset.Description;
-				oAsset.ID_OrganizationCenter = vm.Asset.ID_OrganizationCenter;
-				oAsset.ID_CostCenter = vm.Asset.ID_CostCenter;
-				oAsset.ID_GeographicCenter = vm.Asset.ID_GeographicCenter;
-				oAsset.ID_ObjStatus = vm.Asset.ID_ObjStatus;
-				oAsset.ID_Parent = vm.Asset.ID_Parent;
-				oAsset.ID_Parent_HasValue = vm.Asset.ID_Parent_HasValue;
-				oAsset.Barcode = vm.Asset.Barcode;
-				oAsset.Barcode_HasValue = vm.Asset.Barcode_HasValue;
-				Data.Maintenance.Assets.UpdateOne(oAsset);
+				Data.Maintenance.Assets.UpdateOne(vm.Asset);
 			}
 			return RedirectToAction("Index", "MaintenanceAssets");
 		}
@@ -97,7 +92,7 @@ namespace WebLeanMaint.Controllers
 		}
 		public ActionResult Delete(int Id)
 		{
-			EntitiesManagerBase.SharedConnection.Execute("Delete From Maintenance.Assets where ID_Asset = " + Id + "");
+			Data.Maintenance.Assets.DeleteOne(Id);
 			return RedirectToAction("Index");
 		}
 	}

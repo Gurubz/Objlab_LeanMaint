@@ -12,7 +12,7 @@ namespace Data.Accountancy
 	/// Public CostCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class CostCenters : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Accountancy
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Accountancy
 			return (oRet);
 		}
 
-		public static CostCenter LoadOne(Int32 nID_CostCenter)
-		{
-			return(LoadOne(nID_CostCenter, null));
-		}
-
-		public static CostCenter LoadOne(Int32 nID_CostCenter, SqlConnection oPrivateConnection)
+		public static CostCenter LoadOne(Int32 nID_CostCenter, SqlConnection oPrivateConnection = null)
 		{
 			CostCenter oCostCenter = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Accountancy
 			return (oCostCenter);
 		}
 
-		public static CostCenter TryLoadOne(Int32 nID_CostCenter)
-		{
-			return(TryLoadOne(nID_CostCenter, null));
-		}
-
-		public static CostCenter TryLoadOne(Int32 nID_CostCenter, SqlConnection oPrivateConnection)
+		public static CostCenter TryLoadOne(Int32 nID_CostCenter, SqlConnection oPrivateConnection = null)
 		{
 			CostCenter oCostCenter = null;
 
@@ -212,12 +187,7 @@ namespace Data.Accountancy
 			}
 		}
 
-		public static void InsertOne(CostCenter oCostCenter)
-		{
-			InsertOne(oCostCenter, null);
-		}
-
-		public static void InsertOne(CostCenter oCostCenter, SqlConnection oPrivateConnection)
+		public static void InsertOne(CostCenter oCostCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -245,12 +215,7 @@ namespace Data.Accountancy
 			oCostCenter.ID_CostCenter = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(CostCenter oCostCenter)
-		{
-			UpdateOne(oCostCenter, null);
-		}
-
-		public static void UpdateOne(CostCenter oCostCenter, SqlConnection oPrivateConnection)
+		public static void UpdateOne(CostCenter oCostCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -282,18 +247,24 @@ namespace Data.Accountancy
 
 		}
 
-		public static void DeleteOne(CostCenter oCostCenter)
-		{
-			DeleteOne(oCostCenter, null);
-		}
-
-		public static void DeleteOne(CostCenter oCostCenter, SqlConnection oPrivateConnection)
+		public static void DeleteOne(CostCenter oCostCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Accountancy].[CostCenters]");
 
 			oDelete.Append(UTI_Where4One(oCostCenter));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_CostCenter, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Accountancy].[CostCenters]");
+
+			oDelete.Append(UTI_Where4One(nID_CostCenter));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

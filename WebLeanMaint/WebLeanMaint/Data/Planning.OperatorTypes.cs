@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OperatorType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class OperatorTypes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Planning
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Planning
 			return (oRet);
 		}
 
-		public static OperatorType LoadOne(Int32 nID_OperatorType)
-		{
-			return(LoadOne(nID_OperatorType, null));
-		}
-
-		public static OperatorType LoadOne(Int32 nID_OperatorType, SqlConnection oPrivateConnection)
+		public static OperatorType LoadOne(Int32 nID_OperatorType, SqlConnection oPrivateConnection = null)
 		{
 			OperatorType oOperatorType = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Planning
 			return (oOperatorType);
 		}
 
-		public static OperatorType TryLoadOne(Int32 nID_OperatorType)
-		{
-			return(TryLoadOne(nID_OperatorType, null));
-		}
-
-		public static OperatorType TryLoadOne(Int32 nID_OperatorType, SqlConnection oPrivateConnection)
+		public static OperatorType TryLoadOne(Int32 nID_OperatorType, SqlConnection oPrivateConnection = null)
 		{
 			OperatorType oOperatorType = null;
 
@@ -212,12 +187,7 @@ namespace Data.Planning
 			}
 		}
 
-		public static void InsertOne(OperatorType oOperatorType)
-		{
-			InsertOne(oOperatorType, null);
-		}
-
-		public static void InsertOne(OperatorType oOperatorType, SqlConnection oPrivateConnection)
+		public static void InsertOne(OperatorType oOperatorType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Planning
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(OperatorType oOperatorType)
-		{
-			UpdateOne(oOperatorType, null);
-		}
-
-		public static void UpdateOne(OperatorType oOperatorType, SqlConnection oPrivateConnection)
+		public static void UpdateOne(OperatorType oOperatorType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Planning
 
 		}
 
-		public static void DeleteOne(OperatorType oOperatorType)
-		{
-			DeleteOne(oOperatorType, null);
-		}
-
-		public static void DeleteOne(OperatorType oOperatorType, SqlConnection oPrivateConnection)
+		public static void DeleteOne(OperatorType oOperatorType, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Planning].[OperatorTypes]");
 
 			oDelete.Append(UTI_Where4One(oOperatorType));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_OperatorType, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OperatorTypes]");
+
+			oDelete.Append(UTI_Where4One(nID_OperatorType));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

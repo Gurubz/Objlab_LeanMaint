@@ -7,7 +7,7 @@ namespace Data.Config
 	/// Public City Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_City = {ID_City}")]
 	public partial class City

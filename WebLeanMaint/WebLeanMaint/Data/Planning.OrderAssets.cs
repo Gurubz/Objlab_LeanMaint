@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class OrderAssets : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Planning
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Planning
 			return (oRet);
 		}
 
-		public static OrderAsset LoadOne(Int32 nID_OrderAsset)
-		{
-			return(LoadOne(nID_OrderAsset, null));
-		}
-
-		public static OrderAsset LoadOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection)
+		public static OrderAsset LoadOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection = null)
 		{
 			OrderAsset oOrderAsset = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Planning
 			return (oOrderAsset);
 		}
 
-		public static OrderAsset TryLoadOne(Int32 nID_OrderAsset)
-		{
-			return(TryLoadOne(nID_OrderAsset, null));
-		}
-
-		public static OrderAsset TryLoadOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection)
+		public static OrderAsset TryLoadOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection = null)
 		{
 			OrderAsset oOrderAsset = null;
 
@@ -212,12 +187,7 @@ namespace Data.Planning
 			}
 		}
 
-		public static void InsertOne(OrderAsset oOrderAsset)
-		{
-			InsertOne(oOrderAsset, null);
-		}
-
-		public static void InsertOne(OrderAsset oOrderAsset, SqlConnection oPrivateConnection)
+		public static void InsertOne(OrderAsset oOrderAsset, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -241,12 +211,7 @@ namespace Data.Planning
 			oOrderAsset.ID_OrderAsset = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(OrderAsset oOrderAsset)
-		{
-			UpdateOne(oOrderAsset, null);
-		}
-
-		public static void UpdateOne(OrderAsset oOrderAsset, SqlConnection oPrivateConnection)
+		public static void UpdateOne(OrderAsset oOrderAsset, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -274,18 +239,24 @@ namespace Data.Planning
 
 		}
 
-		public static void DeleteOne(OrderAsset oOrderAsset)
-		{
-			DeleteOne(oOrderAsset, null);
-		}
-
-		public static void DeleteOne(OrderAsset oOrderAsset, SqlConnection oPrivateConnection)
+		public static void DeleteOne(OrderAsset oOrderAsset, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderAssets]");
 
 			oDelete.Append(UTI_Where4One(oOrderAsset));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_OrderAsset, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderAssets]");
+
+			oDelete.Append(UTI_Where4One(nID_OrderAsset));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

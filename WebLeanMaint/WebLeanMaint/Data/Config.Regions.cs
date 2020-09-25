@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public Region Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Regions : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static Region LoadOne(Int32 nID_Region)
-		{
-			return(LoadOne(nID_Region, null));
-		}
-
-		public static Region LoadOne(Int32 nID_Region, SqlConnection oPrivateConnection)
+		public static Region LoadOne(Int32 nID_Region, SqlConnection oPrivateConnection = null)
 		{
 			Region oRegion = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oRegion);
 		}
 
-		public static Region TryLoadOne(Int32 nID_Region)
-		{
-			return(TryLoadOne(nID_Region, null));
-		}
-
-		public static Region TryLoadOne(Int32 nID_Region, SqlConnection oPrivateConnection)
+		public static Region TryLoadOne(Int32 nID_Region, SqlConnection oPrivateConnection = null)
 		{
 			Region oRegion = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(Region oRegion)
-		{
-			InsertOne(oRegion, null);
-		}
-
-		public static void InsertOne(Region oRegion, SqlConnection oPrivateConnection)
+		public static void InsertOne(Region oRegion, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Config
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(Region oRegion)
-		{
-			UpdateOne(oRegion, null);
-		}
-
-		public static void UpdateOne(Region oRegion, SqlConnection oPrivateConnection)
+		public static void UpdateOne(Region oRegion, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(Region oRegion)
-		{
-			DeleteOne(oRegion, null);
-		}
-
-		public static void DeleteOne(Region oRegion, SqlConnection oPrivateConnection)
+		public static void DeleteOne(Region oRegion, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[Regions]");
 
 			oDelete.Append(UTI_Where4One(oRegion));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Region, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[Regions]");
+
+			oDelete.Append(UTI_Where4One(nID_Region));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

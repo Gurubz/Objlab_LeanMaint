@@ -12,7 +12,7 @@ namespace Data.Planning
 	/// Public OrderOperator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class OrderOperators : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Planning
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Planning
 			return (oRet);
 		}
 
-		public static OrderOperator LoadOne(Int32 nID_Order, Int32 nID_Operator)
-		{
-			return(LoadOne(nID_Order, nID_Operator, null));
-		}
-
-		public static OrderOperator LoadOne(Int32 nID_Order, Int32 nID_Operator, SqlConnection oPrivateConnection)
+		public static OrderOperator LoadOne(Int32 nID_Order, Int32 nID_Operator, SqlConnection oPrivateConnection = null)
 		{
 			OrderOperator oOrderOperator = null;
 			DataSet oDs = null;
@@ -194,12 +174,7 @@ namespace Data.Planning
 			return (oOrderOperator);
 		}
 
-		public static OrderOperator TryLoadOne(Int32 nID_Order, Int32 nID_Operator)
-		{
-			return(TryLoadOne(nID_Order, nID_Operator, null));
-		}
-
-		public static OrderOperator TryLoadOne(Int32 nID_Order, Int32 nID_Operator, SqlConnection oPrivateConnection)
+		public static OrderOperator TryLoadOne(Int32 nID_Order, Int32 nID_Operator, SqlConnection oPrivateConnection = null)
 		{
 			OrderOperator oOrderOperator = null;
 
@@ -215,12 +190,7 @@ namespace Data.Planning
 			}
 		}
 
-		public static void InsertOne(OrderOperator oOrderOperator)
-		{
-			InsertOne(oOrderOperator, null);
-		}
-
-		public static void InsertOne(OrderOperator oOrderOperator, SqlConnection oPrivateConnection)
+		public static void InsertOne(OrderOperator oOrderOperator, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -236,12 +206,7 @@ namespace Data.Planning
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(OrderOperator oOrderOperator)
-		{
-			UpdateOne(oOrderOperator, null);
-		}
-
-		public static void UpdateOne(OrderOperator oOrderOperator, SqlConnection oPrivateConnection)
+		public static void UpdateOne(OrderOperator oOrderOperator, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -255,18 +220,24 @@ namespace Data.Planning
 
 		}
 
-		public static void DeleteOne(OrderOperator oOrderOperator)
-		{
-			DeleteOne(oOrderOperator, null);
-		}
-
-		public static void DeleteOne(OrderOperator oOrderOperator, SqlConnection oPrivateConnection)
+		public static void DeleteOne(OrderOperator oOrderOperator, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderOperators]");
 
 			oDelete.Append(UTI_Where4One(oOrderOperator));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Order, Int32 nID_Operator, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Planning].[OrderOperators]");
+
+			oDelete.Append(UTI_Where4One(nID_Order, nID_Operator));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

@@ -38,9 +38,15 @@ namespace WebLeanMaint.Controllers
 		{
 			var GenVm = new GeneralVM
 			{
+				MaterialUMs = _context.MaterialUMs.ToList(),
+				Suppliers = _context.Suppliers.ToList(),
+				StoreCenters = _context.StoreCenters.ToList(),
+				ObjStatuses = _context.ObjStatuses.ToList(),
 				Materials = _context.Materials.ToList(),
 				Material = oMaterial,
 			};
+			// Defaults
+			GenVm.Material.ID_ObjStatus = (int)Data.Config.ObjStatuseEnum.Active;
 			return View(GenVm);
 		}
 		[HttpPost]
@@ -52,19 +58,7 @@ namespace WebLeanMaint.Controllers
 			}
 			else
 			{
-				var oMaterial = _context.Materials.Single(c => c.ID_Material == vm.Material.ID_Material);
-				oMaterial.Name = vm.Material.Name;
-				oMaterial.Description = vm.Material.Description;
-				oMaterial.ID_ObjStatus = vm.Material.ID_ObjStatus;
-				oMaterial.ReferenceCode = vm.Material.ReferenceCode;
-				oMaterial.ID_Supplier = vm.Material.ID_Supplier;
-				oMaterial.CostPerUM = vm.Material.CostPerUM;
-				oMaterial.Brand = vm.Material.Brand;
-				oMaterial.ID_MaterialUM = vm.Material.ID_MaterialUM;
-				oMaterial.ID_StoreCenter = vm.Material.ID_StoreCenter;
-				oMaterial.Type = vm.Material.Type;
-				oMaterial.Barcode = vm.Material.Barcode;
-				Data.Maintenance.Materials.UpdateOne(oMaterial);
+				Data.Maintenance.Materials.UpdateOne(vm.Material);
 			}
 			return RedirectToAction("Index", "MaintenanceMaterials");
 		}
@@ -87,7 +81,7 @@ namespace WebLeanMaint.Controllers
 		}
 		public ActionResult Delete(int Id)
 		{
-			EntitiesManagerBase.SharedConnection.Execute("Delete From Maintenance.Materials where ID_Material = " + Id + "");
+			Data.Maintenance.Materials.DeleteOne(Id);
 			return RedirectToAction("Index");
 		}
 	}

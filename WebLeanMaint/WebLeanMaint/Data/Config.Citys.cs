@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public City Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Citys : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Config
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Config
 			return (oRet);
 		}
 
-		public static City LoadOne(Int32 nID_City)
-		{
-			return(LoadOne(nID_City, null));
-		}
-
-		public static City LoadOne(Int32 nID_City, SqlConnection oPrivateConnection)
+		public static City LoadOne(Int32 nID_City, SqlConnection oPrivateConnection = null)
 		{
 			City oCity = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Config
 			return (oCity);
 		}
 
-		public static City TryLoadOne(Int32 nID_City)
-		{
-			return(TryLoadOne(nID_City, null));
-		}
-
-		public static City TryLoadOne(Int32 nID_City, SqlConnection oPrivateConnection)
+		public static City TryLoadOne(Int32 nID_City, SqlConnection oPrivateConnection = null)
 		{
 			City oCity = null;
 
@@ -212,12 +187,7 @@ namespace Data.Config
 			}
 		}
 
-		public static void InsertOne(City oCity)
-		{
-			InsertOne(oCity, null);
-		}
-
-		public static void InsertOne(City oCity, SqlConnection oPrivateConnection)
+		public static void InsertOne(City oCity, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Config
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(City oCity)
-		{
-			UpdateOne(oCity, null);
-		}
-
-		public static void UpdateOne(City oCity, SqlConnection oPrivateConnection)
+		public static void UpdateOne(City oCity, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Config
 
 		}
 
-		public static void DeleteOne(City oCity)
-		{
-			DeleteOne(oCity, null);
-		}
-
-		public static void DeleteOne(City oCity, SqlConnection oPrivateConnection)
+		public static void DeleteOne(City oCity, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Config].[Cities]");
 
 			oDelete.Append(UTI_Where4One(oCity));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_City, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Config].[Cities]");
+
+			oDelete.Append(UTI_Where4One(nID_City));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

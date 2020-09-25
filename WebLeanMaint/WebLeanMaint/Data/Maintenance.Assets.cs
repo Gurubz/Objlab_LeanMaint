@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Asset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Assets : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static Asset LoadOne(Int32 nID_Asset)
-		{
-			return(LoadOne(nID_Asset, null));
-		}
-
-		public static Asset LoadOne(Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static Asset LoadOne(Int32 nID_Asset, SqlConnection oPrivateConnection = null)
 		{
 			Asset oAsset = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Maintenance
 			return (oAsset);
 		}
 
-		public static Asset TryLoadOne(Int32 nID_Asset)
-		{
-			return(TryLoadOne(nID_Asset, null));
-		}
-
-		public static Asset TryLoadOne(Int32 nID_Asset, SqlConnection oPrivateConnection)
+		public static Asset TryLoadOne(Int32 nID_Asset, SqlConnection oPrivateConnection = null)
 		{
 			Asset oAsset = null;
 
@@ -212,12 +187,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(Asset oAsset)
-		{
-			InsertOne(oAsset, null);
-		}
-
-		public static void InsertOne(Asset oAsset, SqlConnection oPrivateConnection)
+		public static void InsertOne(Asset oAsset, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -261,12 +231,7 @@ namespace Data.Maintenance
 			oAsset.ID_Asset = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(Asset oAsset)
-		{
-			UpdateOne(oAsset, null);
-		}
-
-		public static void UpdateOne(Asset oAsset, SqlConnection oPrivateConnection)
+		public static void UpdateOne(Asset oAsset, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -318,18 +283,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(Asset oAsset)
-		{
-			DeleteOne(oAsset, null);
-		}
-
-		public static void DeleteOne(Asset oAsset, SqlConnection oPrivateConnection)
+		public static void DeleteOne(Asset oAsset, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Assets]");
 
 			oDelete.Append(UTI_Where4One(oAsset));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_Asset, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Assets]");
+
+			oDelete.Append(UTI_Where4One(nID_Asset));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

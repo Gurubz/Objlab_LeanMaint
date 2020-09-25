@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public Outcome Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class Outcomes : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static Outcome LoadOne(Int32 nID)
-		{
-			return(LoadOne(nID, null));
-		}
-
-		public static Outcome LoadOne(Int32 nID, SqlConnection oPrivateConnection)
+		public static Outcome LoadOne(Int32 nID, SqlConnection oPrivateConnection = null)
 		{
 			Outcome oOutcome = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Maintenance
 			return (oOutcome);
 		}
 
-		public static Outcome TryLoadOne(Int32 nID)
-		{
-			return(TryLoadOne(nID, null));
-		}
-
-		public static Outcome TryLoadOne(Int32 nID, SqlConnection oPrivateConnection)
+		public static Outcome TryLoadOne(Int32 nID, SqlConnection oPrivateConnection = null)
 		{
 			Outcome oOutcome = null;
 
@@ -212,12 +187,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(Outcome oOutcome)
-		{
-			InsertOne(oOutcome, null);
-		}
-
-		public static void InsertOne(Outcome oOutcome, SqlConnection oPrivateConnection)
+		public static void InsertOne(Outcome oOutcome, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -243,12 +213,7 @@ namespace Data.Maintenance
 			oOutcome.ID = Convert.ToInt32(oRet);
 		}
 
-		public static void UpdateOne(Outcome oOutcome)
-		{
-			UpdateOne(oOutcome, null);
-		}
-
-		public static void UpdateOne(Outcome oOutcome, SqlConnection oPrivateConnection)
+		public static void UpdateOne(Outcome oOutcome, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -275,18 +240,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(Outcome oOutcome)
-		{
-			DeleteOne(oOutcome, null);
-		}
-
-		public static void DeleteOne(Outcome oOutcome, SqlConnection oPrivateConnection)
+		public static void DeleteOne(Outcome oOutcome, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Outcomes]");
 
 			oDelete.Append(UTI_Where4One(oOutcome));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[Outcomes]");
+
+			oDelete.Append(UTI_Where4One(nID));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

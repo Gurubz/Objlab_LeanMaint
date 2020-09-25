@@ -12,7 +12,7 @@ namespace Data.Hierarchy
 	/// Public GeographicCenter Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class GeographicCenters : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Hierarchy
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Hierarchy
 			return (oRet);
 		}
 
-		public static GeographicCenter LoadOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild)
-		{
-			return(LoadOne(nID_GeographicCenter, nLevel, nID_GeographicCenterChild, null));
-		}
-
-		public static GeographicCenter LoadOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild, SqlConnection oPrivateConnection)
+		public static GeographicCenter LoadOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild, SqlConnection oPrivateConnection = null)
 		{
 			GeographicCenter oGeographicCenter = null;
 			DataSet oDs = null;
@@ -197,12 +177,7 @@ namespace Data.Hierarchy
 			return (oGeographicCenter);
 		}
 
-		public static GeographicCenter TryLoadOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild)
-		{
-			return(TryLoadOne(nID_GeographicCenter, nLevel, nID_GeographicCenterChild, null));
-		}
-
-		public static GeographicCenter TryLoadOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild, SqlConnection oPrivateConnection)
+		public static GeographicCenter TryLoadOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild, SqlConnection oPrivateConnection = null)
 		{
 			GeographicCenter oGeographicCenter = null;
 
@@ -218,12 +193,7 @@ namespace Data.Hierarchy
 			}
 		}
 
-		public static void InsertOne(GeographicCenter oGeographicCenter)
-		{
-			InsertOne(oGeographicCenter, null);
-		}
-
-		public static void InsertOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection)
+		public static void InsertOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -241,12 +211,7 @@ namespace Data.Hierarchy
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(GeographicCenter oGeographicCenter)
-		{
-			UpdateOne(oGeographicCenter, null);
-		}
-
-		public static void UpdateOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection)
+		public static void UpdateOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -268,18 +233,24 @@ namespace Data.Hierarchy
 
 		}
 
-		public static void DeleteOne(GeographicCenter oGeographicCenter)
-		{
-			DeleteOne(oGeographicCenter, null);
-		}
-
-		public static void DeleteOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection)
+		public static void DeleteOne(GeographicCenter oGeographicCenter, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[GeographicCenters]");
 
 			oDelete.Append(UTI_Where4One(oGeographicCenter));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_GeographicCenter, Int32 nLevel, Int32 nID_GeographicCenterChild, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Hierarchy].[GeographicCenters]");
+
+			oDelete.Append(UTI_Where4One(nID_GeographicCenter, nLevel, nID_GeographicCenterChild));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

@@ -48,32 +48,26 @@ namespace WebLeanMaint.Controllers
 				Suppliers = _context.Suppliers.ToList(),
 				Supplier = oSupplier,
 			};
+			// Defaults
+			GenVm.Supplier.ID_ObjStatus = (int)Data.Config.ObjStatuseEnum.Active;
+			GenVm.Supplier.ID_Country = 100; // Italy
+			GenVm.Supplier.ValidFrom = DateTime.Now.Date;
 			return View(GenVm);
 		}
 		[HttpPost]
 		public ActionResult Save(GeneralVM vm)
 		{
+			// Null management
+			vm.Supplier.Address2_HasValue = !string.IsNullOrEmpty(vm.Supplier.Address2);
+			vm.Supplier.ID_User_HasValue = (vm.Supplier.ID_User != 0);
+
 			if (vm.Supplier.ID_Supplier == 0)
 			{
 				Data.Maintenance.Suppliers.InsertOne(vm.Supplier);
 			}
 			else
 			{
-				var oSupplier = _context.Suppliers.Single(c => c.ID_Supplier == vm.Supplier.ID_Supplier);
-				oSupplier.Name = vm.Supplier.Name;
-				oSupplier.Description = vm.Supplier.Description;
-				oSupplier.ID_SupplierType = vm.Supplier.ID_SupplierType;
-				oSupplier.ID_ObjStatus = vm.Supplier.ID_ObjStatus;
-				oSupplier.Address1 = vm.Supplier.Address1;
-				oSupplier.ID_CostCenter = vm.Supplier.ID_CostCenter;
-				oSupplier.Address2 = vm.Supplier.Address2;
-				oSupplier.HourlyCost = vm.Supplier.HourlyCost;
-				oSupplier.ID_City = vm.Supplier.ID_City;
-				oSupplier.Zip = vm.Supplier.Zip;
-				oSupplier.ID_Country = vm.Supplier.ID_Country;
-				oSupplier.ValidFrom = vm.Supplier.ValidFrom;
-				oSupplier.ID_User = vm.Supplier.ID_User;
-				Data.Maintenance.Suppliers.UpdateOne(oSupplier);
+				Data.Maintenance.Suppliers.UpdateOne(vm.Supplier);
 			}
 			return RedirectToAction("Index", "MaintenanceSuppliers");
 		}
@@ -97,7 +91,7 @@ namespace WebLeanMaint.Controllers
 		}
 		public ActionResult Delete(int Id)
 		{
-			EntitiesManagerBase.SharedConnection.Execute("Delete From Maintenance.Suppliers where ID_Supplier = " + Id + "");
+			Data.Maintenance.Suppliers.DeleteOne(Id);
 			return RedirectToAction("Index");
 		}
 	}

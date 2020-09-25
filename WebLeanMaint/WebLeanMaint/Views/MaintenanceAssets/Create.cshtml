@@ -64,8 +64,10 @@
 										@Html.DropDownListFor(m => m.Asset.ID_ObjStatus, new SelectList(Model.ObjStatuses, "ID_ObjStatus", "Name"), "Select ObjStatus", htmlAttributes: new { @class = "chosen-select form-control" })
 									</div>
 								</div>
-								<div class="col-sm-12">
-									<button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+								<div class="row">
+									<div class="col-sm-12">
+										<button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
+									</div>
 								</div>
 							}
 						</div>

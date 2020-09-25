@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public MaterialUM Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  24/09/2020  Created
+	/// 	[SQLClassGenerator]  25/09/2020  Created
 	/// </remarks>
 	public partial class MaterialUMs : EntitiesManagerBase
 	{
@@ -115,22 +115,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Static Methods
-		public static DataSet LoadFast(string sWhere)
-		{
-			return (LoadFast(sWhere, String.Empty, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, SqlConnection oPrivateConnection)
-		{
-			return (LoadFast(sWhere, String.Empty, oPrivateConnection));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy)
-		{
-			return (LoadFast(sWhere, sOrderBy, null));
-		}
-
-		public static DataSet LoadFast(string sWhere, string sOrderBy, SqlConnection oPrivateConnection)
+		public static DataSet LoadFast(string sWhere, string sOrderBy = "", SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oSelect = null;
 			DataSet oRet = null;
@@ -158,12 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static MaterialUM LoadOne(Int32 nID_MaterialUM)
-		{
-			return(LoadOne(nID_MaterialUM, null));
-		}
-
-		public static MaterialUM LoadOne(Int32 nID_MaterialUM, SqlConnection oPrivateConnection)
+		public static MaterialUM LoadOne(Int32 nID_MaterialUM, SqlConnection oPrivateConnection = null)
 		{
 			MaterialUM oMaterialUM = null;
 			DataSet oDs = null;
@@ -191,12 +171,7 @@ namespace Data.Maintenance
 			return (oMaterialUM);
 		}
 
-		public static MaterialUM TryLoadOne(Int32 nID_MaterialUM)
-		{
-			return(TryLoadOne(nID_MaterialUM, null));
-		}
-
-		public static MaterialUM TryLoadOne(Int32 nID_MaterialUM, SqlConnection oPrivateConnection)
+		public static MaterialUM TryLoadOne(Int32 nID_MaterialUM, SqlConnection oPrivateConnection = null)
 		{
 			MaterialUM oMaterialUM = null;
 
@@ -212,12 +187,7 @@ namespace Data.Maintenance
 			}
 		}
 
-		public static void InsertOne(MaterialUM oMaterialUM)
-		{
-			InsertOne(oMaterialUM, null);
-		}
-
-		public static void InsertOne(MaterialUM oMaterialUM, SqlConnection oPrivateConnection)
+		public static void InsertOne(MaterialUM oMaterialUM, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oInsert = null;
 
@@ -235,12 +205,7 @@ namespace Data.Maintenance
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
 		}
 
-		public static void UpdateOne(MaterialUM oMaterialUM)
-		{
-			UpdateOne(oMaterialUM, null);
-		}
-
-		public static void UpdateOne(MaterialUM oMaterialUM, SqlConnection oPrivateConnection)
+		public static void UpdateOne(MaterialUM oMaterialUM, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oUpdate = null;
 
@@ -259,18 +224,24 @@ namespace Data.Maintenance
 
 		}
 
-		public static void DeleteOne(MaterialUM oMaterialUM)
-		{
-			DeleteOne(oMaterialUM, null);
-		}
-
-		public static void DeleteOne(MaterialUM oMaterialUM, SqlConnection oPrivateConnection)
+		public static void DeleteOne(MaterialUM oMaterialUM, SqlConnection oPrivateConnection = null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialUMs]");
 
 			oDelete.Append(UTI_Where4One(oMaterialUM));
+
+			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
+		}
+
+		public static void DeleteOne(Int32 nID_MaterialUM, SqlConnection oPrivateConnection=null)
+		{
+			StringBuilder oDelete = null;
+
+			oDelete = new StringBuilder("DELETE FROM [Maintenance].[MaterialUMs]");
+
+			oDelete.Append(UTI_Where4One(nID_MaterialUM));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}

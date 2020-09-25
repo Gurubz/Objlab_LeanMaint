@@ -64,25 +64,6 @@ namespace WebLeanMaint.Controllers
 		{
 			return View();
 		}
-		public ActionResult TreeView()
-		{
-			if (Session["UserID"] == null)
-			{
-				return RedirectToAction("Logout", "Home");
-			}
-			var complete = _context.Database.SqlQuery<OrganizationCenters>("Select * From Config.OrganizationCenters ").ToList();
-			var parent_list = _context.Database.SqlQuery<OrganizationCenters>("Select * From Config.OrganizationCenters where ID_Parent IS NULL ").ToList();
-			var child_list = _context.Database.SqlQuery<OrganizationCenters>("Select * From Config.OrganizationCenters where ID_Parent IS NOT NULL ").ToList();
-			var types_list = _context.Database.SqlQuery<OrganizationCenterTypes>("Select * From Config.OrganizationCenterTypes order by ID_OrganizationCenterType DESC ").ToList();
-			var Treeviewmodel = new TreeView
-			{
-				complete = complete,
-				parent_list = parent_list,
-				child_list = child_list,
-				types_list = types_list,
-			};
-			return View(Treeviewmodel);
-		}
 		public ActionResult OrganizationCentersTree()
 		{
 			if (Session["UserID"] == null)
