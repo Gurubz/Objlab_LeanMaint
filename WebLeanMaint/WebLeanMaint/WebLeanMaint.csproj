@@ -201,6 +201,7 @@
     <Compile Include="Core\Maintenance.cs" />
     <Compile Include="Data\Config.Citys.ex.cs" />
     <Compile Include="Data\Maintenance.Asset.ex.cs" />
+    <Compile Include="Data\Maintenance.AssetMaterial.ex.cs" />
     <Compile Include="Data\Maintenance.AssetMaterial.cs" />
     <Compile Include="Data\Maintenance.AssetMaterials.cs" />
     <Compile Include="Data\Maintenance.Material.ex.cs" />

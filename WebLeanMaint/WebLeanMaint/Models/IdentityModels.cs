@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Data;
+using Data.Maintenance;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -49,6 +51,16 @@ namespace WebLeanMaint.Models
 				return (EntitiesManagerBase.SharedConnection.Query<Data.Maintenance.Asset>(oSql.ToString()));
 			}
 		}
+
+		public IEnumerable<Data.Maintenance.AssetMaterial> AssetMaterials(int nID_Asset)
+		{
+			StringBuilder oSql = new StringBuilder();
+			oSql.AppendLine("SELECT AM.*, M.Name, M.Description FROM Maintenance.AssetMaterials AM");
+			oSql.AppendLine("INNER JOIN Maintenance.Materials M ON AM.ID_Material=M.ID_Material");
+			oSql.AppendLine("WHERE ID_Asset=" + EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			return (EntitiesManagerBase.SharedConnection.Query<Data.Maintenance.AssetMaterial>(oSql.ToString()));
+		}
+
 		public IEnumerable<Data.Maintenance.AssetType> AssetTypes
 		{
 			get

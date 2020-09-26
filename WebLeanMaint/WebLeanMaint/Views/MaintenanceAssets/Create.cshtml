@@ -65,6 +65,7 @@
 									</div>
 								</div>
 								<div class="row">
+									<br />
 									<div class="col-sm-12">
 										<button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Save Record</button>
 									</div>
@@ -75,3 +76,79 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-12">
+		<div class="panel">
+			<div class="panel-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<h4 class="section-subtitle"><b>Asset Material List</b></h4>
+
+							<div class="panel">
+								<div class="panel-content">
+
+									<div class="table-responsive">
+										<table class="table table-bordered table-hover table-striped table-success" id="searchable">
+											<thead class="bordered-darkorange">
+												<tr>
+													<th>@Html.DisplayNameFor(model => model.AssetMaterial.Name)</th>
+													<th>@Html.DisplayNameFor(model => model.AssetMaterial.Description)</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+
+											<tbody class="abc">
+												@foreach (var item in Model.AssetMaterials)
+												{
+													<tr>
+														<td>
+															@Html.DisplayFor(modelItem => item.Name)
+														</td>
+														<td>
+															@Html.DisplayFor(modelItem => item.Description)
+														</td>
+														<td>
+															<a href="@Url.Action("DeleteMaterial", new { nID_Asset = item.ID_Asset, nID_Material = item.ID_Material } )" new { class="btn btn-danger shiny input-xs"><i class="fa fa-trash-o"></i></a>
+														</td>
+													</tr>
+
+												}
+											</tbody>
+											<tfoot>
+												<tr>
+													<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+													<th><input type="text" style="width:70px" name="search_browser" placeholder="Search Here" class="form-control input-sm"></th>
+													<th></th>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							@using (Html.BeginForm("AddMaterial", "MaintenanceAssets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+							{
+								@Html.HiddenFor(m => m.Asset.ID_Asset)
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Select OrganizationCenter</label>
+										@Html.DropDownListFor(m => m.AssetMaterial.ID_Material, new SelectList(Model.Materials, "ID_Material", "Name"), "Select Material", htmlAttributes: new { @class = "chosen-select form-control" })
+									</div>
+								</div>
+								<div class="row">
+									<br />
+									<div class="col-sm-12">
+										<button type="submit" class="btn btn-primary" style="margin-top:10px"><i class="fa fa-plus"></i> Add</button>
+									</div>
+								</div>
+							}
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

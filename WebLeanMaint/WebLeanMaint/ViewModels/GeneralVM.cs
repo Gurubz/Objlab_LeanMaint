@@ -16,10 +16,12 @@ namespace WebLeanMaint.ViewModel
 	{
 		public IEnumerable<PlanningOperatorTypes> opp_types { get; set; }
 		public IEnumerable<Data.Maintenance.Asset> Assets { get; set; }
+		public IEnumerable<Data.Maintenance.AssetMaterial> AssetMaterials { get; set; }
 		public IEnumerable<Data.Maintenance.Material> Materials { get; set; }
 
 		public PlanningOperators planningOperators { get; set; }
 		public Data.Maintenance.Asset Asset { get; set; }
+		public Data.Maintenance.AssetMaterial AssetMaterial { get; set; }
 		public Data.Maintenance.Supplier Supplier { get; set; }
 		public Data.Maintenance.Material Material { get; set; }
 		public List<AssetType> AssetTypes { get; set; }
