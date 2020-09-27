@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public MaterialUM Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/09/2020  Created
+	/// 	[SQLClassGenerator]  27/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_MaterialUM = {ID_MaterialUM}")]
 	public partial class MaterialUM

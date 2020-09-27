@@ -109,7 +109,22 @@ namespace AppLeanMaint.Views
 			m_oactivity_orders_list.SetLayoutManager(m_oRecyclerViewLayoutManager);
 			m_oCounterAdapter = new AdapterOrders(Helpers.WS.Instance.GetOrders());
 			m_oactivity_orders_list.SetAdapter(m_oCounterAdapter);
-			// m_oCounterAdapter.ItemClick += M_oCounterAdapter_ItemClick;
+			m_oCounterAdapter.ItemClick += (sender, position) =>
+			{
+				int nID_Order = m_oCounterAdapter.Items[position].ID_Order;
+				string sMessage = Resources.GetString(Resource.String.activity_orders_list_startorder);
+				Helpers.UI.ShowYesNo(this, string.Empty, sMessage, (sender1, e1) =>
+				{
+					Helpers.UI.ShowProgressMessage(this, Resource.String.app_please_wait);
+
+					MaintenanceWS.Execution oExecution = Helpers.WS.Instance.StartOrderExecution(nID_Order);
+
+					Helpers.UI.ShowPersistentMessage(this, Resource.String.activity_orders_list_executionstarted, (x) =>
+					{
+						this.Finish();
+					});
+				}, null);
+			};
 		}
 
 		public void GUI_BizToGui()

@@ -174,17 +174,17 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID_Operator" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetExecutableOrdersByAsset">
+      <s:element name="GetExecutableOrdersByAssetID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="oAsset" type="tns:Asset" />
+            <s:element minOccurs="1" maxOccurs="1" name="nID_Asset" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetExecutableOrdersByAssetResponse">
+      <s:element name="GetExecutableOrdersByAssetIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersByAssetResult" type="tns:ArrayOfOrder" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersByAssetIDResult" type="tns:ArrayOfOrder" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -227,27 +227,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetExecutableOrders">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="oOperator" type="tns:Operator" />
-            <s:element minOccurs="0" maxOccurs="1" name="oAsset" type="tns:Asset" />
-            <s:element minOccurs="0" maxOccurs="1" name="oPosition" type="tns:GeoCoordinate" />
-            <s:element minOccurs="0" maxOccurs="1" name="oPosition1" type="tns:GeoCoordinate" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetExecutableOrdersResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetExecutableOrdersResult" type="tns:ArrayOfOrder" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="StartOrderExecution">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="oOrder" type="tns:Order" />
+            <s:element minOccurs="1" maxOccurs="1" name="nID_Order" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -297,11 +280,11 @@
   <wsdl:message name="GetExecutableOrdersByOperatorSoapOut">
     <wsdl:part name="parameters" element="tns:GetExecutableOrdersByOperatorResponse" />
   </wsdl:message>
-  <wsdl:message name="GetExecutableOrdersByAssetSoapIn">
-    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAsset" />
+  <wsdl:message name="GetExecutableOrdersByAssetIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetID" />
   </wsdl:message>
-  <wsdl:message name="GetExecutableOrdersByAssetSoapOut">
-    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetResponse" />
+  <wsdl:message name="GetExecutableOrdersByAssetIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetExecutableOrdersByAssetBarcodeSoapIn">
     <wsdl:part name="parameters" element="tns:GetExecutableOrdersByAssetBarcode" />
@@ -314,12 +297,6 @@
   </wsdl:message>
   <wsdl:message name="GetExecutableOrdersByPositionSoapOut">
     <wsdl:part name="parameters" element="tns:GetExecutableOrdersByPositionResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetExecutableOrdersSoapIn">
-    <wsdl:part name="parameters" element="tns:GetExecutableOrders" />
-  </wsdl:message>
-  <wsdl:message name="GetExecutableOrdersSoapOut">
-    <wsdl:part name="parameters" element="tns:GetExecutableOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="StartOrderExecutionSoapIn">
     <wsdl:part name="parameters" element="tns:StartOrderExecution" />
@@ -344,9 +321,9 @@
       <wsdl:input message="tns:GetExecutableOrdersByOperatorSoapIn" />
       <wsdl:output message="tns:GetExecutableOrdersByOperatorSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetExecutableOrdersByAsset">
-      <wsdl:input message="tns:GetExecutableOrdersByAssetSoapIn" />
-      <wsdl:output message="tns:GetExecutableOrdersByAssetSoapOut" />
+    <wsdl:operation name="GetExecutableOrdersByAssetID">
+      <wsdl:input message="tns:GetExecutableOrdersByAssetIDSoapIn" />
+      <wsdl:output message="tns:GetExecutableOrdersByAssetIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetExecutableOrdersByAssetBarcode">
       <wsdl:input message="tns:GetExecutableOrdersByAssetBarcodeSoapIn" />
@@ -355,10 +332,6 @@
     <wsdl:operation name="GetExecutableOrdersByPosition">
       <wsdl:input message="tns:GetExecutableOrdersByPositionSoapIn" />
       <wsdl:output message="tns:GetExecutableOrdersByPositionSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetExecutableOrders">
-      <wsdl:input message="tns:GetExecutableOrdersSoapIn" />
-      <wsdl:output message="tns:GetExecutableOrdersSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="StartOrderExecution">
       <wsdl:input message="tns:StartOrderExecutionSoapIn" />
@@ -403,8 +376,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetExecutableOrdersByAsset">
-      <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByAsset" style="document" />
+    <wsdl:operation name="GetExecutableOrdersByAssetID">
+      <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByAssetID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -423,15 +396,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetExecutableOrdersByPosition">
       <soap:operation soapAction="http://objlab.it/GetExecutableOrdersByPosition" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetExecutableOrders">
-      <soap:operation soapAction="http://objlab.it/GetExecutableOrders" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -487,8 +451,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetExecutableOrdersByAsset">
-      <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByAsset" style="document" />
+    <wsdl:operation name="GetExecutableOrdersByAssetID">
+      <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByAssetID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -507,15 +471,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetExecutableOrdersByPosition">
       <soap12:operation soapAction="http://objlab.it/GetExecutableOrdersByPosition" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetExecutableOrders">
-      <soap12:operation soapAction="http://objlab.it/GetExecutableOrders" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -12,7 +12,7 @@ namespace Data.Config
 	/// Public OrganizationCenterType Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/09/2020  Created
+	/// 	[SQLClassGenerator]  27/09/2020  Created
 	/// </remarks>
 	public partial class OrganizationCenterTypes : EntitiesManagerBase
 	{

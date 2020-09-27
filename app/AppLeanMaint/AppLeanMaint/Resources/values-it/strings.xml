@@ -48,6 +48,8 @@
 	<string name="activity_select_operator_description">Descrizione</string>
 
 	<string name="activity_orders_list">Lista ordini attivi</string>
+	<string name="activity_orders_list_startorder">Vuoi far partire l\'esecuzione dell\'ordine?</string>
+	<string name="activity_orders_list_executionstarted">Ordine di esecuzione iniziato, controlla la lista delle esecuzioni</string>
 
 	<string name="activity_select_asset_ex">Seleziona asset</string>
 	<string name="activity_select_asset_ex_instructionQr">Muovi la fotocamera per centrare il qr code</string>
@@ -57,6 +59,7 @@
 	<string name="activity_select_asset_ex_ButtonVoice">Voce</string>
 	<string name="activity_select_asset_ex_serialnovalid">Valore letto non valido! Riprova</string>
 	<string name="activity_select_asset_ex_speak">Parla adesso ...</string>
+	<string name="activity_select_asset_ex_ordernotfound">Ordine non trovato! Riprova</string>
 
 	<string name="activity_execution">Intervento</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

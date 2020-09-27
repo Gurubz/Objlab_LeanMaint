@@ -7,7 +7,7 @@ namespace Data.Planning
 	/// Public Operator Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/09/2020  Created
+	/// 	[SQLClassGenerator]  27/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID_Operator = {ID_Operator}")]
 	public partial class Operator

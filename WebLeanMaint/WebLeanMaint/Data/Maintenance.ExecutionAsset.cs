@@ -7,22 +7,27 @@ namespace Data.Maintenance
 	/// Public ExecutionAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/09/2020  Created
+	/// 	[SQLClassGenerator]  27/09/2020  Created
 	/// </remarks>
-	[DebuggerDisplay("ID_Execution = {ID_Execution}, ID_Asset = {ID_Asset}")]
+	[DebuggerDisplay("ID_ExecutionAsset = {ID_ExecutionAsset}")]
 	public partial class ExecutionAsset
 	{
 		public ExecutionAsset()
 		{
 		}
 
-		public ExecutionAsset(Int32 nID_Execution, Int32 nID_Asset)
+		public ExecutionAsset(Int32 nID_ExecutionAsset)
 		{
-			m_nID_Execution = nID_Execution;
-			m_nID_Asset = nID_Asset;
+			m_nID_ExecutionAsset = nID_ExecutionAsset;
 		}
 
 		#region Public Properties
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public Int32 ID_ExecutionAsset
+		{
+		  get { return (m_nID_ExecutionAsset); }
+		  set { m_nID_ExecutionAsset = value; }
+		}
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public Int32 ID_Execution
 		{
@@ -56,6 +61,7 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Protected Properties
+		protected Int32 m_nID_ExecutionAsset;
 		protected Int32 m_nID_Execution;
 		protected Int32 m_nID_Asset;
 		protected Boolean m_bStopped;
@@ -64,10 +70,9 @@ namespace Data.Maintenance
 		#endregion
 
 		#region Friends Methods
-		internal void SetKeys(Int32 nID_Execution, Int32 nID_Asset)
+		internal void SetKeys(Int32 nID_ExecutionAsset)
 		{
-			m_nID_Execution = nID_Execution;
-			m_nID_Asset = nID_Asset;
+			m_nID_ExecutionAsset = nID_ExecutionAsset;
 		}
 		#endregion
 	}

@@ -37,13 +37,11 @@ namespace AppLeanMaint.MaintenanceWS {
         
         private System.Threading.SendOrPostCallback GetExecutableOrdersByOperatorOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetExecutableOrdersByAssetOperationCompleted;
+        private System.Threading.SendOrPostCallback GetExecutableOrdersByAssetIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetExecutableOrdersByAssetBarcodeOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetExecutableOrdersByPositionOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetExecutableOrdersOperationCompleted;
         
         private System.Threading.SendOrPostCallback StartOrderExecutionOperationCompleted;
         
@@ -98,16 +96,13 @@ namespace AppLeanMaint.MaintenanceWS {
         public event GetExecutableOrdersByOperatorCompletedEventHandler GetExecutableOrdersByOperatorCompleted;
         
         /// <remarks/>
-        public event GetExecutableOrdersByAssetCompletedEventHandler GetExecutableOrdersByAssetCompleted;
+        public event GetExecutableOrdersByAssetIDCompletedEventHandler GetExecutableOrdersByAssetIDCompleted;
         
         /// <remarks/>
         public event GetExecutableOrdersByAssetBarcodeCompletedEventHandler GetExecutableOrdersByAssetBarcodeCompleted;
         
         /// <remarks/>
         public event GetExecutableOrdersByPositionCompletedEventHandler GetExecutableOrdersByPositionCompleted;
-        
-        /// <remarks/>
-        public event GetExecutableOrdersCompletedEventHandler GetExecutableOrdersCompleted;
         
         /// <remarks/>
         public event StartOrderExecutionCompletedEventHandler StartOrderExecutionCompleted;
@@ -239,31 +234,31 @@ namespace AppLeanMaint.MaintenanceWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetExecutableOrdersByAsset", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Order[] GetExecutableOrdersByAsset(Asset oAsset) {
-            object[] results = this.Invoke("GetExecutableOrdersByAsset", new object[] {
-                        oAsset});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetExecutableOrdersByAssetID", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Order[] GetExecutableOrdersByAssetID(int nID_Asset) {
+            object[] results = this.Invoke("GetExecutableOrdersByAssetID", new object[] {
+                        nID_Asset});
             return ((Order[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetExecutableOrdersByAssetAsync(Asset oAsset) {
-            this.GetExecutableOrdersByAssetAsync(oAsset, null);
+        public void GetExecutableOrdersByAssetIDAsync(int nID_Asset) {
+            this.GetExecutableOrdersByAssetIDAsync(nID_Asset, null);
         }
         
         /// <remarks/>
-        public void GetExecutableOrdersByAssetAsync(Asset oAsset, object userState) {
-            if ((this.GetExecutableOrdersByAssetOperationCompleted == null)) {
-                this.GetExecutableOrdersByAssetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExecutableOrdersByAssetOperationCompleted);
+        public void GetExecutableOrdersByAssetIDAsync(int nID_Asset, object userState) {
+            if ((this.GetExecutableOrdersByAssetIDOperationCompleted == null)) {
+                this.GetExecutableOrdersByAssetIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExecutableOrdersByAssetIDOperationCompleted);
             }
-            this.InvokeAsync("GetExecutableOrdersByAsset", new object[] {
-                        oAsset}, this.GetExecutableOrdersByAssetOperationCompleted, userState);
+            this.InvokeAsync("GetExecutableOrdersByAssetID", new object[] {
+                        nID_Asset}, this.GetExecutableOrdersByAssetIDOperationCompleted, userState);
         }
         
-        private void OnGetExecutableOrdersByAssetOperationCompleted(object arg) {
-            if ((this.GetExecutableOrdersByAssetCompleted != null)) {
+        private void OnGetExecutableOrdersByAssetIDOperationCompleted(object arg) {
+            if ((this.GetExecutableOrdersByAssetIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetExecutableOrdersByAssetCompleted(this, new GetExecutableOrdersByAssetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetExecutableOrdersByAssetIDCompleted(this, new GetExecutableOrdersByAssetIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -326,60 +321,25 @@ namespace AppLeanMaint.MaintenanceWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/GetExecutableOrders", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Order[] GetExecutableOrders(Operator oOperator, Asset oAsset, GeoCoordinate oPosition, GeoCoordinate oPosition1) {
-            object[] results = this.Invoke("GetExecutableOrders", new object[] {
-                        oOperator,
-                        oAsset,
-                        oPosition,
-                        oPosition1});
-            return ((Order[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetExecutableOrdersAsync(Operator oOperator, Asset oAsset, GeoCoordinate oPosition, GeoCoordinate oPosition1) {
-            this.GetExecutableOrdersAsync(oOperator, oAsset, oPosition, oPosition1, null);
-        }
-        
-        /// <remarks/>
-        public void GetExecutableOrdersAsync(Operator oOperator, Asset oAsset, GeoCoordinate oPosition, GeoCoordinate oPosition1, object userState) {
-            if ((this.GetExecutableOrdersOperationCompleted == null)) {
-                this.GetExecutableOrdersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExecutableOrdersOperationCompleted);
-            }
-            this.InvokeAsync("GetExecutableOrders", new object[] {
-                        oOperator,
-                        oAsset,
-                        oPosition,
-                        oPosition1}, this.GetExecutableOrdersOperationCompleted, userState);
-        }
-        
-        private void OnGetExecutableOrdersOperationCompleted(object arg) {
-            if ((this.GetExecutableOrdersCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetExecutableOrdersCompleted(this, new GetExecutableOrdersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://objlab.it/StartOrderExecution", RequestNamespace="http://objlab.it/", ResponseNamespace="http://objlab.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Execution StartOrderExecution(Order oOrder) {
+        public Execution StartOrderExecution(int nID_Order) {
             object[] results = this.Invoke("StartOrderExecution", new object[] {
-                        oOrder});
+                        nID_Order});
             return ((Execution)(results[0]));
         }
         
         /// <remarks/>
-        public void StartOrderExecutionAsync(Order oOrder) {
-            this.StartOrderExecutionAsync(oOrder, null);
+        public void StartOrderExecutionAsync(int nID_Order) {
+            this.StartOrderExecutionAsync(nID_Order, null);
         }
         
         /// <remarks/>
-        public void StartOrderExecutionAsync(Order oOrder, object userState) {
+        public void StartOrderExecutionAsync(int nID_Order, object userState) {
             if ((this.StartOrderExecutionOperationCompleted == null)) {
                 this.StartOrderExecutionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnStartOrderExecutionOperationCompleted);
             }
             this.InvokeAsync("StartOrderExecution", new object[] {
-                        oOrder}, this.StartOrderExecutionOperationCompleted, userState);
+                        nID_Order}, this.StartOrderExecutionOperationCompleted, userState);
         }
         
         private void OnStartOrderExecutionOperationCompleted(object arg) {
@@ -1481,17 +1441,17 @@ namespace AppLeanMaint.MaintenanceWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void GetExecutableOrdersByAssetCompletedEventHandler(object sender, GetExecutableOrdersByAssetCompletedEventArgs e);
+    public delegate void GetExecutableOrdersByAssetIDCompletedEventHandler(object sender, GetExecutableOrdersByAssetIDCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetExecutableOrdersByAssetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetExecutableOrdersByAssetIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetExecutableOrdersByAssetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetExecutableOrdersByAssetIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1544,32 +1504,6 @@ namespace AppLeanMaint.MaintenanceWS {
         private object[] results;
         
         internal GetExecutableOrdersByPositionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Order[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Order[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void GetExecutableOrdersCompletedEventHandler(object sender, GetExecutableOrdersCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetExecutableOrdersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetExecutableOrdersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

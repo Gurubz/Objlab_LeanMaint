@@ -204,6 +204,8 @@
     <Compile Include="Data\Maintenance.AssetMaterial.ex.cs" />
     <Compile Include="Data\Maintenance.AssetMaterial.cs" />
     <Compile Include="Data\Maintenance.AssetMaterials.cs" />
+    <Compile Include="Data\Maintenance.ExecutionAssetMaterial.cs" />
+    <Compile Include="Data\Maintenance.ExecutionAssetMaterials.cs" />
     <Compile Include="Data\Maintenance.Material.ex.cs" />
     <Compile Include="Data\Maintenance.Supplier.ex.cs" />
     <Compile Include="Data\Planning.OperatorType.cs" />
@@ -2560,8 +2562,6 @@
     <Compile Include="Data\Maintenance.Execution.cs" />
     <Compile Include="Data\Maintenance.ExecutionAsset.cs" />
     <Compile Include="Data\Maintenance.ExecutionAssets.cs" />
-    <Compile Include="Data\Maintenance.ExecutionMaterial.cs" />
-    <Compile Include="Data\Maintenance.ExecutionMaterials.cs" />
     <Compile Include="Data\Maintenance.ExecutionOperator.cs" />
     <Compile Include="Data\Maintenance.ExecutionOperators.cs" />
     <Compile Include="Data\Maintenance.ExecutionPriorityEnum.cs" />

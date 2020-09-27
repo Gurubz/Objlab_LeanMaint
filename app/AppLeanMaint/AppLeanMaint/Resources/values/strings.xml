@@ -48,6 +48,8 @@
 	<string name="activity_select_operator_description">Description</string>
 
 	<string name="activity_orders_list">Active orders list</string>
+	<string name="activity_orders_list_startorder">Do you want to start the order execution?</string>
+	<string name="activity_orders_list_executionstarted">Order execution started, go check the execution list</string>
 
 	<string name="activity_select_asset_ex">Select asset</string>
 	<string name="activity_select_asset_ex_instructionQr">Move camera to center qr code</string>
@@ -57,6 +59,7 @@
 	<string name="activity_select_asset_ex_ButtonVoice">Voice</string>
 	<string name="activity_select_asset_ex_serialnovalid">Serial not valid! Retry</string>
 	<string name="activity_select_asset_ex_speak">Speak now ...</string>
+	<string name="activity_select_asset_ex_ordernotfound">Order not found! Retry</string>
 
 	<string name="activity_execution">Maintenance</string>
 	<string name="activity_execution_id_plant">ID_Plant</string>

@@ -200,12 +200,12 @@ namespace AppLeanMaint.Views
 
 		public void Release()
 		{
-			
+
 		}
 
 		public void SurfaceChanged(ISurfaceHolder holder, [GeneratedEnum] Format format, int width, int height)
 		{
-			
+
 		}
 
 		public void SurfaceCreated(ISurfaceHolder holder)
@@ -216,7 +216,7 @@ namespace AppLeanMaint.Views
 				ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Camera }, REQUEST_CAMERA_PERMISSIONID);
 				return;
 			}
-			this.GUI_CameraStart();			
+			this.GUI_CameraStart();
 		}
 
 		public void SurfaceDestroyed(ISurfaceHolder holder)
@@ -392,7 +392,7 @@ namespace AppLeanMaint.Views
 			}
 			catch (InvalidOperationException)
 			{
-			}			
+			}
 		}
 
 		protected void GUI_Process(string sSerial)
@@ -409,7 +409,18 @@ namespace AppLeanMaint.Views
 				Helpers.UI.ShowProgressMessage(this, Resource.String.app_please_wait);
 
 				// Process the serial
-				var aOrders = Helpers.WS.Instance.GetExecutableOrdersByAssetBarcode(sSerial);
+				var aOrders = Helpers.WS.Instance.GetExecutableOrdersByAssetBarcode(sSerial.Replace(" ", ""));
+				if (aOrders.Length == 0)
+				{
+					Helpers.UI.ShowPersistentMessage(this, Resource.String.activity_select_asset_ex_ordernotfound, (x) =>
+					{
+						if (this.m_bIsSpeech == false) cameraSource.Start();
+					});
+				}
+				else
+				{
+					// List orders
+				}
 			}
 		}
 		#endregion

@@ -7,7 +7,7 @@ namespace Data.Maintenance
 	/// Public Outcome Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/09/2020  Created
+	/// 	[SQLClassGenerator]  27/09/2020  Created
 	/// </remarks>
 	[DebuggerDisplay("ID = {ID}")]
 	public partial class Outcome

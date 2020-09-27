@@ -88,17 +88,14 @@ namespace WebLeanMaint.WS
 
 		[WebMethod]
 		[Description("Maintenance: Get available executable orders based on condition passed")]
-		public Data.Planning.Order[] GetExecutableOrdersByAsset(Data.Maintenance.Asset oAsset)
+		public Data.Planning.Order[] GetExecutableOrdersByAssetID(int nID_Asset)
 		{
 			Data.Planning.Orders aOrders = new Data.Planning.Orders();
-			if (oAsset != null)
-			{
-				Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
-				aOrderAssets.Load("ID_Asset=" + EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
-				string[] aID_Orders = (from o in aOrderAssets.ToArray() select EntitiesManagerBase.UTI_ValueToSql(o.ID_Order)).Distinct().ToArray();
+			Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
+			aOrderAssets.Load("ID_Asset=" + EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			string[] aID_Orders = (from o in aOrderAssets.ToArray() select EntitiesManagerBase.UTI_ValueToSql(o.ID_Order)).Distinct().ToArray();
 
-				aOrders.Load("ID_Order IN " + string.Join(",", aID_Orders));
-			}
+			aOrders.Load("ID_Order IN " + string.Join(",", aID_Orders));
 
 			return (aOrders.ToArray());
 		}
@@ -117,7 +114,7 @@ namespace WebLeanMaint.WS
 					Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
 					aOrderAssets.Load($"ID_Asset={EntitiesManagerBase.UTI_ValueToSql(aAssets[0].ID_Asset)}");
 					string[] aID_Orders = (from o in aOrderAssets.ToArray() select EntitiesManagerBase.UTI_ValueToSql(o.ID_Order)).Distinct().ToArray();
-					if (aID_Orders.Length > 0) aOrders.Load("ID_Order IN " + string.Join(",", aID_Orders));
+					if (aID_Orders.Length > 0) aOrders.Load("ID_Order IN (" + string.Join(",", aID_Orders) + ")");
 				}
 			}
 
@@ -138,49 +135,10 @@ namespace WebLeanMaint.WS
 		}
 
 		[WebMethod]
-		[Description("Maintenance: Get available executable orders based on condition passed")]
-		public Data.Planning.Order[] GetExecutableOrders(Data.Planning.Operator oOperator, Data.Maintenance.Asset oAsset, GeoCoordinate oPosition, GeoCoordinate oPosition1)
-		{
-			List<Data.Planning.Order> aRet = new List<Data.Planning.Order>();
-
-			Data.Planning.Orders aOrders = new Data.Planning.Orders();
-			if (oOperator != null)
-			{
-				aOrders.Load("ID_Operator=" + EntitiesManagerBase.UTI_ValueToSql(oOperator.ID_Operator));
-				aRet.AddRange(aOrders.ToArray());
-			}
-			if (oAsset != null)
-			{
-				Data.Planning.OrderAssets aOrderAssets = new Data.Planning.OrderAssets();
-				aOrderAssets.Load("ID_Asset=" + EntitiesManagerBase.UTI_ValueToSql(oAsset.ID_Asset));
-				foreach (Data.Planning.OrderAsset oOrderAsset in aOrderAssets)
-				{
-					aOrders.Load("ID_Order=" + EntitiesManagerBase.UTI_ValueToSql(oOrderAsset.ID_Order));
-					aRet.AddRange(aOrders.ToArray());
-				}
-			}
-			if (oPosition != null && oPosition1 != null && oPosition != GeoCoordinate.Unknown && oPosition1 != GeoCoordinate.Unknown)
-			{
-
-			}
-			if (oPosition != null && oPosition != GeoCoordinate.Unknown)
-			{
-
-			}
-
-			if (aRet.Count > 0)
-			{
-				aRet = aRet.Distinct().ToList();
-			}
-
-			return (aRet.ToArray());
-		}
-
-		[WebMethod]
 		[Description("Maintenance: Start order execution")]
-		public Data.Maintenance.Execution StartOrderExecution(Data.Planning.Order oOrder)
+		public Data.Maintenance.Execution StartOrderExecution(int nID_Order)
 		{
-			return (Core.Maintenance.CreateExecutionFromOrder(oOrder));
+			return (Core.Maintenance.CreateExecutionFromOrder(nID_Order));
 		}
 	}
 }

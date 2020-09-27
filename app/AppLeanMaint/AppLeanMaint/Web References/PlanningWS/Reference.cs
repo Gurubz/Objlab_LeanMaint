@@ -419,6 +419,14 @@ namespace AppLeanMaint.PlanningWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://objlab.it/")]
     public partial class Material {
         
+        private string supplierNameField;
+        
+        private string materialUMNameField;
+        
+        private string storeCenterNameField;
+        
+        private string objStatusNameField;
+        
         private int iD_MaterialField;
         
         private string nameField;
@@ -442,6 +450,46 @@ namespace AppLeanMaint.PlanningWS {
         private string barcodeField;
         
         private int iD_StoreCenterField;
+        
+        /// <remarks/>
+        public string SupplierName {
+            get {
+                return this.supplierNameField;
+            }
+            set {
+                this.supplierNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MaterialUMName {
+            get {
+                return this.materialUMNameField;
+            }
+            set {
+                this.materialUMNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string StoreCenterName {
+            get {
+                return this.storeCenterNameField;
+            }
+            set {
+                this.storeCenterNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ObjStatusName {
+            get {
+                return this.objStatusNameField;
+            }
+            set {
+                this.objStatusNameField = value;
+            }
+        }
         
         /// <remarks/>
         public int ID_Material {

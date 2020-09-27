@@ -91,6 +91,12 @@ namespace AppLeanMaint.Helpers
 			return (aRet);
 		}
 
+		public MaintenanceWS.Execution StartOrderExecution(int nID_Order)
+		{
+			return(m_oMaintenanceWs.StartOrderExecution(nID_Order));
+		}
+
+
 		public MaintenanceWS.Order[] GetExecutableOrdersByAssetBarcode(string sBarcode)
 		{
 			MaintenanceWS.Order[] aRet = m_oMaintenanceWs.GetExecutableOrdersByAssetBarcode(sBarcode);

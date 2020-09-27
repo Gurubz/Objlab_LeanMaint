@@ -12,7 +12,7 @@ namespace Data.Maintenance
 	/// Public ExecutionAsset Class
 	/// </summary>
 	/// <remarks>
-	/// 	[SQLClassGenerator]  25/09/2020  Created
+	/// 	[SQLClassGenerator]  27/09/2020  Created
 	/// </remarks>
 	public partial class ExecutionAssets : EntitiesManagerBase
 	{
@@ -27,11 +27,11 @@ namespace Data.Maintenance
 		#region Public Methods
 		#region Collection
 
-		public ExecutionAsset GetByKeys(Int32 nID_Execution, Int32 nID_Asset)
+		public ExecutionAsset GetByKeys(Int32 nID_ExecutionAsset)
 		{
 			foreach (ExecutionAsset oExecutionAsset in this.m_aItems)
 			{
-				if (oExecutionAsset.ID_Execution == nID_Execution && oExecutionAsset.ID_Asset == nID_Asset)
+				if (oExecutionAsset.ID_ExecutionAsset == nID_ExecutionAsset)
 				{
 					return (oExecutionAsset);
 				}
@@ -143,7 +143,7 @@ namespace Data.Maintenance
 			return (oRet);
 		}
 
-		public static ExecutionAsset LoadOne(Int32 nID_Execution, Int32 nID_Asset, SqlConnection oPrivateConnection = null)
+		public static ExecutionAsset LoadOne(Int32 nID_ExecutionAsset, SqlConnection oPrivateConnection = null)
 		{
 			ExecutionAsset oExecutionAsset = null;
 			DataSet oDs = null;
@@ -153,11 +153,8 @@ namespace Data.Maintenance
 			oSelect = new StringBuilder("SELECT * FROM [Maintenance].[ExecutionAssets]");
 
 			oSelect.Append(" WHERE ");
-			oSelect.Append("[ID_Execution]=");
-			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Execution));
-			oSelect.Append(" AND ");
-			oSelect.Append("[ID_Asset]=");
-			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oSelect.Append("[ID_ExecutionAsset]=");
+			oSelect.Append(EntitiesManagerBase.UTI_ValueToSql(nID_ExecutionAsset));
 
 			oDs = EntitiesManagerBase.DAT_ExecuteDataSet(oSelect.ToString(), oPrivateConnection);
 
@@ -174,11 +171,11 @@ namespace Data.Maintenance
 			return (oExecutionAsset);
 		}
 
-		public static ExecutionAsset TryLoadOne(Int32 nID_Execution, Int32 nID_Asset, SqlConnection oPrivateConnection = null)
+		public static ExecutionAsset TryLoadOne(Int32 nID_ExecutionAsset, SqlConnection oPrivateConnection = null)
 		{
 			ExecutionAsset oExecutionAsset = null;
 
-			oExecutionAsset = LoadOne(nID_Execution, nID_Asset, null);
+			oExecutionAsset = LoadOne(nID_ExecutionAsset, null);
 
 			if (oExecutionAsset == null)
 			{
@@ -209,7 +206,9 @@ namespace Data.Maintenance
 			oInsert.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.Description));
 			oInsert.Append(")");
 
-			EntitiesManagerBase.DAT_ExecuteNonQuery(oInsert.ToString(), oPrivateConnection);
+			Object oRet;
+			oRet = EntitiesManagerBase.DAT_ExecuteScalar(oInsert.ToString(), "\nSELECT @@IDENTITY AS ID", oPrivateConnection);
+			oExecutionAsset.ID_ExecutionAsset = Convert.ToInt32(oRet);
 		}
 
 		public static void UpdateOne(ExecutionAsset oExecutionAsset, SqlConnection oPrivateConnection = null)
@@ -218,6 +217,12 @@ namespace Data.Maintenance
 
 			oUpdate = new StringBuilder("UPDATE [Maintenance].[ExecutionAssets] SET ");
 
+			oUpdate.Append("[ID_Execution]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.ID_Execution));
+			oUpdate.Append(", ");
+			oUpdate.Append("[ID_Asset]=");
+			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.ID_Asset));
+			oUpdate.Append(", ");
 			oUpdate.Append("[Stopped]=");
 			oUpdate.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.Stopped));
 			oUpdate.Append(", ");
@@ -245,13 +250,13 @@ namespace Data.Maintenance
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}
 
-		public static void DeleteOne(Int32 nID_Execution, Int32 nID_Asset, SqlConnection oPrivateConnection=null)
+		public static void DeleteOne(Int32 nID_ExecutionAsset, SqlConnection oPrivateConnection=null)
 		{
 			StringBuilder oDelete = null;
 
 			oDelete = new StringBuilder("DELETE FROM [Maintenance].[ExecutionAssets]");
 
-			oDelete.Append(UTI_Where4One(nID_Execution, nID_Asset));
+			oDelete.Append(UTI_Where4One(nID_ExecutionAsset));
 
 			EntitiesManagerBase.DAT_ExecuteNonQuery(oDelete.ToString(), oPrivateConnection);
 		}
@@ -261,25 +266,19 @@ namespace Data.Maintenance
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID_Execution]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.ID_Execution));
-			oWhere.Append(" AND ");
-			oWhere.Append("[ID_Asset]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.ID_Asset));
+			oWhere.Append("[ID_ExecutionAsset]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(oExecutionAsset.ID_ExecutionAsset));
 
 			return (oWhere.ToString());
 		}
 
-		public static string UTI_Where4One(Int32 nID_Execution, Int32 nID_Asset)
+		public static string UTI_Where4One(Int32 nID_ExecutionAsset)
 		{
 			StringBuilder oWhere = new StringBuilder();
 
 			oWhere.Append(" WHERE ");
-			oWhere.Append("[ID_Execution]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Execution));
-			oWhere.Append(" AND ");
-			oWhere.Append("[ID_Asset]=");
-			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_Asset));
+			oWhere.Append("[ID_ExecutionAsset]=");
+			oWhere.Append(EntitiesManagerBase.UTI_ValueToSql(nID_ExecutionAsset));
 
 			return (oWhere.ToString());
 		}
@@ -288,6 +287,7 @@ namespace Data.Maintenance
 		{
 			ExecutionAsset oExecutionAsset = new ExecutionAsset();
 
+			oExecutionAsset.ID_ExecutionAsset = ((Int32)(oRow["ID_ExecutionAsset"]));
 			oExecutionAsset.ID_Execution = ((Int32)(oRow["ID_Execution"]));
 			oExecutionAsset.ID_Asset = ((Int32)(oRow["ID_Asset"]));
 			oExecutionAsset.Stopped = ((Boolean)(oRow["Stopped"]));

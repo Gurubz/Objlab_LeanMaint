@@ -52,6 +52,13 @@ namespace AppLeanMaint.Views
 			base.OnCreate(savedInstanceState);
 
 			this.GUI_Init();
+
+			// https://medium.com/android-core/how-to-persist-data-when-activity-is-re-created-in-android-studio-be4aa6a95f95
+			string sObject = savedInstanceState?.GetString(Resource.Layout.activity_orders.ToString());
+			if (string.IsNullOrEmpty(sObject) == false)
+			{
+				m_oOrder = JsonConvert.DeserializeObject<PlanningWS.Order>(sObject);
+			}
 		}
 
 		protected override void OnStart()
